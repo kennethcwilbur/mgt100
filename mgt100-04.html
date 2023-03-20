@@ -660,17 +660,27 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>Con: Axes are hard to interpret</li>
 </ul>
 </section>
+<section id="example-netzer-et-al.-2012" class="slide level2">
+<h2>Example: Netzer et al.&nbsp;(2012)</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/netzer,etal-2012-0.png" style="width:11in"></p>
+</figure>
+</div>
+</section>
 <section id="section" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/netzer,etal2012c.png" style="width:7.5in"></p>
+<p><img data-src="images/netzer,etal2012ac.png" style="width:10.5in"></p>
 </figure>
 </div>
 <aside class="notes">
 <ul>
-<li>This graphic comes from Netzer et al.&nbsp;(JMR 2012)</li>
-<li>Authors measured similarity in many thousands of car reviews, by detecting when one car model was compared to another car model</li>
+<li>Graphic comes from Netzer et al.&nbsp;(JMR 2012)</li>
+<li>Map on the left: Based on co-=occurrence of car brands within text car reviews</li>
+<li>Map on the right: Based on switching data from JD Power</li>
+<li>How do they compare?</li>
 <li>Map clearly shows distinct submarkets of car brands</li>
 </ul>
 <style type="text/css">
@@ -684,6 +694,44 @@ Kenneth C. Wilbur and Dan Yavorsky
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/netzer,etal2012b.png" style="width:11in"></p>
+</figure>
+</div>
+<aside class="notes">
+<ul>
+<li>Authors also showed how to relate MDS results to attribute space</li>
+<li>Notice that “attributes” are N-grams of words, many make sense, some don’t</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="mds-examples" class="slide level2">
+<h2>MDS examples</h2>
+<p>Summary: do PCA on a square symmetric matrix of (dis)similarity scores, then graph the eigenvectors</p>
+<p>Intuition, in 2D space</p>
+<pre><code>      - Suppose you had a ruler and a map: measure the distances between US cities
+      - Now suppose you only had those measurements: goal is to recreate the map
+      - That’s what MDS is doing
+      - But, we don't usually know the map we are recreating, so we look for comparisons to establisih credibility and reliability
+      </code></pre>
+<p>Examples:</p>
+<pre><code>      - PoliSci: why/which political candidates are perceived as being similar
+      - Psychologists: understand perceptions and evaluation of personality traits
+      - Marketers: how consumers perceive brands or perceive product attributes</code></pre>
 </section>
 <section id="what-about-categorical-attributes" class="slide level2">
 <h2>What about categorical attributes?</h2>
@@ -713,7 +761,7 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-1" class="slide level2">
+<section id="section-2" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -757,7 +805,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>Reduced 100-dim attribute space to 2 dims, to identify optimal bundles</li>
 </ul>
 </section>
-<section id="section-2" class="slide level2">
+<section id="section-3" class="slide level2">
 <h2></h2>
 <p><img data-src="images/kumar,etal2021.png"></p>
 </section></section>
@@ -902,7 +950,7 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-3" class="slide level2">
+<section id="section-4" class="slide level2">
 <h2><!--#Intermission--></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>

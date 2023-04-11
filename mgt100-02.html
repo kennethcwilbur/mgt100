@@ -7,7 +7,7 @@
 <link href="mgt100-02_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="mgt100-02_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="mgt100-02_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.2.269">
+  <meta name="generator" content="quarto-1.2.335">
 
   <meta name="author" content="Kenneth C. Wilbur and Dan Yavorsky">
   <title>Customer Data and Visualization</title>
@@ -352,8 +352,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>What did you think about R4DS? Hard or easy?</li>
 <li>Why did I ask you to learn about ggplot2?</li>
 <li>Why did I ask you to do these before class? (It will make class &amp; homework easier)</li>
-<li>If you worry about this class, what should you do? (Always do the required pre-class readings before class. Even better if you implement the code alongside reading)</li>
-<li>“You don’t understand it until you code it”</li>
+<li>If you worry about this class, what should you do? (Always do the required pre-class readings before class. Even better if you implement the code alongside reading. “You don’t understand it until you code it”)</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -407,23 +406,12 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>Understand customer heterogeneity for targeting, personalization, recommendations, product development…</li>
 <li>Privacy and security, e.g.&nbsp;misuse, theft, regulatory compliance</li>
 </ul>
-</section>
-<section id="preferred-customer-data-attributes" class="slide level2">
-<h2>Preferred customer data attributes</h2>
-<ul>
-<li>Accurate</li>
-<li>Representative</li>
-<li>Private</li>
-<li>Relevant</li>
-<li>Complete</li>
-</ul>
 <aside class="notes">
 <ul>
-<li>Accurate: Are the data correct? Validated? Verifiable?</li>
-<li>Representative: Do the data generalize? Who is (not) represented?</li>
-<li>Private: Are data collected legally and ethically? Do customers know about your access and use?</li>
-<li>Relevant: What decisions can the data help to inform?</li>
-<li>Complete: How many observations are missing? Are NAs zeros or unmeasured? If unmeasured, are data missing randomly or systematically?</li>
+<li>We’ll go deeper into that first bullet in week 9; this is how smart firms think about customer data internally</li>
+<li>That 2nd bullet reflects the outdated “4 Ps” thinking we talked about last week, but illustrates some available levers</li>
+<li>Third bullet will be the focus of weeks 3 &amp; 6</li>
+<li>What are examples of privacy &amp; security? (Ad fraud, financial fraud, …)</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -437,29 +425,175 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="main-types-of-customer-data" class="slide level2 scrollable smaller">
+<section id="how-to-evaluate-customer-data" class="slide level2">
+<h2>How to evaluate customer data</h2>
+<ul>
+<li>Accurate : The data are what we think they are</li>
+<li>Representative : The data reflect the relevant customer population as a whole</li>
+<li>Private : The data do no harm &amp; comply with laws &amp; ethics</li>
+<li>Relevant: The right data for the decision at hand</li>
+<li>Complete : Missingness causes problems</li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Accurate: Are the data correct? Validated? Verifiable?</li>
+<li>Representative: Do the data generalize? Who is (not) represented?</li>
+<li>Private: Are data collected legally and ethically? Do customers know about your access and use?</li>
+<li>Relevant: What decisions can the data help to inform?</li>
+<li>Complete: How many observations are missing? Are NAs zeros or unmeasured? If unmeasured, are data missing randomly or systematically?</li>
+<li>Talking point: Are product reviews representative? What do you think? (Fraction of reviews, cascades, fake reviews)</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="main-types-of-customer-data" class="slide level2">
 <h2>3 main types of Customer Data</h2>
 <ul>
-<li><p>Customer Attributes: Demographics, Psychographics, Needs, Behaviors</p></li>
-<li><p>Product Attributes: Tangible features, intangible features (e.g., brand, name, warranty), costs</p></li>
-<li><p>Transaction/Event Attributes: Sales, retail context, time, “4 P’s”, ads, ratings, reviews, posts, complaints, support requests, returns</p></li>
+<li><p>Customer Attributes: <br>Demographics, Psychographics, Needs, Behaviors</p></li>
+<li><p>Product Attributes: <br>Tangible features, intangible features (e.g., brand, name, warranty), costs</p></li>
+<li><p>Transaction/Event Attributes: <br>Sales, retail context, time, “4 P’s”, ads, ratings, reviews, posts, complaints, support requests, returns, referrals</p></li>
 </ul>
+<aside class="notes">
+<ul>
+<li>Which type of data is most numerous?</li>
+<li>Why isn’t price a product attribute?</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="example-nielsen" class="slide level2">
+<h2>Example: Nielsen</h2>
+<p>CONSUMER PANEL DATA</p>
+<pre><code>      - The Consumer Panel Data include longitudinal data beginning in 2004 with annual updates. These data track a panel of 40,000–60,000 US households and their purchases of fast-moving consumer goods from a wide range of retail outlets across all US markets. </code></pre>
+<p>RETAIL SCANNER DATA</p>
+<pre><code>      - Retail Scanner Data consist of weekly pricing, volume, and store environment information generated by point-of-sale systems from more than 90 participating retail chains across all US markets. Data begin in 2006 and include annual updates. </code></pre>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/goya1.png" style="width:8in"></p>
+</figure>
+</div>
+<aside class="notes">
+<ul>
+<li>“On July 9, 2020, the CEO of Goya, a national Latin foods brand with an estimated $2 billion in annual global sales, praised President Donald Trump during a White House meeting.”</li>
+<li>Source: Liaukonyte, Tuchman &amp; Zhu (2022)</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/goya2.png" style="width:6.5in"></p>
+</figure>
+</div>
+<aside class="notes">
+<ul>
+<li>Despite the calls for boycott, total sales rose, mostly because Republican areas started buying Goya</li>
+<li>Without customer data, we would be shooting in the dark in trying to figure out how social media polarization affected brand sales</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="customer-data-guiding-principle" class="slide level2 smaller">
 <h2>Customer Data: Guiding Principle</h2>
 <ul>
-<li>Start simple. Complexify slowly. Why?</li>
-<li>Never assume data are correct, clean, complete or as described. It’s impossible to certify an absence of problems</li>
-<li>Most commercial datasets have issues</li>
-<li>Issues often detected months after project starts</li>
-<li>~70-90% of data scientist time spent checking and cleaning data</li>
-<li>Credibility is hard to gain, easy to lose</li>
+<li><p>Start simple. Complexify slowly. Why?</p></li>
+<li><p>Never assume data are correct, clean, complete or as described.</p>
+<pre><code>  - It's impossible to certify an absence of problems
+  - Most commercial datasets have issues
+  - Issues often detected months after project starts
+  - ~70-90% of data scientist time spent checking and cleaning data
+  - Credibility is hard to gain, easy to lose</code></pre></li>
 </ul>
 <div class="quarto-figure quarto-figure-right">
 <figure>
-<p><img data-src="images/DStweet.png" style="width:5in"></p>
+<p><img data-src="images/DStweet.png" style="width:7in"></p>
 </figure>
 </div>
+<aside class="notes">
+<ul>
+<li>How do you find the right balance between data trust and data skepticism? (Start simply)</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="data-takeouts" class="slide level2">
+<h2>Data takeouts</h2>
+<ul>
+<li><p>A great way to start looking at customer data: <br> Look at your own!</p></li>
+<li><p><a href="https://takeout.google.com">Google Takeout</a></p></li>
+<li><p><a href="https://www.instagram.com/download/request/">Instagram</a></p></li>
+<li><p><a href="https://www.amazon.com/hz/privacy-central/data-requests/preview.html">Amazon Request My Data</a></p>
+<pre><code>    - Or, search "[brand] + data takeout"
+    - Let's take a quick look
+    - Brands with data takeout often have good analytics</code></pre></li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Has anybody here ever downloaded their data?</li>
+<li>What did you do with it?</li>
+<li>In general I think this is an underexploited opportunity</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section>
 <section id="using-customer-data-for-customer-analytics" class="title-slide slide level1 center">
@@ -469,8 +603,8 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="how-do-we-do-customer-analytics" class="slide level2 scrollable smaller">
 <h2>How do we “do” customer analytics?</h2>
 <ul>
-<li>Collect relevant data</li>
-<li>Clean, verify and manage data</li>
+<li>Decide what we want to do &amp; how to judge performance</li>
+<li>Collect, wrangle, clean &amp; verify relevant data</li>
 <li>Analyze data</li>
 <li>Communicate analyses and recommendations</li>
 <li>Make decisions</li>
@@ -544,8 +678,8 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="signs-of-a-great-analytics-org" class="slide level2">
 <h2>Signs of a great analytics org</h2>
 <ul>
-<li>C-level champion(s), e.g.&nbsp;CEO, CAO, CMO, COO</li>
-<li>Centralized team regulates data, arch. &amp; tools</li>
+<li>C-level champion(s), i.e.&nbsp;C{E,A,F,M,O}O</li>
+<li>Centralized team regulates data, arch., standards &amp; tools</li>
 <li>Decentralized analysts collaborate with execs</li>
 <li>Analytics career tracks are well established</li>
 <li>Careful in-housing/outsourcing decisions about analytics</li>
@@ -578,8 +712,8 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>Utility: What profit impact?</li>
 <li>Frequency: Movies &gt; Pictures</li>
 <li>Reliability: Can you verify it?</li>
-<li>Privacy: Is it legal? Will customers object?</li>
-<li>Size: Sample or population? Does it contain identifiers for merging?</li>
+<li>Privacy: Is it legal? Will customers object?<br>Would your use be newsworthy?</li>
+<li>Size: Sample or population? What identifiers?</li>
 <li>Cost: Commensurate with utility? Can you test-drive it?</li>
 </ul>
 <aside class="notes">
@@ -634,12 +768,13 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="analytics-truisms" class="slide level2">
 <h2>Analytics truisms</h2>
 <ul>
-<li>Analytics matters more in B2C than B2B</li>
-<li>Selection effects are usually large; treatment effects are usually small</li>
-<li>Demographics usually predict behavior poorly</li>
-<li>Agencies lie about data sometimes</li>
-<li>You have limited credibility. You may only get a few strikes</li>
-<li>“If it’s written in LaTeX, it’s probably correct”</li>
+<li><p>Analytics matters more in B2C than B2B (why?)</p></li>
+<li><p>Selection effects are usually large</p>
+<pre><code>  treatment effects are usually small</code></pre></li>
+<li><p>Demographics don’t predict behavior very well</p></li>
+<li><p>Agencies lie about data sometimes</p></li>
+<li><p>You have limited credibility. You may only get a few strikes</p></li>
+<li><p>“If it’s written in LaTeX, it’s probably correct”</p></li>
 </ul>
 <aside class="notes">
 <ul>
@@ -697,7 +832,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>Research often driven by real problems (e.g., “How to…”)<br>
 </li>
 <li>Assimilated “consumer behavior” experiments from psychology</li>
-<li>Open: Relies on CS, econ, psych, stats, others</li>
+<li>Open: Relies on anthro, CS, DS, econ, psych, soc, stats, …</li>
 </ul>
 </section>
 <section id="marketing-science-milestones" class="slide level2 scrollable smaller">
@@ -728,6 +863,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>2000s: Social network data, Online marketplace data</li>
 <li>2000s: User-generated content e.g.&nbsp;reviews, blogs, video; big data tech</li>
 <li>2010s: Phones &amp; app usage, geolocation surveillance; many new ML techniques</li>
+<li>2020s: Large language models, generative models, …</li>
 <li>All of these are still in active use; more will be invented</li>
 </ul>
 </section>
@@ -742,7 +878,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>Choice models (McFadden 1974, Guadagni and Little 1983)</li>
 <li>Conjoint analysis (Green and Srinivasan 1978)</li>
 <li>Models of forward-looking behavior (Rust 1987, Erdem and Keane 1996)</li>
-<li>Choice models with latent heterogeneity (Kamakura and Russell 1989, Rossi et al.&nbsp;1996)</li>
+<li>Choice models with latent heterogeneity (Kamakura &amp; Russell 1989, Rossi et al 1996)</li>
 <li>Marketing mix models (Dekimpe and Hanssens 1995)</li>
 <li>Multi-touch attribution (Shapley 1955)</li>
 <li>Machine learning and fast, flexible models (e.g.&nbsp;Breiman 2001)</li>
@@ -753,7 +889,8 @@ Kenneth C. Wilbur and Dan Yavorsky
 <h1>Data Visualizations (Viz)</h1>
 <ul>
 <li><p>“The greatest value of a picture is when it forces us to notice what we never expected to see.”</p>
-<pre><code>    - Boxplot Inventor John Tukey</code></pre></li>
+<pre><code>    - Boxplot Inventor John Tukey
+    - Great visualizations raise new questions          </code></pre></li>
 </ul>
 </section>
 <section id="when-elon-bought-twitter" class="slide level2">
@@ -895,14 +1032,15 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="univariate-viz" class="slide level2">
 <h2>Univariate Viz</h2>
 <ul>
-<li>Numeric data: Summary stats, boxplots for quantiles, histograms for distributions</li>
-<li>Categorical data: Values, counts and frequencies</li>
-<li>Alphanumeric data: Random entries and outliers</li>
-<li>All types: What observations are missing or NA? Why?</li>
+<li><p>Numeric data: Summary stats, boxplots for quantiles, histograms for distributions</p></li>
+<li><p>Categorical data: Values, counts and frequencies</p></li>
+<li><p>Alphanumeric data: Random entries and outliers</p></li>
+<li><p>All types: What observations are zero, missing or NA? Why?</p>
+<pre><code>  - Perennially a key issue</code></pre></li>
 </ul>
 <aside class="notes">
 <ul>
-<li>What is the difference?a store had zero sales. did the system go down? or did the store close?</li>
+<li>What is the difference between missing and NA?a store had zero sales. did the system go down? or did the store close?</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -925,7 +1063,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li><a href="https://drive.google.com/file/d/1OfPyAk8pmyodXTwsGxxNYvWW1moc1in9/view">Which visualization?</a></li>
 </ul>
 </section>
-<section id="section" class="slide level2">
+<section id="section-2" class="slide level2">
 <h2><!--#Intermission--></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -960,7 +1098,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="homework" class="slide level2">
 <h2>Homework</h2>
 <ul>
-<li>First coding assignment! Let’s take a look</li>
+<li>Let’s take a look</li>
 </ul>
 <div class="quarto-figure quarto-figure-right">
 <figure>

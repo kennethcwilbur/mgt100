@@ -53,6 +53,13 @@ scl |>
   round(3) # check means
 scl |> summarize_all(sd) # check std devs
 
+# One final step before we run kmeans. R's built-in kmeans function starts from randomly
+# chosen centers. But actually, computers use algorithms to draw quasi-random numbers. 
+# The following command tells R what input to use into those algorithms. That enables 
+# us to all choose the same "random" value, so we all start from the same place and
+# arrive at the same result.
+set.seed(4321)
+
 # Now when we run the kmeans clustering algorithm, R handles all of the
 # hard stuff for us!  All we need to do is call the kmeans() function
 # and specify the "k" (ie, the number of clusters).  We do that with the "centers"

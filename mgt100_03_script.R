@@ -95,7 +95,7 @@ str(out[[1]])
 str(out["cluster"])
 str(out[1])
 
-# double-square brackets is same as dollar sign; refers to list element content
+# double-square brackets is like the dollar sign; refers to list element content
 # single-square brackets returns a list
 # note the difference:
 str(temp1<-out[[1]])
@@ -173,7 +173,7 @@ ggplot(iris) +
 # run kmeans
 out_iris <- iris |>
   select(Petal.Length, Petal.Width) |>
-  kmeans(centers = 3, nstart = 10)
+  kmeans(centers = 3, nstart = 10)   # why did we choose 3 segments?
 
 # add segment membership
 iris <- iris |> mutate(cluster = factor(out_iris$cluster))
@@ -303,6 +303,7 @@ fun4 <- function() {
     theme(legend.position = "none")
 
   print(p)
+  print(sum(c1ssq)+sum(c2ssq)+sum(c3ssq)+sum(c4ssq))
   return(invisible())
 }
 
@@ -333,7 +334,7 @@ fun4()
 fun3()
 fun4()
 
-stop("We have achieved approximate convergence")
+stop("We could keep going, but there will be diminishing returns")
 
 # clean up
 rm(cent_dat, centers, c1, c2, c3, c4, clust, cluster)
@@ -382,10 +383,6 @@ ggplot(cdat) +
 # criteria will be the within-group sum of squares (WSS) from the model.
 # As k increases, the WSS will decrease. The question is:
 # how fast does it decrease?
-
-## Sidebar: This is INTERMISSION 3
-# What is the largest number of clusters possible in this dataset?
-# Enter the answer on Canvas
 
 # let's try k=1, k=2, ..., k=10
 

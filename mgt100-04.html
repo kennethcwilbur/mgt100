@@ -826,17 +826,28 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section>
 <section id="conjoint-analysis" class="title-slide slide level1 center">
 <h1>Conjoint Analysis</h1>
-
+<ul>
+<li><p>Generate consumer choice data, analyze it to</p>
+<ul>
+<li>map the market</li>
+<li>choose locations in attribute space</li>
+<li>predict sales and profits</li>
+</ul></li>
+</ul>
 </section>
 <section id="choosing-product-attributes" class="slide level2">
 <h2>Choosing Product Attributes</h2>
 <ul>
-<li><p>Until now, we studied existing product attributes <br>What about choosing product attributes? <br>Can we predict sales before we sell the product?</p></li>
-<li><p>Enter conjoint analysis: Survey based method to estimate attribute utilities and tradeoffs</p></li>
+<li><p>Until now, we studied existing product attributes</p>
+<ul>
+<li>What about choosing new product attribute levels?</li>
+<li>Or what about introducing new attributes?</li>
+</ul></li>
+<li><p>Enter conjoint analysis: <br>Survey and model to estimate attribute utilities</p></li>
 <li><p>Probably the most popular quant marketing framework</p>
 <pre><code>  - Autos, phones, hardware, durables
   - Travel, hospitality, entertainment
-  - Professional services
+  - Professional services, transportation
   - Consumer package goods</code></pre></li>
 <li><p>Combines well with cost data to select optimal attributes</p></li>
 </ul>
@@ -928,6 +939,250 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
+<section id="case-study-uberpool" class="slide level2">
+<h2>Case study: UberPOOL</h2>
+<ul>
+<li><p>In 2013, Uber hypothesized</p>
+<pre><code>- some riders would wait and walk for lower price
+- some riders would trade pre-trip predictability for lower price
+- shared ridership could ↓ average price and ↑ quantity
+- more efficient use of drivers, cars, roads, fuel</code></pre></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/uberpool_unit_econ.png" style="width:6in"></p>
+</figure>
+</div>
+
+<aside class="notes">
+<ul>
+<li>Important note: Figure 2 is mistaken in the paper. It has the illustrations flipped on bottom 2 rows. I corrected it in the slides.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside><div>
+<p>Source: <a href="https://drive.google.com/file/d/17cuhv-oTeQaoommAMXLSLNgXjOeBYNdX/view?usp=share_link">UberPOOL white paper</a></p>
+</div></aside></section>
+<section id="business-case-was-clear-but" class="slide level2">
+<h2>Business case was clear! But …</h2>
+<ul>
+<li><p>Shared rides were new for Uber</p>
+<pre><code>      - Rider/driver matching algo could reflect various tradeoffs            
+      - POOL reduces routing and timing predictability </code></pre></li>
+<li><p>Uber had little experience with price-sensitive segments</p>
+<pre><code>      - What price tradeoffs would incentivize new behaviors?
+      - How much would POOL expand Uber usage vs cannibalize other services?</code></pre></li>
+<li><p>Coordination costs were unknown</p>
+<pre><code>      - "I will never take POOL when I need to be somewhere at a specific time"
+      - Would riders wait at designated pickup points?
+      - How would comunicating costs upfront affect rider behavior?</code></pre></li>
+<li><p>So, Uber used market research to design UberPOOL</p></li>
+</ul>
+</section>
+<section id="approach" class="slide level2">
+<h2>Approach</h2>
+<ol type="1">
+<li><p>23 in-home diverse interviews in Chicago and DC</p>
+<pre><code>   - Interviewed {prospective, new, exp.} riders to (1) map rider's regular travel, (2) explore decision factors and criteria, (3) a ride-along for context
+   - Findings identified 6 attributes for testing</code></pre></li>
+<li><p>Online Maximum Differentiation Survey</p>
+<pre><code>   - Selected participants based on city, Uber experience &amp; product; N=3k, 22min</code></pre></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/uberpool_maxdiff_example.png" style="width:5.7in"></p>
+</figure>
+</div>
+</section>
+<section id="maxdiff-results" class="slide level2">
+<h2>Maxdiff results</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/uberpool_maxdiff_results.png" style="width:7in"></p>
+</figure>
+</div>
+<aside class="notes">
+<ul>
+<li>The purpose of the Maxdiff format is to select M out of N&lt;M attributes.</li>
+<li>Asking for most or least important, the survey design is thought to be less susceptible to “scale effects” than others.</li>
+<li>That is to say, going from a 2-point to 3-, 5- or 7-point scale can change judgements</li>
+<li>In this case, they found that walking was not very important per unit of walking</li>
+<li>Fixed route and number of stops were relatively unimportant overall</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="conjoint-design" class="slide level2">
+<h2>Conjoint Design</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/uberpool_conjoint_design.png" style="width:9in"></p>
+</figure>
+</div>
+<aside class="notes">
+<ul>
+<li>Based on Maxdiff, Uber tested a conjoint analysis with ETA, walking, trip length, trikp variance and discount</li>
+<li>Notice that we can have different # of levels per attribute</li>
+<li>These are the data that go into the X variables in the model</li>
+<li>X also may include some customer attributes</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="conjoint-sample-question" class="slide level2">
+<h2>Conjoint Sample Question</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/uberpool_conjoint_samplequestion.png" style="width:9in"></p>
+</figure>
+</div>
+<aside class="notes">
+<ul>
+<li>This is an example of how the choice task looked to participants</li>
+<li>Data sample was 18,000 riders contacted via email in 2017</li>
+<li>Resulted in 1,934 completed surveys, response rate of 10.7%, 5.5 minutes/survey</li>
+<li>5 respondents selected for $500 amazon gift cards</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="conjoint-model" class="slide level2">
+<h2>Conjoint Model</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/uberpool_conjoint_model.png" style="width:8in"></p>
+</figure>
+</div>
+<aside class="notes">
+<ul>
+<li>Same choice model that we saw earlier, and will estimate next week</li>
+<li>The Hierarchical Bayes version is the one that performed best, in the model comparison that we we looked at in week 3</li>
+<li>Let’s talk about what that HB attribute means here</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="conjoint-findings" class="slide level2">
+<h2>Conjoint Findings</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/uberpool_conjoint_findings.png" style="width:8.5in"></p>
+</figure>
+</div>
+<aside class="notes">
+<ul>
+<li>Unfortunately, Uber did not give us the Y axis labels. That’s common when firms worry about competitive secrecy</li>
+<li>We can see that ETA matters</li>
+<li>We can see that walking matters as much as ETA</li>
+<li>Trip length seems to matter also less over the range tested</li>
+<li>ETD variance doesn’t matter as much, at least within the range tested</li>
+<li>Price matters a LOT</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="product-redesign" class="slide level2">
+<h2>Product Redesign</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/uberpool_product_redesign.png" style="width:9in"></p>
+</figure>
+</div>
+<aside class="notes">
+<ul>
+<li>This graphic shows how Uber redesigned the app to show product attributes</li>
+<li>Including how far to walk; how long to destination; variance in ETD; and price</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="business-results" class="slide level2">
+<h2>Business Results</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/uberpool_business_results.png" style="width:9in"></p>
+</figure>
+</div>
+<aside class="notes">
+<ul>
+<li>Uber shared limited revenue data, but this is one clear example of improving efficiencies</li>
+<li>UberPOOL had been live in SF the longest; this looks like a meaningful decrease in cancellations</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="conjoint-limitations-workarounds" class="slide level2 smaller scrollable">
 <h2>Conjoint: Limitations, Workarounds</h2>
 <ul>
@@ -1005,10 +1260,14 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="recap" class="slide level2">
 <h2>Recap</h2>
 <ul>
-<li>Market maps use customer data to represent competitive situations</li>
-<li>Principal Components Analysis projects high dimensional data into lower dimensional space</li>
-<li>Conjoint analysis is a popular method to use survey choice data to estimate product attribute utilities</li>
-<li><em>Preview:</em> 3 readings for next week, budget extra time</li>
+<li><p>Market maps use customer data to depict competitive situations</p></li>
+<li><p>PCA projects high dimensional data into lower dimensional space w minimal information loss</p></li>
+<li><p>Conjoint analysis uses survey choice data to</p>
+<pre><code>    - map markets
+    - estimate product attribute utilities
+    - help design products as bundles of attributes
+    - predict how location choice leads to revenues, profits</code></pre></li>
+<li><p><em>Preview:</em> 3 readings for next week, budget extra time</p></li>
 </ul>
 <div class="quarto-figure quarto-figure-right">
 <figure>

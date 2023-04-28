@@ -735,12 +735,12 @@ Kenneth C. Wilbur and Dan Yavorsky
 </section>
 <section id="multidimensional-scaling" class="slide level2">
 <h2>Multidimensional scaling</h2>
-<p>Summary: Run PCA on a square symmetric matrix of (dis)similarity scores, then graph the first two eigenvectors</p>
-<p>Intuition, in 2D space</p>
-<pre><code>      - Suppose you had a ruler and a map: measure the distances between US cities
-      - Now suppose you only had those measurements: goal is to recreate the map
-      - That’s what MDS is doing
-      - But, we don't usually know the map we are recreating, so we look for comparisons to establish credibility and reliability
+<p>Summary: Run PCA on a square symmetric matrix of (dis)similarity scores, then project into 2D space</p>
+<pre><code>      - With J brands, we have J points in J dimensions. Each dimension j indictes similarity to brand j. PCA can project from J dimensions into 2D for plotting</code></pre>
+<p>MDS Intuition, in 2D space</p>
+<pre><code>      - With a ruler and map, measure distances between 20 US cities ("similarity")
+      - Record distances in a 20x20 matrix: PCA into 2D should recreate the map
+      - But, we don't usually know the map we are recreating, so we look for ground-truth comparisons to indicate credibility and reliability
       </code></pre>
 <p>Examples:</p>
 <pre><code>      - PoliSci: why/which political candidates are perceived as being similar
@@ -822,6 +822,38 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="section-3" class="slide level2">
 <h2></h2>
 <p><img data-src="images/kumar,etal2021.png"></p>
+</section>
+<section id="pca-faq" class="slide level2">
+<h2>PCA FAQ</h2>
+<ol type="1">
+<li><p>How do I interpret the principal components?</p>
+<pre><code>   - Each principal component is a linear combination of the larger space's axes
+   - Principal components are always orthogonal to each other, by construction
+   - PCA drawback: loss of interpretability of absolute points in space</code></pre></li>
+<li><p>What are the main assumptions of PCA?</p>
+<pre><code>   - Data are linearly related
+   - Data variation indicates information importance 
+   - Principal components that explain the most variation matter most</code></pre></li>
+<li><p>How do I choose the # of principal components?</p>
+<pre><code>   - Business criteria: 1, 2 or 3 if you want to visualize the data
+   - Statistical criteria: Cume variance explained, scree plot, eigenvalue &gt; 1</code></pre></li>
+<li><p>What are some similar tools to PCA?</p>
+<pre><code>   - There are many: Factor analysis, linear discriminant analysis, independent component analysis, ... all reduce data using various goals and methods</code></pre></li>
+</ol>
+</section>
+<section id="how-does-pca-relate-to-k-means" class="slide level2">
+<h2>How does PCA relate to K-means?</h2>
+<ul>
+<li><p>Both are unsupervised ML algos</p>
+<pre><code>   - But they serve different purposes &amp; can be used together
+   - E.g., Netzer et al. ran PCA in 2 different datasets (auto reviews &amp; auto trade-ins), mapped brands in 2-D space within each, then ran K-means in each to facilitate visual comparison of results</code></pre></li>
+<li><p>K-Means identifies clusters within a dataset</p>
+<pre><code>    - K-Means never discards data
+    - In a sense, K-Means augments a dataset by identifying similarities within it</code></pre></li>
+<li><p>PCA combines data dimensions to simplify data with minimal information loss</p>
+<pre><code>    - PCA is designed to optimally discard data
+    - PCA facilitates visual interpretation but does not identify similarities </code></pre></li>
+</ul>
 </section></section>
 <section>
 <section id="conjoint-analysis" class="title-slide slide level1 center">
@@ -829,7 +861,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <ul>
 <li><p>Generate consumer choice data, analyze it to</p>
 <ul>
-<li>map the market</li>
+<li>Use a supervised choice model to map the market</li>
 <li>choose locations in attribute space</li>
 <li>predict sales and profits</li>
 </ul></li>
@@ -867,14 +899,15 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="how-we-do-it" class="slide level2">
-<h2>How we do it</h2>
+<section id="how-to-do-conjoint-analysis" class="slide level2">
+<h2>How to do conjoint analysis</h2>
 <ol type="1">
 <li><p>Identify <span class="math inline">\(K\)</span> product attributes and levels/values <span class="math inline">\(x_k\)</span></p></li>
 <li><p>Hire consumers to make choices</p></li>
 <li><p>Sample from product space, record consumer choices</p></li>
 <li><p>Specify model, i.e.&nbsp;<span class="math inline">\(U_j=\sum_{k}x_{jk}\beta_k-\alpha p_j+\epsilon_j\)</span> <br>and <span class="math inline">\(P_j=\frac{\sum_{k}x_{jk}\beta_k-\alpha_k p_j}{\sum_l\sum_{k}x_{lk}\beta_k-\alpha p_l}\)</span></p></li>
-<li><p>Calibrate model with choice data to estimate product attribute utilities</p></li>
+<li><p>Calibrate choice model to estimate product attribute utilities</p></li>
+<li><p>Combine estimated model with cost data to choose product locations and predict outcomes</p></li>
 </ol>
 <aside class="notes">
 <ul>

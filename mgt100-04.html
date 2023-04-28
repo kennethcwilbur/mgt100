@@ -806,8 +806,10 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="how-should-we-weigh-product-attributes" class="slide level2">
 <h2>How should we weigh product attributes?</h2>
 <ul>
-<li><em>Demand modeling</em> uses product attributes to explain purchase data</li>
-<li><em>Heterogeneous demand modeling</em> uses product attributes and customer attributes to explain purchases</li>
+<li><p><em>Demand modeling</em> uses product attributes to explain purchase data</p></li>
+<li><p><em>Heterogeneous demand modeling</em> uses product attributes and customer attributes to explain purchases</p></li>
+<li><p>Related: <em>Conjoint analysis</em> estimates attribute weights in simulated choice environments</p>
+<pre><code>      - Key dfce: Demand models use observed choices from uncontrolled market environments, conjoint creates hypothetical choice data in controlled experiments</code></pre></li>
 </ul>
 </section>
 <section id="example-mapping-e-commerce-markets" class="slide level2">
@@ -850,8 +852,8 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li><p>K-Means identifies clusters within a dataset</p>
 <pre><code>    - K-Means never discards data
     - In a sense, K-Means augments a dataset by identifying similarities within it</code></pre></li>
-<li><p>PCA combines data dimensions to simplify data with minimal information loss</p>
-<pre><code>    - PCA is designed to optimally discard data
+<li><p>PCA combines data dimensions to condense data with minimal information loss</p>
+<pre><code>    - PCA is designed to optimally reduce data dimensionality
     - PCA facilitates visual interpretation but does not identify similarities </code></pre></li>
 </ul>
 </section></section>
@@ -906,7 +908,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li><p>Hire consumers to make choices</p></li>
 <li><p>Sample from product space, record consumer choices</p></li>
 <li><p>Specify model, i.e.&nbsp;<span class="math inline">\(U_j=\sum_{k}x_{jk}\beta_k-\alpha p_j+\epsilon_j\)</span> <br>and <span class="math inline">\(P_j=\frac{\sum_{k}x_{jk}\beta_k-\alpha_k p_j}{\sum_l\sum_{k}x_{lk}\beta_k-\alpha p_l}\)</span></p></li>
-<li><p>Calibrate choice model to estimate product attribute utilities</p></li>
+<li><p>Calibrate choice model to estimate attribute utilities</p></li>
 <li><p>Combine estimated model with cost data to choose product locations and predict outcomes</p></li>
 </ol>
 <aside class="notes">

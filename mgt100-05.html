@@ -7,7 +7,7 @@
 <link href="mgt100-05_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="mgt100-05_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="mgt100-05_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.2.269">
+  <meta name="generator" content="quarto-1.2.335">
 
   <meta name="author" content="Kenneth C. Wilbur and Dan Yavorsky">
   <title>Demand Modeling</title>
@@ -351,6 +351,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 </div>
 <aside class="notes">
 <ul>
+<li>I like the overview of modeling in the R4DS chapter. Basically a model of modeling</li>
 <li>We’ll talk about the Train content throughout, and the Varian content in the context of price endogeneity</li>
 </ul>
 <style type="text/css">
@@ -407,14 +408,14 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="demand-curves-theory" class="slide level2">
 <h2>Demand Curves: Theory</h2>
 <ul>
-<li><p>Useful theoretical concept that summarizes market response to price</p></li>
+<li><p>Useful theoretical concept that summarizes market response to price</p>
+<pre><code>  - Why is it useful? </code></pre></li>
 <li><p>Often taught with perfect competition</p>
 <pre><code>  - Typically assumes stable, competitive, frictionless markets w free entry, full information, no differentiation 
   - Model predicts zero LR economic profits
   - Any evidence?</code></pre></li>
 <li><p>Also, taught with monopoly i.e.&nbsp;market power</p>
-<pre><code>  - What does market power mean?
-  - How do we measure it?</code></pre></li>
+<pre><code>  - What is market power? How would we measure it?</code></pre></li>
 </ul>
 <aside class="notes">
 <ul>
@@ -492,10 +493,12 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="price-experiments" class="slide level2">
 <h2>Price Experiments</h2>
 <ul>
-<li><p>Ideally, the best way to learn demand, but…</p></li>
+<li><p>Ideally, the best way to learn demand, but…</p>
+<ul>
 <li><p>Competitors &amp; consumers can observe price variation</p></li>
 <li><p>May change purchase timing, stockpiling or reference prices</p></li>
-<li><p>May induce reactions by competitors, distribution partners or suppliers</p></li>
+<li><p>Competitors, distribution partners or suppliers may react</p></li>
+</ul></li>
 <li><p>Hence, experimenting to learn demand may change future demand</p></li>
 </ul>
 </section>
@@ -536,16 +539,18 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section></section>
-<section id="demand-models-work" class="title-slide slide level1 center">
-<h1>Demand Models Work?</h1>
+<section id="do-demand-models-work" class="title-slide slide level1 center">
+<h1>Do Demand Models Work?</h1>
 <ul>
 <li><p>Evidence is scarce but supportive</p>
 <pre><code>    - Informally, I know several people who maintain demand models in large orgs
-    - Formal evidence requires researchers and firm to collaboratively (a) estimate demand, (b) act on demand estimates, (c) report the results. Really hard</code></pre></li>
+    - Formal evidence requires researchers and firm to collaboratively (a) estimate demand, (b) act on demand estimates, (c) observe how actions affect outcomes, &amp; (d) report the results. Really hard</code></pre>
+<ul>
 <li><p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1474462">Misra &amp; Nair (2011)</a> : B2B sales &amp; salesforce compensation</p></li>
 <li><p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2399676">Nair et al.&nbsp;(2017)</a> : Casino loyalty rewards</p></li>
 <li><p><a href="https://economics.mit.edu/research/publications/how-well-do-structural-demand-models-work-counterfactual-predictions-school">Pathak and Shi (2021)</a> : School choice</p></li>
 <li><p><a href="https://drive.google.com/file/d/1lUEYiiyd1G4j49HhjEkJU9C-ACf53fWo/view?usp=share_link">Dube and Misra (2023)</a> : Ziprecruiter ad pricing</p></li>
+</ul></li>
 </ul>
 </section>
 
@@ -560,13 +565,19 @@ Kenneth C. Wilbur and Dan Yavorsky
 <h2>Multinomial Logit (MNL)</h2>
 <ul>
 <li>Old, famous, popular demand model</li>
-<li>Ported to econ from stats by McFadden (1974, 1978, 1981); aka “Logistic regression’’</li>
+<li>Ported to econ from stats &amp; psych by McFadden (1974, 1978, 1981; “Logistic regression’’)</li>
 </ul>
-<p><img data-src="images/mcfadden2000t1.png"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/mcfadden2000t1.png" style="width:9in"></p>
+</figure>
+</div>
+
 <aside class="notes">
 <ul>
 <li>McFadden was an economist working to empiricize theoretical models of individual choice</li>
 <li>In early 1970s, he was funded by NSF to predict how BART would change transit in SF</li>
+<li>He organized a team that collected pre-BART transportations choices by commuters in neighborhoods that were to receive BART stations. Product attributes included things like walking distance, waiting time, financial cost, and automotive preference dummy</li>
 <li>He estimated a MNL using pre-BART individual level survey data, then simulated how transit choices would change after BART began operation</li>
 <li>This table shows how his predictions mapped onto the post-BART choices: he pretty much nailed his BART ridership predictions</li>
 <li>This stood in contrast to survey-based results, which predicted much larger BART ridership</li>
@@ -583,28 +594,31 @@ Kenneth C. Wilbur and Dan Yavorsky
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section>
+<aside><div>
+<ul>
+<li>Source: <a href="https://drive.google.com/file/d/1WYd38uet3rEJe8HUNYPcTx7aZ29zl0v5/view?usp=share_link">McFadden (1974)</a></li>
+</ul>
+</div></aside></section>
 <section id="multinomial-logit-mnl-1" class="slide level2 scrollable smaller">
 <h2>Multinomial Logit (MNL)</h2>
 <ul>
-<li>Let <span class="math inline">\(i\)</span> index consumers, <span class="math inline">\(j\)</span> index products, and <span class="math inline">\(t\)</span> index markets</li>
-<li>Assume each <span class="math inline">\(i\)</span> gets indirect utility <span class="math inline">\(u_{ijt}\)</span> from product <span class="math inline">\(j\)</span> in market <span class="math inline">\(t\)</span>:</li>
+<li><p>Let <span class="math inline">\(i\)</span> index consumers, <span class="math inline">\(j=1,...,J\)</span> products, and <span class="math inline">\(t\)</span> index choice occasions</p></li>
+<li><p>Assume each <span class="math inline">\(i\)</span> gets indirect utility <span class="math inline">\(u_{ijt}\)</span> from product <span class="math inline">\(j\)</span> in market <span class="math inline">\(t\)</span>:</p></li>
 </ul>
 <p><span class="math display">\[u_{ijt}=x_{jt}\beta-\alpha p_{jt}+\epsilon_{ijt}\]</span></p>
 <ul>
-<li>Then, assuming each <span class="math inline">\(i\)</span> picks the <span class="math inline">\(j\)</span> that maximizes <span class="math inline">\(u_{ijt}\)</span>, and that <span class="math inline">\(\epsilon_{ijt}\sim\)</span><em>i.i.d.</em><span class="math inline">\(EV_1(0,1)\)</span>, market share is</li>
+<li>Then, assuming each <span class="math inline">\(i\)</span> picks the <span class="math inline">\(j\)</span> that maximizes <span class="math inline">\(u_{ijt}\)</span>, has unit demand, and that <span class="math inline">\(\epsilon_{ijt}\sim\)</span><em>i.i.d.</em><span class="math inline">\(EV_1(0,1)\)</span>, market share is</li>
 </ul>
-<p><span class="math display">\[s_{jt}=\frac{e^{x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}\]</span></p>
+<p><span class="math display">\[Prob.\{u_{ijt}&gt;u_{ikt}\forall{k\ne j}\}\equiv s_{jt}=\frac{e^{x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}\]</span></p>
 <p>With <span class="math inline">\(N_t\)</span> consumers, <span class="math inline">\(q_{jt}(\vec{p})=N_t s_{jt}\)</span>. See Train 2009 sec 3.10 for proof</p>
 <ul>
-<li>Estimating <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> enables us to predict <em>every product’s quantity response</em> to a change in <em>any product’s attributes <span class="math inline">\(x_{jt}\)</span> or price <span class="math inline">\(p_{jt}\)</span> </em></li>
+<li>Estimating <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> enables us to predict <em>every product’s quantity response</em> to a change in <em>any product’s attributes</em> <span class="math inline">\(x_{jt}\)</span> or price <span class="math inline">\(p_{jt}\)</span></li>
 </ul>
 <aside class="notes">
 <ul>
-<li>Known in statistics as multinomial logistic regression</li>
+<li>AKA multinomial logistic regression</li>
 <li>t could be repeated observations of a single market, multiple distinct markets at the same time, or both</li>
 <li>We obtain the market share formula by integrating the likelihood of u_ijt exceeding all other u_ikt’s, over the space of the epsilons and the i’s</li>
-<li>Market share formula is stated without proof, it’s solution to the integral</li>
 <li>the reason we assume iid EV(0,1) is bc it gives us this nice tractable expression with useful properties</li>
 <li>s_jt is bounded by 0 and 1</li>
 </ul>
@@ -623,15 +637,14 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="mnl-common-factors" class="slide level2 scrollable smaller">
 <h2>MNL: Common factors</h2>
 <ul>
-<li>Let <span class="math inline">\(\gamma_{t}\)</span> be how popular the category is in market <span class="math inline">\(t\)</span>, so utility is</li>
-</ul>
-<p><span class="math display">\[u_{ijt}=\gamma_{t}+x_{jt}\beta-\alpha p_{jt}+\epsilon_{ijt}\]</span></p>
-<ul>
-<li>Then, market share becomes</li>
+<li>Suppose <span class="math inline">\(\gamma_{t}\)</span> indicates how popular the category is in market <span class="math inline">\(t\)</span>, so utility is <span class="math inline">\(u_{ijt}=\gamma_{t}+x_{jt}\beta-\alpha p_{jt}+\epsilon_{ijt}\)</span>. Then market share becomes</li>
 </ul>
 <p><span class="math display">\[s_{jt}=\frac{e^{\gamma_{t}+x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^J e^{\gamma_{t}+x_{kt}\beta-\alpha p_{kt}}}\]</span></p>
 <p><span class="math display">\[s_{jt}=\frac{e^{\gamma_{t}}   e^{x_{jt}\beta-\alpha p_{jt}}}{e^{\gamma_{t}}\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}\]</span></p>
 <p><span class="math display">\[s_{jt}=\frac{e^{x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}\]</span></p>
+<ul>
+<li>Similar exercise applies to individual-specific intercepts <span class="math inline">\(\gamma_i\)</span></li>
+</ul>
 <aside class="notes">
 <ul>
 <li>Hence any factor that doesn’t vary across products will drop out of the model</li>
@@ -648,23 +661,22 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="mnl-share-differences" class="slide level2 scrollable smaller">
+<section id="mnl-share-differences" class="slide level2 smaller">
 <h2>MNL: Share differences</h2>
 <ul>
-<li>We set product <span class="math inline">\(j=1\)</span> utility to <span class="math inline">\(u_{i1t}=\epsilon_{i1t}\)</span> to normalize utility, i.e.&nbsp;</li>
+<li>We set product <span class="math inline">\(j=1\)</span> utility to <span class="math inline">\(u_{i1t}=\epsilon_{i1t}\)</span> to normalize utility, i.e.</li>
 </ul>
 <p><span class="math display">\[s_{1t}=\frac{1}{\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}\]</span></p>
 <ul>
-<li>Hence for any <span class="math inline">\(j\ne 1\)</span>, consider an affine transformation of market shares:</li>
+<li>Hence for every <span class="math inline">\(j\ne 1\)</span>, consider an affine transformation of market shares:</li>
 </ul>
 <p><span class="math display">\[ln(s_{jt})-ln(s_{1t})=x_{jt}\beta-\alpha p_{jt}\]</span></p>
 <ul>
-<li><p>Looks kind of like a regression equation</p></li>
-<li><p>We sometimes add an error <span class="math inline">\(\xi_{jt}\)</span> to represent unobserved product attributes:</p></li>
+<li>Looks like a regression equation… we sometimes add an error <span class="math inline">\(\xi_{jt}\)</span> to represent unobserved product attributes:</li>
 </ul>
 <p><span class="math display">\[ln(s_{jt})-ln(s_{1t})=x_{jt}\beta-\alpha p_{jt}+\xi_{jt}\]</span></p>
 <ul>
-<li>It’s not the <span class="math inline">\(J\)</span> market shares, but the <span class="math inline">\(J-1\)</span> <em>differences</em> in market shares, that identify demand parameters</li>
+<li>It’s the <span class="math inline">\((J-1)T\)</span> <em>differences</em> in market shares that identify demand parameters</li>
 </ul>
 <aside class="notes">
 <ul>
@@ -682,6 +694,21 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
+<section id="mnl-estimation-methods" class="slide level2 smaller">
+<h2>MNL Estimation Methods</h2>
+<p>Define <span class="math inline">\(y_{ijt} \equiv 1\{i \text{ chose } j \text{ in } t\}\)</span>. I.e., <span class="math inline">\(y_{ijt}=1\)</span> iff <span class="math inline">\(i\)</span> choose <span class="math inline">\(j\)</span> at <span class="math inline">\(t\)</span>; otherwise <span class="math inline">\(y_{ijt}=0\)</span>.</p>
+<ol type="1">
+<li>Maximum likelihood: Assume the probability of observation <span class="math inline">\(\{i,j,t\}\)</span> is <span class="math inline">\(s_{jt}(\alpha, \beta)^{y_{ijt}}\)</span>; <br>then choose (<span class="math inline">\(\alpha\)</span>,<span class="math inline">\(\beta\)</span>) to maximize log lik:</li>
+</ol>
+<p><span class="math display">\[\sum_{\forall i,\forall j,\forall t} y_{ijt}-\ln s_{jt}(\alpha, \beta)\]</span></p>
+<ol start="2" type="1">
+<li>Method of Moments: Choose <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> to solve some vector of “moments,” e.g.&nbsp;</li>
+</ol>
+<p><span class="math display">\[ \sum_{\forall j, \forall t}z_{jt} (\frac{\sum_{\forall i}y_{ijt}}{N_t} - s_{jt}(\alpha, \beta))=0\]</span></p>
+<ol start="3" type="1">
+<li>Linearize the model and minimize the sum of square errors</li>
+</ol>
+</section>
 <section id="mnl-goodness-of-fit-statistics" class="slide level2 smaller">
 <h2>MNL Goodness-of-fit Statistics</h2>
 <ul>
@@ -693,9 +720,9 @@ Kenneth C. Wilbur and Dan Yavorsky
 </ol>
 <p><span class="math display">\[\rho=1-\frac{ln L(\hat\beta)}{ln L(0)}\]</span></p>
 <ul>
-<li>As <span class="math inline">\(L(\hat\beta)\to 1\)</span>, <span class="math inline">\(ln L(\hat\beta)\to 0\)</span>, <span class="math inline">\(\rho\to 1\)</span></li>
-<li>As <span class="math inline">\(ln L(\hat\beta)\to ln L(0)\)</span>, <span class="math inline">\(\rho\to 0\)</span></li>
-<li>Heuristic: 0.2-0.4 is excellent</li>
+<li><p>As <span class="math inline">\(L(\hat\beta)\to 1\)</span>, <span class="math inline">\(ln L(\hat\beta)\to 0\)</span>, <span class="math inline">\(\rho\to 1\)</span></p></li>
+<li><p>As <span class="math inline">\(ln L(\hat\beta)\to ln L(0)\)</span>, <span class="math inline">\(\rho\to 0\)</span></p>
+<pre><code>    -   Heuristic: 0.2-0.4 is pretty good</code></pre></li>
 </ul>
 <ol start="2" type="1">
 <li><p>Hit Rate: % of individuals for whom most-probable choice was actually chosen</p></li>
@@ -719,22 +746,23 @@ Kenneth C. Wilbur and Dan Yavorsky
 </section>
 <section id="mnl-pros" class="slide level2">
 <h2>MNL Pros</h2>
-<ul>
+<ol type="1">
 <li><p>Microfounded, i.e.&nbsp;behavioral predictions are consistent with a clearly specified theory of consumer choice</p></li>
 <li><p>Extensions accommodate preference heterogeneity</p>
 <pre><code>  - We'll cover 3 extensions next week</code></pre></li>
 <li><p>Likelihood function is globally concave in the parameters, ensuring fast and reliable estimation</p></li>
-</ul>
+</ol>
 </section>
 <section id="mnl-cons" class="slide level2">
 <h2>MNL Cons</h2>
-<ul>
+<ol type="1">
 <li><p>Assuming <span class="math inline">\(\epsilon_{ijt}\sim\)</span><em>i.i.d.</em><span class="math inline">\(EV_1(0,1)\)</span> is convenient but unrealistic</p>
-<pre><code>    - Alternatives exist but can be computationally expensive</code></pre></li>
+<pre><code> - Alternatives exist but can be computationally expensive</code></pre></li>
 <li><p>Analyst selects the choice set and attributes <span class="math inline">\((x_{jt},p_{jt})\)</span>. What’s a <span class="math inline">\(j\)</span>? What’s a <span class="math inline">\(t\)</span>? What’s in <span class="math inline">\(x\)</span>? How do we measure <span class="math inline">\(p\)</span>?</p></li>
 <li><p>Market share derivatives depend on market shares alone (IIA; see Train Sec. 3.6)</p></li>
-<li><p>Price Endogeneity :: But this affects all demand models</p></li>
-</ul>
+<li><p>Price Endogeneity</p>
+<pre><code>   - Affects all demand models</code></pre></li>
+</ol>
 <aside class="notes">
 <ul>
 <li>Unobservables would likely be correlated across people, products and markets</li>
@@ -776,13 +804,13 @@ Kenneth C. Wilbur and Dan Yavorsky
 <h2>Price endogeneity</h2>
 <ul>
 <li><p>Fundamental issue: Demand model should be a causal relationship but prices are usually nonrandom, so we need a way to distinguish correlation from causation</p>
-<pre><code>    - Prices may covary with unobserved demand shifters
+<pre><code>    - Prices may covary with unobserved demand shifters, unmeasured product attributes or other missing variables
     - Price endogeneity is a measurement problem, not a modelling problem
     - Hard to verify empirically--needed data is missing--but widely believed important</code></pre></li>
 <li><p><span class="math inline">\(\hat{\alpha}\)</span> will be biased when prices depend on unmodeled demand factors (e.g., image, reliability). Implies wrong demand slope, wrong model implications</p></li>
 <li><p>Typically, bias will be toward zero (“too flat”)</p></li>
 <li><p>Affects all demand models, not just MNL</p></li>
-<li><p>Possible solutions: Instrumental variables, regression discontinuities, natural experiments, dfce-in-dfce, synthetic control</p></li>
+<li><p>Common solutions: Experiments or quasi-experiments (Instrumental variables, regression discontinuities, natural experiments, dfce-in-dfce, synthetic control, double/debiased machine learning)</p></li>
 </ul>
 </section>
 <section id="price-endogeneity-in-mnl" class="slide level2">
@@ -792,13 +820,13 @@ Kenneth C. Wilbur and Dan Yavorsky
 </ul>
 <p><span class="math inline">\(ln(s_{jt})-ln(s_{1t})=x_{jt}\beta-\alpha p_{jt}+\xi_{jt}\)</span></p>
 <ul>
-<li><p>Instruments need to (1) predict <span class="math inline">\(p_{jt}\)</span> and (2) don’t predict <span class="math inline">\(\xi_{jt}\)</span></p></li>
-<li><ol type="1">
-<li>is testable; (2) is not</li>
-</ol></li>
-<li><p>Classic instruments are input prices</p></li>
-<li><p>We set up our smartphone sales data with exogenous price variation in promotions, but in general price endogeneity is a nontrivial issue that requires careful attention</p>
-<pre><code>    - We will disregard price endogeneity for simplicity</code></pre></li>
+<li><p>Valid instruments will (1) predict <span class="math inline">\(p_{jt}\)</span> and (2) don’t predict <span class="math inline">\(\xi_{jt}\)</span></p>
+<pre><code>      (1) is testable; (2) is not
+      Classic instruments are input prices</code></pre></li>
+<li><p>In general price endogeneity requires careful attention</p>
+<pre><code> - We set up our smartphone sales data with exogenous price variation in promotions, so this class will disregard it for simplicity
+ - Price endogeneity leads to biased demand slope, which could lead to biased price recommendation, which could lead to suboptimal outcomes
+ - Endogeneity is a major topic in graduate study</code></pre></li>
 </ul>
 <aside class="notes">
 <ul>
@@ -862,9 +890,9 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="recap" class="slide level2">
 <h2>Recap</h2>
 <ul>
-<li>Demand modeling enables data-driven sales predictions at counterfactual prices and attributes</li>
+<li>Demand modeling enables data-driven sales predictions for counterfactual prices and attributes</li>
 <li>MNL is popular bc it is powerful, microfounded and tractable</li>
-<li>Price endogeneity is a measurement problem that can bias demand parameter estimates when price is correlated with unobserved demand shifters. Can often be resolved through experimental or quasi-experimental techniques</li>
+<li>Price endogeneity is a measurement problem that biases demand parameter estimates when price is correlated with unobserved demand shifters. Can often be resolved through experimental or quasi-experimental techniques</li>
 </ul>
 <div class="quarto-figure quarto-figure-right">
 <figure>

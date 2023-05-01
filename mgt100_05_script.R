@@ -23,13 +23,13 @@ cust_dat <- read_csv("../data/smartphone_customer_data.csv", show_col_types = F)
 n <- nrow(cust_dat)
 
 # replace missing 'discount' values (currently NA) with empty string ("")
-cust_dat <- cust_dat %>% mutate(discount = ifelse(is.na(discount), "", discount))
+cust_dat <- cust_dat |> mutate(discount = ifelse(is.na(discount), "", discount))
 
 # We need to do some extensive data wrangling for the mlogit package
 # We'll need customer segments next week, we'll identify those now, so we don't 
 # have to re-wrangle the data next week
 set.seed(1357)   # this sets random kmeans starting points to be deterministic
-subk <- cust_dat %>% select(gaming, chat, maps, video, social, reading)
+subk <- cust_dat |> select(gaming, chat, maps, video, social, reading)
 outk <- kmeans(subk, centers = 3, nstart = 10)
 table(outk$cluster)
 cust_dat$segment <- factor(outk$cluster)
@@ -54,7 +54,8 @@ phone_dat <- read_csv("../data/phone_dat.csv", show_col_types = F)
 # will be useful to us because we may need to adjust the price of a phone
 # if it was on discount, and this adjustment is customer-specific. More
 # generally, this is a good way to structure data for a MNL model since it would
-# allow different customers to choose from different sets of products.
+# allow different customers to choose from different sets of products. (Our setting
+# does not have variation in product avilabilities, but many settings do)
 
 # step 2: we will stack (ie append) these n datasets on top of each other to
 # create the dataset with the n*6 rows.
@@ -64,10 +65,8 @@ phone_dat <- read_csv("../data/phone_dat.csv", show_col_types = F)
 # object into the mlogit() function to estimate the parameters of this model.
 
 # ++++++++++
-# Step 1
+# Step 1 : loop over customers
 # ++++++++++
-
-# So, let's loop over customers:
 
 # create an empty list to store the n datasets (each dataset will have 6 rows)
 dat_list <- vector(mode = "list", length = n)
@@ -80,36 +79,36 @@ pb <- txtProgressBar(min = 1, max = n, style = 3)
 # loop for step 1
 for (i in 1:n) {
   # get cohort, minutes, brand, and size for customer i
-  i_cohort <- cust_dat %>%
-    slice(i) %>%   # this takes row (i) from cust_dat
+  i_cohort <- cust_dat |>
+    slice(i) |>   # this takes row (i) from cust_dat
     pull(years_ago)   # this takes the value of years_ago from row (i)
-  i_brand <- cust_dat %>%
-    slice(i) %>%
+  i_brand <- cust_dat |>
+    slice(i) |>
     pull(brand)
-  i_size <- cust_dat %>%
-    slice(i) %>%
+  i_size <- cust_dat |>
+    slice(i) |>
     pull(screen_size)
-  i_discount <- cust_dat %>%
-    slice(i) %>%
+  i_discount <- cust_dat |>
+    slice(i) |>
     pull(discount)
-  i_segment <- cust_dat %>%
-    slice(i) %>%
+  i_segment <- cust_dat |>
+    slice(i) |>
     pull(segment)
-  i_minutes <- cust_dat %>%
-    slice(i) %>%
+  i_minutes <- cust_dat |>
+    slice(i) |>
     pull(total_minutes)
 
   # subset the phone data to the 6 phones for the year when the customer purchased
-  PD <- phone_dat %>% filter(years_ago == i_cohort)
+  PD <- phone_dat |> filter(years_ago == i_cohort)
 
   # adjust one of the phone's price for the 10% discount, if applicable
-  PD <- PD %>% mutate(price = price - (phone_id == i_discount) * price * 0.1)
+  PD <- PD |> mutate(price = price - (phone_id == i_discount) * price * 0.1)
 
   # add customer id to PD
-  PD <- PD %>% mutate(customer_id = i)
+  PD <- PD |> mutate(customer_id = i)
 
   # convert the one brand variable into a set of 3 brand dummies (ie, binary variables)
-  PD <- PD %>% mutate(
+  PD <- PD |> mutate(
     apple = as.integer(brand == "apple"),
     huawei = as.integer(brand == "huawei"),
     samsung = as.integer(brand == "samsung")
@@ -117,15 +116,15 @@ for (i in 1:n) {
 
   # create a binary variable to indicate the chosen phone
   # this is going to be the dependent variable in the MNL model (like "y" in OLS)
-  PD <- PD %>%
-    mutate(choice = (brand == i_brand) & (screen_size == i_size)) %>%
+  PD <- PD |>
+    mutate(choice = (brand == i_brand) & (screen_size == i_size)) |>
     mutate(choice = as.integer(choice))
 
   # add segment and total_minutes
-  PD <- PD %>% mutate(segment = i_segment, total_minutes = i_minutes)
+  PD <- PD |> mutate(segment = i_segment, total_minutes = i_minutes)
 
   # store this 6-row dataset in the i'th position of that list we initialized before the loop
-  dat_list[[i]] <- PD %>% select(
+  dat_list[[i]] <- PD |> select(
     customer_id, phone_id, choice,
     apple, huawei, samsung,
     price, screen_size,
@@ -163,9 +162,9 @@ head(mnl_dat, n = 20)
 # have changed across product generations
 
 # Let's split the big (n*6 row) dataframe into 3 dataframes, one for each year.
-sub1 <- mnl_dat %>% filter(customer_id %in% which(cust_dat$years_ago == 1))
-sub2 <- mnl_dat %>% filter(customer_id %in% which(cust_dat$years_ago == 2))
-sub3 <- mnl_dat %>% filter(customer_id %in% which(cust_dat$years_ago == 3))
+sub1 <- mnl_dat |> filter(customer_id %in% which(cust_dat$years_ago == 1))
+sub2 <- mnl_dat |> filter(customer_id %in% which(cust_dat$years_ago == 2))
+sub3 <- mnl_dat |> filter(customer_id %in% which(cust_dat$years_ago == 3))
 
 # ++++++++++
 # Step 3
@@ -198,16 +197,16 @@ save(sub1, sub2, sub3, mdat1, mdat2, mdat3, file = "../data/mnl_datasets.RData")
 # As a point of comparison that we'll use later to understand the MNL model,
 # we calculate product-level and brand-level market shares:
 
-brand_shares <- cust_dat %>%
-  filter(years_ago == 1) %>%
-  count(brand) %>%
+brand_shares <- cust_dat |>
+  filter(years_ago == 1) |>
+  count(brand) |>
   mutate(shr = n / sum(n))
 
 brand_shares
 
-product_shares <- cust_dat %>%
-  filter(years_ago == 1) %>%
-  count(phone_id) %>%
+product_shares <- cust_dat |>
+  filter(years_ago == 1) |>
+  count(phone_id) |>
   mutate(shr = n / sum(n))
 
 product_shares
@@ -216,10 +215,9 @@ product_shares
 # Fit basic (brand-intercept only) model
 
 # Always start simple. For our first model, we will fit a model where our "X"
-# variables are just the binary dummy variables that indicate brand. We need
-# to leave out one phone as a "baseline" and omit an intercept, so that this
-# model is "identified" (ie, can be estimated). We omit the intercept by
-# including the bar-zero ("|0") in the formula:
+# variables are just the binary dummy variables that indicate brand. We omit the 
+# intercept and normalize 1 phone utility to identify utility for the remaining 
+# 5 options. We omit the intercept by including the bar-zero ("|0") in the formula:
 
 out1 <- mlogit(choice ~ apple + samsung | 0, data = mdat1)
 
@@ -266,7 +264,7 @@ rm(coefs1, shares1)
 # correctly predicts.  We'll create custom functions for the brand hit rate
 # and the product hit rate. This measure is something that you would
 # commonly encounter in industry, as it has a straightforward interpretation.
-
+ 
 brand_hit_rate <- function(data, model) {
 # here we use the model to predict which phone maximizes each customer's utility
   preds <- apply(predict(model, newdata = data), 1, which.max)
@@ -308,11 +306,11 @@ product_hit_rate(mdat1, out1)
 ll_ratio(mdat1, out1)
 
 # The simple/naive "model" is that each brand is chosen 33.3% (=1/3).
-# Our brand hit rate is about 35.6%, which is just a bit better than the naive approach.
+# Our brand hit rate is just a bit better than the naive approach.
 # The likelihood ratio index confirms that the model is not much better than random guessing.
 
 
-# One way we can improve a model's performance is to give it more complete data. 
+# One way we can improve a model's performance is to enrich the training set. 
 
 # Let's add the price variable to the model and see what happens:
 
@@ -342,23 +340,16 @@ brand_hit_rate(mdat1, out2)
 product_hit_rate(mdat1, out2)
 ll_ratio(mdat1, out2)
 
-# We get a small improvement in brand hit rate which is now 35.6%, compared to
-# the prior model's brand hit rate of 35.5%.
-
-# We get a product hit rate of 24.8%, better than simpler model's product hit rate 
-# of 24.8%
-
-# That improvement is noticeable in the likelihood ratio statistic. .037 is much better
-# than our previous fit of .002
-
+# What happened to brand hit rate? What about product hit rate?
+# What happened to likelihood ratio statistic?
 
 # Let's see what has happened to our brands' market share predictions
 # We have to predict phone shares, then we'll sum over phones to predict brand shares
 
 # Here we predict phone shares
 shares2p <- colMeans(predict(out2, newdata = mdat1))
-names(shares2p) <- sub1 %>%
-  head(6) %>%
+names(shares2p) <- sub1 |>
+  head(6) |>
   pull(phone_id)
 
 # here we sum over phones to predict brand shares
@@ -367,14 +358,14 @@ names(shares2b) <- c("apple", "samsung", "huawei")
 round(shares2b, 3)
 brand_shares
 
-# ...we still exactly match actual brand-level market shares
+# ...we still match actual brand-level market shares
 
 round(shares2p, 3)
 product_shares
 
 # ...and now we have product-level market share estimates that better reflect
 # the actual product-level market shares, albeit not perfectly.
-# That's because we don't have any product-specific attributes or dummies.
+# That's because we have included limited product attributes in the model
 
 
 # Let's improve the model further. We'll fit MNL with brand, price, and size
@@ -435,17 +426,15 @@ brand_hit_rate(mdat1, out4)
 product_hit_rate(mdat1, out4)
 ll_ratio(mdat1, out4)
 
-# The brand hit rate improved 1% from 35.5% to 36.7%.
-# The product hit rate improved 2% from 24.8% to 26.9%.
-# The improvement comes from the flexibility of the model to allow for different
+# What do you see?
+# Improvements comes from the flexibility of the model to allow for different
 # preferences for small and large phones *within* a brand.
-# LL Ratio is now up to .042, 21x larger than the .002 in the brand-only model
 
 # Let's check the brand-level market shares
 
 shares4p <- colMeans(predict(out4, newdata = mdat1))
-names(shares4p) <- sub1 %>%
-  head(6) %>%
+names(shares4p) <- sub1 |>
+  head(6) |>
   pull(phone_id)
 
 shares4b <- colSums(matrix(shares4p, nrow = 2))
@@ -467,8 +456,6 @@ product_shares
 # Our model is now performing well *in the aggregate*.  But we have not yet
 # assessed how it does for each individual.  Adding customer-specific
 # heterogeneity to our model is the next step. We'll focus on that next week.
-
-
 
 
 

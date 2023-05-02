@@ -695,19 +695,19 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="mnl-estimation-methods" class="slide level2 smaller">
-<h2>MNL Estimation Methods</h2>
+<section id="mnl-estimation" class="slide level2 smaller">
+<h2>MNL Estimation</h2>
 <p>Define <span class="math inline">\(y_{ijt} \equiv 1\{i \text{ chose } j \text{ in } t\}\)</span>. I.e., <span class="math inline">\(y_{ijt}=1\)</span> iff <span class="math inline">\(i\)</span> choose <span class="math inline">\(j\)</span> at <span class="math inline">\(t\)</span>; otherwise <span class="math inline">\(y_{ijt}=0\)</span>.</p>
 <ol type="1">
-<li>Maximum likelihood: Assume the probability of observation <span class="math inline">\(\{i,j,t\}\)</span> is <span class="math inline">\(s_{jt}(\alpha, \beta)^{y_{ijt}}\)</span>; <br>then choose (<span class="math inline">\(\alpha\)</span>,<span class="math inline">\(\beta\)</span>) to maximize log lik:</li>
+<li>Maximum likelihood: Assume the probability of observation <span class="math inline">\(\{i,j,t\}\)</span> is <span class="math inline">\(s_{jt}^{y_{ijt}}\)</span>; <br>then lik. is <span class="math inline">\(L(\beta )=\prod\limits_{\forall i,j,t} s_{jt}^{y_{ijt}}\)</span>; &amp; choose parameters to maximize log lik:</li>
 </ol>
-<p><span class="math display">\[\sum_{\forall i,\forall j,\forall t} y_{ijt}-\ln s_{jt}(\alpha, \beta)\]</span></p>
+<p><span class="math display">\[\sum_{\forall i,j,t} y_{ijt}\ln s_{jt}\]</span></p>
 <ol start="2" type="1">
-<li>Method of Moments: Choose <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> to solve some vector of “moments,” e.g.&nbsp;</li>
+<li>Method of Moments: Choose <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> to solve some vector of “moments,” i.e.&nbsp;interactions between observables <span class="math inline">\(z\)</span> and error terms, e.g.&nbsp;</li>
 </ol>
-<p><span class="math display">\[ \sum_{\forall j, \forall t}z_{jt} (\frac{\sum_{\forall i}y_{ijt}}{N_t} - s_{jt}(\alpha, \beta))=0\]</span></p>
+<p><span class="math display">\[ \sum_{\forall j,t}z_{jt} (\frac{\sum_{\forall i}y_{ijt}}{N_t} - s_{jt}(\alpha, \beta))=0\]</span></p>
 <ol start="3" type="1">
-<li>Linearize the model and minimize the sum of square errors</li>
+<li>Linearize the model and choose parameters to minimize the sum of square errors</li>
 </ol>
 </section>
 <section id="mnl-goodness-of-fit-statistics" class="slide level2 smaller">

@@ -25,16 +25,16 @@ load("../data/mnl_performance_functions.RData")
 
 # We did this last class, but it's helpful to have these as reference points
 
-brand_shares <- cust_dat %>%
-  filter(years_ago == 1) %>%
-  count(brand) %>%
+brand_shares <- cust_dat |>
+  filter(years_ago == 1) |>
+  count(brand) |>
   mutate(shr = n / sum(n))
 
 brand_shares
 
-product_shares <- cust_dat %>%
-  filter(years_ago == 1) %>%
-  count(phone_id) %>%         # count(a) is similar to group_by(a)|>summarise(n=n())
+product_shares <- cust_dat |>
+  filter(years_ago == 1) |>
+  count(phone_id) |>         # count(a) is similar to group_by(a)|>summarise(n=n())
   mutate(shr = n / sum(n))
 
 product_shares
@@ -46,7 +46,8 @@ product_shares
 
 # We'll focus on one phone at a time, starting with A1
 
-# On the x axis, we'll have the customer-specific predicted choice probability of A1
+# On the x axis, we'll have the customer-specific predicted choice probability 
+#     of A1
 
 # Then we'll draw a histogram of how many customers are predicted to 
 #     have each choice probability. This will be degenerate for the homogeneous 
@@ -60,15 +61,15 @@ myplot <- function(data, model, phone) {
   preds <- as_tibble(predict(model, newdata = data))
   colnames(preds) <- disc_levs[1:6]
 
-  temp <- cust_dat %>%
-    filter(years_ago == 1) %>%
-    mutate(discount = factor(discount, levels = disc_levs)) %>%
-    mutate(discount = fct_recode(discount, "None" = "")) %>%
-    mutate(pr = preds[[phone]]) %>%
+  temp <- cust_dat |>
+    filter(years_ago == 1) |>
+    mutate(discount = factor(discount, levels = disc_levs)) |>
+    mutate(discount = fct_recode(discount, "None" = "")) |>
+    mutate(pr = preds[[phone]]) |>
     select(discount, pr)
 
-  p <- temp %>%
-    filter(discount != "None") %>%
+  p <- temp |>
+    filter(discount != "None") |>
     ggplot(aes(x = pr)) +
     geom_histogram(aes(fill = discount), binwidth = 0.01) +
     facet_wrap(. ~ discount) +
@@ -96,8 +97,15 @@ ll_ratio(mdat1, out4)
 # Let's look at how histograms of choice probabilities for A1 change when phone 
 # discounts change. 
 myplot(mdat1, out4, "A1")
-# This homogeneous demand model shows no correspondence between customers' predicted
-# choice shares and discount response. This will change shortly.
+# X axis is predicted choice of A1, given a particular phone on discount
+# Y axis shows how many customers were treated with each of 6 possible discounts
+# Notice: Empirical probability of discount is not equal for all phones
+# Run this command to verify:
+cust_dat |> filter(years_ago==1) |> select(discount) |> table()
+
+# Main point: Homogeneous demand model predicts a degenerate response of choice 
+#     probability to price discount, because it assumes all customers have the 
+#     the same preference parameters. This will change shortly.
 
 # Let's enrich this model to add heterogeneity 
 # We'll start out by adding individual heterogeneity by customer attributes
@@ -121,25 +129,27 @@ ll_ratio(mdat1, out5)
 myplot(mdat1, out5, "A1")
 # We see that different customers have different probabilities of purchasing
 # the same phone, even for customers facing the same discount. This is because
-# we have included the interaction term in the model. But what does it mean to
-# include the interaction?  It means the effect of price on utility is a function
-# of the customer's usage behavior.  We can re-write part of model from:
+# we have included the interaction term in the model. 
+
+# What does it mean to include the interaction?  It means the marginal disutility
+# of price is a function of the customer's usage behavior.  We can re-write 
+# part of model from:
 #
-# ... (beta_price * price) + (beta_int * price * totalminutes) ...
+# ... (alpha_int * price) + (alpha_minutes * price * totalminutes) ...
 #
 # to this
 #
-# ... (beta_price + beta_int*totalminutes) * price
+# ... (alpha_int + alpha_minutes*totalminutes) * price
 #
-# which makes it clear that when beta_int is positive, customers that use
+# which makes it clear that when alpha_int is positive, customers that use
 # their phones more are less price sensitive.
 
 # Let's take a deep dive into the data to see how this heterogeneous model
 # predicts choice behavior.
 
 # grab the data for 2 customers (#9 & #13)
-x1 <- sub1 %>%
-  filter(customer_id == 9) %>%
+x1 <- sub1 |>
+  filter(customer_id == 9) |>
   mutate(
     A2 = phone_id == "A2",
     S1 = phone_id == "S1",
@@ -147,12 +157,12 @@ x1 <- sub1 %>%
     H1 = phone_id == "H1",
     H2 = phone_id == "H2",
     ptm = price * total_minutes
-  ) %>%
-  select(A2, H1, H2, S1, S2, price, ptm) %>%
+  ) |>
+  select(A2, H1, H2, S1, S2, price, ptm) |>
   as.matrix()
 
-x2 <- sub1 %>%
-  filter(customer_id == 13) %>%
+x2 <- sub1 |>
+  filter(customer_id == 13) |>
   mutate(
     A2 = phone_id == "A2",
     S1 = phone_id == "S1",
@@ -160,8 +170,8 @@ x2 <- sub1 %>%
     H1 = phone_id == "H1",
     H2 = phone_id == "H2",
     ptm = price * total_minutes
-  ) %>%
-  select(A2, S1, S2, H1, H2, price, ptm) %>%
+  ) |>
+  select(A2, S1, S2, H1, H2, price, ptm) |>
   as.matrix()
 
 # notice how the interaction variable (ptm) is different for the two customers
@@ -169,8 +179,8 @@ x1
 x2
 
 # This is mainly driven by the variation in total minutes for the two customers.
-cust_dat %>%
-  slice(9, 13) %>%      # quick way to grab rows by row_index
+cust_dat |>
+  slice(9, 13) |>      # quick way to grab rows by row_index
   select(total_minutes)
 # but also by the different A1 price faced by the two customers
 
@@ -178,8 +188,8 @@ cust_dat %>%
 # for the six phones for each of the two customers
 beta_hat <- coef(out5)
 
-# let's calculate mean utility for each customer and each phone
-xb1 <- t(x1 %*% beta_hat)
+# let's calculate deterministic utility for each customer and each phone
+xb1 <- t(x1 %*% beta_hat)    # t is the transpose function; it prints nicer
 xb2 <- t(x2 %*% beta_hat)
 
 # now we'll calculate purchase probability for each customer and each phone using the 
@@ -329,13 +339,14 @@ tibble(mod_id=1:9, mspe=mspe) |>
     ggplot(aes(x=mod_id, y=mspe)) +
     geom_point() + 
     geom_line()
-    ylim(c(0, .14))  # adjustment to reflect abs differences
-
+    ylim(c(0, .14))  # adjustment to show the abs differences
+# that adjustment helps to show why mspe is only 1 factor among several when 
+#    choosing a model specification
+    
 # which model has the lowest cross-validated mean-squared-error?
 which.min(mspe)
 
 # What does this tell us?
-
 # Which model should we use going forward?
 
 

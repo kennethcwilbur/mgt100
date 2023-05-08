@@ -7,7 +7,7 @@
 <link href="mgt100-06_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="mgt100-06_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="mgt100-06_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.2.269">
+  <meta name="generator" content="quarto-1.2.335">
 
   <meta name="author" content="Kenneth C. Wilbur and Dan Yavorsky">
   <title>Heterogeneous Demand</title>
@@ -350,7 +350,8 @@ Kenneth C. Wilbur and Dan Yavorsky
 </div>
 <aside class="notes">
 <ul>
-<li>notes</li>
+<li>The Train chapter gives a good background to much of today’s technical material, in the specific context of the MNL with heterogeneity</li>
+<li>the r4ds chapter is more general in terms of model building, and relates to what we’ll do in the script, as we have to decide what to include in x and w</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -370,7 +371,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>Leading B2B manufacturer of home pregnancy tests</li>
 <li>Tests were quick and reliable</li>
 <li>Wanted to enter the B2C HPT market</li>
-<li>Market research found 2 segments of equal size; what were they?</li>
+<li>Market research found 2 segments of equal size; <br>what were they?</li>
 </ul>
 </section>
 <section id="section" class="slide level2">
@@ -388,6 +389,9 @@ Kenneth C. Wilbur and Dan Yavorsky
 -   Ovulation testing; STD tests (strep, chlamydia)
 -   QuickVue came in packs of 2; Conceive sold 40 to a box at 15% premium per strip
 -   So you see how understanding your customer can help optimize tangible and intangible features-->
+<ul>
+<li>How did price sensitivity differ between the two segments?</li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -413,6 +417,9 @@ Kenneth C. Wilbur and Dan Yavorsky
 <aside class="notes">
 <ul>
 <li><a href="https://web.archive.org/web/20220217070659/https://qz.com/africa/1633699/transsions-tecno-infinix-camera-phones-made-for-dark-skin-tones/">Source</a></li>
+<li>Key learning here: Understanding how customer preferences differ between segments can enable optimization of product attributes for specific segments</li>
+<li>In this case, because most smartphone users never change the default camera settings, the default settings were optimized given local preferences, leading to a 48% market share for transsion</li>
+<li>The Google ad suggests (far from conclusively) that Google is also figuring out some of the same heterogeneous preferences for smartphone camera attributes</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -462,7 +469,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 </ul>
 <aside class="notes">
 <ul>
-<li>By construction, base model assumes away the possibility that preference parameters vary across customer segments. So we’ve ruled out the existence of hopefuls and fearfuls</li>
+<li>By construction, base model assumes away the possibilities that (i) preference parameters vary across customer segments, or (ii) covary with customer attributes, or (iii) differ across customers at all. So we’ve ruled out the existence of hopefuls and fearfuls</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -487,6 +494,22 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li><p>Distribution partner selection, compensation, incentives</p>
 <pre><code>  - Always need to consider effectiveness, fixed vs variable costs, legality, morality, privacy, conspicuousness, equity, reactance</code></pre></li>
 </ul>
+<aside class="notes">
+<ul>
+<li>Demand models let us estimate product qualities, but not product fit</li>
+<li>Heterogeneous demand models enable measurement of both vertical &amp; horizontal dimensions of product differentiation</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="discrete-heterogeneity-by-segment" class="slide level2 scrollable smaller">
 <h2>1. Discrete heterogeneity by segment</h2>
@@ -534,7 +557,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <ul>
 <li>We could use theory to restrict elements of <span class="math inline">\(\gamma\)</span> and <span class="math inline">\(\delta\)</span> to 0</li>
 <li>We could use PCA to project x or w onto a lower-dimensional space</li>
-<li>We could use Lasso, Ridge, etc. for data-driven parsimony</li>
+<li>We could use Lasso, Ridge, Elastic Net, etc. for data-driven parsimony</li>
 <li><a href="https://en.wikipedia.org/wiki/Riemann_sum">Riemann sums</a></li>
 </ul>
 <style type="text/css">
@@ -552,16 +575,20 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="individual-demand-parameters" class="slide level2 scrollable smaller">
 <h2>3. Individual demand parameters</h2>
 <ul>
-<li>Assume <span class="math inline">\((\alpha_i,\beta_i)\sim F(\Theta)\)</span></li>
-<li>Then <span class="math inline">\(s_{jt}=\int\frac{e^{x_{jt}\alpha_i-\beta_i p_{jt}}}{\sum_{k=1}^{J}e^{x_{jt}\alpha_i-\beta_i p_{jt}}}dF(\Theta)\)</span></li>
-<li>Typically, we assume <span class="math inline">\(F(\Theta)\)</span> is multivariate normal, for convenience, and estimate <span class="math inline">\(\Theta\)</span></li>
-<li>We usually have to approximate the integral, often use Bayesian techniques (MSBA)</li>
-<li>We can also estimate <span class="math inline">\(F\)</span> but that is data intensive</li>
-<li>In theory, we could estimate all <span class="math inline">\((\alpha_i,\beta_i)\)</span> pairs without <span class="math inline">\(F\)</span>, but requires sufficient variation and numerous observations for each <span class="math inline">\(i\)</span></li>
+<li><p>Assume <span class="math inline">\((\alpha_i,\beta_i)\sim F(\Theta)\)</span></p>
+<pre><code>    - Includes the Hierarchical Bayesian Logit we talked about in weeks 3 &amp; 4</code></pre></li>
+<li><p>Then <span class="math inline">\(s_{jt}=\int\frac{e^{x_{jt}\alpha_i-\beta_i p_{jt}}}{\sum_{k=1}^{J}e^{x_{jt}\alpha_i-\beta_i p_{jt}}}dF(\Theta)\)</span></p></li>
+<li><p>Typically, we assume <span class="math inline">\(F(\Theta)\)</span> is multivariate normal, for convenience, and estimate <span class="math inline">\(\Theta\)</span></p>
+<ul>
+<li><p>We usually have to approximate the integral, often use Bayesian techniques (MSBA)</p>
+<pre><code>- Let's talk through how this works</code></pre></li>
+<li><p>We can alternatively estimate <span class="math inline">\(F\)</span> but that is very data intensive</p></li>
+<li><p>In theory, we could estimate all <span class="math inline">\((\alpha_i,\beta_i)\)</span> pairs without <span class="math inline">\(F\)</span>, but requires sufficient variation and numerous observations for each <span class="math inline">\(i\)</span></p></li>
+</ul></li>
 </ul>
 <aside class="notes">
 <ul>
-<li>The Bayesian estimation techniques are compute intensive and require MCMC sampling; see MSBA</li>
+<li>The Bayesian estimation techniques are compute intensive and usually require MCMC sampling; see MSBA</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -608,7 +635,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 </div>
 <aside class="notes">
 <ul>
-<li><a href="https://web.archive.org/web/20220217070659/https://qz.com/africa/1633699/transsions-tecno-infinix-camera-phones-made-for-dark-skin-tones/">Source</a></li>
+<li>Considerations: Theory; Modeling objective; Precision; Causal ordering</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -627,7 +654,14 @@ Kenneth C. Wilbur and Dan Yavorsky
 <ul>
 <li>More flexible models always fit data better</li>
 <li>Yet parsimony often improves predictions</li>
-<li>What to do?</li>
+<li>How do we choose? Some criteria:
+<ul>
+<li>Theory</li>
+<li>Precedent</li>
+<li>Purpose</li>
+<li>Model fit</li>
+<li>Predictive properties</li>
+</ul></li>
 </ul>
 </section>
 <section id="cross-validation" class="slide level2">
@@ -636,16 +670,16 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>Exercise to reduce overfitting risk among a set of models <span class="math inline">\(m=1,...,M\)</span>. Algorithm:</li>
 </ul>
 <ol type="1">
-<li>Randomly divide the data into <span class="math inline">\(K\)</span> folds</li>
-<li>Hold out fold <span class="math inline">\(k\)</span> and use remaining data to estimate model <span class="math inline">\(m\)</span>, and make predictions for fold <span class="math inline">\(k\)</span>; store prediction errors</li>
+<li>Randomly divide the data into <span class="math inline">\(K\)</span> distinct folds</li>
+<li>Hold out fold <span class="math inline">\(k\)</span>, use remaining data to estimate model <span class="math inline">\(m\)</span>, make predictions for fold <span class="math inline">\(k\)</span>; store prediction errors</li>
 <li>Repeat 2 for each <span class="math inline">\(k\)</span></li>
-<li>Repeat 2-3 for every model <span class="math inline">\(m\)</span></li>
+<li>Repeat 2&amp;3 for every model <span class="math inline">\(m\)</span></li>
 <li>Retain the model with minimum prediction errors</li>
 </ol>
 <p>Bonus question: How do you choose models <span class="math inline">\(1,...,M\)</span>?</p>
 <aside class="notes">
 <ul>
-<li>Bonus answers: Theory; what models other people have fit; what models might work for this situation; flexible models that can approximate many other models, especially the many flavors of neural nets</li>
+<li>Bonus answers: Sizes of prediction errors between models; but also: Theory; what models other people have fit; what models might work for this situation; flexible models that can approximate many other models, especially the many flavors of neural nets</li>
 <li>We often learn that most reasonable models perform similarly</li>
 </ul>
 <style type="text/css">
@@ -666,15 +700,36 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>Can a model withstand changes in the environment?</li>
 <li>Non-random holdouts are strong tests, but can only be retrospective</li>
 </ul>
-<p><img data-src="images/xws2017.png"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/xws2017.png" style="width:6.5in"></p>
+</figure>
+</div>
+<aside class="notes">
+<ul>
+<li><a href="https://drive.google.com/file/d/14zNalkNR6HKNjaKfewpCh9-fWReu06Mp/view">Source</a></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="het.-demand-model-cautions" class="slide level2 scrollable smaller">
+<section id="het.-demand-model-cautions" class="slide level2 smaller">
 <h2>Het. demand model cautions</h2>
 <ul>
 <li>Customer data needs to be high quality (GIGO, Errors-in-variables biases)</li>
-<li>Implementation needs to consider qualitative factors {effectiveness, legality, morality, privacy, conspicuousness, equity, reactance, costs, speed, understanding}</li>
-<li>Principle: Using data to legally, genuinely serve customers’ interests is usually OK</li>
-<li>Using private data against customer interest can harm some consumers, break laws, or incur liability</li>
+<li>Implementation needs to consider qualitative factors {effectiveness, legality, morality, privacy, conspicuousness, equity, reactance, costs, speed, understanding}
+<ul>
+<li>Guiding principle (not a rule): <br>Using data to legally, genuinely serve customers’ interests is usually OK</li>
+<li>Using private data against customer interest can harm some consumers, break laws, or incur liability. Litigation can kill a start-up</li>
+</ul></li>
 <li>Heterogeneity in a demand model does not resolve price endogeneity</li>
 </ul>
 <aside class="notes">
@@ -701,7 +756,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 </figure>
 </div>
 <ul>
-<li>T/F: Adding random predictors into <span class="math inline">\(X\)</span> will decrease OLS <span class="math inline">\(R^2\)</span>.</li>
+<li>T/F: Adding random predictors into <span class="math inline">\(X\)</span> can decrease OLS <span class="math inline">\(R^2\)</span>.</li>
 </ul>
 </section>
 <section id="class-script" class="slide level2">
@@ -737,7 +792,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="recap" class="slide level2">
 <h2>Recap</h2>
 <ul>
-<li>Heterogeneous demand models enable personalized customer analytics and marketing policies</li>
+<li>Heterogeneous demand models enable personalized and segment-specific marketing policies</li>
 <li>Demand models can incorporate discrete, continuous or individual-level heterogeneity structures</li>
 <li>Heterogeneous models are more powerful and fit better but may predict worse</li>
 </ul>
@@ -751,7 +806,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <h2>Going further</h2>
 <ul>
 <li><p><a href="https://drive.google.com/file/d/1pBEcKklgmKoDN6OdLRJ0E6LqB3YV3Cnx/view?usp=share_link">Heterogeneity in more detail</a></p></li>
-<li><p><a href="https://eml.berkeley.edu/books/choice2.html">Discrete Choice Methods with Simulation by Train (2009)</a></p></li>
+<li><p><a href="https://eml.berkeley.edu/books/choice2.html">Train (2009), Chapters 7-12</a></p></li>
 </ul>
 <div class="quarto-figure quarto-figure-right">
 <figure>

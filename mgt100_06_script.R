@@ -296,24 +296,30 @@ cv_mspe <- function(model, data, k=10, seed=4321) {
     set.seed(seed)
     
     # randomly assign each customer (J rows) to one of k folds
-    N <- length(unique(data$customer_id))
-    J <- length(unique(data$phone_id))
+    N <- length(unique(data$customer_id))   # number of customers
+    J <- length(unique(data$phone_id))      # number of products
     fold <- rep((1:N) %% k + 1, each=J)    # rep replicates list elements
-    
-    # loop over folds and store predicted choice probs
-    preds <- vector(length=nrow(data))
-    for(i in 1:k) {
-        # hold out the i'th fold
-        row_ids_train <- fold != i
-        row_ids_test  <- !row_ids_train
+    # %% is a modulus element, so what we're doing here is computing the remainder when
+    # dividing 1:N by (k+1). So mod(customer_id,10)+1 is always an integer between 1
+    # and 10. We repeat that 6 times for each customer, to match the mdat1 observations
         
-        # fit/train model on everything but the i'th fold
+    # preallocate the prediction storage
+    preds <- vector(length=nrow(data))     
+
+    # loop over folds 
+    for(i in 1:k) {
+
+    # create row indices for training & prediction observations      
+        row_ids_train <- fold != i     # which rows to keep in for training
+        row_ids_test  <- !row_ids_train  # which rows to hold out for prediction
+        
+        # fit/train model on training data
         out  <- mlogit(formula(model), data=data[row_ids_train,])
         
-        # predict choice probabilities for i'th fold
+        # predict choice probabilities for prediction data
         yhat <- predict(model, newdata = data[row_ids_test,])
         
-        # store yhat values in correct positions
+        # store yhat values for prediction data
         preds[row_ids_test] <- as.vector(t(yhat))
     }
     

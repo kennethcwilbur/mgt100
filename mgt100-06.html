@@ -419,7 +419,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li><a href="https://web.archive.org/web/20220217070659/https://qz.com/africa/1633699/transsions-tecno-infinix-camera-phones-made-for-dark-skin-tones/">Source</a></li>
 <li>Key learning here: Understanding how customer preferences differ between segments can enable optimization of product attributes for specific segments</li>
 <li>In this case, because most smartphone users never change the default camera settings, the default settings were optimized given local preferences, leading to a 48% market share for transsion</li>
-<li>The Google ad suggests (far from conclusively) that Google is also figuring out some of the same heterogeneous preferences for smartphone camera attributes</li>
+<li>The Google ad suggests that Google is also figuring out some of the same heterogeneous preferences for smartphone camera attributes, and how tuning defaults for local markets might increase sales</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -434,17 +434,17 @@ Kenneth C. Wilbur and Dan Yavorsky
       }</style></aside>
 </section>
 <section>
-<section id="heterogeneous-demand-models" class="title-slide slide level1 center">
-<h1>Heterogeneous Demand Models</h1>
+<section id="het.-demand-models" class="title-slide slide level1 center">
+<h1>Het. Demand Models</h1>
 <ol type="1">
-<li>Discrete heterogeneity by segment</li>
-<li>Continuous heterogeneity by customer attributes</li>
-<li>Individual-level demand parameters</li>
+<li><p>Discrete heterogeneity by segment</p></li>
+<li><p>Continuous heterogeneity by customer attributes</p></li>
+<li><p>Individual-level demand parameters</p>
+<pre><code>       -   We'll do 1 &amp; 2</code></pre></li>
 </ol>
 <aside class="notes">
 <ul>
 <li>Multiple approaches can be used together</li>
-<li>We’ll implement 1 &amp; 2, not 3</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -458,8 +458,8 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="demand" class="slide level2">
-<h2>Demand</h2>
+<section id="mnl-demand" class="slide level2">
+<h2>MNL Demand</h2>
 <ul>
 <li>Recall our MNL market share function <span class="math inline">\(s_{jt}=\frac{e^{x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^{J}{e^{x_{kt}\beta-\alpha p_{kt}}}}\)</span></li>
 <li>What is <span class="math inline">\(\alpha\)</span>?</li>
@@ -469,6 +469,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 </ul>
 <aside class="notes">
 <ul>
+<li>Everything here is review of last week; please ask about anything unclear</li>
 <li>By construction, base model assumes away the possibilities that (i) preference parameters vary across customer segments, or (ii) covary with customer attributes, or (iii) differ across customers at all. So we’ve ruled out the existence of hopefuls and fearfuls</li>
 </ul>
 <style type="text/css">
@@ -483,17 +484,23 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="how-can-we-use-heterogeneous-demand-models" class="slide level2">
-<h2>How can we use heterogeneous demand models?</h2>
-<ul>
-<li><p>Targeted innovations, product attributes, product line extensions, brand extensions</p></li>
-<li><p>Price discrimination, targeted discounts, coupons</p></li>
-<li><p>Changes to pricing structures</p></li>
-<li><p>Retention bonuses, loyalty programs</p></li>
-<li><p>Advertising content, media selection, audience targeting</p></li>
-<li><p>Distribution partner selection, compensation, incentives</p>
-<pre><code>  - Always need to consider effectiveness, fixed vs variable costs, legality, morality, privacy, conspicuousness, equity, reactance</code></pre></li>
-</ul>
+<section id="why-add-het." class="slide level2 smaller">
+<h2>Why add het.?</h2>
+<ol type="1">
+<li><p>MNL can estimate quality; Het demand estimates quality &amp; fit <!--Remind them about vertical&horizontal product differentiation--></p></li>
+<li><p>Enables “policy experiments” for variables we {manage,can measure,predict sales}</p>
+<pre><code>   - Pricing: price discrimination, two-part tariffs, fees, targeted coupons
+   - Customer relationships: Loyalty bonus, referral bonus, freebies
+   - Social media: Posts, likes, shares, comments, reviews
+   - Advertising: Ad frequency, content, media, channels
+   - Product attributes: Targeted attributes, line extensions, brand extensions
+   - Distribution: Partner selection, intensity/shelfspace, exclusion, in-store environment</code></pre></li>
+<li><p>Common individual- &amp; market-level factors (<span class="math inline">\(\gamma_t\)</span>, <span class="math inline">\(\gamma_i\)</span>)</p>
+<pre><code>   - E.g., customer income, usage intensity, category experience, etc.
+   - E.g., market size, history, population density, 
+   - Changes over time could interact with product attributes to affect demand</code></pre></li>
+<li><p>Quantifies M&amp;A results; oft used in antitrust</p></li>
+</ol>
 <aside class="notes">
 <ul>
 <li>Demand models let us estimate product qualities, but not product fit</li>
@@ -582,8 +589,8 @@ Kenneth C. Wilbur and Dan Yavorsky
 <ul>
 <li><p>We usually have to approximate the integral, often use Bayesian techniques (MSBA)</p>
 <pre><code>- Let's talk through how this works</code></pre></li>
-<li><p>We can alternatively estimate <span class="math inline">\(F\)</span> but that is very data intensive</p></li>
-<li><p>In theory, we could estimate all <span class="math inline">\((\alpha_i,\beta_i)\)</span> pairs without <span class="math inline">\(F\)</span>, but requires sufficient variation and numerous observations for each <span class="math inline">\(i\)</span></p></li>
+<li><p>Or, we can estimate <span class="math inline">\(F\)</span> but that is very data intensive</p></li>
+<li><p>In theory, we can estimate all <span class="math inline">\((\alpha_i,\beta_i)\)</span> pairs without <span class="math inline">\(\sim F(\Theta)\)</span> assumption, but requires numerous observations &amp; sufficient variation for each <span class="math inline">\(i\)</span></p></li>
 </ul></li>
 </ul>
 <aside class="notes">
@@ -605,10 +612,11 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="how-to-choose" class="slide level2">
 <h2>How to choose?</h2>
 <ul>
-<li>Humans choose the model</li>
-<li>How do you know if you specified a model correctly?</li>
-<li>How do you choose among plausible specifications?</li>
-<li>Pros and cons of model enrichments or simplifications?</li>
+<li><p>Humans choose the model</p></li>
+<li><p>How do you know if you specified the right model?</p>
+<pre><code>    - Hints: No model is ever "correct." No assumption is ever "true" (why not?)</code></pre></li>
+<li><p>How do you choose among plausible specifications?</p></li>
+<li><p>Pros and cons of model enrichments or simplifications?</p></li>
 </ul>
 <aside class="notes">
 <ul>
@@ -649,20 +657,53 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="refresher" class="slide level2">
-<h2>Refresher</h2>
+<section id="model-specification" class="slide level2">
+<h2>Model specification</h2>
 <ul>
-<li>More flexible models always fit data better</li>
-<li>Yet parsimony often improves predictions</li>
-<li>How do we choose? Some criteria:
-<ul>
-<li>Theory</li>
-<li>Precedent</li>
-<li>Purpose</li>
-<li>Model fit</li>
-<li>Predictive properties</li>
-</ul></li>
+<li><p>Bias-variance tradeoff</p>
+<pre><code>  -   Adding predictors always increases model fit
+  -   Yet parsimony often improves predictions</code></pre></li>
+<li><p>What criteria help choose a model?</p>
+<pre><code>  - Modeling objectives
+  - Theoretical properties
+  - Flexibility properties
+  - Precedent
+  - In-sample fit
+  - Prediction quality
+  - Computational properties</code></pre></li>
 </ul>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/overfitting_visualized.png" style="width:8.5in"></p>
+</figure>
+</div>
+<aside class="notes">
+<ul>
+<li>Here we want to visualize the process of overfitting</li>
+<li>Let’s imagine you’re estimating demand at a B2B firm with few customers</li>
+<li>Suppose you had 2 data points. You standardize your variables and fit a line. R2 = 1 !!</li>
+<li>Then you get another data point. You standardize again and fit a quadratic. R2 = 1 !!</li>
+<li>Then you get a 4th data point. Standardize again &amp; fit a cubic. R2 = 1 undefeated</li>
+<li>… you see the problem here? … consider # of degrees of freedom &amp; # of parameters</li>
+<li>Finally, suppose you had lots of data as in lower-right. Then you might discover the relationship is actually quite weak, and you have been dramatically overestimating the strength of the relationship up until now</li>
+<li>Is the true relationship actually changing with your sample size? Or are you just getting more data points?</li>
+<li><a href="https://www.quora.com/What-is-an-intuitive-explanation-of-over-fitting-particularly-with-a-small-sample-set-What-are-you-essentially-doing-by-over-fitting-How-does-the-over-promise-of-a-high-R%C2%B2-low-standard-error-occur">Source</a></li>
+<li>Another example: Suppose you studied for an exam by memorizing every word of the textbook. Then the professor asked you questions that asked you to apply your understanding of the text. If the only thing you did was return the text contents, you would get the questions wrong. That would be overfitting.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="cross-validation" class="slide level2">
 <h2>Cross-validation</h2>
@@ -676,11 +717,10 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>Repeat 2&amp;3 for every model <span class="math inline">\(m\)</span></li>
 <li>Retain the model with minimum prediction errors</li>
 </ol>
-<p>Bonus question: How do you choose models <span class="math inline">\(1,...,M\)</span>?</p>
 <aside class="notes">
 <ul>
-<li>Bonus answers: Sizes of prediction errors between models; but also: Theory; what models other people have fit; what models might work for this situation; flexible models that can approximate many other models, especially the many flavors of neural nets</li>
 <li>We often learn that most reasonable models perform similarly</li>
+<li>It’s really important to keep in mind that cross-validation is simply 1 input into the model selection criterion. It will matter most when our main objective is prediction. Even then it won’t be the sole model selection criterion</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -721,14 +761,15 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="het.-demand-model-cautions" class="slide level2 smaller">
-<h2>Het. demand model cautions</h2>
+<section id="covpower-responsibility" class="slide level2 smaller">
+<h2>Cov(Power, Responsibility)</h2>
 <ul>
 <li>Customer data needs to be high quality (GIGO, Errors-in-variables biases)</li>
 <li>Implementation needs to consider qualitative factors {effectiveness, legality, morality, privacy, conspicuousness, equity, reactance, costs, speed, understanding}
 <ul>
 <li>Guiding principle (not a rule): <br>Using data to legally, genuinely serve customers’ interests is usually OK</li>
 <li>Using private data against customer interest can harm some consumers, break laws, or incur liability. Litigation can kill a start-up</li>
+<li>Major US laws: COPPA, GLBA, HIPAA, patchwork of state laws</li>
 </ul></li>
 <li>Heterogeneity in a demand model does not resolve price endogeneity</li>
 </ul>
@@ -748,7 +789,7 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-3" class="slide level2">
+<section id="section-4" class="slide level2">
 <h2><!--#Intermission--></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -792,9 +833,9 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="recap" class="slide level2">
 <h2>Recap</h2>
 <ul>
-<li>Heterogeneous demand models enable personalized and segment-specific marketing policies</li>
-<li>Demand models can incorporate discrete, continuous or individual-level heterogeneity structures</li>
-<li>Heterogeneous models are more powerful and fit better but may predict worse</li>
+<li><p>Heterogeneous demand models enable personalized and segment-specific policy experiments</p></li>
+<li><p>Demand models can incorporate discrete, continuous and/or individual-level heterogeneity structures</p></li>
+<li><p>Heterogeneous models fit better, but may predict worse if over-specified</p></li>
 </ul>
 <div class="quarto-figure quarto-figure-right">
 <figure>
@@ -807,6 +848,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <ul>
 <li><p><a href="https://drive.google.com/file/d/1pBEcKklgmKoDN6OdLRJ0E6LqB3YV3Cnx/view?usp=share_link">Heterogeneity in more detail</a></p></li>
 <li><p><a href="https://eml.berkeley.edu/books/choice2.html">Train (2009), Chapters 7-12</a></p></li>
+<li><p><a href="https://arxiv.org/abs/1812.11118">Reconciling modern machine learning practice and the bias-variance trade-off</a></p></li>
 </ul>
 <div class="quarto-figure quarto-figure-right">
 <figure>

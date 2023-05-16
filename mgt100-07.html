@@ -385,7 +385,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li><p>Cost-based pricing</p></li>
 <li><p>Experiments, algorithms (eg bandits, rev mgmt)</p></li>
 <li><p>Demand estimation</p>
-<pre><code>- Requires data, price variation, causal identification, human attention/expertise</code></pre></li>
+<pre><code>- Requires data, price variation, causal identification, human attention/expertise </code></pre></li>
 <li><p>Customer co-determination</p>
 <pre><code>- Monopsony, auctions, negotiation, pay-what-you-want</code></pre></li>
 <li><p>None: Seller takes market price</p></li>
@@ -563,6 +563,14 @@ Kenneth C. Wilbur and Dan Yavorsky
 <h2></h2>
 <p><img data-src="images/conjoint_price_attribute.png"></p>
 </section>
+<section id="more-factors-price-as-a-signal" class="slide level2">
+<h2>More factors: Price as a signal</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/schmitt.png" style="width:9in"></p>
+</figure>
+</div>
+</section>
 <section id="signals-and-perceived-quality" class="slide level2">
 <h2>Signals and <em>Perceived Quality</em></h2>
 <ul>
@@ -694,12 +702,19 @@ Kenneth C. Wilbur and Dan Yavorsky
 </section>
 <section id="left-digit-bias-lyft-rides" class="slide level2">
 <h2>Left-digit bias: Lyft rides</h2>
-<p><img data-src="images/leftdigit-lyft.jfif"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/leftdigit-lyft.jfif" style="width:7in"></p>
+</figure>
+</div>
+<p><a href="https://www.restud.com/wp-content/uploads/2023/02/main.pdf">List et al.&nbsp;(2023)</a>: 600 million price offers &amp; 390 million rides</p>
+<pre><code>           "Approximately half of the downward slope of demand occurs discontinuously as the price of a ride drops below a dollar value (e.g. $14.00 to $13.99)" 
+       </code></pre>
 <aside class="notes">
 <ul>
 <li>This graph shows the empirical probability of a Lyft rider declining a ride, depending on the price estimate quoted in the app</li>
-<li>Clearly, Increasing the digit before the decimal has a discontinuous effect on ride probability</li>
-<li>Source: John List at U-Chicago</li>
+<li>Ran a field experiment on 21 million Lyft users, dropping some .09 prices to .99 and some .00 prices to .99. Found discontinuous effects on ride completion, consistent with observational evidence. Treated users were more likely to continue using Lyft in the future</li>
+<li>“Simple pricing change that we enacted is worth approximately 0.39% in profit per user… approximately $160M per year [in 2019]”</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -718,6 +733,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <p><img data-src="images/leftdigit-taxappeal.jfif"></p>
 <aside class="notes">
 <ul>
+<li>Left-digit bias is not limited to pricing settings. It has been found in many places, such as tax effects, salary effects</li>
 <li>Not pricing data, but more strong evidence of consumer left-digit bias</li>
 <li>This graph shows the likelihood that a homeowner will appeal their property tax appraisal, as a function of the house’s appraised value</li>
 <li>Not only are there strong left-digit effects, crossing the hundred-thousand threshold reverses the trend in (100,110k).</li>
@@ -776,14 +792,6 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="more-factors-price-as-a-signal" class="slide level2">
-<h2>More factors: Price as a signal</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/schmitt.png" style="width:9in"></p>
-</figure>
-</div>
-</section>
 <section id="more-factors-anchoring" class="slide level2">
 <h2>More factors: Anchoring</h2>
 <ul>
@@ -828,24 +836,41 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="refresher-price-elasticity-of-demand" class="slide level2">
 <h2>Refresher: Price Elasticity of Demand</h2>
 <ul>
-<li><p><span class="math inline">\(elas.=\frac{d(lnQ)}{d(lnP)}=\frac{P}{Q}\frac{dQ}{dP}\le 0\)</span></p></li>
-<li><p>For <span class="math inline">\(-1&lt;elas.&lt;0\)</span>, we say demand is price-inelastic</p></li>
-<li><p>For <span class="math inline">\(elas.&lt;-1\)</span>, we say demand is price-elastic</p></li>
-<li><p>Elasticity is “scale-free”</p></li>
-<li><p>We can calculate elasticity at a point, or on an interval</p></li>
-<li><p>Results depend on interval width and demand curvature</p></li>
-<li><p>Narrower intervals yield more precise elasticities</p></li>
+<li><p><span class="math inline">\(elas.=\frac{d(lnQ)}{d(lnP)}=\frac{P}{Q}\frac{dQ}{dP}\le 0\)</span></p>
+<pre><code>        - "Given a 1% change in price, what is the % change in quantity demanded"
+        - Elasticity is "scale-free;" comparable across markets &amp; time</code></pre>
+<ul>
+<li>For <span class="math inline">\(-1&lt;elas.&lt;0\)</span>, we say demand is price-inelastic</li>
+<li>For <span class="math inline">\(elas.&lt;-1\)</span>, we say demand is price-elastic</li>
+</ul></li>
+<li><p>We can calculate elasticity:</p>
+<ol type="1">
+<li><p>At a point, using a model to give us the slope</p></li>
+<li><p>Use 2 points to approximate the derivative, w/out a model</p>
+<pre><code> - Approximation error increases with interval width and demand curvature
+ - We can approximate at multiple points, compare implied elasticities</code></pre></li>
+</ol></li>
 </ul>
 </section>
-<section id="refresher-price-elasticity-of-demand-1" class="slide level2">
+<section id="refresher-price-elasticity-of-demand-1" class="slide level2 smaller scrollable">
 <h2>Refresher: Price Elasticity of Demand</h2>
 <ul>
-<li><p><span class="math inline">\(elas.=\frac{d(lnQ)}{d(lnP)}=\frac{P}{Q}\frac{dQ}{dP}\)</span><br>
-</p></li>
-<li><p>A special class of demand functions have constant elasticity</p>
-<p><span class="math inline">\(Q=e^a*P^b\)</span> for <span class="math inline">\(a&gt;0\)</span> &amp; <span class="math inline">\(b&gt;0\)</span>, then <span class="math inline">\(elast.=b\)</span></p>
-<p>Implies <span class="math inline">\(ln Q=\alpha+\beta lnP\)</span>, called “log-log”</p>
-<pre><code>  Have to handle endogeneity to estimate right beta </code></pre></li>
+<li><p><span class="math inline">\(elas.=\frac{d(lnQ)}{d(lnP)}=\frac{P}{Q}\frac{dQ}{dP}\)</span></p></li>
+<li><p>A special class of demand functions have “constant elasticity”</p>
+<p><span class="math inline">\(Q=e^b*P^{E}\)</span> for <span class="math inline">\(E\le 0\)</span> &amp; <span class="math inline">\(b&gt;0\)</span>, then <span class="math inline">\(elast.=E\)</span></p>
+<p>Implies <span class="math inline">\(ln Q=b + E * lnP\)</span>, called “log-log regression”</p>
+<pre><code>  Have to handle endogeneity to estimate right E </code></pre></li>
+<li><p>With constant MC=C, <span class="math inline">\(\pi=\text{max}_P (P-C)*Q(P)\)</span> has FOC</p></li>
+</ul>
+<p><span class="math display">\[Q + \frac{dQ}{dP}(P - C) = 0\]</span></p>
+<pre><code>          - multiply both terms by P/Q &amp; substitute elas. formula</code></pre>
+<p><span class="math display">\[P+E(P-C)=0 \]</span></p>
+<pre><code>          - solve for optimal P, given your model
+          </code></pre>
+<p><span class="math display">\[ P = \frac{CE}{1+E}=\frac{C}{1+E^{-1}}\]</span></p>
+<pre><code>          - This optimal price conditions on constant-elasticity demand
+          - If we relax the constant-elasticity restriction, we may find a different optimal price</code></pre>
+<ul>
 <li><p>C.E. imposes a particular shape on demand &amp; enables easy price optimization, given marginal cost data</p></li>
 <li><p>But, constant elasticity restricts demand, thus can lead to suboptimal pricing</p></li>
 </ul>
@@ -861,8 +886,9 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li><span class="math inline">\(p^*=argmax_{p_m} \pi(p_m)\)</span></li>
 <li>Optional: Repeat using a more refined grid around <span class="math inline">\(p^*\)</span></li>
 </ul></li>
-<li><p>We often assume <span class="math inline">\(c_j(q_j(p_j))=c\)</span> for convenience</p></li>
-<li><p>Multiproduct line pricing requires sum over brand’s owned products</p></li>
+<li><p>We often assume <span class="math inline">\(c_j(q_j(p_j))=c\)</span> for convenience</p>
+<pre><code>        - Grid search easily accommodates non-constant cost functions</code></pre></li>
+<li><p>Multiproduct line pricing requires summation over brand’s owned products</p></li>
 <li><p>Can you predict competitor price reaction, or how your demand responds to new competitor price? How?</p></li>
 </ul>
 <aside class="notes">
@@ -928,9 +954,10 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="recap" class="slide level2">
 <h2>Recap</h2>
 <ul>
-<li>The most common price setting methods are value pricing, competitor price matching, and cost-based. All 3 leave much to be desired</li>
-<li>Consumers generally expect prices to be commensurate with products’ quality positions in the marketplace</li>
-<li>Demand models based on archival data enable optimal pricing but they require data, variation, identification, and human attention and expertise. Therefore they are scarce</li>
+<li>Most common pricing methods: Value pricing, Competitor matching, Cost-based. All 3 leave much to be desired</li>
+<li>Pricing challenges explain why prices may be suboptimal</li>
+<li>Consumers strongls expect prices to reflect products’ quality positions in the market</li>
+<li>Optimal pricing requires attention to non-economic factors, including signaling, price perceptions, left-digit bias, cognitive costs, decoy effects, anchoring and price salience</li>
 </ul>
 <div class="quarto-figure quarto-figure-right">
 <figure>

@@ -3,6 +3,11 @@
 # Today we use the heterogeneous MNL from week 6 to assess whether we should
 # hire a celebrity to affiliate with our brand.
 
+# step 1. calculate predicted profit without celebrity affiliation, based on 
+# demand model and current price
+# Step 2. Find new optimal prices conditioning on CCE
+# Step 3: Make the business decision of how much to offer celeb 
+
 # We're going to be Samsung in today's example
 
 setwd("G:/My Drive/aaaCURRENT/2023mgt100/scripts")
@@ -13,7 +18,7 @@ library(mlogit)
 
 # Suppose we are Samsung, like last week, with the same market size and marginal costs.
 # We are considering hiring @Khaby.Lame of TikTok fame to be a celebrity
-# spokesperson for our brand. Should we do this?
+# spokesperson for our brand. How much should we offer?
 
 # load data, fit het mnl model
 
@@ -23,7 +28,7 @@ load("../data/mnl_datasets.RData")
 # get the product names for the 6 products
 prod_vec <- c("A1", "A2", "S1", "S2", "H1", "H2")
 
-# fit het mnl data
+# fit het mnl demand model
 out <- mlogit(choice ~ apple:segment +
   samsung:segment +
   price:segment +
@@ -31,14 +36,15 @@ out <- mlogit(choice ~ apple:segment +
   price:total_minutes:segment | 0, data = mdat1)
 
 
-# calculate predicted profit without celebrity affiliation
+# step 1. calculate predicted profit without celebrity affiliation, based on 
+# demand model and current price
 
 # predicted product-specific market shares
 pred1 <- colMeans(predict(out, newdata = mdat1))
 names(pred1) <- prod_vec
 round(pred1 * 100, 1)
 
-# store baseline prices and product-specific profits in a little 1x8 tibble
+# store baseline prices and predicted market shares in a tibble, for S1 & S2
 d1 <- tibble(
   price1 = 799,
   share1 = pred1[3],
@@ -78,21 +84,18 @@ d1
 # suppose we learn from a conjoint market research study that a celebrity like
 # @Khaby.Lame will improve our brand perception by an amount delta.
 # And suppose we have done some work to convert delta into a "CCE"
-# that is, an equivalent celebrity coefficient effect of size 0.14
+# that is, an equivalent "celebrity coefficient effect" of size 0.14
+
+# I.e., the endorsement would increase the samsung brand intercept by 0.14
+
 # and further, that the CCE applies equally to all 3 consumer segments
-# (in reality, celebrity effects will be heterogeneous, but let's keep it simple
-# for now)
+# (in reality, most celebrity effects will be heterogeneous, but let's keep it 
+# simple # for now)
 
 # let's get an adjusted demand model s' that accounts for cce
 cce <- 0.14
 out_adj <- out
 out_adj$coefficients[4:6] <- out_adj$coefficients[4:6] + cce
-
-# NEED A COMMENT HERE, OR DELETE
-###out_adjA <- out
-###out_adjA$coefficients[1:3]<-out$coefficients[1:3]+cce
-###predA <- colMeans(predict(out_adjA, newdata = mdat1))
-
 
 # now let's revise our phone-specific market share predictions
 pred2 <- colMeans(predict(out_adj, newdata = mdat1))
@@ -109,7 +112,7 @@ round(pred2 * 100, 1)
 round(shr_change * 100, 2)
 # Did we see what we expect?
 
-# predict profit with celebrity endorsement
+# predict profit with celebrity endorsement, holding prices fixed
 d2 <- tibble(
   price1 = 799,
   share1 = pred2[3],
@@ -148,17 +151,19 @@ ggplot(pdat) +
   scale_fill_manual("Celebrity", values = c(No = "Firebrick", Yes = "Dodgerblue4")) +
   theme_bw()
 
+# How much is the pure demand effect of the celebrity endorsement? 
 
-# Find new optimal prices conditioning on CCE
+# Step 2. Find new optimal prices conditioning on CCE
 
 # this mimics what we did last week, but instead of searching for the best price
 # for one phone, we will search for the best price for both Samsung phones at the
 # same time. In other words, a 2-dimensional grid search
 
-# get a vector of price changes to use for each phone
+# get a vector of 21 price changes to consider: {-100,-90,...,+90,+100}
 pvec <- seq(from = -100, to = 100, by = 10)
+pvec
 
-# get all combinations of price changes for the two phones
+# list all combinations of price changes:  21x21=441 policy experiments
 res <- expand.grid(pvec, pvec)
 View(res)
 
@@ -230,7 +235,7 @@ d3 <- d3 |>
 rbind(d1, d2, d3)
 
 
-# Make the business decision of whether to hire celeb or not
+# Step 3: Make the business decision of how much to offer celeb 
 
 # calculate increase in profit from celeb (with price optimization)
 d3$total_profit - d1$total_profit
@@ -238,7 +243,8 @@ d3$total_profit - d1$total_profit
 # --> hire @Khaby.Lame for any amount less 
 
 
-# What if celeb decides to affiliate with rival firm...?
+# What if celeb decides to endorse a rival firm...?
+# What could we use our model to figure out?
 
 # Summary of R commands introduced
 

@@ -6,7 +6,7 @@ setwd("G:/My Drive/aaaCURRENT/2023mgt100/scripts")
 
 # Today we fit a Bass Model to estimate new product diffusion.
 # The context is immaterial, but we could suppose the product is virtual reality 
-#    goggles, like the Oculus
+#    goggles, like Oculus
 
 library(tidyverse)
 
@@ -15,6 +15,7 @@ library(tidyverse)
 # --------------------
 
 #choose true parameters, we'll use these to simulate data
+# then we'll use the simulated data to recover the parameters
 M<-100
 p<-.02     # coefficient of innovation
 q<-.2      # coefficient of imitation
@@ -68,7 +69,7 @@ ggplot(sim) +
 out_lm <- lm(N ~ A + I(A^2), data = sim)
 summary(out_lm)
 
-# How well did the model fit the data?
+# What did we find? How well did the model fit the data?
 
 # Let's use our estimated model to predict sales
 sim$lmpred <- predict(out_lm)
@@ -80,7 +81,8 @@ ggplot(sim) +
   geom_point(aes(t,lmpred), color="green") 
 
 
-# Now let's estimate the Bass model using Nonlinear Least Squares and the exact solution
+# Now let's estimate the Bass model a second way, using a different approach
+# This time we'll use Nonlinear Least Squares and the exact solution
 
 # First let's define our NLS objective that we want to minimize, as a function of p and q
 bass_sse <- function(pq, N_t, A_t, M) {
@@ -199,7 +201,7 @@ predlonglm <- function(model,short_T,modelpred){
   
   # Seed the first accumulated sales 
   A <- longpred[short_T]
-  
+
   # For periods between short_T and 40,
   for (i in short_T+1:40-short_T){
 
@@ -234,9 +236,9 @@ sspeLM <- sum((retrodictions$LMlong[(short_T+1):40]-retrodictions$N[(short_T+1):
 sspeNLS <- sum((retrodictions$NLSlong[(short_T+1):40]-retrodictions$N[(short_T+1):40])^2)
 print(c(sspeLM, sspeNLS))
 
+# Let's make vectors of prediction errors so we can graph them
 peLM<- retrodictions$LMlong[(short_T+1):40]-retrodictions$N[(short_T+1):40-short_T]
 peNLS <- retrodictions$NLSlong[(short_T+1):40-short_T]-retrodictions$N[(short_T+1):40-short_T]
-
 tt <- retrodictions$t[(short_T+1):40] - 0.0
 pe <- cbind(tt,peLM,peNLS)
 pe <- as.data.frame(pe)
@@ -245,21 +247,51 @@ ggplot(pe) +
   geom_point(aes(tt,peLM), color="green") +
   geom_point(aes(tt,peNLS), color="purple") 
 
-# Now, change short_T to 8 and re-run the script; what happens?
+# For what values of short_T does NLS retrodict better than OLS?
 
-# Now, change short_T to 5 and re-run the script; what happens?
+# We just calculated summed prediction errors for short_T==12
+# Let's repeat that exercise for every short_T from 3 to 40
 
-# Now, change short_T to 18 and re-run the script; what happens?
+sspeLM_shortT<-vector(mode="numeric",length=39)
+sspeNLS_shortT<-vector(mode="numeric",length=39)
 
-# The fundamental cause is the bias-variance tradeoff, along with the exact solution
-# built into the NLS model, whereas the linear quadrati has to approximate the process. 
-# Let's discuss. Learn more here: https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff
+# This loop varies short_T values from 3 to 39, then repeats ourprevious script contents
+# and stores each model's sum of squared prediction errors for each short_T
+for (i in 3:39){
+  short_T<-i  
+  shortsim <- sim[1:short_T,]
+  out_lm2 <- lm(N ~ A + I(A^2), data = shortsim)
+  shortsim$lmpred <- predict(out_lm2)
+  nls2short <- optim(par = init, fn = bass_sse, N_t = shortsim$N, A = shortsim$A, M = M)
+  shortsim$NLSpredN <- predN(M, nls2short$par[[1]], nls2short$par[[2]], Nstart, short_T)
+  NLSlong <- predN(M, nls2short$par[[1]], nls2short$par[[2]], Nstart, 40)
+  LMlong <- predlonglm(out_lm2,short_T,shortsim$lmpred)
+  sspeLM_shortT[[i]] <- sum((LMlong[(short_T+1):40]-N[(short_T+1):40])^2)
+  sspeNLS_shortT[[i]] <- sum((NLSlong[(short_T+1):40]-N[(short_T+1):40])^2)
+} 
 
-# A generalizable takeaway: actions you take to increase R-sq can reduce the model's
-# predictive ability. You need to take this seriously if you care about prediction.
+# Graph the summed prediction errors as a function of short_T
+ii<-1:39-0.0
+gsspe<-as.data.frame(cbind(sspeLM_shortT,sspeNLS_shortT,ii))
+ggplot(gsspe) +
+  geom_point(aes(ii,sspeLM_shortT), color="green") +
+  geom_point(aes(ii,sspeNLS_shortT), color="purple") +
+  ggtitle("More training data -> Smaller retrodiction errors: OLS (green) vs NLS (purple)") +
+  ylab("Sum of Squared Prediction Errors") +
+  xlab("Training data size") 
+  
+# Remember the bias-variance tradeoff: Model fit can reduce predictive ability   
+# https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff
 
-# You can also vary p, q and short_T, and rerun the script, to learn more about 
-# how these properties manifest within this example
+# The reason the NLS performs reasonably well, even with just 6 data points, is that 
+# its structure nests the true data generating process. 
 
-# Note: we can also do this comparison by feeding in short_T period data on A and N
-# into the models, then running that forward until period 40. The results are similar.
+# This is a common tradeoff in analytics: Purpose-built models using relevant theory
+# can outperform robust general models with limited training data
+
+# However, in most settings and with enough data, more flexible models will often 
+# effectively learn the relevant structure without the need for context-specific
+# theoretical assumptions
+
+# You can vary p, q and short_T, and rerun the script, to learn more about 
+# how various parameter values affect the retrodiction exercise

@@ -7,7 +7,7 @@
 <link href="mgt100-09_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="mgt100-09_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="mgt100-09_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.2.475">
+  <meta name="generator" content="quarto-1.2.335">
 
   <meta name="author" content="Kenneth C. Wilbur and Dan Yavorsky">
   <title>Customer Revenue</title>
@@ -350,7 +350,7 @@
 </div>
 <aside class="notes">
 <ul>
-<li>We don’t have a lot of great public literature on CLV. There is a lot of money in consulting on CLV systems, so most CLV literature is advertising in disguise, and a lot of important knowledge is not shared without payment</li>
+<li>We don’t have a lot of great literature on CLV. There is a lot of money in consulting on CLV systems, so most CLV literature is advertising in disguise, and a lot of important knowledge is not shared</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -368,13 +368,13 @@
 <h2>Customers and Retail Growth</h2>
 <ul>
 <li><p><a href="https://www.nber.org/system/files/working_papers/w29561/w29561.pdf">Einav et al. (2021)</a> analyzed all US Visa CC transaction data</p>
-<pre><code>- $1T+ spent in 32B transactions by 428MM cards at 1MM stores from 2016-19
+<pre><code>- \$1+T spent in 32B transactions by 428MM cards at 1MM stores from 2016-19
 - Assume card~=customer </code></pre></li>
 </ul>
 <p><span class="math inline">\(\text{BrandRev.} = \sum spend \equiv \sum \frac{stores}{1} \frac{cards}{stores} \frac{transactions}{cards} \frac{spend}{transactions}\)</span></p>
 <ul>
-<li><p>How well does each factor explain brand revenue?</p></li>
-<li><p>Regressed log(rev) on log RHS with merchant &amp; year fixed effects</p></li>
+<li><p>Research question: How well does each factor explain brand revenue?</p></li>
+<li><p>Regressed log revenue on log RHS with merchant and year fixed effects</p></li>
 </ul>
 </section>
 <section id="section" class="slide level2">
@@ -454,8 +454,9 @@
 <section id="market-size" class="slide level2">
 <h2>Market Size</h2>
 <ul>
-<li><p>Market size (<span class="math inline">\(N\)</span>): # of people who experience the core need in a given time period</p>
-<pre><code>- Noisy but helps inform potential returns to investments 
+<li><p>Market size (<span class="math inline">\(N\)</span>): # of people who might pay to address the core need in a given time period</p>
+<pre><code>- Alternatively measured in $, units or volume; can replace "might pay to address" with "experience"
+- Noisy but helps inform potential returns to investments 
 - Typical investor's first question: 
 $100B market is viewed differently than a $100MM market
 - How will you know if you got the right answer?
@@ -486,13 +487,12 @@ $100B market is viewed differently than a $100MM market
 <ul>
 <li>3 ways to estimate:
 <ul>
-<li><p>“Top Down” Total Addressable Market (TAM) : <br>How many people have the core need?</p></li>
-<li><p>“Bottom up” Served Available Market (TAM): <br>How many people pay to solve the core need?</p>
+<li>“Top Down” Total Addressable Market (TAM) : <br>How many people have the core need?</li>
+<li>“Bottom up” Served Available Market (TAM): <br>How many people pay to solve the core need?
 <ul>
 <li>TAM=SAM+Unserved</li>
 </ul></li>
-<li><p>Analyst estimates</p>
-<pre><code>   - Often estimate SAM in $, units or volume</code></pre></li>
+<li>Analyst estimates</li>
 </ul></li>
 <li>Best practice: Use all three, triangulate, gauge sensitivity</li>
 </ul>
@@ -556,7 +556,7 @@ $100B market is viewed differently than a $100MM market
 <aside class="notes">
 <ul>
 <li>Important: these products are not randomly selected, they are intentionally selected to make a point</li>
-<li>Of course there remain many technology products with slow adoption. Think about robot vacuums, e-bikes, time-lapse photo equipment, etc etc etc</li>
+<li>Of course there remain many technology products with slow adoption. Think about robot vacuums, time-lapse or other phone peripherals, etc etc etc</li>
 <li>But there does seem to be something to the idea that social media has the potential to dramatically accelerate diffusion for some “winning” products</li>
 </ul>
 <style type="text/css">
@@ -583,7 +583,7 @@ $100B market is viewed differently than a $100MM market
 <li>For completeness we should consider the full scope of products launched every year</li>
 <li>Even if we limit ourselves to food &amp; drug channels, it’s massive, on the order of 35-40k new SKUs launched in a typical year</li>
 <li>90-95% fail completely within 6 months, as in revenues go to zero and manufacturer withdraws the product (Wilbur &amp; Farris 2014)</li>
-<li>Unfortunately Mintel stopped sharing these data with USDA</li>
+<li>Unfortunately USDA stopped updating these data publicly, probably because Mintel increased price too much</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -663,7 +663,7 @@ $100B market is viewed differently than a $100MM market
 <ul>
 <li><p>This is a first-order diffEQ with analytic solution</p>
 <p><span class="math display">\[A(t)=M\frac{1-e^{-(p+q)t}}{1+\frac{q}{p}e^{-(p+q)t}}\]</span></p></li>
-<li><p>If you have sales data by time, you can use Nonlinear Least Squares to estimate <span class="math inline">\(p\)</span>, <span class="math inline">\(q\)</span> and <span class="math inline">\(M\)</span>, i.e.&nbsp;choose parameters to minimize square errors <span class="math inline">\((LHS-RHS)^2\)</span></p></li>
+<li><p>If you have sales data by time, you can use Nonlinear Least Squares to estimate <span class="math inline">\(p\)</span>, <span class="math inline">\(q\)</span> and <span class="math inline">\(M\)</span>, i.e.&nbsp;choosing parameters to minimize square errors <span class="math inline">\((LHS-RHS)^2\)</span></p></li>
 </ul>
 <aside class="notes">
 <ul>
@@ -684,15 +684,15 @@ $100B market is viewed differently than a $100MM market
 <section id="another-way-to-estimate-bass" class="slide level2">
 <h2>Another way to estimate Bass</h2>
 <ul>
-<li><p>Or, notice that <span class="math inline">\(\frac{dA(t)}{dt}=pR(t)+q\frac{A(t)}{M}R(t)\)</span> <span class="math inline">\(=p(M-A(t)) + q \frac{A(t)}{M}(M-A(t))\)</span> <span class="math inline">\(=pM + (q-p)A(t)-\frac{q}{M} A(t)^2\)</span></p></li>
+<li><p>Or, notice that <span class="math inline">\(\frac{dA(t)}{dt}=pR(t)+q\frac{A(t)}{M}R(t)\)</span> <span class="math inline">\(=p(M-A(t)) + q* \frac{A(t)}{M}(M-A(t))\)</span> <span class="math inline">\(=pM + (q-p)A(t)+\frac{q}{M} A(t)^2\)</span></p></li>
 <li><p>We can regress <span class="math inline">\(\frac{dA(t)}{dt}\)</span> on a quadratic in installed base</p>
 <pre><code>- Then recover p, q &amp; M from the parameter estimates
 - We'll do both</code></pre></li>
 <li><p>Extensions: Multiple markets, hazard models, <br>types of “influence”</p></li>
 </ul>
 </section>
-<section id="modelsestimators-arent-11" class="slide level2">
-<h2>Models:estimators aren’t 1:1?</h2>
+<section id="pause-modelsestimators-arent-11" class="slide level2">
+<h2>Pause : Models:estimators aren’t 1:1?</h2>
 <ul>
 <li>Consider 3 OLS estimators:</li>
 </ul>
@@ -730,7 +730,7 @@ Subfield that studies estimators' theoretical properties: "econometrics"</code><
 <aside class="notes">
 <ul>
 <li>These are two of the graphics from the OG paper. He even forecasted sales of black &amp; white TVs</li>
-<li>Other examples were not quite as clean as these, but I’m glad he showed that non-clean examples, it helps to show that he didnt cherrypick what to include or not.</li>
+<li>I kind of cherry picked these examples. others were not so clean, but I’m glad he showed that non-clean examples, it helps to show that he didnt cherrypick what to include or not.</li>
 <li>Think about what an advance this looked like at the time. with just a few data points of sales, you could reasonably predict the future, which would help to inform investment decisions</li>
 </ul>
 <style type="text/css">
@@ -776,7 +776,8 @@ Subfield that studies estimators' theoretical properties: "econometrics"</code><
 <li><p>Diffusion depends on Relative Advantage, Perceived Complexity, Compatibility, Observability, Risk, Divisibility (aka “Trialability”)</p>
 <pre><code>- Summarized 40 years of research, incredibly influential on practice 
 - Provided diagnostics to interpret Bass (1969)'s predictive analytics
-- E.g., a prototype could be evaluated on these 6 dimensions then optimized for diffusion</code></pre></li>
+- E.g., a prototype could be evaluated on these 6 dimensions then modified
+- Early example of HARKing but likely useful</code></pre></li>
 </ul>
 </section>
 <section id="more-explanations-for-diffusion-curves" class="slide level2">
@@ -846,10 +847,10 @@ Subfield that studies estimators' theoretical properties: "econometrics"</code><
 <li>Utah’s first pilot program placed 17 people in homes scattered around Salt Lake City, and after twenty-two months not one of them was back on the streets. In the years since, the number of Utah’s chronically homeless has fallen by 74%.</li>
 <li>“Numerous random controlled trials have found that 85-90% of the participants in housing first programs are still housed 2 years later.”</li>
 </ul>
-
 <aside class="notes">
 <ul>
-<li>I’m not sure your stereotype about utah, but many would not guess they invented housing first. It was CLV metrics that showed it to be worthwhile. It’s the serious effort to quantify lifetime value that moved this from drawing-board to actual policy. Humanitarian upsides have been tremendous.</li>
+<li>http://www.politico.com/magazine/story/2016/12/what-works-albuquerque-homeless-solution-housing-policy-214527</li>
+<li>I’m not sure your stereotype about utah, but many would not guess they invented housing first. It was CLV metrics that showed it to be a no-brainer. It’s the serious effort to quantify lifetime value that moved this from dream to reality. Humanitarian upsides have been tremendous.</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -862,11 +863,7 @@ Subfield that studies estimators' theoretical properties: "econometrics"</code><
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<aside><div>
-<ul>
-<li>Source: <a href="http://www.politico.com/magazine/story/2016/12/what-works-albuquerque-homeless-solution-housing-policy-214527">Politico Magazine (2016)</a>, among others</li>
-</ul>
-</div></aside></section>
+</section>
 <section id="housing-first-looking-deeper" class="slide level2">
 <h2>Housing First: Looking deeper</h2>
 <ul>
@@ -878,7 +875,7 @@ Subfield that studies estimators' theoretical properties: "econometrics"</code><
 - Housing First has been implemented haphazardly
 - UT built new apartments. CA uses shelters, SROs, vouchers  
 - Point of contention: require wraparound services or not? E.g. Addiction treatment, job counseling, mental health, etc</code></pre></li>
-<li><p>I claim: Quantification enables novel policies</p>
+<li><p>I claim: Quantification enables major policy shifts</p>
 <pre><code>- USA adopted Housing First as its preferred approach to homelessness in 2014
 - CLV estimates help predict policy effects, enable ex-post evaluations
 - We then can use data to refine CLV estimates and policies</code></pre></li>
@@ -1055,9 +1052,9 @@ Subfield that studies estimators' theoretical properties: "econometrics"</code><
 <h2>Churn Management</h2>
 <ul>
 <li><p><span class="math inline">\(Churn\equiv 1-Retention\)</span>.</p></li>
-<li><p>HBR (2014): <a href="https://hbr.org/2014/10/the-value-of-keeping-the-right-customers">“…increasing customer retention rates by 5% increases profits by 25% to 95%.”</a></p>
+<li><p>Motivating claim: <a href="https://hbr.org/2014/10/the-value-of-keeping-the-right-customers">“…increasing customer retention rates by 5% increases profits by 25% to 95%.”</a></p>
 <pre><code>- Avg. CAC = 5-25 * Cost of keeping a customer
-- Average net margin is about 7-8% overall; or 12-13% in the S&amp;P 500 
+- Average net margin is about 7-8% overall; or 12-13% in the S&amp;P 500
 - Small changes in revenue can have large effect on profits</code></pre></li>
 <li><p>Hence CLV firms focus intensely on retaining customers</p>
 <pre><code>- Implication: Tell the company you're leaving! You may get something</code></pre></li>
@@ -1202,7 +1199,7 @@ Subfield that studies estimators' theoretical properties: "econometrics"</code><
 <h2>Recap</h2>
 <ul>
 <li>Customer acquisitions best predict revenues</li>
-<li>Market size estimates how many experience the core need</li>
+<li>Market size estimates how many people share a core need</li>
 <li>Diffusion models predict how served market changes</li>
 <li>CLV metrics can quantify and enable novel policies</li>
 </ul>
@@ -1215,7 +1212,6 @@ Subfield that studies estimators' theoretical properties: "econometrics"</code><
 <section id="going-further" class="slide level2">
 <h2>Going further</h2>
 <ul>
-<li><p><a href="https://web.archive.org/web/20230521203046/https://medium.com/pinterest-engineering/an-ml-based-approach-to-proactive-advertiser-churn-prevention-3a7c0c335016">An ML based approach to proactive advertiser churn prevention</a> (Pinterest 2023)</p></li>
 <li><p><a href="https://www.sciencedirect.com/science/article/pii/S0167811610000236">Innovation Diffusion and New Product Growth Models (Peres et al. 2009)</a></p></li>
 <li><p><a href="https://drive.google.com/file/d/148LB_atkG7Q7awUkZHQseEXigCUHxAnU/view?usp=share_link">Customer-Base Valuation in a Contractual Setting with Heterogeneity (Fader &amp; Hardie 2010)</a></p></li>
 <li><p><a href="https://drive.google.com/file/d/1v_U9A1_NcpdxkvrRvsNY9fAQpVhwgnFT/view?usp=share_link">Exploring the Distribution of Customer Lifetime Value (Fader &amp; Hardie 2017)</a></p></li>

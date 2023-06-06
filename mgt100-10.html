@@ -382,7 +382,8 @@ Kenneth C. Wilbur and Dan Yavorsky
 - ROI estimates &amp; budgets (ads, sales, product launch, ...)
 - Customer opportunity evaluations &amp; financial forecasts
 - M&amp;A analyses, complementarities &amp; market impacts
-- Behavioral finance AKA acknowledging that investors are humans and therefore subject to biases</code></pre></li>
+- Behavioral finance AKA acknowledging that investors are humans and therefore subject to biases, perceptions, incomplete information, suboptimal behavior, etc
+- ...</code></pre></li>
 <li><p>Yet disciplinary cultures differ</p></li>
 <li><p>Current areas of opportunity</p></li>
 </ul>
@@ -414,11 +415,12 @@ Kenneth C. Wilbur and Dan Yavorsky
 - Tough experiment to run, but demand usually slopes down</code></pre></li>
 <li><p>CorpVal: Develops, applies models to value businesses</p>
 <pre><code>- Inherently stochastic, but ideally closer to appraisal than speculation
-- Do results depend on who pays? Buyer, seller, 3rd party</code></pre></li>
+- Do results depend on who pays for the appraisal? Buyer, seller, 3rd party</code></pre></li>
 </ul>
 <aside class="notes">
 <ul>
 <li>Corporate valuation is its own field</li>
+<li>CorpVal was “solved” a long time ago. Not very dynamic</li>
 <li>something something “Gamestop”</li>
 </ul>
 <style type="text/css">
@@ -613,7 +615,7 @@ NOPAT_T = f(\{ACQ_{T-t},RET_{T-t}\}_{t=1,...,T})
 - Purchase frequency varies across customers &amp; time
 - Spending varies across customers &amp; time
 - Cross-selling opportunities and takeup vary across customers &amp; time</code></pre></li>
-<li><p>Greater variance and model uncertainty, <br>hence forecasts are more uncertain</p></li>
+<li><p>Greater variance and model uncertainty, <br>hence forecasts are more uncertain than subscription biz, <br>but likely more certain than NOPAT forecasts</p></li>
 </ul>
 <aside class="notes">
 <ul>
@@ -729,7 +731,7 @@ NOPAT_T = f(\{ACQ_{T-t},RET_{T-t}\}_{t=1,...,T})
 <li>GOV: roughly proportional to revenue</li>
 <li>Notice how smoothly GOV changed from 2017-20</li>
 <li>What happened in 2020-March?</li>
-<li>Working with a totally different data source here: credit card expendtiure panels with millions of consumers from Earnest Research</li>
+<li>Working with a totally different data source here: credit card expenditure panels with millions of consumers from Earnest Research</li>
 <li><a href="https://www.linkedin.com/pulse/doordash-instacart-shipt-tale-3-covid-bumps-daniel-mccarthy/">Source: McCarthy (2021)</a></li>
 </ul>
 <style type="text/css">
@@ -760,7 +762,7 @@ NOPAT_T = f(\{ACQ_{T-t},RET_{T-t}\}_{t=1,...,T})
 <ul>
 <li>Now, let’s look under the hood at C(.,.)</li>
 <li>Again, notice how smoothly Instacart retention changed from 2017-20</li>
-<li>But, retention was trending down from 2017-20 as more stores started delivering</li>
+<li>But, retention was trending down from 2017-20 as more stores started delivering and adopting lower-commission delivery services</li>
 <li>You can see that Instacart retention rose during the pandemic</li>
 <li>Investors could translate that retention increase to firm value</li>
 <li><a href="https://www.linkedin.com/pulse/doordash-instacart-shipt-tale-3-covid-bumps-daniel-mccarthy/">Source: McCarthy (2021)</a></li>
@@ -898,7 +900,7 @@ NOPAT_T = f(\{ACQ_{T-t},RET_{T-t}\}_{t=1,...,T})
 <li><p>Prediction: A tipping point</p>
 <pre><code>  - Should incentivize start-ups toward customer retention 
   - Should make capital allocation more efficient 
-  - But, won't happen until investors demand it</code></pre></li>
+  - But, won't happen until enough investors demand it</code></pre></li>
 </ul>
 <aside class="notes">
 <ul>
@@ -906,7 +908,7 @@ NOPAT_T = f(\{ACQ_{T-t},RET_{T-t}\}_{t=1,...,T})
 <li>Fader &amp; McCarthy are on their second related start-up to popularize CBCV, having sold the first one to Nike</li>
 <li>when enough firms report customer-level metrics, then the ones that don’t should be seen as low quality investments</li>
 <li>Ofc, lots of investors still buy low-quality investments</li>
-<li>Currently, customer acquisition is overemphasized by many investors</li>
+<li>Currently, customer acquisition is overemphasized by many investors, relative to customer retention</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -962,10 +964,7 @@ NOPAT_T = f(\{ACQ_{T-t},RET_{T-t}\}_{t=1,...,T})
 <li><p>No ASK more than the lowest open ask (why?)</p></li>
 <li><p>No BID less than the highest open bid</p></li>
 <li><p>You can only ask/bid/accept if you have the asset or cash to cover</p></li>
-<li><p>We track all trades; you track your own assets, payouts and cash by round</p>
-<ul>
-<li><a href="https://docs.google.com/spreadsheets/d/1eAmIIGBdTgFCLXxy03NW4gLl2uah1c6tnMc6GfmRn3w/edit?usp=sharing">Copy this google sheet</a>; let’s walk through it</li>
-</ul></li>
+<li><p>We track all trades; you track your own assets, payouts and cash by round</p></li>
 <li><p>Raise your hand to ask/bid/accept</p></li>
 <li><p>Any questions?</p></li>
 </ul>
@@ -996,11 +995,16 @@ NOPAT_T = f(\{ACQ_{T-t},RET_{T-t}\}_{t=1,...,T})
 <section id="section-1" class="slide level2">
 <h2></h2>
 <ul>
+<li><p>What was your team’s strategy?</p></li>
 <li><p>What happened?</p></li>
 <li><p>Why did that happen?</p></li>
-<li><p>What strategy did your team use?</p></li>
 <li><p>How might this connect to real financial markets?</p></li>
+<li><p>Are you good at finance?</p></li>
 </ul>
+<!--You need 1+ of 3 things to be good at finance -->
+<!--1. ability to do the math-- did you calculate the fundamental value -->
+<!--2. understand psychology of the market, so you can predict price movements -->
+<!--3. understand your own psychology & stick to a trading strategy -->
 </section>
 <section id="section-2" class="slide level2">
 <h2><!--#Intermission--></h2>

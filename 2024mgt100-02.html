@@ -592,7 +592,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="section-2" class="slide level2">
 <h2></h2>
 <ul>
-<li><em>Nearly every</em> large business segments segments its markets</li>
+<li><em>Nearly every</em> large business segments its markets</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -728,13 +728,15 @@ Kenneth C. Wilbur and Dan Yavorsky
 <h2>Customer Data Platform (CDP) - 4 jobs</h2>
 <ol type="1">
 <li><p>Data collection</p>
-<pre><code>  Intake data from numerous disparate sources</code></pre></li>
+<pre><code>  Intake data from numerous disparate sources:
+  In-house, direct partners, data brokers, public data</code></pre></li>
 <li><p>Data unification or harmonization</p>
 <pre><code>  Authenticate and de-duplicate rows and columns</code></pre></li>
 <li><p>Data comprehension</p>
-<pre><code>  Generate inferences, test hypotheses, make predictions, estimate models</code></pre></li>
+<pre><code>  Generate inferences, test hypotheses, make predictions, estimate models
+  Covers descriptive, diagnostic &amp; predictive analytics</code></pre></li>
 <li><p>Data activation</p>
-<pre><code>  Use data to inform and automate marketing actions</code></pre></li>
+<pre><code>  Prescriptive analytics: Use data to inform and automate marketing actions</code></pre></li>
 </ol>
 
 <aside><div>
@@ -755,9 +757,9 @@ Kenneth C. Wilbur and Dan Yavorsky
   Less data wrangling </code></pre></li>
 <li><p>Some caveats</p>
 <pre><code>  Low barriers to entry
-  Most datasets are not audited or externally validated
+  Most datasets are not audited or externally validated (for now)
   Many buyers don't really know how to check data quality
-  These conditions can lead to a lemons market
+  These conditions can lead to a lemons/peaches market
   Buyer beware: Always try before you buy</code></pre></li>
 </ul>
 </section></section>
@@ -774,7 +776,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <ul>
 <li><p>Suppose we</p>
 <ol type="1">
-<li><p>Train demand model <span class="math inline">\(M\)</span> …</p></li>
+<li><p>Train demand model <span class="math inline">\(M\)</span> to predict mayonnaise sales …</p></li>
 <li><p>… using information set <span class="math inline">\(X\)</span> …</p></li>
 <li><p>… &amp; choose targeted discounts for each consumer to maximize firm profits</p>
 <pre><code> - Essentially 3rd-degree price discrimination</code></pre></li>
@@ -782,7 +784,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li><p>Separately, using different data, we nonparametrically estimate how each individual responds to price discounts</p>
 <pre><code>      - This gives us ground-truth to assess each household's response to price discount
       - But, the nonparametric estimate can't give counterfactual predictions; we need M for that</code></pre></li>
-<li><p>How do profits from targeted discounts depend on <span class="math inline">\(M\)</span> and <span class="math inline">\(X\)</span>?</p>
+<li><p>How do targeted coupon profits depend on <span class="math inline">\(M\)</span> and <span class="math inline">\(X\)</span>?</p>
 <pre><code>      - We use model $M$ and $X$ to predict profits of offering a price discount to each individual household
       - We use ground-truth to calculate household response, then calculate profits across all households
       - We'll also compare to no-discount and always-discount strategies</code></pre></li>
@@ -790,7 +792,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 
 <aside><div>
 <ul>
-<li><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3882214">Optimal Price Targeting (MkSc 2022)</a></li>
+<li><a href="https://drive.google.com/file/d/1ZruRntqyLfLyvYE7kCXCqUNJOfxhpwuq/view?usp=sharing">Optimal Price Targeting (MkSc 2022)</a></li>
 </ul>
 </div></aside></section>
 <section id="a-little-bit-of-theory" class="slide level2">
@@ -802,11 +804,8 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li><p>… a marginal customer may increase profit</p></li>
 <li><p>… another brand’s loyal customer does not change profit</p></li>
 </ul></li>
-<li><p>So the demand model’s challenge is to</p>
-<ul>
-<li><p>correctly identify the marginal customers</p></li>
-<li><p>without accidentally identifying our own brand-loyal customer</p></li>
-</ul></li>
+<li><p>So the demand model’s challenge is to correctly identify the marginal customers without accidentally identifying our own brand-loyal customer</p>
+<pre><code>    - This research disregards the `post-promotion dip' for simplicity</code></pre></li>
 </ul>
 </section>
 <section id="information-sets-x" class="slide level2">
@@ -850,7 +849,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 
 <aside><div>
 <ul>
-<li>All models trained using 5-fold cross validation. See <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3882214">paper</a> and <a href="https://drive.google.com/drive/folders/1dNpmeYKMtvUuSFd19k772vVeKksBzsQq?usp=share_link">estimation code</a> for further details</li>
+<li>All models trained using 5-fold cross validation. See <a href="https://drive.google.com/file/d/1ZruRntqyLfLyvYE7kCXCqUNJOfxhpwuq/view?usp=sharing">paper</a> and <a href="https://drive.google.com/drive/folders/1dNpmeYKMtvUuSFd19k772vVeKksBzsQq?usp=share_link">estimation code</a> for further details</li>
 </ul>
 </div></aside></section>
 <section id="section-4" class="slide level2">
@@ -936,9 +935,9 @@ Kenneth C. Wilbur and Dan Yavorsky
 <ul>
 <li><p>To predict behavior, use past behavior</p></li>
 <li><p>Economic theory can help demand models to perform well with limited behavioral data</p></li>
-<li><p>ML performance depends critically on predictor quality</p></li>
+<li><p>ML performance depends critically on data quality. Predictions do not always outperform economic models</p></li>
 <li><p>Statistical performance <span class="math inline">\(\ne\)</span> economic performance</p></li>
-<li><p>We’ll build on logit models w purchase data in weeks 5 &amp; 6</p></li>
+<li><p>We’ll start estimating logit models soon</p></li>
 </ul>
 <aside class="notes">
 <ul>
@@ -999,7 +998,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>Customer database</li>
 <li>Consult customer experts (salespeople)</li>
 <li>Find out what other firms are doing</li>
-<li>Let sales data pick for us (Week 5)</li>
+<li>Let sales data pick for us (het. logit)</li>
 </ol>
 <div class="quarto-figure quarto-figure-right">
 <figure>
@@ -1133,6 +1132,10 @@ Kenneth C. Wilbur and Dan Yavorsky
 <p><img data-src="images/local_min.png" style="width:6in"></p>
 </figure>
 </div>
+<pre><code>    - $W$ is not globally concave, so we can't guarantee a global minimum
+    - Thus, we pick many starting points, and see which offers the lowest W
+    - Note: Some algos promise to find global minimum, but this is usually impossible without stringent criteria. Can be a 'tell'
+    </code></pre>
 <!--This slide is here just to explain what's the difference between a local 
 and global minimum (in 1 dimension), to explain why step 5 on the previous slide exists, and to mention that properties of the data can lead us into local minima from unlucky
 starting points-->

@@ -22,7 +22,7 @@ sub
 # and plot them
 
 ggplot(sub, aes(gaming, handsize)) +
-  geom_point() +
+  geom_point(alpha=.3) +
   theme_minimal()
 
 # the gaming variable is "censored" at 0, meaning it cannot take on negative values
@@ -187,7 +187,7 @@ ggplot(iris, aes(x = Petal.Length, y = Petal.Width)) +
 
 # "confusion matrix" -- ie, actual vs predicted
 iris |>
-  select(Species, cluster) |>
+  select(cluster, Species) |>
   table()
 
 # what is a confusion matrix?
@@ -351,7 +351,7 @@ rm(cent_dat, centers, c1, c2, c3, c4, clust, cluster)
 # add segment memberships back into the original customer data
 cust_dat <- cust_dat |> 
   mutate(cluster = factor(out$cluster))
-# let's look at the dtaa to check it
+# let's look at the data to check it
 View(cust_dat)
 
 

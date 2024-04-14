@@ -340,7 +340,6 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="lets-reflect" class="slide level2">
 <h2>Let’s reflect</h2>
 <ul>
-<li><a href="https://r4ds.had.co.nz/model-basics.html">R4DS <em>Model Basics</em></a></li>
 <li><a href="https://drive.google.com/file/d/1j5JnVRQM1Qz5qksgUF5DpgC5jM-W7Iz0/view?usp=share_link">Train (2009), Sec. 3.1, 3.3, 3.9</a></li>
 <li><a href="https://drive.google.com/file/d/1ldtzSTfpa_Jnc9RlXo_V5Jd76ORC2YbA/view?usp=share_link">Causal inference in econ and marketing by Varian</a></li>
 </ul>
@@ -466,7 +465,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <h2>How firms learn demand</h2>
 <ul>
 <li><p>Market research</p>
-<pre><code>    - Typically, conjoint analysis or simulated purchase environments </code></pre></li>
+<pre><code>    - Typically, conjoint analysis, customer interviews or simulated purchase environments </code></pre></li>
 <li><p>Expert judgments, e.g.&nbsp;salesforce input</p></li>
 <li><p>Cost-driven price adjustments</p></li>
 <li><p>Demand modeling with archival data</p></li>
@@ -494,10 +493,10 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="price-experiments" class="slide level2">
 <h2>Price Experiments</h2>
 <ul>
-<li><p>Ideally, the best way to learn demand, but…</p>
+<li><p>Ideally, the best way to learn demand, because you create exogenous price variation; but…</p>
 <ul>
 <li><p>Competitors &amp; consumers can observe price variation</p></li>
-<li><p>May change purchase timing, stockpiling or reference prices</p></li>
+<li><p>May change purchase timing, stockpiling or <br>reference prices</p></li>
 <li><p>Competitors, distribution partners or suppliers may react</p></li>
 </ul></li>
 <li><p>Hence, experimenting to learn demand may change future demand</p></li>
@@ -509,15 +508,18 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li><p>Relatively inexpensive for large organizations</p></li>
 <li><p>Confidential</p></li>
 <li><p>Depends on real consumer choices, i.e.&nbsp;revealed preferences</p></li>
+<li><p>Enables counterfactual demand predictions at unobserved prices</p></li>
+<li><p>Enables predictions of competitor pricing response</p></li>
+<li><p>Evaluable after price changes or competitor price changes</p></li>
 </ul>
 </section>
 <section id="demand-modeling-cons" class="slide level2">
 <h2>Demand Modeling: Cons</h2>
 <ul>
-<li><p>Requires data, exogenous price variation, time, effort, training, trust, organizational buy-in</p></li>
-<li><p>Subject to untestable modeling assumptions</p></li>
-<li><p>Requires the future to resemble the past</p>
-<pre><code>    - To be fair, most analytic techniques require these 3</code></pre></li>
+<li><p>Requires data, exogenous price variation, time, effort, training, commitment, trust, organizational buy-in</p></li>
+<li><p>Always subject to untestable modeling assumptions</p></li>
+<li><p>Requires the near future to resemble the recent past</p>
+<pre><code>    - To be fair, all predictive analytic techniques require these 3</code></pre></li>
 </ul>
 <aside class="notes">
 <ul>
@@ -545,13 +547,13 @@ Kenneth C. Wilbur and Dan Yavorsky
 <ul>
 <li><p>Evidence is scarce but supportive</p>
 <pre><code>- Informally, I know several people who maintain demand models in large orgs
-- Formal evidence requires researchers and firm to collaboratively (a) estimate demand, (b) act on demand estimates, (c) observe how actions affect outcomes, &amp; (d) report the results. Hard to do &amp; incentives conflict
+- Formal evidence requires researchers and firm to collaboratively (a) estimate demand, (b) act on demand estimates, (c) observe how actions affect outcomes, &amp; (d) report the results publicly. Hard to do &amp; incentives conflict
 - Demand modeling can also go badly, e.g. due to price endogeneity</code></pre>
 <ul>
 <li><p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1474462">Misra &amp; Nair (2011)</a> : B2B sales &amp; salesforce compensation</p></li>
 <li><p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2399676">Nair et al.&nbsp;(2017)</a> : Casino loyalty rewards</p></li>
 <li><p><a href="https://economics.mit.edu/research/publications/how-well-do-structural-demand-models-work-counterfactual-predictions-school">Pathak and Shi (2021)</a> : School choice</p></li>
-<li><p><a href="https://drive.google.com/file/d/1lUEYiiyd1G4j49HhjEkJU9C-ACf53fWo/view?usp=share_link">Dube and Misra (2023)</a> : Ziprecruiter ad pricing</p></li>
+<li><p><a href="https://drive.google.com/file/d/1lUEYiiyd1G4j49HhjEkJU9C-ACf53fWo/view?usp=share_link">Dube and Misra (2023)</a> : ZipRecruiter ad pricing</p></li>
 </ul></li>
 </ul>
 </section>
@@ -612,7 +614,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>Then, assuming each <span class="math inline">\(i\)</span> picks the <span class="math inline">\(j\)</span> that maximizes <span class="math inline">\(u_{ijt}\)</span>, has unit demand, and that <span class="math inline">\(\epsilon_{ijt}\sim\)</span><em>i.i.d.</em><span class="math inline">\(EV_1(0,1)\)</span>, market share is</li>
 </ul>
 <p><span class="math display">\[Prob.\{u_{ijt}&gt;u_{ikt}\forall{k\ne j}\}\equiv s_{jt}=\frac{e^{x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}\]</span></p>
-<p>With <span class="math inline">\(N_t\)</span> consumers, <span class="math inline">\(q_{jt}(\vec{p})=N_t s_{jt}\)</span>. See Train 2009 sec 3.10 for proof</p>
+<p>With <span class="math inline">\(N_t\)</span> consumers, <span class="math inline">\(q_{jt}(\vec{x}; \vec{p})=N_t s_{jt}\)</span>. See Train 2009 sec 3.10 for proof</p>
 <ul>
 <li>Estimating <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> enables us to predict <em>every product’s quantity response</em> to a change in <em>any product’s attributes</em> <span class="math inline">\(x_{jt}\)</span> or price <span class="math inline">\(p_{jt}\)</span></li>
 </ul>
@@ -645,7 +647,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <p><span class="math display">\[s_{jt}=\frac{e^{\gamma_{t}}   e^{x_{jt}\beta-\alpha p_{jt}}}{e^{\gamma_{t}}\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}\]</span></p>
 <p><span class="math display">\[s_{jt}=\frac{e^{x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}\]</span></p>
 <ul>
-<li>Similar exercise applies to individual-specific intercepts <span class="math inline">\(\gamma_i\)</span></li>
+<li>Similar exercise applies to individual-specific intercepts <span class="math inline">\(\gamma_i\)</span>, or individual-time interactions <span class="math inline">\(\gamma_{it}\)</span>. Only differences across products affect predicted market shares</li>
 </ul>
 <aside class="notes">
 <ul>
@@ -749,18 +751,23 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="mnl-pros" class="slide level2">
 <h2>MNL Pros</h2>
 <ol type="1">
-<li><p>Microfounded, i.e.&nbsp;behavioral predictions are consistent with a clearly specified theory of consumer choice</p></li>
+<li><p>Microfounded, i.e.&nbsp;behavioral predictions are consistent with a clearly specified theory of consumer choice</p>
+<pre><code>   - Economists widely believe that microfounded models are more generalizable than purely statistical models*</code></pre></li>
 <li><p>Extensions accommodate preference heterogeneity</p>
-<pre><code>  - We'll cover 3 extensions next week</code></pre></li>
+<pre><code>  - We'll cover 3 types of extensions when we cover heterogeneous demand modeling</code></pre></li>
 <li><p>Likelihood function is globally concave in the parameters, ensuring fast and reliable estimation</p></li>
 </ol>
-</section>
+
+<aside><div>
+<p>*<a href="https://economics.mit.edu/sites/default/files/2023-11/Theory_Transfer.pdf">This paper</a> supports this belief</p>
+</div></aside></section>
 <section id="mnl-cons" class="slide level2">
 <h2>MNL Cons</h2>
 <ol type="1">
 <li><p>Assuming <span class="math inline">\(\epsilon_{ijt}\sim\)</span><em>i.i.d.</em><span class="math inline">\(EV_1(0,1)\)</span> is convenient but unrealistic</p>
 <pre><code> - Alternatives exist but can be computationally expensive</code></pre></li>
-<li><p>Analyst selects the choice set and attributes <span class="math inline">\((x_{jt},p_{jt})\)</span>. What’s a <span class="math inline">\(j\)</span>? What’s a <span class="math inline">\(t\)</span>? What’s in <span class="math inline">\(x\)</span>? How do we measure <span class="math inline">\(p\)</span>?</p></li>
+<li><p>Analyst selects the choice set <span class="math inline">\(J\)</span>, market size <span class="math inline">\(N_t\)</span>, attributes <span class="math inline">\(x_{jt}\)</span>, and price structure <span class="math inline">\(p_{jt}\)</span>.</p>
+<pre><code> - What's a j? What's a t? What's in x? How do we measure p? Who's in N?</code></pre></li>
 <li><p>Market share derivatives depend on market shares alone (IIA; see Train Sec. 3.6)</p></li>
 <li><p>Price Endogeneity</p>
 <pre><code>   - Affects all demand models</code></pre></li>
@@ -788,7 +795,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <ul>
 <li>Famous example from McFadden (1974)</li>
 <li>Suppose you estimate demand for transportation with three options: {Blue Bus, Red Bus, Car}, each with 33% market share</li>
-<li>Now suppose you painted the red buses blue and want to predict market shares</li>
+<li>Now suppose you painted the red buses blue and want to predict market shares in the new choice set: {Blue Bus, Car}</li>
 <li>MNL will predict Blue Bus and Car shares of 50%, not 67% and 33% (why?)</li>
 </ul>
 </section>
@@ -805,18 +812,18 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="price-endogeneity" class="slide level2 scrollable smaller">
 <h2>Price endogeneity</h2>
 <ul>
-<li><p>Fundamental issue: Demand model should be a causal relationship but prices are usually nonrandom, so we need a way to distinguish correlation from causation</p>
+<li><p>Fundamental issue: Demand model should be a causal relationship but prices are usually nonrandom. We have to distinguish correlation from causation</p>
 <pre><code>    - Prices may covary with unobserved demand shifters, unmeasured product attributes or other missing variables
     - Price endogeneity is a measurement problem, not a modelling problem
     - Hard to verify empirically--needed data is missing--but widely believed important</code></pre></li>
-<li><p><span class="math inline">\(\hat{\alpha}\)</span> will be biased when prices depend on unmodeled demand factors (e.g., image, reliability). Implies wrong demand slope, wrong model implications</p></li>
-<li><p>Typically, bias will be toward zero (“too flat”)</p></li>
+<li><p><span class="math inline">\(\hat{\alpha}\)</span> will be biased when prices depend on unmodeled demand factors (e.g., image, reliability). Implies wrong demand slope, biased demand predictions</p></li>
+<li><p>Typically, bias will be toward zero (“too flat”), hence underestimating price sensitivity and overestimating price change</p></li>
 <li><p>Affects all demand models, not just MNL</p></li>
 <li><p>Common solutions: Experiments or quasi-experiments (Instrumental variables, regression discontinuities, natural experiments, dfce-in-dfce, synthetic control, double/debiased machine learning)</p></li>
 </ul>
 </section>
 <section id="price-endogeneity-in-mnl" class="slide level2">
-<h2>Price Endogeneity in MNL</h2>
+<h2>Price endogeneity in MNL</h2>
 <ul>
 <li>Berry (1994): Linearize MNL and use instruments</li>
 </ul>
@@ -894,6 +901,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <ul>
 <li>Demand modeling enables data-driven sales predictions for counterfactual prices and attributes</li>
 <li>MNL is popular bc it is powerful, microfounded and tractable</li>
+<li>MNL has some important limitations (eg, IIA) which can be alleviated by modeling heterogeneity</li>
 <li>Price endogeneity is a measurement problem that biases demand parameter estimates when price is correlated with unobserved demand shifters. Can often be resolved through experimental or quasi-experimental techniques</li>
 </ul>
 <div class="quarto-figure quarto-figure-right">
@@ -905,6 +913,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="going-further" class="slide level2">
 <h2>Going further</h2>
 <ul>
+<li><p><a href="https://dzidas.com/ml/2023/10/15/blind-spot-ds/">Causal inference as a blind spot of data scientists</a></p></li>
 <li><p><a href="https://drive.google.com/file/d/1lNxxLrq33PKnFk_fNuvo0V5m6ouqo18K/view?usp=share_link">McFadden’s Nobel Lecture</a></p></li>
 <li><p><a href="https://drive.google.com/file/d/12kTW1xtAao-miPgLoPEjDxb6BZwUvfNY/view?usp=share_link">Discrete Choice Analysis with R</a></p></li>
 <li><p><a href="https://drive.google.com/file/d/1lVHbbhFhabD8OYDFyDad5O3CIjjV4PQ2/view?usp=share_link">Microeconometric models of consumer demand by Dube</a></p></li>

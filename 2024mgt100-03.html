@@ -578,9 +578,9 @@ Kenneth C. Wilbur and Dan Yavorsky
 <h2></h2>
 <ul>
 <li><p>Suppose you are the UCSD Chancellor</p></li>
-<li><p>You want to know which UC Campuses compete with you for California freshman applicants</p></li>
+<li><p>You want to know how much each UC Campus competes with you for California freshman applicants</p></li>
 <li><p>You posit that selectivity and time-to-degree matter most</p>
-<pre><code>    - Students want a good academic environment
+<pre><code>    - Students want to connect with smart students
     - Students want to graduate on time</code></pre></li>
 </ul>
 </section>
@@ -616,7 +616,8 @@ Kenneth C. Wilbur and Dan Yavorsky
 <ul>
 <li><p>Enter Principal Components Analysis</p>
 <pre><code>    - Powerful way to summarize data 
-    - Projects into a lower dimensional space
+    - Projects high-dimensional data into a lower dimensional space 
+    - Designed to minimize information loss during compression
     - Pearson (1901) invented; Hotelling rediscovered (1933 &amp; 36)</code></pre></li>
 </ul>
 </section>
@@ -627,7 +628,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li><p>Consider this a <span class="math inline">\(K\)</span>-dimensional space containing <span class="math inline">\(J\)</span> points</p></li>
 <li><p>Calculate <span class="math inline">\(X'X\)</span>, a <span class="math inline">\(K\)</span>-by-<span class="math inline">\(K\)</span> covariance matrix of the attributes</p></li>
 <li><p>1st <span class="math inline">\(x\)</span> eigenvectors of the attribute covariance matrix give unit vectors to map products in <span class="math inline">\(x\)</span>-dimensional space</p>
-<pre><code>   - We'll typically use just 2, to draw a picture</code></pre></li>
+<pre><code>   - We'll use first 2 eigenvectors for visualization</code></pre></li>
 </ol>
 <aside class="notes">
 <ul>
@@ -656,7 +657,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 
 <aside><div>
 <ul>
-<li>Project each datapoint onto the blue best-fit line (R-sq = .9)</li>
+<li>Project each datapoint orthogonally onto the best-fit line (R-sq = .9)</li>
 <li><a href="https://drive.google.com/file/d/1fXne7bez1fJj_F6Zz-u6pfqWgMzYQS7X/view?usp=sharing">source code</a></li>
 </ul>
 </div></aside></section>
@@ -679,36 +680,38 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li><a href="https://drive.google.com/file/d/1fXne7bez1fJj_F6Zz-u6pfqWgMzYQS7X/view?usp=sharing">source code</a></li>
 </ul>
 </div></aside></section>
-<section id="pca-faq" class="slide level2">
+<section id="pca-faq" class="slide level2 scrollable">
 <h2>PCA FAQ</h2>
 <ol type="1">
 <li><p>How do I interpret the principal components?</p>
 <pre><code>   - Each principal component is a linear combination of the larger space's axes
-   - Principal components are always orthogonal to each other, by construction
-   - PCA drawback: loss of interpretability of absolute points in space</code></pre></li>
+   - Principal components are always orthogonal to each other, by construction</code></pre></li>
 <li><p>What are the main assumptions of PCA?</p>
-<pre><code>   - Data are linearly related
-   - Data variation indicates information importance 
-   - Principal components that explain the most variation matter most</code></pre></li>
+<pre><code>   - Variables are continuous and linearly related
+   - Principal components that explain the most variation matter most
+   - Drawbacks: information loss, reduced spatial interpretability, outlier sensitivity</code></pre></li>
 <li><p>How do I choose the # of principal components?</p>
-<pre><code>   - Business criteria: 1, 2 or 3 if you want to visualize the data
+<pre><code>   - Business criteria: 1 or 2 if you want to visualize the data
+   - Business criteria: Or, value of compressed data in subsequent operations 
    - Statistical criteria: Cume variance explained, scree plot, eigenvalue &gt; 1</code></pre></li>
 <li><p>What are some similar tools to PCA?</p>
-<pre><code>   - There are many: Factor analysis, linear discriminant analysis, independent component analysis, ... all reduce data using various goals and methods</code></pre></li>
+<pre><code>   - Factor analysis, linear discriminant analysis, independent component analysis... </code></pre></li>
 </ol>
 </section>
 <section id="how-does-pca-relate-to-k-means" class="slide level2">
 <h2>How does PCA relate to K-means?</h2>
 <ul>
-<li><p>Both are unsupervised ML algos</p>
-<pre><code>   - Both have "tuning parameters" (# segments, # principal components)
-   - But they serve different purposes &amp; can be used together</code></pre></li>
 <li><p>K-Means identifies clusters within a dataset</p>
 <pre><code>    - K-Means augments a dataset by identifying similarities within it
     - K-Means never discards data</code></pre></li>
 <li><p>PCA combines data dimensions to condense data with minimal information loss</p>
 <pre><code>    - PCA is designed to optimally reduce data dimensionality
     - PCA facilitates visual interpretation but does not identify similarities </code></pre></li>
+<li><p>Both are unsupervised ML algos</p>
+<pre><code>   - Both have "tuning parameters" (e.g. # segments, # principal components)
+   - They serve different purposes &amp; can be used together
+   - E.g. run PCA to first compress large data, then K-Means to group points
+   - Or, K-Means to identify clusters, then PCA to visualize them in 2D space</code></pre></li>
 </ul>
 </section>
 <section id="conceptual-organization" class="slide level2">
@@ -720,13 +723,17 @@ Kenneth C. Wilbur and Dan Yavorsky
 </div>
 
 <aside><div>
-<p><a href="https://drive.google.com/file/d/1fWszsqTpWn7OqKreZxAr0MqezC-eToG4/view?usp=sharing">source</a></p>
+<ul>
+<li>K-Means falls into “Clustering” along with many similar algorithms</li>
+<li><a href="https://drive.google.com/file/d/1fWszsqTpWn7OqKreZxAr0MqezC-eToG4/view?usp=sharing">source</a></li>
+</ul>
 </div></aside></section>
-<section id="practicalities" class="slide level2">
-<h2>Practicalities</h2>
+<section id="mapping-practicalities" class="slide level2">
+<h2>Mapping Practicalities</h2>
 <ol type="1">
 <li><p>How to measure intangible attributes like trust?</p>
-<pre><code>   - Ask consumers, e.g. "How much do you trust this brand?"</code></pre></li>
+<pre><code>   - Ask consumers, e.g. "How much do you trust this brand?"
+   - Marketing Research exists to measure subjective attributes and perceptions</code></pre></li>
 <li><p>What if we don’t know, or can’t measure, the most important attributes?</p>
 <pre><code>   - Multidimensional scaling</code></pre></li>
 <li><p>How should we weigh attributes?</p></li>
@@ -756,26 +763,23 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li><em>Multidimensional scaling</em> draws <em>perceptual maps</em></li>
 </ul>
 <ol type="1">
-<li>Suppose you can measure product similarity</li>
-<li>For <span class="math inline">\(J\)</span> products, populate the <span class="math inline">\(JxJ\)</span> matrix of similarity scores</li>
-<li>Use PCA to reduce to a lower-dimensional space</li>
+<li><p>Suppose you can measure product similarity</p></li>
+<li><p>For <span class="math inline">\(J\)</span> products, populate the <span class="math inline">\(JxJ\)</span> matrix of similarity scores</p>
+<pre><code>   - With J brands, we have J points in J dimensions. Each dimension j indicates similarity to brand j. PCA can projects J dimensions into 2D for plotting</code></pre></li>
+<li><p>Use PCA to reduce to a lower-dimensional space</p>
+<pre><code>   - Pro: We don't need to predefine attributes
+   - Con: Axes can be hard to interpret</code></pre></li>
 </ol>
-<ul>
-<li>Pro: We don’t need to predefine attributes</li>
-<li>Con: Axes are hard to interpret</li>
-</ul>
 </section>
 <section id="multidimensional-scaling" class="slide level2">
 <h2>Multidimensional scaling</h2>
-<p>Summary: Run PCA on a square symmetric matrix of (dis)similarity scores, then project into 2D space</p>
-<pre><code>      - With J brands, we have J points in J dimensions. Each dimension j indictes similarity to brand j. PCA can project from J dimensions into 2D for plotting</code></pre>
 <p>MDS Intuition, in 2D space</p>
 <pre><code>      - With a ruler and map, measure distances between 20 US cities ("similarity")
       - Record distances in a 20x20 matrix: PCA into 2D should recreate the map
       - But, we don't usually know the map we are recreating, so we look for ground-truth comparisons to indicate credibility and reliability
       </code></pre>
 <p>Examples:</p>
-<pre><code>      - PoliSci: why/which political candidates are perceived as being similar
+<pre><code>      - Poli Sci: Which political candidate positioning, eg left to right
       - Psychologists: understand perceptions and evaluation of personality traits
       - Marketers: how consumers perceive brands or perceive product attributes</code></pre>
 </section>
@@ -821,7 +825,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/netzer,etal2012b.png" style="width:10in"></p>
+<p><img data-src="images/netzer,etal2012b.png" style="width:8in"></p>
 </figure>
 </div>
 <aside class="notes">
@@ -841,22 +845,23 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="how-should-we-weigh-product-attributes" class="slide level2">
-<h2>How should we weigh product attributes?</h2>
+<section id="how-to-weigh-product-attributes" class="slide level2">
+<h2>How to weigh product attributes?</h2>
 <ul>
-<li><p><em>Demand modeling</em> uses product attributes to explain purchase data</p></li>
-<li><p><em>Heterogeneous demand modeling</em> uses product attributes and customer attributes to explain purchases</p></li>
+<li><p><em>Demand modeling</em> uses product attributes and prices to explain customer purchases</p></li>
+<li><p><em>Heterogeneous demand modeling</em> uses product attributes, prices and customer attributes to explain purchases</p>
+<pre><code>      - "Revealed preferences": Demand models explain observed choices in uncontrolled market environments</code></pre></li>
 <li><p>Related: <em>Conjoint analysis</em> estimates attribute weights in simulated choice environments</p>
-<pre><code>      - Key dfce: Demand models use observed choices from uncontrolled market environments, conjoint creates hypothetical choice data in controlled experiments</code></pre></li>
+<pre><code>      - "Stated preferences": Conjoint explain hypothetical choice data in controlled experiments</code></pre></li>
 </ul>
 </section>
-<section id="example-mapping-e-commerce-markets" class="slide level2">
-<h2>Example: Mapping e-commerce markets</h2>
+<section id="mapping-e-commerce-markets" class="slide level2">
+<h2>Mapping e-commerce markets</h2>
 <ul>
 <li><a href="https://arxiv.org/abs/2002.00100">Kumar, Eckles &amp; Aral (2020)</a> observe product views and sales for 534k users looking at 35k products in 947k sessions</li>
 <li>Assume products that are co-purchased are complements</li>
 <li>Assume products that are co-viewed but not co-purchased are substitutes</li>
-<li>Reduced 100-dim attribute space to 2 dims, to identify optimal bundles</li>
+<li>Used demand modeling to estimate 100-dim attribute preferences, then reduced to 2 dims to visualize</li>
 </ul>
 </section>
 <section id="section-7" class="slide level2">
@@ -880,11 +885,13 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li><p>How many unique strings of <span class="math inline">\(N\)</span> words can they generate?</p>
 <pre><code>    - $N=1$: $10,000$
     - $N=2$: $10,000^2=100,000,000$
-    - $N=3$: $10,000^3=1,000,000,000,000=10^12$
+    - $N=3$: $10,000^3=1,000,000,000,000=1 Trillion$
     - $N=4$: $10,000^4=10^16$
     - $N=5$: $10,000^5=10^20$
+    - $N=6$: $10,000^5=10^24=1 Trillion Trillions$
     - ....</code></pre></li>
-<li><p>Why do we make kids learn proper grammar?</p></li>
+<li><p>Why do we make kids learn proper grammar?</p>
+<pre><code>    - Average formal written English sentence is ~15 words</code></pre></li>
 </ul>
 <aside class="notes">
 <ul>
@@ -902,14 +909,16 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="embeddings" class="slide level2">
+<section id="embeddings" class="slide level2 scrollable">
 <h2>Embeddings</h2>
 <ul>
-<li><p>represent words as vectors in high-dim space</p></li>
+<li><p>represent words as vectors in high-dim space</p>
+<pre><code>    - Really, "tokens," but assume words==tokens for simplicity</code></pre></li>
 <li><p>Assume <span class="math inline">\(W\)</span> words, <span class="math inline">\(A&lt;W\)</span> abstract concepts</p>
-<pre><code>    - Assume we have all the text data in the world, each sentence is a point in $W$-dimensional space</code></pre></li>
+<pre><code>    - Assume we have all text data from all history. Each sentence is a point in $W$-dimensional space</code></pre></li>
 <li><p>We could run PCA to reduce from <span class="math inline">\(W\)</span> to <span class="math inline">\(A\)</span> dimensions</p>
-<pre><code>    - We now have every sentence represented as a point in continuous A-space</code></pre></li>
+<pre><code>    - Assume we have infinite computing resources
+    - We now have every sentence represented as a point in continuous A-space</code></pre></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -929,8 +938,8 @@ Kenneth C. Wilbur and Dan Yavorsky
 </figure>
 </div>
 </section>
-<section id="many-ways-to-do-this" class="slide level2">
-<h2>Many ways to do this</h2>
+<section id="many-ways-to-encode-embeddings" class="slide level2">
+<h2>Many ways to encode embeddings</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="images/embeddings_categories.png" style="width:6in"></p>
@@ -944,44 +953,52 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>Rapid progress in past 20 years</li>
 </ul>
 </div></aside></section>
-<section id="llms-given-a-prompt" class="slide level2">
+<section id="llms-given-a-prompt" class="slide level2 scrollable">
 <h2>LLMs: Given a prompt,</h2>
 <ol type="1">
 <li><p>Recode prompt to maximize contextual understanding</p>
-<pre><code>   - E.g. 'the bank of the river is steep' vs 'the bank of the river is solvent'
-   - This is the 'attention' step you hear a lot about
-   - Basically, modify each word's location depending on other words &amp; sequence</code></pre></li>
-<li><p>Feed recoded prompt into transformer as a sequence of points in concept-space</p></li>
+<pre><code>   - E.g. 'the bank of the river is steep' vs 'the bank near the river is solvent'
+   - This step is the 'attention' step you hear a lot about
+   - Basically, modify every word's location depending on every other word's position in the prompt sequence</code></pre></li>
+<li><p>Feed recoded prompt into transformer as a <em>sequence</em> of points in concept-space</p></li>
 <li><p>Predict the next point and add it to the sequence</p></li>
 <li><p>Repeat step 3 until no more good predictions</p></li>
-<li><p>Repeat steps 1-4 many many times, then hire humans to evaluate results, use data for RLHF</p></li>
-<li><p>Sell access to customers</p></li>
+<li><p>Repeat steps 1-4 many many times, then hire humans to evaluate results, use evaluations for RLHF to refine the process</p></li>
+<li><p>Sell access to customers</p>
+<pre><code>    - Use the money to train a bigger LLM</code></pre></li>
 </ol>
 </section>
-<section id="what-llms-can-and-cant-do" class="slide level2">
+<section id="what-llms-can-and-cant-do" class="slide level2 scrollable">
 <h2>What LLMs Can and Can’t Do</h2>
 <ul>
-<li><p><em>Can</em> generate human-like data</p></li>
+<li><p><em>Can</em> generate intelligible semnatic sequences</p></li>
 <li><p><em>Can</em> help humans save time and effort in many tasks</p></li>
 <li><p><em>Can</em> uncover unknown relations in training data</p></li>
-<li><p><em>Can’t</em> discover new relationships that are not present in training data</p></li>
-<li><p><em>Can’t</em> distinguish truth from frequency in training data</p></li>
-<li><p><em>Can’t</em> think, reason, imagine, feel, want, question</p></li>
+<li><p><em>Can</em> enable semantic analysis of product review corpuses to understand customer perceptions, evaluations and satisfaction</p></li>
+<li><p><em>Can’t</em> distinguish truth from frequency in training data</p>
+<pre><code>    - Need a conceptual model of the world for this
+    - LLMs propagate popular biases in training data, unless taught otherwise</code></pre></li>
+<li><p><em>Can’t</em> discover new relationships that are not present in training data</p>
+<pre><code>    - At least, not by themselves, or not yet; but maybe soon</code></pre></li>
+<li><p><em>Can’t</em> think, reason, imagine, feel, want, question</p>
+<pre><code>    - But might be combinable with other components that do these things</code></pre></li>
 </ul>
 </section>
 <section id="what-happens-next" class="slide level2">
 <h2>What happens next?</h2>
 <ul>
 <li><p>Truly, no one knows yet. The tech is far ahead of science</p>
-<pre><code>    - LLMs are productive combinations of various components
-    - But spellchecker and calculator are wrong long-term analogies</code></pre></li>
+<pre><code>    - LLMs are productive combinations of existing components
+    - Spellchecker and calculator are wrong long-term analogies</code></pre></li>
 <li><p>My guesses</p>
-<pre><code>    - Simple tasks: LLMs helps low-skill humans compete with high-skill humans
-    - Complex tasks: using LLMs skillfully requires a base level of skill
+<pre><code>    - Simple tasks: LLMs outcompete humans 
+    - Medium-complexity tasks: LLMs help low-skill humans compete 
+    - Complex tasks: Skillful LLM use requires a high base level of skill
     - LLMs will augment (not replace) high-skill labor in complex domains
-    - In eqm, quality expectations rise; *not* using LLMs will handicap
-    - Long term: More automation, concentration of capital 
-    - More types of word math will be invented, some will be useful</code></pre></li>
+    - Law matters a LOT: Personal liability, copyright, privacy, disclosure
+    - In eqm, typical quality should rise; *not* using LLMs will handicap
+    - Long term: More automation, more products, more concentration of capital 
+    - More word math techniques will be invented, some will be useful</code></pre></li>
 <li><p>What future new technologies might complement LLMs?</p>
 <pre><code>    - Argument about Sentient AI comes down to this</code></pre></li>
 </ul>
@@ -994,7 +1011,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 </figure>
 </div>
 <ul>
-<li>What consequences do you think LLMs will have in the future?</li>
+<li>How have you seen LLMs affect the world over the past year?</li>
 </ul>
 </section></section>
 <section>

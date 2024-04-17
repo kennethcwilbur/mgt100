@@ -380,9 +380,9 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li><p><em>S</em>egmentation: How do customers differ</p></li>
 <li><p><em>T</em>argeting: Which segments do we seek to attract and serve</p></li>
 <li><p><em>P</em>ositioning</p>
-<pre><code>    - How do our product's objective attributes compare to competitors
+<pre><code>    - What value proposition do we present
+    - How do our product's objective attributes compare to competitors
     - Where do customers perceive us to be
-    - What value proposition do we present
     - How do we want to influence consumer perceptions          </code></pre></li>
 <li><p>Market mapping helps with Positioning</p></li>
 </ul>
@@ -624,11 +624,11 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="principal-components-analysis-pca" class="slide level2">
 <h2>Principal Components Analysis (PCA)</h2>
 <ol type="1">
-<li><p>For <span class="math inline">\(J\)</span> products with <span class="math inline">\(K&lt;J\)</span> continuous attributes, <br>we have <span class="math inline">\(X\)</span>, a <span class="math inline">\(J\)</span>-by-<span class="math inline">\(K\)</span> matrix</p></li>
+<li><p>For <span class="math inline">\(J\)</span> products with <span class="math inline">\(K&lt;J\)</span> continuous attributes, <br>we have <span class="math inline">\(X\)</span>, a <span class="math inline">\(J\times K\)</span> matrix</p></li>
 <li><p>Consider this a <span class="math inline">\(K\)</span>-dimensional space containing <span class="math inline">\(J\)</span> points</p></li>
-<li><p>Calculate <span class="math inline">\(X'X\)</span>, a <span class="math inline">\(K\)</span>-by-<span class="math inline">\(K\)</span> covariance matrix of the attributes</p></li>
+<li><p>Calculate <span class="math inline">\(X'X\)</span>, a <span class="math inline">\(K \times K\)</span> covariance matrix of the attributes</p></li>
 <li><p>1st <span class="math inline">\(x\)</span> eigenvectors of the attribute covariance matrix give unit vectors to map products in <span class="math inline">\(x\)</span>-dimensional space</p>
-<pre><code>   - We'll use first 2 eigenvectors for visualization</code></pre></li>
+<pre><code>   - We'll use first 1 or 2 eigenvectors for visualization</code></pre></li>
 </ol>
 <aside class="notes">
 <ul>
@@ -685,6 +685,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <ol type="1">
 <li><p>How do I interpret the principal components?</p>
 <pre><code>   - Each principal component is a linear combination of the larger space's axes
+   - Principal components are the "new axes" for the newly-compressed space
    - Principal components are always orthogonal to each other, by construction</code></pre></li>
 <li><p>What are the main assumptions of PCA?</p>
 <pre><code>   - Variables are continuous and linearly related
@@ -764,7 +765,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 </ul>
 <ol type="1">
 <li><p>Suppose you can measure product similarity</p></li>
-<li><p>For <span class="math inline">\(J\)</span> products, populate the <span class="math inline">\(JxJ\)</span> matrix of similarity scores</p>
+<li><p>For <span class="math inline">\(J\)</span> products, populate the <span class="math inline">\(J\times J\)</span> matrix of similarity scores</p>
 <pre><code>   - With J brands, we have J points in J dimensions. Each dimension j indicates similarity to brand j. PCA can projects J dimensions into 2D for plotting</code></pre></li>
 <li><p>Use PCA to reduce to a lower-dimensional space</p>
 <pre><code>   - Pro: We don't need to predefine attributes
@@ -854,19 +855,6 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li><p>Related: <em>Conjoint analysis</em> estimates attribute weights in simulated choice environments</p>
 <pre><code>      - "Stated preferences": Conjoint explain hypothetical choice data in controlled experiments</code></pre></li>
 </ul>
-</section>
-<section id="mapping-e-commerce-markets" class="slide level2">
-<h2>Mapping e-commerce markets</h2>
-<ul>
-<li><a href="https://arxiv.org/abs/2002.00100">Kumar, Eckles &amp; Aral (2020)</a> observe product views and sales for 534k users looking at 35k products in 947k sessions</li>
-<li>Assume products that are co-purchased are complements</li>
-<li>Assume products that are co-viewed but not co-purchased are substitutes</li>
-<li>Used demand modeling to estimate 100-dim attribute preferences, then reduced to 2 dims to visualize</li>
-</ul>
-</section>
-<section id="section-7" class="slide level2">
-<h2></h2>
-<p><img data-src="images/kumar,etal2021.png"></p>
 </section></section>
 <section>
 <section id="text-data" class="title-slide slide level1 center">
@@ -883,12 +871,12 @@ Kenneth C. Wilbur and Dan Yavorsky
 <ul>
 <li><p>Suppose an English speaker knows <span class="math inline">\(n\)</span> words, say <span class="math inline">\(n=10,000\)</span></p></li>
 <li><p>How many unique strings of <span class="math inline">\(N\)</span> words can they generate?</p>
-<pre><code>    - $N=1$: $10,000$
-    - $N=2$: $10,000^2=100,000,000$
-    - $N=3$: $10,000^3=1,000,000,000,000=1 Trillion$
-    - $N=4$: $10,000^4=10^16$
-    - $N=5$: $10,000^5=10^20$
-    - $N=6$: $10,000^5=10^24=1 Trillion Trillions$
+<pre><code>    - N=1: 10,000
+    - N=2: 10,000^2=100,000,000
+    - N=3: 10,000^3=1,000,000,000,000=1 Trillion
+    - N=4: 10,000^4=10^16
+    - N=5: 10,000^5=10^20
+    - N=6: 10,000^5=10^24=1 Trillion Trillions
     - ....</code></pre></li>
 <li><p>Why do we make kids learn proper grammar?</p>
 <pre><code>    - Average formal written English sentence is ~15 words</code></pre></li>
@@ -950,7 +938,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <ul>
 <li>Transformers: developed to translate languages, e.g.&nbsp;mapping ‘sombrero’ to ‘hat’</li>
 <li>When trained well, they can transform data of generic type x to generic type y</li>
-<li>Rapid progress in past 20 years</li>
+<li>Rapid progress in past 20 years: digital data, faster computers, better algos</li>
 </ul>
 </div></aside></section>
 <section id="llms-given-a-prompt" class="slide level2 scrollable">
@@ -968,42 +956,72 @@ Kenneth C. Wilbur and Dan Yavorsky
 <pre><code>    - Use the money to train a bigger LLM</code></pre></li>
 </ol>
 </section>
+<section id="example-concept-space" class="slide level2">
+<h2>Example: Concept Space</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/concept_space_1.png" style="width:9in"></p>
+</figure>
+</div>
+
+<aside><div>
+<ul>
+<li><a href="https://drive.google.com/file/d/1h8fR8wjdF9ay-ulCHqXDjExL98nElSfP/view?usp=sharing">source</a></li>
+</ul>
+</div></aside></section>
+<section id="example-sentences-as-vector-sequences" class="slide level2">
+<h2>Example: Sentences as Vector Sequences</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/concept_space_sentences.png" style="width:9in"></p>
+</figure>
+</div>
+
+<aside><div>
+<ul>
+<li><a href="https://drive.google.com/file/d/1h8fR8wjdF9ay-ulCHqXDjExL98nElSfP/view?usp=sharing">source</a></li>
+</ul>
+</div></aside></section>
 <section id="what-llms-can-and-cant-do" class="slide level2 scrollable">
 <h2>What LLMs Can and Can’t Do</h2>
 <ul>
-<li><p><em>Can</em> generate intelligible semnatic sequences</p></li>
-<li><p><em>Can</em> help humans save time and effort in many tasks</p></li>
-<li><p><em>Can</em> uncover unknown relations in training data</p></li>
+<li><p><em>Can</em> generate intelligible semantic sequences</p></li>
+<li><p><em>Can</em> help humans save time and effort in semantic tasks</p></li>
+<li><p><em>Can</em> uncover previously unknown relations in training data</p></li>
 <li><p><em>Can</em> enable semantic analysis of product review corpuses to understand customer perceptions, evaluations and satisfaction</p></li>
 <li><p><em>Can’t</em> distinguish truth from frequency in training data</p>
 <pre><code>    - Need a conceptual model of the world for this
     - LLMs propagate popular biases in training data, unless taught otherwise</code></pre></li>
+<li><p><em>Can’t</em> reliably evaluate previously-unknown relationships in training data</p>
+<pre><code>    - At least, not by themselves, or not yet; but maybe soon</code></pre></li>
 <li><p><em>Can’t</em> discover new relationships that are not present in training data</p>
 <pre><code>    - At least, not by themselves, or not yet; but maybe soon</code></pre></li>
 <li><p><em>Can’t</em> think, reason, imagine, feel, want, question</p>
-<pre><code>    - But might be combinable with other components that do these things</code></pre></li>
+<pre><code>    - But might complement other components that do these things</code></pre></li>
 </ul>
 </section>
-<section id="what-happens-next" class="slide level2">
+<section id="what-happens-next" class="slide level2 scrollable">
 <h2>What happens next?</h2>
 <ul>
 <li><p>Truly, no one knows yet. The tech is far ahead of science</p>
 <pre><code>    - LLMs are productive combinations of existing components
+    - This has happened before: stats/ML theory chases applications 
     - Spellchecker and calculator are wrong long-term analogies</code></pre></li>
 <li><p>My guesses</p>
-<pre><code>    - Simple tasks: LLMs outcompete humans 
+<pre><code>    - "It's easy to predict everything, except for the future."
+    - Simple tasks: LLMs outcompete humans 
     - Medium-complexity tasks: LLMs help low-skill humans compete 
-    - Complex tasks: Skillful LLM use requires a high base level of skill
-    - LLMs will augment (not replace) high-skill labor in complex domains
+    - Complex tasks: Skillful LLM use requires highly skilled humans
     - Law matters a LOT: Personal liability, copyright, privacy, disclosure
     - In eqm, typical quality should rise; *not* using LLMs will handicap
     - Long term: More automation, more products, more concentration of capital 
     - More word math techniques will be invented, some will be useful</code></pre></li>
 <li><p>What future new technologies might complement LLMs?</p>
-<pre><code>    - Argument about Sentient AI comes down to this</code></pre></li>
+<pre><code>    - Argument about Sentient AI comes down to this
+    - Robots? World models? Causal reasoning engines? Volition? </code></pre></li>
 </ul>
 </section>
-<section id="section-8" class="slide level2">
+<section id="section-7" class="slide level2">
 <h2><!--#Intermission--></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1064,7 +1082,8 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li><p>Identify <span class="math inline">\(K\)</span> product attributes and levels/values <span class="math inline">\(x_k\)</span></p></li>
 <li><p>Hire consumers to make choices</p></li>
 <li><p>Sample from product space, record consumer choices</p></li>
-<li><p>Specify model, i.e.&nbsp;<span class="math inline">\(U_j=\sum_{k}x_{jk}\beta_k-\alpha p_j+\epsilon_j\)</span> <br>and <span class="math inline">\(P_j=\frac{\sum_{k}x_{jk}\beta_k-\alpha_k p_j}{\sum_l\sum_{k}x_{lk}\beta_k-\alpha p_l}\)</span></p></li>
+<li><p>Specify model, i.e.&nbsp;<span class="math inline">\(U_j=\sum_{k}x_{jk}\beta_k-\alpha p_j+\epsilon_j\)</span> <br>and <span class="math inline">\(P_j=\frac{\sum_{k}x_{jk}\beta_k-\alpha_k p_j}{\sum_l\sum_{k}x_{lk}\beta_k-\alpha p_l}\)</span></p>
+<pre><code>   - Beware: p is price , P is choice probability or market share</code></pre></li>
 <li><p>Calibrate choice model to estimate attribute utilities</p></li>
 <li><p>Combine estimated model with cost data to choose product locations and predict outcomes</p></li>
 </ol>
@@ -1489,11 +1508,12 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="going-further" class="slide level2">
 <h2>Going further</h2>
 <ul>
-<li><a href="https://drive.google.com/file/d/1fsD4f7x1NtZWYkiSbw7YYbDctYYZJxd9/view?usp=sharing">Deeper dive on data reduction: <em>R4MRA</em>, Section 8.2</a></li>
 <li><a href="https://www.youtube.com/watch?v=zjkBMFhNj_g">Intro to Large Language Models by Karpathy</a></li>
 <li><a href="https://www.youtube.com/watch?v=OFS90-FX6pg">ChatGPT: 30 Year History | How AI Learned to Talk</a></li>
+<li><a href="https://drive.google.com/file/d/1hErG0Akz3o9OJc5XcyiA6C2LZDfXglWa/view?usp=drive_link">Mapping Market Structure Evolution by Matthe et al.&nbsp;2023</a></li>
+<li><a href="https://drive.google.com/file/d/1fsD4f7x1NtZWYkiSbw7YYbDctYYZJxd9/view?usp=sharing">Deeper dive on data reduction: <em>R4MRA</em>, Section 8.2</a></li>
 <li>MGT 108R to design &amp; run conjoint analyses</li>
-<li>The conjoint literature is huge, but <a href="(https://drive.google.com/file/d/1GJ4SD3W81gWVRZv17rUmioeqUKUukYFd/view?usp=share_link)">Harrison (2022)</a> offers a recent survey of how incentive compatibility affects results</li>
+<li>Conjoint literature is huge. Good entry points: <a href="https://drive.google.com/file/d/1hVKKbfyJgGLusiySXCFFAeBtIAFkTmH5/view?usp=sharing">Chapman 2015</a>, <a href="https://drive.google.com/file/d/1hJzBl9UHabKxQPmP1xI51VX7VlLuMAwH/view?usp=drive_link">Ben-Akiva et al 2019</a>, <a href="https://drive.google.com/file/d/1hWkhH1nNUnp03ScTb8q3HaGKodev06VG/view?usp=drive_link">Green 2022</a>, <a href="https://drive.google.com/file/d/1hKkvptyW8noB1Iudra77yjdpPy9Nj7Tw/view?usp=drive_link">Allenby et al.&nbsp;2019</a></li>
 </ul>
 <div class="quarto-figure quarto-figure-right">
 <figure>

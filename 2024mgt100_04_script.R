@@ -18,6 +18,8 @@ library(mlogit)
 # chosen options to unchosen options. We'll need to wrangle data to
 # facilitate those comparisons
 
+#rm(list=ls()) #clean up your workspace if you like
+
 # import customer data
 cust_dat <- read_csv("../data/smartphone_customer_data.csv", show_col_types = F)
 n <- nrow(cust_dat)

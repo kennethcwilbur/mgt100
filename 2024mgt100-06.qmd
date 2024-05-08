@@ -50,7 +50,7 @@ editor_options:
 
 ![](images/transsion.png){fig-align="center" }  
 
-- [Google Pixel Ad in 2022](https://drive.google.com/file/d/1qlKmleHvPwmEQEPHeg5hiRmoMon1Gh1-/view?usp=share_link)
+- [Google Pixel Ad ](https://drive.google.com/file/d/1qlKmleHvPwmEQEPHeg5hiRmoMon1Gh1-/view?usp=share_link)
 
 ::: notes
 -   [Source](https://web.archive.org/web/20220217070659/https://qz.com/africa/1633699/transsions-tecno-infinix-camera-phones-made-for-dark-skin-tones/)
@@ -78,18 +78,21 @@ editor_options:
 -   What is $\alpha$?
 -   What is $\beta$?
 -   What limitations does this model have?
--   Incorporating customer heterogeneity into demand models can enable a rich array of segment-specific or person-specific customer analytics
+
+
+-   Incorporating customer heterogeneity into demand models can enable a rich array of segment-specific or person-specific customer analytics 
 
 ::: notes
-- Everything here is review of last week; please ask about anything unclear
+- Everything here is review; please ask about anything unclear
 -   By construction, base model assumes away the possibilities that (i) preference parameters vary across customer segments, or (ii) covary with customer attributes, or (iii) differ across customers at all. So we've ruled out the existence of hopefuls and fearfuls
+- where are the hopefuls and fearfuls?
 :::
 
 ## Why add het.? {.smaller}
 
 1. MNL can estimate quality; Het demand estimates quality & fit <!--Remind them about vertical&horizontal product differentiation-->
 
-2. Enables "policy experiments" for variables we {manage,can measure,predict sales}
+2. Better "policy experiments" for variables we {manage,can measure,predict sales}
 
           - Pricing: price discrimination, two-part tariffs, fees, targeted coupons
           - Customer relationships: Loyalty bonus, referral bonus, freebies
@@ -98,13 +101,7 @@ editor_options:
           - Product attributes: Targeted attributes, line extensions, brand extensions
           - Distribution: Partner selection, intensity/shelfspace, exclusion, in-store environment
 
-3. Common individual- & market-level factors ($\gamma_t$, $\gamma_i$)
-
-          - E.g., customer income, usage intensity, category experience, etc.
-          - E.g., market size, history, population density, 
-          - Changes over time could interact with product attributes to affect demand
-
-4. Quantifies M&A results; oft used in antitrust
+3. Predicts M&A results; oft used in antitrust
 
 ::: notes
 - Demand models let us estimate product qualities, but not product fit
@@ -149,21 +146,19 @@ $$s_{jt}=\int \frac{e^{x_{jt}\delta w_{it}- p_{jt}\gamma w_{it}}}{\sum_{k=1}^{J}
 -   We could use theory to restrict elements of $\gamma$ and $\delta$ to 0
 -   We could use PCA to project x or w onto a lower-dimensional space
 -   We could use Lasso, Ridge, Elastic Net, etc. for data-driven parsimony
-- [Riemann sums](https://en.wikipedia.org/wiki/Riemann_sum)
+-   [Riemann sums](https://en.wikipedia.org/wiki/Riemann_sum)
+-   [Goettler & Shachar (2001)](https://www.jstor.org/stable/2696385)
 :::
 
 ## 3. Individual demand parameters {.scrollable .smaller}
 
 -   Assume $(\alpha_i,\beta_i)\sim F(\Theta)$
 
-            - Includes the Hierarchical Bayesian Logit 
+            - Includes the Hierarchical Bayesian Logit from weeks 2&3
 
 -   Then $s_{jt}=\int\frac{e^{x_{jt}\alpha_i-\beta_i p_{jt}}}{\sum_{k=1}^{J}e^{x_{jt}\alpha_i-\beta_i p_{jt}}}dF(\Theta)$
 -   Typically, we assume $F(\Theta)$ is multivariate normal, for convenience, and estimate $\Theta$
-    -   We usually have to approximate the integral, often use Bayesian techniques (MSBA)
-    
-            - Let's talk through how this works
-      
+    -   We usually have to approximate the integral, often use Bayesian techniques (MSBA/PhD)
     -   Or, we can estimate $F$ but that is very data intensive
     -   In theory, we can estimate all $(\alpha_i,\beta_i)$ pairs without $\sim F(\Theta)$ assumption, but requires numerous observations & sufficient variation for each $i$
 
@@ -191,6 +186,12 @@ $$s_{jt}=\int \frac{e^{x_{jt}\delta w_{it}- p_{jt}\gamma w_{it}}}{\sum_{k=1}^{J}
 ![](images/hwscatter.png){fig-align="center" width=8in}  
 
 ::: notes
+- Should you model weight=f(height) or height=f(weight)? 
+- Notice the many:1 correspondence of weight to height, may make prediction difficult
+- notice the discrete nature of height measurements
+- consider the theoretical relationship
+- Does it matter whether height is measured in inches (adults) or centimeters (babies)?
+- Ultimately it depends on your purpose. "All models are wrong, some models are useful"
 -  Considerations: Theory; Modeling objective; Precision; Causal ordering
 :::
 
@@ -199,8 +200,8 @@ $$s_{jt}=\int \frac{e^{x_{jt}\delta w_{it}- p_{jt}\gamma w_{it}}}{\sum_{k=1}^{J}
 
 -   Bias-variance tradeoff
 
-          -   Adding predictors always increases model fit
-          -   Yet parsimony often improves predictions
+          - Adding predictors always increases model fit
+          - Yet parsimony often improves predictions
 
 -   Many criteria drive model selection
 
@@ -229,9 +230,23 @@ $$s_{jt}=\int \frac{e^{x_{jt}\delta w_{it}- p_{jt}\gamma w_{it}}}{\sum_{k=1}^{J}
 - Another example: Suppose you studied for an exam by memorizing every word of the textbook. Then the professor asked you questions that asked you to apply your understanding of the text. If the only thing you did was return the text contents, you would get the questions wrong. That would be overfitting.
 :::
 
+## How to avoid overfitting?
+
+- Retrodiction = "RETROspective preDICTION"
+
+            - Knowing what happened enables you to evaluate prediction quality
+            - We can compare different models and different specifications on retrodictions
+            
+- We can even train a model to maximize retrodiction quality ("Cross-validation") 
+
+            - Most helpful when the model's purpose is prediction
+            - More approaches: Choose intentionally simple models
+            - Penalize the model for uninformative parameters: Lasso, Ridge, Elastic Net, etc.
+
+
 ## Cross-validation
 
--   Exercise to reduce overfitting risk among a set of models $m=1,...,M$. Algorithm:
+-   Exercise to evaluate retrodiction performance and reduce overfitting risk among a set of candidate models $m=1,...,M$. Algorithm:
 
 1.  Randomly divide the data into $K$ distinct folds
 2.  Hold out fold $k$, use remaining data to estimate model $m$, make predictions for fold $k$; store prediction errors
@@ -244,6 +259,19 @@ $$s_{jt}=\int \frac{e^{x_{jt}\delta w_{it}- p_{jt}\gamma w_{it}}}{\sum_{k=1}^{J}
 - It's really important to keep in mind that cross-validation is simply 1 input into the model selection criterion. It will matter most when our main objective is prediction. Even then it won't be the sole model selection criterion
 :::
 
+##
+
+![](images/K-fold_cross_validation.png){fig-align="center" width=9in}
+
+
+            - You estimate the model k times
+            - Each estimation uses a different (k-1)/k proportion of the data
+            - We evaluate retrodiction quality k times, then average
+            - When k=N, we call that "leave-one-out" cross-validation
+            - Important: cross-validation is just one tool in the toolbox
+            - Final model selection also depends on theory, objectives, other criteria
+
+
 ## Ex-post evaluations {.smaller}
 
 -   Can a model withstand changes in the environment?
@@ -255,7 +283,7 @@ $$s_{jt}=\int \frac{e^{x_{jt}\delta w_{it}- p_{jt}\gamma w_{it}}}{\sum_{k=1}^{J}
 - [Source](https://drive.google.com/file/d/14zNalkNR6HKNjaKfewpCh9-fWReu06Mp/view)
 :::
 
-## Cov(Power, Responsibility) {.smaller}
+## Het demand modeling: More considerations {.smaller}
 
 -   Customer data needs to be high quality (GIGO, Errors-in-variables biases)
 -   Implementation needs to consider qualitative factors {effectiveness, legality, morality, privacy, conspicuousness, equity, reactance, costs, speed, understanding}
@@ -300,7 +328,7 @@ $$s_{jt}=\int \frac{e^{x_{jt}\delta w_{it}- p_{jt}\gamma w_{it}}}{\sum_{k=1}^{J}
 
 -   Demand models can incorporate discrete, continuous and/or individual-level heterogeneity structures
 
--   Heterogeneous models fit better, but may predict worse if over-specified
+-   Heterogeneous models fit better, but will predict worse if overfit
 
 ![](images/recap.png){fig-align="right" width=2in}
 

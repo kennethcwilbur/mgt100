@@ -412,7 +412,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 </figure>
 </div>
 <ul>
-<li><a href="https://drive.google.com/file/d/1qlKmleHvPwmEQEPHeg5hiRmoMon1Gh1-/view?usp=share_link">Google Pixel Ad in 2022</a></li>
+<li><a href="https://drive.google.com/file/d/1qlKmleHvPwmEQEPHeg5hiRmoMon1Gh1-/view?usp=share_link">Google Pixel Ad</a></li>
 </ul>
 <aside class="notes">
 <ul>
@@ -461,16 +461,17 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="mnl-demand" class="slide level2">
 <h2>MNL Demand</h2>
 <ul>
-<li>Recall our MNL market share function <span class="math inline">\(s_{jt}=\frac{e^{x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^{J}{e^{x_{kt}\beta-\alpha p_{kt}}}}\)</span></li>
-<li>What is <span class="math inline">\(\alpha\)</span>?</li>
-<li>What is <span class="math inline">\(\beta\)</span>?</li>
-<li>What limitations does this model have?</li>
-<li>Incorporating customer heterogeneity into demand models can enable a rich array of segment-specific or person-specific customer analytics</li>
+<li><p>Recall our MNL market share function <span class="math inline">\(s_{jt}=\frac{e^{x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^{J}{e^{x_{kt}\beta-\alpha p_{kt}}}}\)</span></p></li>
+<li><p>What is <span class="math inline">\(\alpha\)</span>?</p></li>
+<li><p>What is <span class="math inline">\(\beta\)</span>?</p></li>
+<li><p>What limitations does this model have?</p></li>
+<li><p>Incorporating customer heterogeneity into demand models can enable a rich array of segment-specific or person-specific customer analytics</p></li>
 </ul>
 <aside class="notes">
 <ul>
-<li>Everything here is review of last week; please ask about anything unclear</li>
+<li>Everything here is review; please ask about anything unclear</li>
 <li>By construction, base model assumes away the possibilities that (i) preference parameters vary across customer segments, or (ii) covary with customer attributes, or (iii) differ across customers at all. So we’ve ruled out the existence of hopefuls and fearfuls</li>
+<li>where are the hopefuls and fearfuls?</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -488,18 +489,14 @@ Kenneth C. Wilbur and Dan Yavorsky
 <h2>Why add het.?</h2>
 <ol type="1">
 <li><p>MNL can estimate quality; Het demand estimates quality &amp; fit <!--Remind them about vertical&horizontal product differentiation--></p></li>
-<li><p>Enables “policy experiments” for variables we {manage,can measure,predict sales}</p>
+<li><p>Better “policy experiments” for variables we {manage,can measure,predict sales}</p>
 <pre><code>   - Pricing: price discrimination, two-part tariffs, fees, targeted coupons
    - Customer relationships: Loyalty bonus, referral bonus, freebies
    - Social media: Posts, likes, shares, comments, reviews
    - Advertising: Ad frequency, content, media, channels
    - Product attributes: Targeted attributes, line extensions, brand extensions
    - Distribution: Partner selection, intensity/shelfspace, exclusion, in-store environment</code></pre></li>
-<li><p>Common individual- &amp; market-level factors (<span class="math inline">\(\gamma_t\)</span>, <span class="math inline">\(\gamma_i\)</span>)</p>
-<pre><code>   - E.g., customer income, usage intensity, category experience, etc.
-   - E.g., market size, history, population density, 
-   - Changes over time could interact with product attributes to affect demand</code></pre></li>
-<li><p>Quantifies M&amp;A results; oft used in antitrust</p></li>
+<li><p>Predicts M&amp;A results; oft used in antitrust</p></li>
 </ol>
 <aside class="notes">
 <ul>
@@ -566,6 +563,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>We could use PCA to project x or w onto a lower-dimensional space</li>
 <li>We could use Lasso, Ridge, Elastic Net, etc. for data-driven parsimony</li>
 <li><a href="https://en.wikipedia.org/wiki/Riemann_sum">Riemann sums</a></li>
+<li><a href="https://www.jstor.org/stable/2696385">Goettler &amp; Shachar (2001)</a></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -583,14 +581,13 @@ Kenneth C. Wilbur and Dan Yavorsky
 <h2>3. Individual demand parameters</h2>
 <ul>
 <li><p>Assume <span class="math inline">\((\alpha_i,\beta_i)\sim F(\Theta)\)</span></p>
-<pre><code>    - Includes the Hierarchical Bayesian Logit </code></pre></li>
+<pre><code>    - Includes the Hierarchical Bayesian Logit from weeks 2&amp;3</code></pre></li>
 <li><p>Then <span class="math inline">\(s_{jt}=\int\frac{e^{x_{jt}\alpha_i-\beta_i p_{jt}}}{\sum_{k=1}^{J}e^{x_{jt}\alpha_i-\beta_i p_{jt}}}dF(\Theta)\)</span></p></li>
 <li><p>Typically, we assume <span class="math inline">\(F(\Theta)\)</span> is multivariate normal, for convenience, and estimate <span class="math inline">\(\Theta\)</span></p>
 <ul>
-<li><p>We usually have to approximate the integral, often use Bayesian techniques (MSBA)</p>
-<pre><code>- Let's talk through how this works</code></pre></li>
-<li><p>Or, we can estimate <span class="math inline">\(F\)</span> but that is very data intensive</p></li>
-<li><p>In theory, we can estimate all <span class="math inline">\((\alpha_i,\beta_i)\)</span> pairs without <span class="math inline">\(\sim F(\Theta)\)</span> assumption, but requires numerous observations &amp; sufficient variation for each <span class="math inline">\(i\)</span></p></li>
+<li>We usually have to approximate the integral, often use Bayesian techniques (MSBA/PhD)</li>
+<li>Or, we can estimate <span class="math inline">\(F\)</span> but that is very data intensive</li>
+<li>In theory, we can estimate all <span class="math inline">\((\alpha_i,\beta_i)\)</span> pairs without <span class="math inline">\(\sim F(\Theta)\)</span> assumption, but requires numerous observations &amp; sufficient variation for each <span class="math inline">\(i\)</span></li>
 </ul></li>
 </ul>
 <aside class="notes">
@@ -643,6 +640,12 @@ Kenneth C. Wilbur and Dan Yavorsky
 </div>
 <aside class="notes">
 <ul>
+<li>Should you model weight=f(height) or height=f(weight)?</li>
+<li>Notice the many:1 correspondence of weight to height, may make prediction difficult</li>
+<li>notice the discrete nature of height measurements</li>
+<li>consider the theoretical relationship</li>
+<li>Does it matter whether height is measured in inches (adults) or centimeters (babies)?</li>
+<li>Ultimately it depends on your purpose. “All models are wrong, some models are useful”</li>
 <li>Considerations: Theory; Modeling objective; Precision; Causal ordering</li>
 </ul>
 <style type="text/css">
@@ -661,8 +664,8 @@ Kenneth C. Wilbur and Dan Yavorsky
 <h2>Model specification</h2>
 <ul>
 <li><p>Bias-variance tradeoff</p>
-<pre><code>  -   Adding predictors always increases model fit
-  -   Yet parsimony often improves predictions</code></pre></li>
+<pre><code>  - Adding predictors always increases model fit
+  - Yet parsimony often improves predictions</code></pre></li>
 <li><p>Many criteria drive model selection</p>
 <pre><code>  - Modeling objectives
   - Theoretical properties
@@ -705,10 +708,22 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
+<section id="how-to-avoid-overfitting" class="slide level2">
+<h2>How to avoid overfitting?</h2>
+<ul>
+<li><p>Retrodiction = “RETROspective preDICTION”</p>
+<pre><code>      - Knowing what happened enables you to evaluate prediction quality
+      - We can compare different models and different specifications on retrodictions</code></pre></li>
+<li><p>We can even train a model to maximize retrodiction quality (“Cross-validation”)</p>
+<pre><code>      - Most helpful when the model's purpose is prediction
+      - More approaches: Choose intentionally simple models
+      - Penalize the model for uninformative parameters: Lasso, Ridge, Elastic Net, etc.</code></pre></li>
+</ul>
+</section>
 <section id="cross-validation" class="slide level2">
 <h2>Cross-validation</h2>
 <ul>
-<li>Exercise to reduce overfitting risk among a set of models <span class="math inline">\(m=1,...,M\)</span>. Algorithm:</li>
+<li>Exercise to evaluate retrodiction performance and reduce overfitting risk among a set of candidate models <span class="math inline">\(m=1,...,M\)</span>. Algorithm:</li>
 </ul>
 <ol type="1">
 <li>Randomly divide the data into <span class="math inline">\(K\)</span> distinct folds</li>
@@ -733,6 +748,20 @@ Kenneth C. Wilbur and Dan Yavorsky
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/K-fold_cross_validation.png" class="quarto-figure quarto-figure-center" style="width:9in"></p>
+</figure>
+</div>
+<pre><code>        - You estimate the model k times
+        - Each estimation uses a different (k-1)/k proportion of the data
+        - We evaluate retrodiction quality k times, then average
+        - When k=N, we call that "leave-one-out" cross-validation
+        - Important: cross-validation is just one tool in the toolbox
+        - Final model selection also depends on theory, objectives, other criteria</code></pre>
 </section>
 <section id="ex-post-evaluations" class="slide level2 smaller">
 <h2>Ex-post evaluations</h2>
@@ -761,8 +790,8 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="covpower-responsibility" class="slide level2 smaller">
-<h2>Cov(Power, Responsibility)</h2>
+<section id="het-demand-modeling-more-considerations" class="slide level2 smaller">
+<h2>Het demand modeling: More considerations</h2>
 <ul>
 <li>Customer data needs to be high quality (GIGO, Errors-in-variables biases)</li>
 <li>Implementation needs to consider qualitative factors {effectiveness, legality, morality, privacy, conspicuousness, equity, reactance, costs, speed, understanding}
@@ -789,7 +818,7 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-4" class="slide level2">
+<section id="section-5" class="slide level2">
 <h2><!--#Intermission--></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -835,7 +864,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <ul>
 <li><p>Heterogeneous demand models enable personalized and segment-specific policy experiments</p></li>
 <li><p>Demand models can incorporate discrete, continuous and/or individual-level heterogeneity structures</p></li>
-<li><p>Heterogeneous models fit better, but may predict worse if over-specified</p></li>
+<li><p>Heterogeneous models fit better, but will predict worse if overfit</p></li>
 </ul>
 <div class="quarto-figure quarto-figure-right">
 <figure>

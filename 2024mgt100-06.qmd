@@ -264,10 +264,10 @@ $$s_{jt}=\int \frac{e^{x_{jt}\delta w_{it}- p_{jt}\gamma w_{it}}}{\sum_{k=1}^{J}
 ![](images/K-fold_cross_validation.png){fig-align="center" width=9in}
 
 
-            - You estimate the model k times
-            - Each estimation uses a different (k-1)/k proportion of the data
-            - We evaluate retrodiction quality k times, then average
-            - When k=N, we call that "leave-one-out" cross-validation
+            - You estimate the model K times
+            - Each estimation uses a different (K-1)/K proportion of the data
+            - We evaluate retrodiction quality K times, then average them
+            - When K=N, we call that "leave-one-out" cross-validation
             - Important: cross-validation is just one tool in the toolbox
             - Final model selection also depends on theory, objectives, other criteria
 
@@ -282,7 +282,7 @@ $$s_{jt}=\int \frac{e^{x_{jt}\delta w_{it}- p_{jt}\gamma w_{it}}}{\sum_{k=1}^{J}
 ::: notes
 - [Source](https://drive.google.com/file/d/14zNalkNR6HKNjaKfewpCh9-fWReu06Mp/view)
 :::
-
+ 
 ## Het demand modeling: More considerations {.smaller}
 
 -   Customer data needs to be high quality (GIGO, Errors-in-variables biases)

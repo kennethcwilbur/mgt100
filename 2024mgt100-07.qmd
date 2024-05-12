@@ -1,0 +1,554 @@
+---
+title: "Pricing"
+subtitle: "UCSD MGT 100 Week 07"
+author: "Kenneth C. Wilbur and Dan Yavorsky"
+output: html_document
+format: 
+  revealjs:
+    auto-stretch: false
+    theme: default
+slide-number: c 
+editor_options: 
+  chunk_output_type: inline 
+---
+ 
+## Let's reflect 
+
+- [Measuring Customer Reactions to Prices](https://drive.google.com/file/d/1qfZK_s_Dyijh2Q5q7085B5keIiISfTmV/view?usp=share_link)
+
+- [Unchecked AB Testing Destroys Everything It Touches](https://drive.google.com/file/d/1IhW9GQCbLm10vD_sgqkQv9jCQ1j3CHYb/view?usp=share_link)
+
+![](images/mirror.jpg){fig-align="right" width=3in}
+ 
+::: notes
+- The Tucker article includes this elasticity-based pricing rule which we'll use in code today.
+- The Unchecked AB Testing article can be interesting to discuss. What did you think?
+- I think it speaks to (a) principal/agent issues within the firm (rapid turnover of executives and agents), (b) poor experimental design (focusing exclusively on short-run goals, without considering adverse effects) and (c) the general downside of no shared theoretical framework.
+- Author offers 3 remedies: Longer term testing, tracking multiple adverse metrics for every test, and warning executives of big unknown risks
+- An unstated remedy: Develop and use a theoretical framework to discipline your testing. Type 2 errors are a big issue when you have numerous tests and a tendency toward lock-in. Tharis is why we emphasize theory-driven demand models in this course.
+:::
+
+# How firms set prices
+- Importance and challenge
+- Common approaches
+- Economic Value to the Customer
+- Human factors
+- Using Demand Model to Price
+
+## Pricing importance {.scrollable}
+
+- Average US net margin is 8% ([Damodaran Online](https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datacurrent.html))
+
+- Widely cited research by McKinsey 
+
+      - 1% price increase can lead to 11% profit increase 
+      - 1% price decrease can lead to 8% profit decrease
+      - Logic assumes no decrease in quantity
+      - Correlations, but widely misinterpreted as causal
+      
+- Consultants say most companies price too low;<br>price is low-hanging fruit
+
+## Price changes are risky & scary {.scollable}
+
+![](images/hbs pricing motivation.png){fig-align="center" width=8in}
+
+## How firms set prices {.smaller .scrollable}
+
+#### Limited-data analyses
+- EVC / Value pricing
+- Competitor price benchmarking
+- Cost-based pricing
+
+#### Stated-Preference Data
+- Open-ended: How much are you wtp? $___
+- Prompted: Would you buy (product) at ($price)?
+- Conjoint Analysis: Designs can be incentivized or not
+
+#### Revealed-Preference Data
+- Simulated purchase environments, Test markets
+- Algorithms (bandits, rev mgmt), Experiments ([Amazon pricing labs](https://drive.google.com/file/d/10TeFy8zD1l2Fi97_ttVOtsLVeTNBn8cM/view))
+- Demand estimation
+    
+      - Requires data, exogneous price variation, human attention/expertise 
+
+#### Customer co-determination
+
+- Monopsony, auctions, negotiation, pay-what-you-want
+
+#### None
+
+- Seller takes market price    
+
+::: notes
+- Those first three are goldilocks: too high, just right, too low
+:::
+
+## 
+
+![](images/pricingsurvey.png){fig-align="center" width=8in}
+
+::: notes
+- How often is each approach used?
+- Keeney, Lawless, Murphy (2010) surveyed 1k Irish businesses
+:::
+
+## Value Pricing: Price in (cost, wtp) {.scrollable .smaller}
+
+- But... how do you learn wtp? Esp. if you have not sold before?
+
+    - For large time/budget: Conjoint, simulated purchase environments, test markets, ...
+    - For small time/budget: Economic Value to the Customer (EVC)
+
+- EVC: estimates customer benefit from a product, relative to the next best alternative
+    
+- EVC & VP are often used by new firms, highly differentiated products & when no
+credible market research 
+
+- Steps: 1. Calculate EVC, 2. Choose a price in (Cost, EVC)
+
+::: notes
+- You might need EVC for your start-up
+- ![Airmount EVC story](https://patents.google.com/patent/US5638249A/en?oq=US+Patent+5%2c638%2c249)
+:::
+
+
+## How to calculate EVC(x$\vert$y)
+
+1. Select the best available alternative y and find its price
+
+       - Interview target customers to learn how they solve the core need (y)
+       - If wrong y, EVC estimate will be too high
+
+2. Determine non-price costs of using y and x
+    
+       - Include start-up costs and/or post-purchase costs
+       - Make sure NonPriceCosts(x) exclude the price of x (why?)
+    
+3. Determine the incremental economic value of x over y
+
+       - Usually, functional benefits or non-price cost decreases    
+
+4. EVC = Price(y) + ( NonPriceCosts(y) - NonPriceCosts(x) ) + IncrementalValue(x$\vert$y)
+
+       - In practice, 99% of effort is getting the assumptions right 
+    
+
+## EVC tips
+
+- Remember: y might not be a commercial product. 
+
+
+- EVC and y often vary across customer segments
+
+      - Calculate heterogeneous EVC(x|y) for multiple y
+
+- Unquantifiable factors influence price selection in (cost,EVC)
+
+- If EVC(x$\vert$y)<0, reconsider product or target customer
+
+
+## Example: What is EVC(Batteriser$\vert$y)?
+
+- The Batteriser is a durable metal sleeve that increases disposable battery life by 800%. With a thickness of just 0.1 millimetres, the sleeve can be fitted over any size battery, in any size compartment
+
+- Assume the typical battery costs \$0.50
+
+::: notes 
+- Reference product is no sleeve
+- Batteriser allows the consumer to avoid buying 8 extra batteries, resulting in a potential cost savings of 8*0.50=4.00 for each battery whose life is extended
+- Suppose one Batteriser is durable enough to extend the lives of 10 batteries
+- Then IV = 10*4 = 40 and EVC=40
+- You might reasonably assume other benefits, such as increased usefulness of battery-operated devices, or reduced nuisance costs of changing and storing batteries, but these are hard to quantify with confidence.
+- Note: when selecting a price, you have to consider psychological factors such as:
+- Discount factors & the time horizon over which consumers are willing to amortize a purchase
+- Risk that Batteriser benefits may not work as advertised
+- Consumer skepticism about marketer claims
+- I would recommend a price that is far, far below EVC in this case
+- (Price was 2.50 in 2019)
+::: 
+    
+## "Pricing Thermometer'' {.scrollable }
+
+![](images/value-pricing-thermometer.png){fig-align="center" width=3.5in}
+   
+- How much inducement do you give your customer?
+- How will customers, competitors, suppliers react? 
+
+      - SR vs. LR? More judgment than math. "Your margin is my opportunity"
+
+## Choosing p in (cost, EVC)
+- Some advise:  $Price = Cost + (EVC - Cost)*{z%}$ 
+
+       - I've heard z = 25%, 33%, 50%, and 70%
+       - Do you want profits or growth? What's your exit?
+
+- Human factors to consider when making your judgment:
+
+      - Perceived benefit - actual benefit
+      - Perceived costs - actual costs
+      - Consumer price sensitivity, reference price of y 
+      - Established pricing benchmarks
+      - Fairness, signaling 
+      - Customer risk of adoption, skepticism; brand credibility
+
+::: notes
+- These factors also pertain to other price setting approaches 
+:::
+
+## Conjoint works for pricing too
+
+![](images/conjoint_price_attribute.png)
+
+
+## Van Westendorp Pricing Model
+
+- Goal: Estimate stated WTP *range* for each customer
+
+- Survey target customers: At what price is (product)...
+
+        - so cheap you would question its quality?
+        - inexpensive?
+        - no longer a bargain?
+        - so expensive you would not consider buying it?
+
+- Plot CDFs 
+
+::: aside
+- R package [pricesensitivitymeter](https://cran.r-project.org/web/packages/pricesensitivitymeter/pricesensitivitymeter.pdf)
+:::
+
+## {.scrollable}
+
+![](images/vw.png){fig-align="center" width=6in}
+
+- "Too cheap" meets "too expensive": <br>minimal number of price-refusing customers
+- What do you think of this model?
+
+::: notes
+- Extensible to also ask about stated purchase intentions; Newtom/Miller/Smith 1993, "A market acceptance extension to traditional price sensitivity measurement” 
+- Thinking about intersections of 4 CDFs is sufficiently difficult that it will dazzle some consulting clients
+- Probably best to use this to evaluate other pricesetting approaches, rather than on its own to set price
+:::
+
+## Signals and *Perceived Quality*
+
+- Signals of high quality
+
+      - High prices, Brand names, Warranties, Return policies, Ad spending
+      - Costly signals when the firm doesn't deliver
+      - Brand reputation can convey credibility
+
+- Signals of low quality
+
+      - Low prices, Price promotions, Price-matching guarantees
+      - Signals that look too good to be true
+      - "If it's so good, why is it so cheap?''
+
+- Prescription: Price consistent with your quality position in the market
+
+      - Otherwise, you undercut your own message and leave money on the table
+      - Findings replicate in numerous contexts 
+
+::: notes
+- In marketing we focus on perceived quality, because consumers typically don't know actual quality. 
+- Consumers typically rely on signals to form perceptions about unobserved quality
+:::
+
+## Human factors: Price as a signal
+
+![](images/julienfarel.png){fig-align="center" width=10in}
+
+::: notes
+- This is Julien Farel, who operates a high-end salon in Midtown East, NYC
+- That's Rafael Nadal in the first picture
+- So this Farel guy must be a great stylist right?
+- Or maybe he gives Nadal free haircuts in exchange for the photo op?
+- He'll cut your hair for the low low price of $1250
+- If you need the best haircut ever, where do you go? 
+- How do you know which stylist is the best one?
+- Price can be a powerful signal of quality
+- Sometimes (rarely) we even see reverse-price-wars, as high-end service providers try to outdo each other
+:::
+
+
+##
+
+![](images/krishna 2009 fig1.png)
+
+
+::: aside
+- We'll go through a few examples
+- Source: [Krishna (2009)](https://drive.google.com/file/d/1tPZQ0CnfjswEc4t9loBHXLlQ0hOWmUtR/view?usp=drive_link)
+:::
+
+::: notes
+Price signaling effects are an example of a `human factor' in pricing
+Many such human factors have been documented by experimentalists
+The basic idea here is that price and price presentation can affect both perceived price and perceived price fairness
+Perceived price is also affected by internal consumer factors, such as past experiences, income, reference price, etc  
+We'll go through a few more (inexhaustive)
+If you really like this stuff, take Ania's consumer behavior elective in winter quarter
+:::
+
+## Human factors: Non-monetary costs
+
+- Total customer cost is 
+
+      Cognitive cost to decide the purchase 
+      + Physical cost to acquire the product 
+      + Financial payment
+
+- Simplicity can increase sales. Remove frictions
+
+![](images/1click.jpg){fig-align="center" width=4in}
+
+
+
+
+## Human factors: Perceived prices
+
+- Which is the better bargain?
+
+    - Regular price $0.89, sale price $0.75
+    - Regular price $0.93, sale price $0.79
+
+::: notes 
+- Context was margarine sales; 80+pct chose 1st pair; most likely explanation:     (in)numeracy makes people think a drop in the 10s place of 2 is larger than a drop in the 10s place of 1
+:::    
+    
+
+## Left-digit bias: Demand Effects {.scrollable}
+
+![](images/leftdigit1.jfif){fig-align="center" width=8in}
+
+::: notes
+- This graph shows grocery product demand at quasi-random price points, estimated in a careful way by Avner Strulov-Shalin at U-Chicago
+- There are clear discontinuities in price elasticity when the left-most digit changes
+:::
+
+## Left-digit bias: Lyft rides
+
+![](images/leftdigit-lyft.jfif){fig-align="center" width=8in}
+
+::: notes
+- This graph shows the empirical probability of a Lyft rider declining a ride, depending on the price estimate quoted in the app
+- Clearly, increasing the digit before the decimal has a discontinuous effect on ride probability
+- Source: John List at U-Chicago
+:::
+
+## 
+
+![](images/leftdigit-taxappeal.jfif){fig-align="center" width=8in}
+
+::: notes
+- Not pricing data, but more strong evidence of consumer left-digit bias
+- This graph shows the likelihood that a homeowner will appeal their property tax appraisal, as a function of the house's appraised value
+- Not only are there strong left-digit effects, crossing the hundred-thousand threshold reverses the trend in (100,110k). 
+- Most likely those who were over $105k have already experienced the hundred-thousand shock before, so show lower likelihood to appeal
+- Source: Jones & Strulov-Shalin (2023)
+:::
+
+## Human factors: Decoy effects
+
+- Choose 1:
+
+    - Brand A: Rated 50/100, priced at 1.80
+    - Brand B: Rated 70/100, priced at 2.60
+
+- 33% chose A
+
+## Human factors: Decoy effects
+
+- Choose 1:
+
+    - Brand A: Rated 40/100, priced at 1.60
+    - Brand B: Rated 50/100, priced at 1.80
+    - Brand C: Rated 70/100, priced at 2.60
+
+- 47% chose B (why?)
+
+::: notes
+- You see this frequently in SAAS  
+- Huber and Puto (1982)
+:::
+
+
+## Human factors: Anchoring {.smaller}
+- "You are lying on the beach on a hot lazy afternoon.  For about an hour now, you have been thinking about an ice-cold bottle of your favorite beer.  One of your friends gets up to make a phone call and offers to get you your favorite beer from a *small run-down grocery store* on the way back.  Your friend says that the beer might be expensive and asks the maximum price that you are willing to pay.  If the price is higher, your friend won’t buy the beer.  What is your maximum price?  
+- ... *fancy resort hotel* ...
+
+::: aside
+- Classic study by [Thaler (2008)]() in Marketing Science
+:::
+
+::: notes
+- AKA Reference price
+- This was back when we had to get up to make phone calls
+- This was back when we made phone calls
+:::
+
+
+## Human factors: Price salience
+
+- Show the price early, late or never?
+
+      - Drinks in a loud nightclub
+      - USPS "Forever Stamps"
+      - Price advertising, coupons
+
+- Price salience emphasizes Savings or Exclusivity
+      
+![](images/carbone_menu.png){fig-align="center" width=3in}
+
+## Economic factors: Price discrimination {.smaller .scrollable}
+
+- Amazon v. B&N 
+
+- Purchase time: Airline, Cruise tickets
+- Needs: e.g. Business vs. Home segments
+- Skimming by delivery time: Movie release windows    
+- Geography: Typically accounts for 20\% of variation in online prices
+- Quantity: Cups of coffee, Paper towels
+- Reduce resentment via new/loyal customer, merit (veterans, seniors), ability to pay/sliding scale, value provided, cost of supply
+- Always frame price differences as discounts
+
+
+## 
+
+![](images/gameconsolepriceskimming.png){fig-align="center" width=7in}
+
+::: aside
+- Price Skimming downsides: 1. Where to start, how often to drop, how much? <br>2. When it does work, it may upset customers, encourage strategic purchase timing, reduce loyalty, attract competition. Data: [Ars Tecnica](https://web.archive.org/web/20240427000657/https://arstechnica.com/gaming/2022/08/will-the-nintendo-switch-ever-see-a-price-drop/)
+:::
+
+::: notes
+A very big deal in this graph: Nintendo Switch price had no nominal decrease for 5-year span, longest ever, an apparent sign of fantastic demand persistence. Also may show diminishing category competition, or a strategic decision to maintain high margins.
+:::
+
+## Economic factors: Beware a price war! {.smaller}
+- If you explicitly mention a competitor's price
+
+    - You make Customer aware of Competitor
+    - Competitor will notice: You invite them to match or retaliate
+- Better to price-compare  vs. unnamed/generic competitor
+    
+- Who wins a price war?
+
+    - Only one winner: Customer
+    - All firms suffer, some die
+    - Most likely to survive: Seller with lowest cost structure 
+    - Smart firms avoid price wars & keep costs secret
+
+![](images/tipjar.jpg){fig-align="right" width=1in}
+
+
+
+
+
+## Refresher: Price Elasticity of Demand
+
+- $elas.=\frac{d(lnQ)}{d(lnP)}=\frac{P}{Q}\frac{dQ}{dP}\le 0$    
+
+- For $-1<elas.<0$, we say demand is price-inelastic
+- For $elas.<-1$, we say demand is price-elastic
+
+- Elasticity is "scale-free"
+- We can calculate elasticity at a point, or on an interval
+
+- Results depend on interval width and demand curvature
+- Narrower intervals yield more precise elasticities
+
+
+## Refresher: Price Elasticity of Demand
+
+- $elas.=\frac{d(lnQ)}{d(lnP)}=\frac{P}{Q}\frac{dQ}{dP}$    
+- A special class of demand functions have constant elasticity
+
+    $Q=e^a*P^b$ for $a>0$ & $b>0$, then $elast.=b$
+
+    Implies $ln Q=\alpha+\beta lnP$, called "log-log"
+        
+        Have to handle price endogeneity to estimate right beta 
+        
+- C.E. imposes a particular shape on demand & enables easy price optimization, given marginal cost data 
+
+- But, C.E. restricts demand -> can lead to suboptimal pricing
+
+
+## How to use demand model to set price{.smaller .scrollable}
+- $q_j(p_j)=N\hat{s}_j(p_j)$
+- Total contribution = $\pi(p) = q_j(p_j)[p_j-c_j(q_j(p_j))]$
+- Grid search:
+
+  - Choose candidate prices $p_m = p_1, p_2, ..., p_M$
+  - $p^*=argmax_{p_m} \pi(p_m)$
+  - Optional: Repeat using a more refined grid around $p^*$
+
+
+- We often assume $c_j(q_j(p_j))=c$ for convenience
+- Multiproduct line pricing requires sum over brand's owned products
+- Can you predict competitor price reaction, or how your demand responds to new competitor price? How?
+
+::: notes
+- More elegant mathematical solutions assume globally concave demand & convex costs. Both may conditions may be absent (examples); grid search just works
+- Tie competitor price reaction back to earlier discussion about common pricesetting approaches
+:::
+ 
+
+![](images/toolkit.png){fig-align="right" width=1.5in}
+ 
+
+
+
+
+## <!--#Intermission-->
+
+![](images/intermission.jpg){fig-align="center" width=6in} 
+
+
+- T/F: Stated preferences are more reliable than revealed preferences for pricing
+
+
+## Class script
+
+- Use demand model to trace out a demand curve and optimize price
+
+![](images/scroll.jpg){fig-align="right" width=2in}
+
+
+
+
+
+
+# Wrapping up
+
+## Homework 
+
+- Let's take a look
+
+![](images/homework.jpg){fig-align="right" width=4in}
+
+
+## Recap
+
+- The most common price setting methods are value pricing, competitor price matching, and cost-based. All 3 are incomplete
+- Consumers generally expect product prices to reflect quality positions in the marketplace
+- Optimal pricing requires attention to both economic factors and human factors 
+
+![](images/recap.png){fig-align="right" width=2in}
+
+## Going further
+
+- [Willingness to Pay Measurement Approaches](https://drive.google.com/file/d/1eHwb4V-SXE70avHeu-b-KA0cKNGqTPIk/view)
+
+- [Science of price experimentation at Amazon](https://drive.google.com/file/d/10TeFy8zD1l2Fi97_ttVOtsLVeTNBn8cM/view)
+
+- [Behavioral Pricing](https://drive.google.com/file/d/1tPZQ0CnfjswEc4t9loBHXLlQ0hOWmUtR/view?usp=drive_link)
+
+- [More than a Penny’s Worth: Left-Digit Bias and Firm Pricing](https://doi.org/10.1093/restud/rdac082)
+
+- [Dynamic Online Pricing with Incomplete Information Using Multiarmed Bandit Experiments](https://drive.google.com/file/d/1ql1TwJLlxSKy2e_i0ZhebIEYu5CMRyKL/view?usp=sharing)
+
+- [Universal Paperclips](https://www.decisionproblem.com/paperclips/index2.html) : Fun free price setting game
+
+![](images/takingoff.png){fig-align="right" width=2in}

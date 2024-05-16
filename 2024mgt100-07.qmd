@@ -466,6 +466,9 @@ If you really like this stuff, take Ania's consumer behavior elective in winter 
 - Dominant diamonds sold 1.8-3.2x faster upon decoy detections
 - Simulations predict Decoy Effect increased retailer's gross profit by 14.3%
 
+::: aside
+[Here](https://drive.google.com/file/d/1-oCY2mGHdLq2_yxL8hJTMQPU_8TYZ25y/view?usp=sharing) is a snippet of the diamonds data, including prices and attributes
+:::
 
 ---
 

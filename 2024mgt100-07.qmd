@@ -348,31 +348,6 @@ If you really like this stuff, take Ania's consumer behavior elective in winter 
 - Source: Jones & Strulov-Shalin (2023)
 :::
 
-## Human factors: Decoy effects
-
-- Choose 1:
-
-    - Brand A: Rated 50/100, priced at 1.80
-    - Brand B: Rated 70/100, priced at 2.60
-
-- 33% chose A
-
-## Human factors: Decoy effects
-
-- Choose 1:
-
-    - Brand A: Rated 40/100, priced at 1.60
-    - Brand B: Rated 50/100, priced at 1.80
-    - Brand C: Rated 70/100, priced at 2.60
-
-- 47% chose B (why?)
-
-::: notes
-- You see this frequently in SAAS  
-- Huber and Puto (1982)
-:::
-
-
 ## Human factors: Anchoring {.smaller}
 - "You are lying on the beach on a hot lazy afternoon.  For about an hour now, you have been thinking about an ice-cold bottle of your favorite beer.  One of your friends gets up to make a phone call and offers to get you your favorite beer from a *small run-down grocery store* on the way back.  Your friend says that the beer might be expensive and asks the maximum price that you are willing to pay.  If the price is higher, your friend won’t buy the beer.  What is your maximum price?  
 - ... *fancy resort hotel* ...
@@ -399,6 +374,110 @@ If you really like this stuff, take Ania's consumer behavior elective in winter 
 - Price salience emphasizes Savings or Exclusivity
       
 ![](images/carbone_menu.png){fig-align="center" width=3in}
+
+
+## Human factors: Decoy effects
+
+- Choose 1:
+
+    - Brand A: Rated 50/100, priced at 1.80
+    - Brand B: Rated 70/100, priced at 2.60
+
+- 33% chose A
+
+## Human factors: Decoy effects
+
+- Choose 1:
+
+    - Brand A: Rated 40/100, priced at 1.60
+    - Brand B: Rated 50/100, priced at 1.80
+    - Brand C: Rated 70/100, priced at 2.60
+
+- 47% chose B (why?)
+
+::: notes
+- You see this frequently in SAAS  
+- Huber and Puto (1982)
+:::
+
+
+## Field evidence in Diamonds
+
+![](images/wu cosguner mksc 2020 diamond decoy effect.png){fig-align="center" width=8in}
+
+::: aside
+- [Source: Wu & Cosguner (2020)](https://drive.google.com/file/d/1xQCTEwnx2KCTvR2q7raIBMu_Mb-HlAAs/view?usp=sharing)
+:::
+
+::: notes
+
+:::
+
+## 4 vertical attributes
+
+![](images/4cs-of-diamonds.png){fig-align="center" width=5in}
+
+::: aside
+- All 4 attributes are essentially discrete, allowing exact comparisons and clear dominant/dominating relationships
+:::
+
+::: notes
+- Color measures colorlessness-colorfulness. Text suggests some horizontalness; that's mainly to give lower-paying customers a reason to justify a lower price point, because prices increases with colorfulness. Note that the scale is ordinal
+- Clarity measures the number of inclusions and blemishes, which everyone agrees on
+- Carat measures weight and is rounded to nearest integer
+- Cut measures shape and ability for light to pass through; hence, sparkle, which everyone likes
+:::
+
+## Decoy Effect Research
+
+- Context: Online diamond sales
+
+          - #1 online diamond retailer, 50% share, big US brand 
+          - Retailer used a drop shipping model and fixed 18-20% markup
+          - Anonymous diamond suppliers create listings, set prices
+          - Diamonds listed individually; listings disappear upon purchase
+          - Consumers filter by attributes and price
+          - Retailer orders filtered listings by ascending price
+          - Great setting: Rare-purchase category, high-price, limited/no fit attributes, many unknowledgeable consumers 
+
+- Wu & Cosguner 
+
+          - Scraped 7 months of 2.7 million daily diamond listings 
+          - Decoy-dominant relationships were frequent
+          - Used a proportional hazards model to estimate decoy/dominant effect on time-to-sale
+
+## Dominant-Dominated Diamond Pair {.smaller .scrollable}
+
+- **Dominant/decoy pair** defined as either:
+  1. Same attributes, different price
+  2. Dominated attributes, disordered price
+  - In both cases, dominant is more attractive, decoy is less attractive
+
+- **Example**: 
+  - **Dominant**: 1-carat, Excellent cut, D color, VVS1 clarity, $3000 price
+  - **Decoy**: 1-carat, Very Good cut, D color, VVS1 clarity, $3500 price
+
+- Search result listings made decoy/dominant pair detection difficult, so detection depended on frequency of dominant/decoy listings
+
+
+## Findings
+
+- 11%-25% likelihood of Dominant/decoy relationship detection
+- Dominant diamonds sold 1.8-3.2x faster upon decoy detections
+- Simulations predict Decoy Effect increased retailer's gross profit by 14.3%
+
+
+---
+
+## Implications
+
+- **Researchers**: Decoy pricing is important & evident in the wild
+
+- **Managers**: Consider decoy effects when designing product assortments, pricing engine and search engine results algorithm
+
+- **Consumers**: Beware dominated products when searching; and evaluate dissimilar products individually
+
+          - Or, buy a lab-grown diamond
 
 ## Economic factors: Price discrimination {.smaller .scrollable}
 

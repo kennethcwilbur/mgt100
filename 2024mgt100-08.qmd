@@ -1,0 +1,493 @@
+---
+title: "Branding"
+subtitle: "UCSD MGT 100 Week 08"
+author: "Kenneth C. Wilbur and Dan Yavorsky"
+output: html_document
+format: 
+  revealjs:
+    auto-stretch: false
+    theme: default 
+slide-number: c
+editor_options: 
+  chunk_output_type: inline 
+--- 
+
+## Let's reflect
+
+-   [*Intangible Marketing Capital*](https://drive.google.com/file/d/1-G8kqaShiF9H0FwLsc3tGoZ9k2Jr-Sr3/view?usp=sharing)
+
+![](images/mirror.jpg){fig-align="right" width=2in}
+
+::: notes
+- US Brand equity investments in 2021 was about $500 billion, about 2% of GDP.
+- Three main economist views about how brands work are informative, persuasive, complementary
+:::
+
+# Branding
+
+- Logos
+- What is a brand?
+- Netflix & Kraft case studies
+
+## 
+
+![](images/logos.png){fig-align="center" width=9in}
+
+::: notes 
+- Branding is one of the most widely misunderstood topics in marketing. Most people equate brands with logos
+- It is interesting, though, to look at the ways in which brands try to visually communicate their value propositions. Some make sense (in terms of being aligned with value), others are differentiating but not necessarily aligned with value proposition 
+- FedEx: Note the arrow in negative space
+- Toblerone: Another use of negative space – the bear is the symbol of Bern, Switzerland, where Toblerone is headquartered.
+- Vaio: Symbolizes transition from analog frequency wave to digital
+- Amazon: A to Z represents wide assortment; arrow is a smile
+:::
+
+
+## 
+
+![](images/Gap.png){fig-align=center width=8in}
+
+::: notes
+- That was a multimillion dollar redesign that was scrapped in 6 days
+:::
+
+## 
+
+![](images/UClogo.png){fig-align=center width=8in}
+
+::: notes 
+- People said the new logo looked like a toilet bowl, or a “loading” mouse icon
+:::
+
+## 
+
+![](images/westinghouse.png){fig-align=center width=9in}
+
+::: notes 
+- George Westinghouse was a major rival to Thomas Edison. He was the primary funder of Tesla’s Alternating Current standard in the late 1800s. The AC/DC standards war was one of the ugliest in the history of business. ...
+- In 1995, CBS bought the Westinghouse brand and immediately sold off all tangible assets.
+:::
+
+
+## Case study : Netflix
+
+- 1997: Founded to deliver moves over the internet    
+- 1999: Pioneered DVD-by-mail 
+- 2007: Launched streaming 
+- 2011: July price hike, Sept service split into 
+    - Netflix: Video streaming
+    - "Qwikster": Rebranded DVD-by-mail service 
+      ![](images/qwikster.jpg){width=3in}
+
+::: notes 
+- Netflix was founded in 1999 to deliver movies over the internet. It’s right there in the name ...Net Flix...Transmission speeds weren’t good enough, so they invented the DVD-by-mail business...Consumers attached Netflix to the red envelopes
+:::
+
+## 
+
+![](images/badnetflix.png){fig-align=center width=10in}
+
+::: notes
+- Anybody want to argue that all news is good news? Let's check look at some data
+:::
+
+
+## 
+
+![](images/sorrynetflix.png){fig-align=center width=10in}
+
+::: notes 
+- This was a few days later. In the video, Reed Hastings apologizes, but says they are still going forward with the plan
+:::
+
+
+## 
+
+![](images/netflixBM.png){fig-align=center width=10in}
+
+::: notes 
+- Monthly brand tracking statistics for Netflix. Approx. 2400 people every month answered the questions “Do you have a positive or negative feeling about Netflix?” and “Have you heard something positive or negative about Netflix recently?” Blue/gray lines are the positive percentage, red/yellow lines are the negatives. ...
+- Initial change in July. Second major movement in September.
+:::
+
+## 
+
+![](images/NetflixQuote.png){fig-align=center width=10in}
+
+::: notes
+- Note the vertical drop on the date of the rebranding
+:::
+
+
+## 
+
+![](images/netflixquote2.png){fig-align=center width=10in}
+
+::: notes
+- 2019: 2.7MM DVD subscribers, down from 20MM in 2010
+:::
+
+## Netflix Case study : Takeaways
+
+- Brand adjustments require consumer acceptance
+  - You own the IP, not the mental real estate
+  - Smaller steps encounter less resistance
+- Great brands monitor customer perceptions
+- If you mis-step, change course
+  - Some news is bad news    
+
+## Case study : Kraft Mac n Cheese
+
+![](images/kraftmac.jpg){fig-align=center width=10in}
+
+::: notes
+- "We'd invite you to try it, but you already have" 
+:::
+
+
+
+
+## What is a brand?
+
+![](images/cow.jpg){fig-align=center width=7in}
+
+::: notes 
+- The term originated in the old west. ...Cattle were branded as an anti-theft mechanism...The function of the brand evolved with time, eventually coming to indicate quality
+:::
+
+## 
+
+![](images/memorynetwork.png){fig-align=center width=8in}
+
+
+::: notes 
+- Your memory is an auto-associative network. You recall sequences by initiating the sequence...What is the 5th word in the happy birthday song? The way you retrieve this information is by singing the song and counting. You can’t go straight to it. We retrieve information from memory using cues. When we see a cue, the concepts that are associated with that idea in our memory are activated...Some associations are stronger, some are weaker
+:::
+
+## What is a brand?
+- An *idea* that shifts preference
+- Brands reside in consumers' minds
+
+    - Mental real estate: Firm owns trademark but not brand
+    - Rooted in reality but reflects consumer experiences, perceptions and idiosyncracies 
+    
+::: notes 
+- one of the reasons brands are so concerned about "brand safety" in social media : they don't want to be next to hate speech, porn, etc., because they believe consumers will associate their ads with such concepts 
+- We can try to influence our brands; success depends on consumer acceptance
+- "Fast brain" learns too quickly and forgets too slowly
+:::
+
+## Some auto-associative sequences
+
+![](images/slogans.png){}
+
+## What association?
+
+![](images/economist_lightbulb.jpg){fig-align="center" width=5in}
+
+
+## Brand Safety, Content Moderation {.scrollable .smaller}
+
+- Brands prefer to avoid unsavory associations <br>(misinfo, hate, violence, obscenity, ...), so they demand advertising platforms maintain "brand safety" 
+
+![](images/x_adrevenuechanges.png){fig-align="center" width=8in}
+
+::: notes
+- This is why Twitter/X pivoted primarily to a fee-based business model
+- There have been similar advertiser boycotts of youtube, facebook and most other major digital advertising platforms in the past, which is partly why those platforms are content-moderated now
+:::
+
+# How do Brands Work?
+
+1. Credibility
+
+2. Rapid communication
+
+3. Personality & Self-expression
+
+4. Gestalt
+
+## 1. Credibility
+
+![](images/aspirin.png){fig-align=center width=8in}
+
+::: notes 
+- Bayer sells at a huge premium over generic versions, even though they are pretty much the same thing. Note the 3-4x price difference per pill in the picture... Not only does it sell at a large premium, it often sells more... Bayer used to own the word “Aspirin,” but it became one of those trademarks that was so ubiquitous, it lost its copyright protection... Do highly informed consumers pay the brand premium?
+::: 
+
+## 
+
+![](images/bron15a.png){fig-align=center width=9in}
+
+::: notes
+-  *Bronnenberg, et al., QJE 2015
+- Authors summarized a scanner panel dataset of 66 million shopping trips by 110,000 households between 2004 and 2010.... You see three things here. One is that store-brand market shares are pretty high in the headache remedies category.
+Two, income has a surprisingly small effect on the probability of paying the brand premium...Three, medical professionals are more likely to buy store-brand products than branded products (compared to other professions). Note that pharmacists have the highest store-brand market share. However, the store-brand market share is still far from 100%.... These people have a better understanding of the equivalence between the two products, suggesting that the brand substitutes for the lack of information possessed by non-medical-professionals, and helps to justify the premium price
+:::
+
+## 
+
+![](images/bron15b.png){fig-align=center width=9in}
+
+::: notes 
+- After controlling for income, chefs buy a higher percentage of store brands than nearly any other profession...These results suggest that brands reassure uninformed consumers about product quality
+:::
+    
+## What happens when consumers gain knowledge?
+
+- Bron. et al. (*MkSc* 2020): Intercepted shoppers in-store 
+- First, a survey, including:
+    - Q2: Do you prefer private label or nat'l brand? (PL=1)
+- Then, a blind brand/PL taste test, followed by
+    - Q3: Which did you prefer? (PL=1)
+    - Q4: Will you buy PL next time?
+
+::: notes
+ -  ![Bronnenberg, Dube, Sanders * Marketing Science 2022](https://drive.google.com/file/d/1hqxEHlUF-cZlgdPQtmA4or0Ih-glhc12/view?usp=share_link)
+- Context was Roundy's yogurt sales
+:::
+
+##
+
+![](images/bds22figA.png){fig-align=center width=9in}
+
+::: notes
+- Work through each of the cases
+- Effects on stated purchase intentions were dramatic, especially among those who were surprised (ie Q2=0)
+:::
+
+
+## PL Share among Surveyed Shoppers
+
+![](images/bds22figB.png){fig-align=center width=7in}
+
+::: notes
+- What did they actually buy after the survey?
+- Huge sales increase; reverted to baseline after 2 months
+- Control was within-shopper, vs. what they were buying before the taste test
+:::
+
+
+## 1. Credibility : Takeaways
+
+- Less-knowledgeable consumers are more likely to pay the brand premium
+    - Recognized brands assumed better/safer than alternatives
+- Informing consumers can change brand/PL sales 
+    - Changes may be transitory
+
+::: notes
+- E.g. instore sampling at costco
+- Can work the other way too, eg pointing out risks of nonbrand consumption
+:::
+
+
+## 2. Rapid communication
+
+- Names and graphics 
+
+    - facilitate understanding 
+    - call attention to differentiating attributes
+
+- What is the value proposition?
+
+![](images/gogurt.png){fig-align=center width=3.5in}
+
+::: notes 
+ Target: 8-12yo in a hurry; Differentiation: you don't need a spoon; Intangibles: 1. easy 2. cool 3. fun. ... Helped General Mills to overtake Dannon as market leader in early 2000s
+:::
+
+## 3. Personality & Self-expression
+
+![](images/geicogecko.jpg){fig-align=center width=6in}
+![](images/gecko_likability.png){fig-align="center" width=4.5in} 
+
+![](images/brandcharacters.png){fig-align="center" width=7in}
+
+::: notes 
+- By definition, Geico trades off money for risk. You bet them when you are going to have car accidents, and they give you odds. .... 
+- Insurance customers perceive insurance brands as more approachable and human as that. As a former Met Life employee told me: “We used to talk about it all the time. We would be nothing without that stupid dog.”
+- https://medium.com/illumination-curated/the-genius-behind-the-geico-gecko-100ee1455546
+-https://insurancenewsnet.com/innarticle/at-age-20-the-geico-gecko-remains-king-of-the-insurance-ads
+::: 
+
+
+##
+
+![](images/brandtattoos.png){fig-align=center width=9in}
+
+::: notes 
+- What do these tattoos say about their wearers? About their brands?
+- We’re getting back to the original definition of the term branding
+:::
+
+## Brands can {.smaller}
+- Express shared identities: UC San Diego, San Diego Padres
+- Personify seller attributes, eg Jordan Brand, Kylie Cosmetics
+- Common brand "personalities"
+
+    - Classic/sincere, eg Hallmark, In-n-Out
+    - Competent, eg IBM
+    - Exciting/fun, eg Snapchat, Scion
+    - Sophisticated, eg Tiffany
+    - Calm/peaceful (more common in East Asia)
+
+- Best practice: Match brand personality to 
+
+    - value proposition and
+    - target customer's preferences or aspirations 
+
+## 4. Gestalt
+
+![](images/peanutbutter.png){fig-align=center width=9in}
+
+::: notes 
+- Figure 1: Give people a choice of the same peanut butter in three different jars, with one jar labelled with a known brand. Which one do they choose?
+- Figure 2: Now swap the labels between a high-quality peanut butter brand and a low-quality peanut butter brand. What happens?
+- See paper by Neuroscientists in Baylor, Houston ... McClure et al. ... “Neural Correlates of Behavioral Preferences for Culturally Familiar Drinks” in the Neuron, Vol 44
+:::
+
+## 
+ 
+![](images/searchresults.png){fig-align=center width=9.5in}
+
+::: notes 
+- Another example of switching the packaging...
+- Google example: How many consumers prefer Google search results to Bing search results? 
+- How many people prefer Bing search results in Google format to Google search results in Bing format?
+- A: they always prefer the results in the google format; but the difference fluctuates over time, reflecting google’s brand strength
+:::
+
+## Creating artificial differentiation
+
+![](images/vodka.png){fig-align="center width=10in}
+
+## What's in a name?
+
+
+![](images/toothfish.jpg){fig-align=center width=8in}
+
+::: notes 
+- A new product’s name can dramatically influence consumer perceptions of the job the product can perform
+- This adorable little monster is a Patagonian toothfish. Well, that’s what it was called in the US until 1977. Fishermen used to catch these by accident and throw them back--nobody wanted them. Until a fish wholesaler named Lee Lantz decided to rename it. Now it’s called a “Chilean Sea Bass.” 
+- In 1994, the FDA accepted this relabeling as an ‘alternative market name.’ In 2013, it accepted that the same label could be applied to an Antarctic Toothfish.
+- Pre-1977, toothfish was unknown in the US. It often got caught by deep-water longline fisherman by mistake. After the rebranding, demand for toothfish took off. You can find it everywhere now, including some of the priciest restaurants.  Similar rebranding efforts have helped make various species of fish more palatable to US restaurants– for example, calling sea urchins by their Japanese name (uni) instead of their traditional name “whore’s eggs,” renaming “goosefish” to “monkfish,” and renaming the ‘slimehead’ fish as the ‘orange roughy’
+- Why did the renaming work? Everybody in the US knows “bass”—”Chilean” explains where it’s from—and “Sea” explains where it lives. Bam. Now you (feel like you) know everything you need to know about the toothfish. (Never mind that it’s not a bass)
+- Another example of how names can affect demand for a new product: evocative adjectives and proper nouns support initial sales of new coffee SKUs
+::: 
+
+
+## Does advertising build brands? Toyota
+
+![](images/djw19toyota.png){fig-align=center width=10in}
+
+::: notes
+- These are similar YouGov metrics that we saw earlier for Netflix
+- Dots are weekly brand attitude surveys; lines are moving averages
+- Columns show total brand spend on ads each week
+- You can see the accelerator recall crisis hurt Toyota's image in 2010
+- Asymmetric pattern is typical: Quick negatives, slow positives
+:::
+
+## Does advertising build brands? Coke
+
+![](images/djw19coke.png){fig-align=center width=10in}
+
+::: notes
+- Coke's brand metrics slipped with as soda became less popular Huge spikes in ad spend around the super bowl, not much bounce 
+- This data sample was before most ad spending moved online
+- Tough to update this study because google, meta, etc hoard data
+:::
+
+
+## Does advertising build brands? Apple
+
+![](images/djw19apple.png){fig-align=center width=10in}
+
+::: notes
+- Apple's attitudes were fairly stable, with quality around 60%, value 40% 
+- Big change in ad spend may have lifted metrics, or it may have simply coincided with quality improvements, or both
+- Many companies and agencies estimate correlational ad effects
+:::
+
+## Advertising and brand attitudes
+
+- We analyzed \$264B in ad spend by 575 brands in 37 categories over 5 years
+- Findings:
+    - Own advertising increases brand perceptions
+    - Competitor advertising decreases brand perceptions
+    
+          - Advertising looks like a prisoner's dilemma
+    
+    - Massive data needed to estimate precise effects
+    
+::: notes
+- 37\% of all measured media
+- Over 10 million brand surveys
+- Meta-analytic scope without publication bias
+- Suggests advertising is a prisoner's dilemma
+- Ad effects are small, likely don't justify observed ad spending
+:::
+
+
+## <!--#Intermission-->
+
+![](images/intermission.jpg){fig-align="center" width=6in}
+
+- T/F: Increasing ad spend clearly boosts brand attitudes the following week.
+
+
+## Toolkit: Find wtp for sponsorship {.scrollable .smaller}
+- We can pay a celebrity brand $\$W$ to sponsor our phone. Market research indicates sponsorship will increase phone brand utility from $\hat\beta$ to $\hat\beta'$. Should we do it?
+- Let $\pi_0=q_j(p_j-c)$ be current contribution assuming optimal pricing 
+- Let $q'_j(p_j)=N \hat{s}'_j(p_j)$ be celebrity-sponsored demand
+
+- Calculate $\pi_1=q'_j(p_j)(p_j-c)$ 
+    - $\pi_1-\pi_0$ is pure demand effect of celebrity association
+- Find new optimal price $p'_j$ for demand $q'_j(p_j)$
+- Calculate $\pi_2=q'_j(p'_j)(p'_j-c)$ ; associate with celebrity if $\pi_2-\pi_0>W$
+
+- Discuss: What if celebrity's threat point is to associate with a competitor? 
+- Discuss: What if celebrity association persists multiple years?
+- Discuss: What if 20\% chance a celebrity scandal reduces $\hat\beta'$ to $\hat\beta''\lt\hat\beta$?
+
+![](images/toolkit.png){fig-align="right" width=1.5in}
+
+## Class script
+
+- Assess profit effect of celebrity affiliation with brand
+
+![](images/scroll.jpg){fig-align="right" width=2in}
+
+
+
+# Wrapping up
+
+## Homework 
+
+- Let's take a look
+
+![](images/homework.jpg){fig-align="right" width=4in}
+
+
+
+## Recap
+
+- Brands are consumer associations between company assets (products, trademarks, etc) and related concepts
+    - Mental real estate: We can influence it but we don't own it
+- Brands work by establishing credibility, rapid communication, personality/self-expression and gestalt
+- Demand models can quantify returns to brand investments
+
+![](images/recap.png){fig-align="right" width=2in}
+
+## Going further
+
+- [Logos are overrated (5 min video)](https://drive.google.com/file/d/1dn-2i0MF6d3oDo0bJexwOiQe239xNYFf/view?usp=sharing)
+
+- [Revenue Premium as an Outcome Measure of Brand Equity (JM 2003)](https://drive.google.com/file/d/1cUlodheigVPqnqzeBmAkfVCoUoABB9de/view?usp=share_link)
+
+- [Advertising and brand attitudes: Evidence from 575 brands
+over five years (QME 2019)](https://drive.google.com/file/d/1T08K429_e9HYflRTunLeEhZaXTXTTqUC/view?usp=share_link)
+
+- [Consumer Misinformation and the Brand Premium: A Private Label Blind Taste Test (MkSc 2020)](https://drive.google.com/file/d/1hqxEHlUF-cZlgdPQtmA4or0Ih-glhc12/view?usp=share_link)
+
+![](images/takingoff.png){fig-align="right" width=2in}

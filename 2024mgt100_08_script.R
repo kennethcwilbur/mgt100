@@ -36,11 +36,21 @@ pred1 <- colMeans(predict(out10, newdata = mdat1))
 names(pred1) <- prod_vec
 round(pred1 * 100, 1)
 
+# get S1 and S2 prices
+price_S1<- cust_dat |>
+  filter(phone_id=="S1",years_ago==1, is.na(discount)) |>
+  pull(price) |>
+  mean()
+price_S2<- cust_dat |>
+  filter(phone_id=="S2",years_ago==1, is.na(discount)) |>
+  pull(price) |>
+  mean()
+
 # store baseline prices and product-specific profits in a little 1x8 tibble
 d1 <- tibble(
-  price1 = 799,
+  price1 = price_S1,
   share1 = pred1[3],
-  price2 = 899,
+  price2 = price_S2,
   share2 = pred1[4]
 )
 

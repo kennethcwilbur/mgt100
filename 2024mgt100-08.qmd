@@ -28,7 +28,7 @@ editor_options:
 - Logos
 - Netflix & Kraft case studies
 - What is a brand?
-- How do brand work?
+- How do brands work? 4 ways
 
 ## 
 
@@ -89,7 +89,7 @@ editor_options:
 ![](images/badnetflix.png){fig-align=center width=10in}
 
 ::: notes
-- Anybody want to argue that all news is good news? Let's check look at some data
+- Anybody want to argue that all news is good news? Let's look at some data
 :::
 
 

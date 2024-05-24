@@ -26,8 +26,9 @@ editor_options:
 # Branding
 
 - Logos
-- What is a brand?
 - Netflix & Kraft case studies
+- What is a brand?
+- How do brand work?
 
 ## 
 
@@ -177,24 +178,37 @@ editor_options:
 - "Fast brain" learns too quickly and forgets too slowly
 :::
 
-## Some auto-associative sequences
+## Some auto-associative sequences {.smaller .scrollable}
 
-![](images/slogans.png){}
+![](images/slogans.png){fig-align="center" width=5in}
+
+- Why do firms spend so much to create these associations?
+
+::: notes
+A: The theory behind brand advertising is, if the brand connects strongly enough to the product category concept in consumer memory, then when the consumer has a need in the product category, she will come directly to the brand rather than shopping around.
+Further, she will be more loyal and forgiving when the brand messes up.
+:::
 
 ## What association?
 
 ![](images/economist_lightbulb.jpg){fig-align="center" width=5in}
 
 
-## Brand Safety, Content Moderation {.scrollable .smaller}
+## Brand Safety, Content Moderation { .smaller}
 
-- Brands prefer to avoid unsavory associations <br>(misinfo, hate, violence, obscenity, ...), so they demand advertising platforms maintain "brand safety" 
+- Brands try to avoid unsavory associations--misinfo, hate, violence, obscenity, etc--as they may upset consumers, embarrassing PR, and unfavorable brand associations
+- Brands have long demanded advertising platforms maintain "brand safety" 
 
-![](images/x_adrevenuechanges.png){fig-align="center" width=8in}
+![](images/x_adrevenuechanges.png){fig-align="center" width=6in}
 
 ::: notes
+- You might naively think 'brand safety' means safety for consumers. No
+- Brand safety means safety for the brand's associations in consumer memory
+- The new owner's policy of maximizing free-speech inadvertently upset his paying customers (the advertisers) in a way that the platform did not appear to anticipate
+- However, this was not only predictable, it was predicted by many observers, including the advertisers themselves
 - This is why Twitter/X pivoted primarily to a fee-based business model
 - There have been similar advertiser boycotts of youtube, facebook and most other major digital advertising platforms in the past, which is partly why those platforms are content-moderated now
+- This is not at all specific to X; google 'facebook advertiser boycott,' 'youtube advertiser boycott,' 'instagram advertiser boycott,' all of which began over advertiser concerns about ineffective content moderation policies
 :::
 
 # How do Brands Work?
@@ -217,7 +231,11 @@ editor_options:
 
 ## 
 
-![](images/bron15a.png){fig-align=center width=9in}
+![](images/bron15a.png){fig-align=center width=8in}
+
+::: aside
+[Source](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2460893)
+:::
 
 ::: notes
 -  *Bronnenberg, et al., QJE 2015
@@ -227,7 +245,7 @@ Two, income has a surprisingly small effect on the probability of paying the bra
 
 ## 
 
-![](images/bron15b.png){fig-align=center width=9in}
+![](images/bron15b.png){fig-align=center width=8in}
 
 ::: notes 
 - After controlling for income, chefs buy a higher percentage of store brands than nearly any other profession...These results suggest that brands reassure uninformed consumers about product quality
@@ -241,6 +259,10 @@ Two, income has a surprisingly small effect on the probability of paying the bra
 - Then, a blind brand/PL taste test, followed by
     - Q3: Which did you prefer? (PL=1)
     - Q4: Will you buy PL next time?
+
+::: aside
+[Source](https://pubsonline.informs.org/doi/pdf/10.1287/mksc.2019.1189)
+:::
 
 ::: notes
  -  ![Bronnenberg, Dube, Sanders * Marketing Science 2022](https://drive.google.com/file/d/1hqxEHlUF-cZlgdPQtmA4or0Ih-glhc12/view?usp=share_link)
@@ -331,19 +353,19 @@ Two, income has a surprisingly small effect on the probability of paying the bra
     - Sophisticated, eg Tiffany
     - Calm/peaceful (more common in East Asia)
 
-- Best practice: Match brand personality to 
-
-    - value proposition and
-    - target customer's preferences or aspirations 
+::: aside
+- Best practice: Match brand personality to value proposition and target customer's preferences or aspirations 
+:::
 
 ## 4. Gestalt
 
-![](images/peanutbutter.png){fig-align=center width=9in}
+![](images/peanutbutter.png){fig-align=center width=8in}
+
 
 ::: notes 
 - Figure 1: Give people a choice of the same peanut butter in three different jars, with one jar labelled with a known brand. Which one do they choose?
 - Figure 2: Now swap the labels between a high-quality peanut butter brand and a low-quality peanut butter brand. What happens?
-- See paper by Neuroscientists in Baylor, Houston ... McClure et al. ... “Neural Correlates of Behavioral Preferences for Culturally Familiar Drinks” in the Neuron, Vol 44
+- Figures came from a pre-print by McClure et al.  (2004), “Neural Correlates of Behavioral Preferences for Culturally Familiar Drinks” in the Neuron. I learned about it here https://hbr.org/2007/03/getting-attention-for-unrecognized-brands
 :::
 
 ## 
@@ -419,6 +441,10 @@ Two, income has a surprisingly small effect on the probability of paying the bra
           - Advertising looks like a prisoner's dilemma
     
     - Massive data needed to estimate precise effects
+    
+::: aside
+[Source](https://drive.google.com/file/d/1V9TYcKEw3RSxytTkk8W7RIM7p2uL-WD9/view?usp=sharing)
+:::
     
 ::: notes
 - 37\% of all measured media

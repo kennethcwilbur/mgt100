@@ -1,0 +1,652 @@
+---
+title: "Customer Revenue"
+subtitle: "UCSD MGT 100 Week 09"
+author: "[Kenneth C. Wilbur](http://Kennethcwilbur.com) and Dan Yavorsky"
+output: html_document
+format: 
+  revealjs:
+    auto-stretch: false
+    theme: default
+slide-number: c
+editor_options: 
+  chunk_output_type: inline 
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## Let's reflect
+
+-   [Bass
+    (1969)](https://drive.google.com/file/d/1j0cTi7Ck4eALMqP2Tfl6oKqDk8I2Lhv4/view?usp=share_link)
+    
+![](images/mirror.jpg){fig-align="right" width="3in"}
+
+::: notes
+- This paper was published several years before even I was born
+- It has been cited 11,000 times. Probably the most cited paper in marketing
+- One of the first predictive analytics papers published in any business discipline
+- This is a differential equation model, in which the change in a function modeled as a function of the level of the function
+- Model was borrowed from epidemiology
+- Performs well, but not overall, only relative to all other failed attempts to predict the future
+:::
+
+## Importance of Customer Acquisition 
+
+-   [Einav et al.
+    (2021)](https://www.nber.org/system/files/working_papers/w29561/w29561.pdf)
+    analyzed all US Visa CC transaction data
+
+        - >$1T spent in 32B transactions by 428MM cards at 1MM stores from 2016-19
+        - Assume card~=customer 
+
+$\text{BrandRev.} = \sum spend \equiv \sum \frac{stores}{1} \frac{cards}{stores} \frac{transactions}{cards} \frac{spend}{transactions}$
+
+-   Research question: How well does each factor explain brand 
+    revenue?
+
+-   Regressed log revenue on log RHS with merchant and year fixed
+    effects
+
+## 
+
+![](images/einav,etal2021a.png){fig-align="center" width="7in"}
+
+::: notes
+-   Row B is the most representative and controls for merchant dummies
+    and year dummies
+-   Compare column 2 to other columns: ( \# unique customers / store )
+    explains 68-84% of variation in merchant revenue
+-   Far more than other variables
+:::
+
+## 
+
+![](images/einav,etal2021b.png){fig-align="center" width="7.5in"}
+
+::: notes
+-   Similar finding across merchant types
+-   Remarkably consistent across sectors. These numbers are above 70pct
+    bc it's a subsample of offline retailers
+-   Explains why companies focus more on customer-level metrics than
+    store, visit or transaction level metrics
+:::
+
+## Customer Revenue Metrics
+
+-   Market size: How many customers might purchase?
+-   Diffusion: How does the served market change over time?
+-   CLV: How profitable are customer relationships?
+
+::: notes
+-   Until now, we have taken the perspective of a dispassionate
+    economist or market analyst. But, most customer analytics work
+    happens inside firms. Let's consider how you look at the market when
+    you're inside a company.
+:::
+
+## Market Size
+
+-   Market size ($N$): \# of people who might pay to address the core
+    need in a given time period
+
+        - Alternatively measured in $, units or volume
+        - Noisy but helps inform potential returns to investments 
+        - Typical investor's first question: How big is the market?
+          $100B market is viewed differently than a $100MM market
+        - How will you know if you got the right answer?
+        - What happens if you overestimate market size?
+
+-   "Marketing myopia:" Neglecting nontraditional competitors, e.g.
+    Zoom v. Uber or Carnival v. Whistler
+
+::: notes
+-   Market size counts both purchasers and non-purchasers
+-   The idea would be that for people who have a core need to work, they
+    might alternately use Uber to work in an office, or Zoom to work
+    from home; hence Uber and Zoom compete
+-   How will the investor react if your market size estimate sounds off?
+    Some might proceed anyway; some might immediately pass, figuring
+    they can't trust you; some might want to dive into the details to
+    see if you know something they don't, or if you have solid math
+    backing up your claims
+:::
+
+## Market Size
+
+-   3 ways to estimate:
+    -   "Top Down" Total Addressable Market (TAM) : <br>How many people
+        have the core need?
+    -   "Bottom up" Served Available Market (TAM): <br>How many people currently
+        pay to solve the core need?
+        -   TAM=SAM+Unserved
+    -   Analyst estimates
+-   Best practice: Use all three, triangulate, gauge sensitivity
+
+## Case study: US Mattress Market
+
+-   USA population : \~340 million
+
+-   Assumption : $TAM\approx SAM$ (why? pros, cons?)
+
+-   Assumption : Avg mattress lasts 7 years (pros, cons?)
+
+-   Market size $\approx$ 47.1 million people annually
+
+-   Average mattress price : \$283, across all bed sizes
+
+-   Market size $\approx$ \$13.3B/year
+
+-   Let's check [Grand View
+    Research](https://www.grandviewresearch.com/industry-analysis/mattress-market)
+    &
+    [ISPA](https://sleepproducts.org/resources/statistics/industry-sales-data/)
+
+::: notes
+-   Consider 2nd homes & hotels vs. homeless population
+-   How much do those analyst reports cost?
+-   What are analyst incentives? How should they price? How often should
+    they update their estimates?
+:::
+
+## Diffusion curves
+
+![](images/diffusion_evidence.png){fig-align="center" width="10in"}
+
+::: notes
+-   There are claims that diffusion curves are speeding up in recent
+    years. That may be consistent with social media and generally
+    accelerating information diffusion
+-   Consider product complementarities, eg electricity + TV, or
+    substitution between products, eg telephone + cellphone
+::: 
+
+##
+
+![](images/timeto100musers.jpg) 
+
+::: notes
+- Important: these products are not randomly selected, they are intentionally selected to make a point
+- Of course there remain many technology products with slow adoption. Think about robot vacuums, time-lapse or other phone peripherals, etc etc etc 
+- But there does seem to be something to the idea that social media has the potential to dramatically accelerate diffusion for some "winning" products
+:::
+
+## New Products by Year
+
+![](images/npbyyear.png){fig-align="center" width=7in}
+
+::: notes
+- For completeness we should consider the full scope of products launched every year
+- Even if we limit ourselves to food & drug channels, it's massive, on the order of 35-40k new SKUs launched in a typical year
+- 90-95% fail completely within 6 months, as in revenues go to zero and manufacturer withdraws the product (Wilbur & Farris 2014)
+- Unfortunately USDA stopped updating these data publicly, probably because Mintel increased price too much
+:::
+
+## Predicting Diffusion: [Bass (1969)](https://en.wikipedia.org/wiki/Bass_diffusion_model)
+
+-   $M$ : Market size (we'll estimate this)
+
+-   $t$ : Time periods
+
+-   $A(t)$ : Accumulated sales before time $t$
+
+        - AKA "installed base"
+        - A(0)=0 by assumption
+
+-   $\frac{dA(t)}{dt}$ : number of new adopters in time $t$
+
+-   $R(t)$ : Remaining customers who have yet to adopt,
+    $R(t)\equiv M-A(t)$
+
+::: notes
+-   Can you see where we're going? DiffEQ using A(t) to predict dA/dt
+:::
+
+## 
+
+-   Bass (1969) proposed:
+
+$$\frac{dA(t)}{dt}=pR(t)+q\frac{A(t)}{M}R(t)$$
+
+-   $p$ : "coefficient of innovation"
+
+-   $q$ : "coefficient of imitation"
+
+        - p and q assumed constant
+
+::: notes
+-   LHS is sales in time period t.
+-   R(t) is \# of potential buyers who have not bought yet.
+-   p is the share of remaining market who would buy at any given moment
+    irrespective of previous sales ("innovators").
+-   q is the share of nonadopters who adopt at t because they observe
+    past purchasers ("imitators")
+-   so qR is the number of nonadopters who adopt at t because they
+    observe past purchasers
+-   and A/M is the fraction of the market who has adopted, and therefore
+    could possibly be observed
+-   so we scale qR by A/M because each nonadopter's chance of observing
+    an adopter increases with the number of adopters available to be
+    observed
+:::
+
+## Estimating Bass model via NLLS
+
+$$\frac{dA(t)}{dt}=pR(t)+q\frac{A(t)}{M}R(t)$$
+
+-   This is a first-order diffEQ with analytic solution
+    
+    $$A(t)=M\frac{1-e^{-(p+q)t}}{1+\frac{q}{p}e^{-(p+q)t}}$$
+
+-   If you have sales data by time, you can use Nonlinear
+    Least Squares to estimate $p$, $q$ and $M$, i.e. choosing parameters to
+    minimize square errors $(LHS-RHS)^2$
+
+::: notes
+-   We state this without proof, because differential equations is not a
+    prerequisite, and the solution technique is mechanical and
+    uninteresting
+:::
+
+## Estimating Bass model via OLS
+
+-   Or, notice that $\frac{dA(t)}{dt}=pR(t)+q\frac{A(t)}{M}R(t)$
+    $=p(M-A(t)) + q* \frac{A(t)}{M}(M-A(t))$
+    $=pM + (q-p)A(t)+\frac{q}{M} A(t)^2$
+
+-   We can regress $\frac{dA(t)}{dt}$ on a quadratic in installed base
+
+        - Then recover p, q & M from the parameter estimates
+        - We'll do both
+
+-   Extensions: Multiple markets, hazard models, <br>types of
+    "influence"
+
+## Models:estimators aren't 1:1?
+
+- Consider 3 OLS estimators:
+
+$$\hat{\beta}=(X'X)^{-1}X'Y$$
+
+$$min_\beta (Y-X\beta)'(Y-X\beta)$$
+
+$$min_\beta [X'(Y-X\beta)]^2$$
+
+    "In theory, there's no difference between theory & practice. In practice, there is." 
+    Many models offer multiple estimators. Some models have no estimators
+    Subfield that studies estimators: "econometrics"
+
+::: notes
+- Estimation performance may depend on numerical properties, availability of existing algorithms, etc.
+- Estimators may differ in speed, complexity, efficiency and econometric properties
+:::
+
+
+
+## 
+
+![](images/bass_1969_f5_f8.png){fig-align="center" width="10in"}
+
+::: notes
+-   These are two of the graphics from the OG paper. He even forecasted
+    sales of black & white TVs
+-   I kind of cherry picked these examples. others were not so clean,
+    but I'm glad he showed the non-clean examples, it helps to show
+    that he didnt cherrypick what to include or not.
+-   Think about what an advance this looked like at the time. with just
+    a few data points of sales, you could reasonably predict the future,
+    which would help to inform investment decisions
+-   Important to note: As is typical in predictive analytics, every single prediction is wrong. Keep your expectations in check
+:::
+
+## Inspired by epidemiology
+
+![](images/diffusion_curve.png){fig-align="center" width="8in"}
+
+::: notes
+-   Distinguish between current and cume sales in the graph
+-   Discuss similarities between disease contagion & product adoption
+-   Spend a few minutes talking about the phases; mention Moore (1991)'s
+    "chasm" or "saddle" idea between initial growth and takeoff
+:::
+
+## Which new products will catch on?
+
+![](images/newproducts.png){fig-align="center" width="9in"}
+
+::: notes
+Fastest way to get rich: Invent a new product that sells a lot
+That requires addressing a real customer need that people will pay for
+And it requires going to market successfully 
+Success in the market is notoriously hard to predict, most new products fail quickly
+Addressing a real core need is necessary but far from sufficient
+Which of these new products will succeed?
+:::
+
+::: aside
+More: [Kickstarter](https://www.kickstarter.com/), [Product Hunt](https://www.producthunt.com/), [Gizmodo](https://gizmodo.com/)
+:::
+
+
+## Rogers' ACCORD Framework (2003)
+
+-   Diffusion depends on Relative Advantage, Perceived Complexity,
+    Compatibility, Observability, Risk, Divisibility (aka
+    "Trialability")
+
+        - Summarized 40 years of research, incredibly influential on practice 
+        - Provided diagnostics to interpret Bass (1969)'s predictive analytics
+        - E.g., a prototype could be evaluated on these 6 dimensions then modified
+        - Early example of HARKing but likely useful
+
+## More explanations for diffusion curves
+
+-   Heterogeneity might drive adoption timing
+
+        - Adoption driven by consumer income, need or risk attitudes?
+
+-   Markets typically evolve after introduction
+
+        - Production becomes more efficient, prices and costs fall
+        - New features, technology generations, safety improves 
+        - Competitors enter and target unserved customers
+        - Network effects, e.g. smartphone compatibility with chargers or accessories
+        - Complementors, e.g. Verizon stores, iFixIt, Genius Bar
+        - Consumer preferences, e.g. reliability matters more with time
+
+::: notes
+-   Features: Smartphone cameras improve, GPS improves, 4G beats 2G, etc
+-   Complementors: Apps improve, payment processors accept mobile
+    payments, etc.
+-   Apple drops the headphone jack, Android keeps it
+-   Early in a category lifecycle, competitors may benefit each other,
+    e.g. ads promote category consumption more than brand share. those
+    interactions become zero-sum when the category matures
+-   Bass+Rogers is kind of an intellectual trap, where you have a
+    logical story and data, and then get blinded to alternate
+    explanations
+:::
+
+## 
+
+![](images/discordceoquote.png){fig-align="center" fig-width=9in}
+
+::: aside
+[Source](https://web.archive.org/web/20240516070323/https://www.theverge.com/24134914/discord-ceo-gaming-chat-teens-safety-moderation-decoder-interview)
+:::
+
+## Core Needs Data: Google Trends 
+
+- It's relatively easy to measure Served Available Market
+
+- [Google Trends](https://trends.google.com/){target="_blank"} reports search volume indices by keyword, place, time, service
+
+      - Also identifies keyword topics, trending terms & related queries
+      - Samples the query database, reports estimates not totals
+      - Requires a minimum query volume to avoid privacy violations
+      - Free, so it could get sunsetted
+
+::: aside
+- [A 2012 introduction and demonstration by Google's chief economist](https://drive.google.com/file/d/18aecUVA9gxUTuaItl4i-ceB9sDxVAhb1/view?usp=drive_link)
+- Or see a [more recent analysis](https://drive.google.com/file/d/18iNUBfw55raGFLOfMC-H6n55OvdToY0G/view?usp=drive_link)
+:::
+
+
+
+## Customer Lifetime Value
+
+-   CLV is the most powerful customer analytics metric
+
+        - Expresses the firm's value of an individual customer relationship as the net present value of expected future customer profits
+        - Pioneered in catalogue retailers in the 1980s
+        - Has spread widely, but not yet everywhere
+        - CLV metrics enable quantification, and hence serious discussion, of <br>novel policies
+        
+::: notes
+-   Catalogue retailers had huge customer databases, and mailed out
+    expensive books multiple times per year. Had to test which customers
+    were worth sending books, how often
+:::
+
+## CLV Example: Housing First {.scrollable .smaller}
+
+-   "In 2005, Utah set out to fix a problem that's often thought of as
+    unfixable: chronic homelessness. The state had almost 2,000
+    chronically homeless people. Most of them had mental-health or
+    substance-abuse issues, or both. Utah started by just giving the
+    homeless homes...
+-   The cost of shelters, emergency-room visits, ambulances, police, and
+    so on quickly piles up. Lloyd Pendleton, the director of Utah's
+    Homeless Task Force ... said that the average chronically homeless
+    person used to cost Salt Lake City more than \$20,000/year. Putting
+    someone into permanent housing costs the state just \$8,000
+    [including case managers]...
+-   Utah's first pilot program placed 17 people in homes scattered
+    around Salt Lake City, and after twenty-two months not one of them
+    was back on the streets. In the years since, the number of Utah's
+    chronically homeless has fallen by 74%."
+
+::: aside
+- [Source](https://web.archive.org/web/20240330030348/https://www.newyorker.com/magazine/2014/09/22/home-free)
+:::
+
+::: notes
+-   http://www.politico.com/magazine/story/2016/12/what-works-albuquerque-homeless-solution-housing-policy-214527
+-   I'm not sure your stereotype about utah, but many would not guess
+    they invented housing first. It was CLV metrics that showed it to be
+    a no-brainer. It's the serious effort to quantify lifetime value
+    that moved this from dream to reality. Humanitarian upsides have
+    been tremendous.
+:::
+
+## Housing First: Looking deeper
+
+-   Housing First has certainly not solved homelessness
+
+        - "Chronic" means disabled and unhoused for 1+ yrs, or 4x in 3 yrs
+        - ~28% of CA homelessness is chronic (2019)
+        - UT originally claimed 90% reduction, then revised their metric definitions
+        - Reliable efficacy metrics are rare    
+        - Housing First has been implemented haphazardly
+        - UT built new apartments. CA cities mostly use shelters, SROs, vouchers  
+        - Key Q: Require wraparound services? E.g. Addiction treatment, etc
+        - Key Q: Does Housing First somehow encourage homelessness?
+
+-   I claim: Quantification enables bold policy shifts
+
+        - U.S. HUD adopted Housing First as preferred approach to homelessness in 2014
+        - CLV quantifies policy costs and benefits & enables ex-post evaluations
+        - We then can use data to refine CLV estimates and policies
+
+::: notes
+-   UT annual homeless figures inflate a January count using a
+    multiplier
+-   Officials changed the multiplier over time but did not revise past
+    figures
+-   For more,
+    https://www.sltrib.com/news/politics/2020/05/11/utah-was-once-lauded/
+:::
+
+## Calculating CLV
+
+-   $T$ : planning horizon
+-   $m_t$ : contribution margin of serving customer $i$ in time $t$
+-   $r$ : retention probability that customer buys in $t+1$
+-   $i$ is the cost of capital
+-   $CLV=\sum_{t=0}^T\frac{m_t r^t}{(1+i)^t}$
+-   $m_t$ and $r$ observable in past data; future values are predictions
+
+::: notes
+-   Often set arbitrarily at T=3 years, but Bezos says Amazon's 7-year
+    horizon lets them amortize and justify investments that competitors
+    can't match
+-   $m_t$ and should depend on future firm strategy and market
+    conditions
+-   Extensible to model purchase frequency, basket size, profitability
+-   Heterogeneity: $m$ and $r$ often vary across cohorts and segments,
+    but we'll disregard that for simplicity
+:::
+
+## CLV Example {.scrollable .smaller}
+
+-   A tennis club charges an annual fee of \$300
+-   The average club member spends \$100 a year at the club
+    (concessions, etc.)
+-   The average contribution margin on these additional expenditures is
+    60%
+-   Historically, 80% of the members rejoin the club in any given year.
+    The club's cost of capital is 15%
+-   What is the club's CLV over a 1-year horizon?
+    <!-- # m=300+.6\*100=360, i=.15, r=.8 ::: notes ::: - CLV(1yr)=360-->
+-   What is the club's avg. CLV over a 2-year horizon?
+    <!-- # CLV(2yr)=360+360\*.8/1.15=610.43 -->
+-   What is the club's avg. CLV over a 3-year horizon?\
+    <!-- # CLV(3yr)=360(1+.8/1.15+.64/1.3225)=784.65 -->
+
+::: notes
+-   Notice how quickly avg. CLV starts to asymptote as T grows large
+-   is i=.15 realistic? yes-- business payday loans industry like
+    mulligan funding
+:::
+
+## Using CLV for Customer Acquisition
+
+-   Marketing campaigns should be profitable if Avg. Customer
+    Acquisition Cost (CAC) $<$ CLV
+
+        - Caveat: So long as acquired customers have CLV>=avg CLV of existing customers
+        - Often, managers impose a "fudge factor" as a speedbump
+
+-   Suppose the tennis club has a chance to pay \$20k for a billboard.
+    It will be seen by 100K people with an expected conversion rate of
+    .1%. Should we do it?
+
+```{=html}
+<!-- # CAC=20K/(.001\*100k)=20k/100=200. Profitable even on a 1-yr horizon.
+    yes in a vaccum; but more realistically, how confident are we in
+    that .1% conversion prediction? can we get our money back if the ad
+    performs poorly? do we have better ways to spend the \$20k? -->
+```
+-   Similar "break-even" calculations possible for
+
+        - partnerships, opening new stores, price promotions, etc. Anything that requires an upfront outlay to potentially acquire new customers, increase current customer retention, or develop current customer spending
+
+::: notes
+-   Common fudge factors: 3, 7. Why?
+:::
+
+## CLV Metrics in Practice
+
+-   CLV popularity rose alongside CRM data systems
+
+        - e.g. Oracle, SAP, Salesforce
+        - Services and retailers used CLV to set customer experiences: high-CLV flyers got upgraded, high-CLV lodgers got better rooms, high-CLV shoppers got sterling return service and attention, high-CLV callers got shorter wait times and more consideration
+
+-   In the 00s, consulting firms published claims that 20-30% of
+    customers were unprofitable. Many firms tried to "fire" unprofitable
+    customers
+
+        - American Express offered some cardholders $300 to cancel their cards. Best Buy stopped notifying some shoppers about upcoming promotions. Banks used minimum balances and teller fees to drive away some accountholders
+
+-   Customers talk to each other; firing customers is a brand risk
+
+::: notes
+-   In other words, line up all the customers from most profitable to
+    least profitable, and the bottom 20% or more would show
+    negative CLV. If true, then you immediately increase your profit by
+    dropping your bottom 20% of customers. Note, this is very simplistic
+    thinking; maybe prices are too low or return policies are too
+    generous?
+:::
+
+## 
+
+![](images/gambling_ind_rev_by_gamblerrank.png){fig-align="center" width="6in"}
+
+::: aside
+- 5% of gamblers cost online gambling operators 20% of their revenue
+- So, operators block and limit frequent winners. Pros use "beards." [More here](https://archive.ph/LERIB){target="_blank"}
+:::
+
+::: notes
+- Graph shows cumulative online gambling operator revenue by gambler net loss rank, in a 5-year cohort of 717,000 gamblers
+:::
+
+## CLV Cautions & Risks
+
+-   CRM data may be incomplete, disconnected, error prone
+
+        - E.g., can you connect customer identity across different credit card #s?
+        - Think about measurement error in retention rate
+
+-   CLV models are typically misspecified & uncertain
+
+        - CLV-based policies may be self-fulfilling
+        - Treat someone as unprofitable, they may act that way      
+
+-   Guiding Principle
+
+        - The firm and the customer share an interest in creating an optimum level of customer value. Using CLV metrics for value creation benefits everyone
+        - The firm and the customer have opposing interests in price. Using CLV for margin extraction creates perverse incentives for customers
+        - Customer dissatisfaction may reveal CLV flaws; requires careful attention
+        - Hence many firms now measure point-of-sale satisfaction
+
+::: notes
+-   Think about the retention measurement error this could cause, and
+    the dramatic change in CLV
+-   POS satisfaction: e.g. NPS or those "smiley face" 1-button
+    indicators. Try to detect issues faster before they affect customer
+    relationships.
+-   This frontier is actively moving
+:::
+ 
+ 
+ 
+## <!--#Intermission-->
+
+![](images/intermission.jpg){fig-align="center" width="6in"}
+
+      - Suppose you tutor a high school student for $250/month. There is a 10% chance the student will move and find a new tutor in any given month. There are six months remaining in the school year, at which point the tutoring arrangement will definitely end. 
+
+      - What missing information do you need to calculate the current value of the tutoring arrangement?
+
+## Class script
+
+-   Let's estimate the Bass model
+
+![](images/scroll.jpg){fig-align="right" width="2in"}
+
+# Wrapping up
+
+## Homework
+
+-   Let's take a look
+
+![](images/homework.jpg){fig-align="right" width="4in"}
+
+## Recap
+
+-   Customer acquisitions best predict revenues
+-   Market size estimates how many people share a core need
+-   Diffusion models predict how served market changes
+-   CLV metrics can quantify and enable novel policies
+
+![](images/recap.png){fig-align="right" width="2in"}
+
+## Going further
+
+-   [Innovation Diffusion and New Product Growth Models (Peres et al.
+    2009)](https://www.sciencedirect.com/science/article/pii/S0167811610000236)
+
+-   [Customer-Base Valuation in a Contractual Setting with Heterogeneity
+    (Fader & Hardie
+    2010)](https://drive.google.com/file/d/148LB_atkG7Q7awUkZHQseEXigCUHxAnU/view?usp=share_link)
+
+-   [Exploring the Distribution of Customer Lifetime Value (Fader &
+    Hardie
+    2017)](https://drive.google.com/file/d/1v_U9A1_NcpdxkvrRvsNY9fAQpVhwgnFT/view?usp=share_link)
+
+-   [Firing your best customers (Avery & Fournier
+    2012)](https://drive.google.com/file/d/1EQvYdwR63xz4hXheQeXip8F-uzFooqNZ/view?usp=share_link)
+
+![](images/takingoff.png){fig-align="right" width="2in"}

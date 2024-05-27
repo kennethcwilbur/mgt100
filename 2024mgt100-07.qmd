@@ -206,28 +206,53 @@ credible market research
 
 - Survey target customers: At what price is (product)...
 
-        - so cheap you would question its quality?
-        - inexpensive?
-        - no longer a bargain?
-        - so expensive you would not consider buying it?
+        - Too Cheap? I.e., that you would question its quality
+        - Good Value?
+        - Expensive?
+        - Too Expensive? I.e., that you would not consider buying 
 
 - Plot CDFs 
+
+        - Too Cheap and Good Value decrease with price
+        - Expensive and Too Expensive increase with price
+        - Look for crossing points
 
 ::: aside
 - R package [pricesensitivitymeter](https://cran.r-project.org/web/packages/pricesensitivitymeter/pricesensitivitymeter.pdf)
 :::
 
-## {.scrollable}
+## {.scrollable .smaller}
 
 ![](images/vw.png){fig-align="center" width=6in}
 
-- "Too cheap" meets "too expensive": <br>minimal number of price-refusing customers
-- What do you think of this model?
+- "Too cheap" meets "Expensive": "Point of Marginal Cheapness"
+
+          - VW says: Don't price below PMC
+
+- "Good Value" meets "Too Expensive": "Point of Marginal Expensiveness"
+
+          - VW says: Don't price above PME
+
+- "Too Cheap" meets "Too Expensive": Min. # of price-refusers
+
+- "Good Value" meets "Expensive": Possibly max. # of price-accepters
+
+- Strengths 
+
+          - Estimable with survey data only; Estimates distributions of consumer heterogeneity; Incorporates reference prices and price-quality signals
+          - Extensible to incorporate stated purchase intentions at each price. Add cost data, you can then max. profits
+
+- Limitations
+
+          - Identifies a price range, not a price
+          - Thinking about 4 CDFs is difficult, easy to misinterpret
+          - Stated-preference data only; disregards competitors & marginal costs, hence don't use standalone
+          - Limited field evidence that it works well
 
 ::: notes
 - Extensible to also ask about stated purchase intentions; Newtom/Miller/Smith 1993, "A market acceptance extension to traditional price sensitivity measurement” 
 - Thinking about intersections of 4 CDFs is sufficiently difficult that it will dazzle some consulting clients
-- Probably best to use this to evaluate other pricesetting approaches, rather than on its own to set price
+- Probably best to use this to evaluate other price-setting approaches outputs, rather than on its own to set price
 :::
 
 ## Signals and *Perceived Quality*

@@ -252,7 +252,7 @@ $$\frac{dA(t)}{dt}=pR(t)+q\frac{A(t)}{M}R(t)$$
 
 -   Or, notice that $\frac{dA(t)}{dt}=pR(t)+q\frac{A(t)}{M}R(t)$
     $=p(M-A(t)) + q* \frac{A(t)}{M}(M-A(t))$
-    $=pM + (q-p)A(t)+\frac{q}{M} A(t)^2$
+    $=pM + (q-p)A(t)-\frac{q}{M} A(t)^2$
 
 -   We can regress $\frac{dA(t)}{dt}$ on a quadratic in installed base
 

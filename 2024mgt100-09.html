@@ -687,7 +687,7 @@
 <section id="estimating-bass-model-via-ols" class="slide level2">
 <h2>Estimating Bass model via OLS</h2>
 <ul>
-<li><p>Or, notice that <span class="math inline">\(\frac{dA(t)}{dt}=pR(t)+q\frac{A(t)}{M}R(t)\)</span> <span class="math inline">\(=p(M-A(t)) + q* \frac{A(t)}{M}(M-A(t))\)</span> <span class="math inline">\(=pM + (q-p)A(t)+\frac{q}{M} A(t)^2\)</span></p></li>
+<li><p>Or, notice that <span class="math inline">\(\frac{dA(t)}{dt}=pR(t)+q\frac{A(t)}{M}R(t)\)</span> <span class="math inline">\(=p(M-A(t)) + q* \frac{A(t)}{M}(M-A(t))\)</span> <span class="math inline">\(=pM + (q-p)A(t)-\frac{q}{M} A(t)^2\)</span></p></li>
 <li><p>We can regress <span class="math inline">\(\frac{dA(t)}{dt}\)</span> on a quadratic in installed base</p>
 <pre><code>- Then recover p, q &amp; M from the parameter estimates
 - We'll do both</code></pre></li>

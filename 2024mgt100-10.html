@@ -352,7 +352,6 @@ Kenneth C. Wilbur and Dan Yavorsky
 <aside class="notes">
 <ul>
 <li>first reading reprises some week 9 material on CLV, diffusion and market size</li>
-<li>second reading shows that CBCV ideas are filtering into traditional valuation literature</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -371,7 +370,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <h1>Marketing+Finance</h1>
 <ul>
 <li><p>Customer-based corporate valuation</p></li>
-<li><p>CBCV using credit card expenditure panels</p></li>
+<li><p>Credit card expenditure panels</p></li>
 <li><p>Asset price game</p></li>
 <li><p>Wrapping up</p></li>
 </ul>
@@ -548,9 +547,9 @@ NOPAT_T = f(\{NOPAT_{T-t}\}_{t=1,...,T})
 <section id="core-cbcv-idea" class="slide level2 smaller">
 <h2>Core CBCV Idea</h2>
 <ul>
-<li><p>Firm strategies can be described with two attributes:</p>
+<li><p>Firm strategies lie between two extremes:</p>
 <ol type="1">
-<li><p>Promote well: High customer acquisition, High CAC, high churn</p>
+<li><p>Promote well: High CAC, high acquisition, high churn</p>
 <pre><code> - Tends to be expensive 
  - Requires a large market to sustain (why?)</code></pre></li>
 <li><p>Retain well: High retention, higher CLV, low CAC</p>
@@ -583,15 +582,12 @@ NOPAT_T = f(\{ACQ_{T-t},RET_{T-t}\}_{t=1,...,T})
 <li>customer attrition by cohort</li>
 </ul></li>
 </ul>
-
-<aside><div>
-<p>Eg. <a href="https://articles.sequoiacap.com/retention">“Triangle retention chart”</a></p>
-</div></aside></section>
+</section>
 <section id="section" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/customer_matrix.png" class="quarto-figure quarto-figure-center" style="width:5.5in"></p>
+<p><img data-src="images/customer_matrix.png" class="quarto-figure quarto-figure-center" style="width:7in"></p>
 </figure>
 </div>
 <aside class="notes">
@@ -691,7 +687,7 @@ NOPAT_T = f(\{ACQ_{T-t},RET_{T-t}\}_{t=1,...,T})
 <section id="credit-card-expenditure-panels" class="slide level2">
 <h2>Credit card expenditure panels</h2>
 <ul>
-<li><p>Anonymous credit card expenditure data: Report</p>
+<li><p>Anonynmous credit card expenditure data: Report</p>
 <pre><code>- Anonymous card ID
 - Merchant ID
 - Spend, timestamp, location, merchant category</code></pre></li>
@@ -721,7 +717,7 @@ NOPAT_T = f(\{ACQ_{T-t},RET_{T-t}\}_{t=1,...,T})
 <h2>Instacart Gross Order Value</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/instacart_gov.png" class="quarto-figure quarto-figure-center" style="width:7in"></p>
+<p><img data-src="images/instacart_gov.png" class="quarto-figure quarto-figure-center" style="width:9in"></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-right">
@@ -786,7 +782,7 @@ NOPAT_T = f(\{ACQ_{T-t},RET_{T-t}\}_{t=1,...,T})
 <h2>Doordash Gross Order Value</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/doordash_gov.png" class="quarto-figure quarto-figure-center" style="width:7in"></p>
+<p><img data-src="images/doordash_gov.png" class="quarto-figure quarto-figure-center" style="width:9in"></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-right">
@@ -848,7 +844,7 @@ NOPAT_T = f(\{ACQ_{T-t},RET_{T-t}\}_{t=1,...,T})
 <h2>Shipt Gross Order Value</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/shipt_revenue.png" class="quarto-figure quarto-figure-center" style="width:7in"></p>
+<p><img data-src="images/shipt_revenue.png" class="quarto-figure quarto-figure-center" style="width:9in"></p>
 </figure>
 </div>
 <aside class="notes">
@@ -1020,13 +1016,13 @@ NOPAT_T = f(\{ACQ_{T-t},RET_{T-t}\}_{t=1,...,T})
     - We can fully understand the model, but even this can be hard</code></pre></li>
 <li><p>Modeling is a superpower!</p>
 <pre><code>    - You can understand, explain and predict things that others can't
-    - Modeling skills develop with practice &amp; transfer across domains</code></pre></li>
+    - Modeling skills develops with practice &amp; transfer across domains</code></pre></li>
 <li><p>Cautions</p>
-<pre><code>    - Simple models are often 85-95% effective
+<pre><code>    - Simple models are usually 85-95% effective
     - There is never a true model
     - Never mistake the model for the phenomena
     - "Model uncertainty" is always present
-    - It's "a" model, not "your" model
+    - It's not "your" model
     - Beware modeling for the sake of modeling 
     - All models assume; good models assume transparently
     - If it were true, we wouldn't call it an "assumption"
@@ -1047,14 +1043,6 @@ NOPAT_T = f(\{ACQ_{T-t},RET_{T-t}\}_{t=1,...,T})
 </figure>
 </div>
 </section>
-<section id="congrats-you-did-it" class="slide level2">
-<h2>Congrats you did it!</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/girl-celebrates.png" class="quarto-figure quarto-figure-center" style="width:6in"></p>
-</figure>
-</div>
-</section>
 <section id="recap" class="slide level2">
 <h2>Recap</h2>
 <ul>
@@ -1062,7 +1050,6 @@ NOPAT_T = f(\{ACQ_{T-t},RET_{T-t}\}_{t=1,...,T})
 <li>Customer-Based Corporate Valuation (CBCV) advocates reporting <span class="math inline">\(C(t,t')\)</span> to enable investors to better predict profits</li>
 <li>CBCV is still small but growing, there are opportunities here</li>
 <li>Fundamentals help calculate asset prices</li>
-<li>No customers, no business</li>
 </ul>
 <div class="quarto-figure quarto-figure-right">
 <figure>

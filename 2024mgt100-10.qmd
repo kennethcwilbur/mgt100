@@ -23,13 +23,14 @@ Customers](https://drive.google.com/file/d/1nhS1LsSacLnLzi2OkVHmag-BLK5LTXL-/vie
 
 ::: notes
 - first reading reprises some week 9 material on CLV, diffusion and market size
+- second reading shows that CBCV ideas are filtering into traditional valuation literature
 :::
 
 # Marketing+Finance
 
 - Customer-based corporate valuation
 
-- Credit card expenditure panels
+- CBCV using credit card expenditure panels
 
 - Asset price game
 
@@ -149,9 +150,9 @@ $$
 
 ## Core CBCV Idea {.smaller}
 
-- Firm strategies lie between two extremes:
+- Firm strategies can be described with two attributes:
 
-  1. Promote well: High CAC, high acquisition, high churn
+  1. Promote well: High customer acquisition, High CAC, high churn
     
           - Tends to be expensive 
           - Requires a large market to sustain (why?)
@@ -193,9 +194,13 @@ $$
     - customer acquisition by cohort
     - customer attrition by cohort
 
+::: aside
+Eg. ["Triangle retention chart"](https://articles.sequoiacap.com/retention)
+:::
+
 ## 
 
-![](images/customer_matrix.png){fig-align=center width=7in}
+![](images/customer_matrix.png){fig-align=center width=5.5in}
 
 ::: notes
 
@@ -244,7 +249,7 @@ $$
 
 ## Credit card expenditure panels 
 
-- Anonynmous credit card expenditure data: Report 
+- Anonymous credit card expenditure data: Report 
 
       - Anonymous card ID
       - Merchant ID
@@ -265,7 +270,7 @@ $$
 
 ## Instacart Gross Order Value
 
-![](images/instacart_gov.png){fig-align=center width=9in}
+![](images/instacart_gov.png){fig-align=center width=7in}
 
 
 ![](images/logo-instacart.png){fig-align=right width=1in}
@@ -299,7 +304,7 @@ $$
 
 ## Doordash Gross Order Value
 
-![](images/doordash_gov.png){fig-align=center width=9in}
+![](images/doordash_gov.png){fig-align=center width=7in}
 
 
 ![](images/logo-doordash.png){fig-align=right width=1.3in}
@@ -328,7 +333,7 @@ $$
 
 ## Shipt Gross Order Value
 
-![](images/shipt_revenue.png){fig-align=center width=9in}
+![](images/shipt_revenue.png){fig-align=center width=7in}
 
 ::: notes 
 - Like Instacart & Doordash, Shipt had predictable & rising GOV from 2017-20
@@ -452,15 +457,15 @@ Rules:
 - Modeling is a superpower!
 
           - You can understand, explain and predict things that others can't
-          - Modeling skills develops with practice & transfer across domains
+          - Modeling skills develop with practice & transfer across domains
           
 - Cautions
 
-          - Simple models are usually 85-95% effective
+          - Simple models are often 85-95% effective
           - There is never a true model
           - Never mistake the model for the phenomena
           - "Model uncertainty" is always present
-          - It's not "your" model
+          - It's "a" model, not "your" model
           - Beware modeling for the sake of modeling 
           - All models assume; good models assume transparently
           - If it were true, we wouldn't call it an "assumption"
@@ -478,6 +483,9 @@ Rules:
 
 ![](images/homework.jpg){fig-align="right" width=4in}
 
+## Congrats you did it!
+
+![](images/girl-celebrates.png){fig-align="center" width=6in}
 
 
 ## Recap
@@ -486,6 +494,7 @@ Rules:
 - Customer-Based Corporate Valuation (CBCV) advocates reporting $C(t,t')$ to enable investors to better predict profits
 - CBCV is still small but growing, there are opportunities here
 - Fundamentals help calculate asset prices
+- No customers, no business
 
 ![](images/recap.png){fig-align="right" width=2in}
 

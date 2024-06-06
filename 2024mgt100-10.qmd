@@ -1,0 +1,523 @@
+---
+title: "Marketing+Finance"
+subtitle: "UCSD MGT 100 Week 10"
+author: "Kenneth C. Wilbur and Dan Yavorsky"
+output: html_document
+format: 
+  revealjs:
+    auto-stretch: false
+    theme: default
+slide-number: c
+editor_options: 
+  chunk_output_type: inline 
+---
+
+## Let's reflect
+
+- [How to Value a Company by Analyzing Its
+Customers](https://drive.google.com/file/d/1nhS1LsSacLnLzi2OkVHmag-BLK5LTXL-/view?usp=share_link)
+
+- [IPO Disclosures Are Ripe for Reform](https://drive.google.com/file/d/1yHjslNFl4y2Y3qb6OWoJyIhfUTB7LFJf/view?usp=drive_link)
+
+![](images/mirror.jpg){fig-align="right" width=3in}
+
+::: notes
+- first reading reprises some week 9 material on CLV, diffusion and market size
+- second reading shows that CBCV ideas are filtering into traditional valuation literature
+:::
+
+# Marketing+Finance
+
+- Customer-based corporate valuation
+
+- CBCV using credit card expenditure panels
+
+- Asset price game
+
+- Wrapping up
+
+
+## Hi Finance, I'm Marketing
+
+- Finance/marketing crossovers
+
+      - Marketing policy effects on stock prices
+      - ROI estimates & budgets (ads, sales, product launch, ...)
+      - Customer opportunity evaluations & financial forecasts
+      - M&A analyses, complementarities & market impacts
+      - Behavioral finance AKA acknowledging that investors are humans and therefore subject to biases
+      
+- Yet disciplinary cultures differ
+
+- Current areas of opportunity 
+
+::: notes
+- We're going to do some maths today, lots of symbols but only elementary operations
+- then we'll look at some case studies
+:::
+
+
+## *Corporate Valuation* 
+- Quantitative current valuation of a business 
+
+      - True valuation, like wtp, is inherently subjective bc future is unknown
+      - Yet we often need to assess value without a full sale, eg investment advice, M&A, settling a lawsuit, IPO pricing, approving a business loan
+
+- Theoretical best way to measure: sell x\% at auction
+
+      - But how does valuation changes with x?
+      - Tough experiment to run, but demand usually slopes down
+
+- CorpVal: Develops, applies models to value businesses 
+
+      - Inherently stochastic, but ideally closer to appraisal than speculation
+      - Do results depend on who pays? Buyer, seller, 3rd party
+      
+::: notes
+- Corporate valuation is its own field
+- something something "Gamestop"
+:::
+
+
+## Standard CorpVal Formulas
+
+$$Shareholder Value_T=OA_T+NOA_T-ND_T$$
+
+- $T$ indicates current expectation given *T*oday's data 
+- $OA_T$ is net present value of Operating Assets
+- $NOA_T$ is npv of Non-Operating Assets
+- $ND_T$ is net debt
+
+::: notes
+- NOA_T : e.g. cash holdings, crypto, investments in other businesses, value of patents, ...
+- Net Debt = Funds owed - funds lent
+- Source: Investment Valuation by Damodaran (2012)
+- Let's zoom in on OA_T
+:::
+
+
+
+## Discounted Cash Flow (DCF) Model {.smaller}
+
+$$
+OA_T=\sum_{t=0}^{\infty}\frac{FCF_{T+t}}{(1+WACC_T)^t}
+$$
+
+- $WACC$ is the weighted average cost of capital
+- $FCF$ is Free cash flow, or net operating profit after taxes (NOPAT) minus change in capital expenditures and depreciation and amortization (D&A), minus change in nonfinancial working capital ($\Delta$NFWC):
+
+$$
+FCF_t=NOPAT_t-(CAPEX_t-D\&A_t)-\Delta NFWC_t
+$$
+
+::: notes
+- Source: Investment Valuation by Damodaran (2012)
+:::
+
+
+
+## Discounted Cash Flow (DCF) Model 
+
+$$
+    NOPAT_t=[Rev_t*(1-AVC_t)-FC_t]*(1-TR_t)
+$$    
+
+- $Rev$ is revenue
+- $AVC$ is average variable cost
+- $FC$ is fixed cost
+- $TR$ is corporate tax rate
+
+::: notes
+- Finally, a profit function!
+:::
+
+## Is this the best way? 
+
+- Traditionally, analysts predict NOPAT based on past NOPAT:
+
+  $$
+  NOPAT_T = f(\{NOPAT_{T-t}\}_{t=1,...,T})
+  $$ 
+
+- Can we do better? Enter CBCV
+
+        - Start w subscription biz, since rev/cust is roughly constant
+
+::: notes
+- Of course, subscription businesses have tiers, discounts, etc.; ignore for simplicity
+- Extensible to non-subscription biz, but more moving pieces
+:::
+
+## Core CBCV Idea {.smaller}
+
+- Firm strategies can be described with two attributes:
+
+  1. Promote well: High customer acquisition, High CAC, high churn
+    
+          - Tends to be expensive 
+          - Requires a large market to sustain (why?)
+    
+  2. Retain well: High retention, higher CLV, low CAC 
+
+          - Tends to be higher $OA_T$, but slower acquisition (why?)
+
+- Customer data improve $NOPAT_t$ forecasts by distinguishing promotion from retention, & better predict future churn
+
+      - Intentionally simplified. A biz could both promote & retain well, or neither
+
+- Hence we should assume
+
+$$
+NOPAT_T = f(\{ACQ_{T-t},RET_{T-t}\}_{t=1,...,T})
+$$
+
+
+## The C(.,.) Matrix {.smaller}
+
+- Let $C(t,t')$ be the number of customers acquired in time $t$ & still active in time $t'\ge t$
+  
+    - Firm can count customers $C(t,t')$ for all pairs $(t<T,t'<T)$
+
+            - Sophisticated companies monitor these data internally
+
+    - $C(t,t)$ is simply customers acquired in period $t$
+    - $C(t,t')$ is weakly decreasing in $t'$
+    - $C(.,t)$ is all customers active at time $t$
+    
+           - roughly proportional to $NOPAT_t$
+
+    - $C(.,t)-C(.,t-1)$ is attrition at time $t$
+
+
+- Public firms report profits quarterly. CBCV advocates public reporting of 
+
+    - customer acquisition by cohort
+    - customer attrition by cohort
+
+::: aside
+Eg. ["Triangle retention chart"](https://articles.sequoiacap.com/retention)
+:::
+
+## 
+
+![](images/customer_matrix.png){fig-align=center width=4.5in}
+
+::: notes
+
+-  Source: McCarthy et al *Journal of Marketing 2017
+:::
+
+
+## What about transaction businesses?
+
+- CBCV extends to non-subscription  businesses, but 
+
+      - Customer attrition not directly observed
+      - Purchase frequency varies across customers & time
+      - Spending varies across customers & time
+      - Cross-selling opportunities and takeup vary across customers & time
+
+- Greater variance and model uncertainty, <br>hence forecasts are more uncertain
+
+::: notes
+- Modeling details treated by ![McCarthy and Fader (2018)](https://journals.sagepub.com/doi/pdf/10.1177/0022243718802843)
+:::
+
+## Blue Apron in 2017
+
+![](images/blueapron1.jpg){fig-align=center width=6in}
+
+::: notes 
+- [Source: WSJ on Blue Apron Financials, pre-IPO](https://web.archive.org/web/20201112043423/https://www.wsj.com/articles/stir-fry-on-sale-blue-apron-turns-to-deals-to-draw-customers-1498561202)
+- This isn't showing all C(t,t') data, but marketing is a HUGE % of revenue, and rising proportionally with total customers. McCarthy pointed out in social media that's very likely unsustainable.
+- This is an example of a high-CAC, low-retention business. 25\% is incredibly high. 1-10% is more typical
+- Note also that CAC was rising: Somewhat akin to the "pump and dump" trading strategy. Using new investor money to increasingly acquire new customers, but neglected retention
+::: 
+
+
+## Blue Apron in 2019
+
+![](images/blueapron2.png){fig-align=center width=7in}
+
+::: notes 
+- Sadly, after IPO at $32 in march 2018, and a peak at $58 in July 2018, the stock reached $.70 in 2023, a loss of 98% from IPO valuation
+- Dan was right, despite this being a new category and inherently uncertain to predict
+- This was an early "win" for CBCV
+- [Source: Motley Fool in 2019    ](https://web.archive.org/web/20210228221306/https://www.fool.com/investing/2019/03/28/lyfts-ipo-the-one-article-you-need-to-read.aspx)
+::: 
+
+
+## Credit card expenditure panels 
+
+- Anonymous credit card expenditure data: Report 
+
+      - Anonymous card ID
+      - Merchant ID
+      - Spend, timestamp, location, merchant category
+
+- Data are anonymized, but data fusion enables stochastic reidentification
+
+- Powerful implications for CBCV: 
+
+      - You no longer need internal data to estimate C(t,t')
+      - Investors can mine CC data for customer insights
+  
+::: notes 
+- Let's look at some case studies of privately held corporations
+- AKA not publicly traded stocks
+:::
+
+
+## Instacart Gross Order Value
+
+![](images/instacart_gov.png){fig-align=center width=7in}
+
+
+![](images/logo-instacart.png){fig-align=right width=1in}
+
+
+::: notes 
+- GOV: roughly proportional to revenue
+- Notice how smoothly GOV changed from 2017-20
+- What happened in 2020-March?
+- Working with a totally different data source here: credit card expendtiure panels with millions of consumers from Earnest Research
+- [Source: McCarthy (2021)     ](https://www.linkedin.com/pulse/doordash-instacart-shipt-tale-3-covid-bumps-daniel-mccarthy/)
+::: 
+
+
+## Instacart Retention by Cohort
+
+![](images/instacart_retentionbycohort.png){fig-align=center width=8.6in}
+
+![](images/logo-instacart.png){fig-align=right width=1in}
+
+
+::: notes 
+- Now, let's look under the hood at C(.,.)
+- Again, notice how smoothly Instacart retention changed from 2017-20
+- But, retention was trending down from 2017-20 as more stores started delivering
+- You can see that Instacart retention rose during the pandemic
+- Investors could translate that retention increase to firm value
+- [Source: McCarthy (2021)     ](https://www.linkedin.com/pulse/doordash-instacart-shipt-tale-3-covid-bumps-daniel-mccarthy/)
+::: 
+
+
+## Doordash Gross Order Value
+
+![](images/doordash_gov.png){fig-align=center width=7in}
+
+
+![](images/logo-doordash.png){fig-align=right width=1.3in}
+
+::: notes 
+- Again, notice how smoothly Doordash GOV changed from 2017-20. Builds confidence in using past retention to predict future retention
+- Unlike Instacart, Doordash retention was trending up from 2017-20
+- Pandemic goosed GOV, but then it resumed trend  
+- [Source: McCarthy (2021)     ](https://www.linkedin.com/pulse/doordash-instacart-shipt-tale-3-covid-bumps-daniel-mccarthy/)
+::: 
+
+
+## Doordash Retention by Cohort
+
+![](images/doordash_retentionbycohort.png){fig-align=center width=8.6in}
+
+![](images/logo-doordash.png){fig-align=right width=1.3in}
+
+
+::: notes 
+- Unlike Instacart, Doordash retention was trending up from 2017-20
+- But, the newest cohorts after the pandemic had much lower retentions than the older cohorts
+- [Source: McCarthy (2021)     ](https://www.linkedin.com/pulse/doordash-instacart-shipt-tale-3-covid-bumps-daniel-mccarthy/)
+::: 
+
+
+## Shipt Gross Order Value
+
+![](images/shipt_revenue.png){fig-align=center width=7in}
+
+::: notes 
+- Like Instacart & Doordash, Shipt had predictable & rising GOV from 2017-20
+- Big pandemic bump, then big crash!
+- [Source: McCarthy (2021)     ](https://www.linkedin.com/pulse/doordash-instacart-shipt-tale-3-covid-bumps-daniel-mccarthy/)
+::: 
+
+
+## Shipt Retention by Cohort
+
+![](images/shipt_retentionbycohort.png){fig-align=center width=9in}
+
+::: notes 
+- Red alert! What do you see here?
+- [Source: McCarthy (2021)     ](https://www.linkedin.com/pulse/doordash-instacart-shipt-tale-3-covid-bumps-daniel-mccarthy/)
+::: 
+
+
+## CBCV rollout
+
+- CBCV is *slowly* entering finance & accounting canon
+
+        - Firms increasingly experiment with reporting customer metrics (ThetaCLV)
+        - Firms with high retention self-select into reporting it
+        - Numerous firms have customer-level data available for reporting
+
+- Prediction: A tipping point 
+
+        - Should incentivize start-ups toward customer retention 
+        - Should make capital allocation more efficient 
+        - But, won't happen until enough investors demand it
+
+::: notes  
+- Like econ, Finance & accounting worlds are famously conservative and slow to adopt
+- Fader & McCarthy are on their second related start-up to popularize CBCV, having sold the first one to Nike
+- when enough firms report customer-level metrics, then the ones that don't should be seen as low quality investments
+- Ofc, lots of investors still buy low-quality investments
+- Currently, customer acquisition is overemphasized by many investors
+:::
+
+
+## Asset Price Game
+
+- You are VCs trading start-up shares ("assets")
+
+- Each team starts with 3 assets and $20 cash
+
+- Teams can make money in 1 of 3 ways:
+
+  1. Collect dividends
+  2. Buy and sell assets
+  3. Asset payouts at the end of the game
+  
+- Richest team at the end gets extra credit
+
+- Play in teams of 5 : Form now & appoint a speaker
+
+## Trading rounds
+
+- We will play $n$ 2-minute rounds. Within each round :
+
+1. Trade assets/money in double Walrasian auction
+2. After trading, each asset pays its owning team $1 dividend
+3. After dividend, each asset goes bankrupt with 1/6 probability
+
+After $n$th round, every surviving asset pays an extra $6
+
+## Trading {.smaller .scrollable}
+
+4 allowable trading statements: 
+
+1. State a selling price: "Team (w) ASKS $a.bc" 
+2. State a buying offer: "Team (x) BIDS $d.ef" 
+3. Accept a selling price: "Team (y) ACCEPTS Team (w)'s ask"
+4. Accept a buying offer: "Team (z) ACCEPTS Team (x)'s bid" 
+
+Rules:
+
+- No more than 1 ASK or BID per team per round
+- No ASK more than the lowest open ask (why?)
+- No BID less than the highest open bid
+- You can only ask/bid/accept if you have the asset or cash to cover
+- We track all trades; you track your own assets, payouts and cash by round
+    - [Copy this google sheet](https://docs.google.com/spreadsheets/d/1eAmIIGBdTgFCLXxy03NW4gLl2uah1c6tnMc6GfmRn3w/edit?usp=sharing); let's walk through it
+- Raise your hand to ask/bid/accept
+
+- Any questions?
+
+::: notes
+- This is a double Walrasian auction design
+:::
+
+## Let's play!
+
+![](images/assetprices.png){fig-align="center" width=6in} 
+
+
+## 
+
+- What happened?
+
+- Why did that happen?
+
+- What strategy did your team use?
+
+- How might this connect to real financial markets?
+
+
+
+# Wrapping up
+
+
+
+## Modeling: 1000' view
+
+- *Model*: Simple representation of complicated phenomena
+
+          - We can't fully understand the phenomena
+          - We can fully understand the model, but even this can be hard
+
+- Modeling is a superpower!
+
+          - You can understand, explain and predict things that others can't
+          - Modeling skills develop with practice & transfer across domains
+          
+- Cautions
+
+          - Simple models are often 85-95% effective
+          - There is never a true model: "Model uncertainty" is always present
+          - Never mistake the model for the phenomena
+          - It's "a" model, not "your" model
+          - All models assume; good models assume transparently
+          - If it were true, we wouldn't call it an "assumption"
+          - Anyone can tear down a model; improving a model is work
+
+<!--Beginners often say: "my model," "my data," "my assumptions"... -->
+<!-- Modeling for the sake of modeling might be fun; might increase your modeling skill level; but it does not tell you about the world, and generally won't interest others-->
+
+
+## Homework 
+
+- No assignment or quiz
+
+- Chat briefly about the final
+
+![](images/homework.jpg){fig-align="right" width=4in}
+
+## Congrats you did it!
+
+![](images/girl-celebrates.png){fig-align="center" width=6in}
+
+- Special congratulations for those who are graduating
+
+          - It's a big deal. We're proud of you.
+
+## Recap
+
+- Corporate valuation uses past profits to predict future profits, without using granular customer metrics
+- Customer-Based Corporate Valuation (CBCV) advocates reporting $C(t,t')$ to enable investors to better predict profits
+- CBCV is still small but growing, there are opportunities here
+- Fundamentals help calculate asset prices
+- No customers, no business
+
+![](images/recap.png){fig-align="right" width=2in}
+
+
+
+## Going further
+
+-   [Nice 1000' View: The Economics of Customer Businesses](https://drive.google.com/file/d/1knw5cuekMOzBGkrXvG5kHc9MlVmf8Diz/view?usp=share_link)
+
+-  [What are the most important statistical ideas of the past 50 years?](https://drive.google.com/file/d/1vgJ9JYODGHp25q9bG2biqYGmQPSc26jl/view?usp=share_link)
+
+- [Customer-Based Corporate Valuation for Publicly Traded Noncontractual Firms](https://drive.google.com/file/d/1nhS1LsSacLnLzi2OkVHmag-BLK5LTXL-/view?usp=share_link)
+
+- [Decomposing Firm Value by Belo et al. (2021)](https://drive.google.com/file/d/1yLbHsg5eayPWupmhdhX13nYG-hzAcYj1/view?usp=share_link) for a competing perspective
+
+- [Bruce Hardie's customer-base analysis materials](https://brucehardie.com/)
+
+
+
+::: notes
+- Hardie is a marketing professor at LBS and a longtime expert on customer lifetime value whose website offers free papers, notes and datasets on his website. For those who want to go way deeper on the customer-base analysis stuff
+- The first paper is a good big-picture overview of analytics in general, and a brief preview of where two world's experts think analytics might be going in the future. From a statistics perspective moreso than econ. Good summer reading
+:::
+
+![](images/takingoff.png){fig-align="right" width=2in}

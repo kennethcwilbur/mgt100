@@ -1,5 +1,5 @@
 ---
-title: "Visualization, Customer Data, Intro"
+title: "Visualization, Intro"
 subtitle: "MGT 100 Week 1"
 author: "Kenneth C. Wilbur and Daniel Yavorsky"
 output: html_document
@@ -33,6 +33,8 @@ editor:
 :::
 
 ::: notes
+-   Data tables are older than english, christianity, even zero (est. 3 b.c.)
+-- history of 0: 
 -   This is a drawing of an ancient Mesopotamian clay tablet
 -   Found near the Euphrates river in iraq
 -   Estimated to be 3500 years old
@@ -129,11 +131,11 @@ editor:
 -   describes people, entities, and activities involved in producing,
     compiling, transforming & sharing data
 
-    ```         
         - Verifiability requires source & cleaning scripts
-    ```
 
 -   Crucial in determining quality, reliability, trustworthiness
+
+        - Interpreting provenance requires and deepens domain expertise
 
 -   Important aspects: Customer consent; Data privacy; Missingness
     remedies; Contractually permissible uses
@@ -149,19 +151,21 @@ editor:
 
 -   Data Origin, Measures, Quality, Verifiability
 
-          -   Where did the data come from?
+          -   How were the data produced?
           -   Who collected it, when and why?
           -   How is each variable measured? (surveys, APIs, sensors, etc; units)
           -   Is there a data dictionary or changelog?
           -   How can I verify individual datapoints?
-          -   Is the data certified by any external party?
+          -   Is the data certified by any third party?
           
 -   Processing & Transformation
 
           -   What cleaning or manipulation was done?
-          -   Who performed it and why?
+          -   Who performed it and why? Can I see their scripts?
           -   Were missing values imputed? How?
           -   How were outliers handled?
+
+- GIGO: Garbage In, Garbage Out. Don't analyze noise
 
 ::: aside
 [Go deeper](https://technologyadvice.com/blog/business-intelligence/data-provenance/){target="_blank"}
@@ -169,23 +173,24 @@ editor:
 
 ## Viz can build trust, understanding
 
--   Viz are *lingua franca* across disciplines
-
 -   Eyeballs can interpret pictures quickly
 
-    ```         
-    - Our brains evolved to interpret visual patterns and make predictions
-    ```
-
--   Easily replicated -\> more easily trusted
-
--   Understandable to managers
+        - We all interpret visual patterns and make predictions
 
 -   Can detect unknown errors
 
--   Best when they raise deeper questions
+-   Understandable to managers
 
-            - Asking the next question indicates trust
+        - Viz choices enable narrative understanding
+
+-   Viz are *lingua franca* across disciplines
+
+        - Easily replicated -\> more easily trusted
+
+-   Successful viz raise deeper questions
+
+        - Asking the next question indicates acceptance
+        - "I wonder why that is...." or "Maybe that's because..."
 
 ::: notes
 -   Pictures are easier than models or tables
@@ -212,6 +217,7 @@ editor:
     different ways. Here are 6
 -   Each image presents a different comparison ... let's walk through a
     few of them. 
+    Go slow. Ask, "What does this first viz emphasize?"
     1. emphasizes absolute changes over time within country
     2. emphasizes 2022 datapoints by country
     3. Emphasizes country proximities within region
@@ -228,13 +234,13 @@ editor:
 
 
 
-## How to Not Mislead with Viz
+## Honest Viz
 
-1. Start axes from 0 and choose scales judiciously 
+1. Start axes from 0, choose scales judiciously 
 
-2. Do not add, edit or trim data points 
+2. Show all relevant data, label accurately. Don't edit, trim
 
-3. Limit discretizations and smoothing
+3. Discretize and smoothe judiciously
 
 ![](images/mislead.png){fig-align="right" width="3.5in"}
 
@@ -312,7 +318,7 @@ You want to avoid mistaken interpretations of your work, and identify misleading
 ![](images/Moneyball_Poster.jpg){fig-align="right" width="1.5in"}
 
 ::: aside
--   *related* Expert systems, business intelligence, data science
+-   *related* Expert systems, business intelligence, data science, AI
 :::
 
 ## First Law of Customer Analytics
@@ -328,70 +334,58 @@ You want to avoid mistaken interpretations of your work, and identify misleading
 -   Is talking to customers fun?
 :::
 
-## <!--#4 flavors of analytics-->
+## Second Law of Customer Analytics
 
-![](images/4typesofanalytics.png){fig-align="center" width="11in"}
+-   Mo' Customers, Mo' Profits
 
-## <!--#Funnel-->
+-   More Customers -\> <br>More Revenue -\> <br>More Profit 
 
-![](images/funnel.png){fig-align="center"}
+        - These are empirical tendencies, not logical necessities
+        - Individual customers can be unprofitable if (price-cost)<0
 
-::: notes
--Retail has always been an early adopter of customer analytics
--Catalogue retailers were the OGs -E-commerce more recently - talk about
-how to measure each of these Talk about drop-offs from each level to the
-next -Talk about easy ways to turn drop-offs into actions -These are
-examples of descriptive & diagnostic analytics -(aside: there are 3, and
-only 3, ways to make money: Customer Acquisition, Customer Retention,
-Customer Development)
-:::
+- Objective: Maximize Long-term Profits
 
-## E-commerce Analytics
+        - Long-term focus aligns our interest with customers
+        - Sidesteps or reduces most ethical dilemmas
+        
 
-![](images/ecommerce_analytics.png){fig-align="center" width="11in"}
+## Example of Great Marketing: Netflix
 
-::: notes
--800 ecommerce pros were surveyed about data-driven conversion tactics
--Companies using 9+ methods were most satisfied with their conversion
-rates -Pros thought the optimal number of AB tests was 3-5 per month -As
-you can see, predictive & prescriptive analytics can be substantially
-more sophisticated than the simple funnel idea
-:::
+- Consumer surplus
+
+        - Suppose customer pays $20/month, watches 60 hours: $0.33 per entertainment hour, or $0.13/hour with ads, or less with shared accounts
+        - A la carte rentals are more like $1+/hour
+        - Non-video entertainment is much more expensive
+        - Social benefits may accrue from shared viewing
+        - Other streaming services may be competitive
+        
+- Producer surplus
+
+        - NFLX spent $13B on content in 2023, 230 million subscribers, about $4.70/user/month
+        - Cost structure: High fixed, low marginal 
+        - Ads likely earning around $4-5 per recipient/month
+        - Net profit margin about 20-22% in a competitive category
 
 ::: aside
-[*Conversion Rate Optimization
-Report*](https://drive.google.com/file/d/1CODf7SpBS_-19jmR_mDCOaQRf3V24uaw/view?usp=sharing){target="_blank"}
+- Other EDLP businesses: Costco, Trader Joes, Walmart (vs High-Low)
+- Keen tension between short-term management and long-term strategies
 :::
-
-# Customer Data
-
-## Customer Data
-
--   Customer data show how customers and consumers learn, feel, behave
-    and use products and services
-
--   Customer data increasingly drives marketing, but implementation
-    varies widely
-
-::: notes
--   ..."use of customer data to improve business decisionmaking"
--   ... "practice of meeting customer needs profitably"
--   We have new marketing analytics techniques, e.g. geofencing,
-    retargeting, website morphing, sentiment analysis, seeded
-    word-of-mouth
--   Marketing analytics have improved many traditional functions, e.g.
-    ad targeting, pricing, product design, fraud detection, ROI
-    measurements
-:::
+        
+        
 
 ## How can we use customer data?
 
--   Customer relationship management: Acquire, develop, retain and
-    "fire" customers
+-   Businesses have only four ways to make money:<br>
+Acquire, develop, retain and "fire" customers
+
+        This is called Customer relationship management (CRM)
+
 -   Marketing mix: Improve product offerings, prices, promotion,
     distribution
+
 -   Understand customer heterogeneity for targeting, personalization,
     recommendations, product development...
+
 -   Privacy and security, e.g. misuse, theft, regulatory compliance
 
 ::: notes
@@ -403,6 +397,9 @@ Report*](https://drive.google.com/file/d/1CODf7SpBS_-19jmR_mDCOaQRf3V24uaw/view?
 -   What are examples of privacy & security? (Ad fraud, financial fraud,
     ...)
 :::
+
+
+
 
 ## Example: Nielsen
 
@@ -444,26 +441,44 @@ RETAIL SCANNER DATA
     figure out how social media polarization affected brand sales
 :::
 
-## Customer Data: Guiding Principle {.smaller}
 
--   Start simple. Complexify slowly. Why?
 
--   Never assume data are correct, clean, complete or as described.
+## <!--#4 flavors of analytics-->
 
-    ```         
-      - It's impossible to certify an absence of problems
-      - Most commercial datasets have issues
-      - Issues often detected months after project starts
-      - ~70-90% of data scientist time spent checking and cleaning data
-      - Credibility is hard to gain, easy to lose
-    ```
+![](images/4typesofanalytics.png){fig-align="center" width="11in"}
 
-![](images/DStweet.png){fig-align="right" width="7in"}
+## <!--#Funnel-->
+
+![](images/funnel.png){fig-align="center"}
 
 ::: notes
--   How do you find the right balance between data trust and data
-    skepticism? (Start simply)
+-Retail has always been an early adopter of customer analytics
+-Catalogue retailers were the OGs -E-commerce more recently - talk about
+how to measure each of these Talk about drop-offs from each level to the
+next -Talk about easy ways to turn drop-offs into actions -These are
+examples of descriptive & diagnostic analytics -(aside: there are 3, and
+only 3, ways to make money: Customer Acquisition, Customer Retention,
+Customer Development)
 :::
+
+## E-commerce Analytics
+
+![](images/ecommerce_analytics.png){fig-align="center" width="11in"}
+
+::: notes
+-800 ecommerce pros were surveyed about data-driven conversion tactics
+-Companies using 9+ methods were most satisfied with their conversion
+rates -Pros thought the optimal number of AB tests was 3-5 per month -As
+you can see, predictive & prescriptive analytics can be substantially
+more sophisticated than the simple funnel idea
+:::
+
+::: aside
+[*Conversion Rate Optimization
+Report*](https://drive.google.com/file/d/1CODf7SpBS_-19jmR_mDCOaQRf3V24uaw/view?usp=sharing){target="_blank"}
+:::
+
+
 
 # Using Customer Data for Customer Analytics
 
@@ -486,6 +501,8 @@ RETAIL SCANNER DATA
 -   May think data == magic
 -   May prefer hunches or misunderstand uncertainty
 
+![](images/DStweet.png){fig-align="right" width="5in"}
+
 ::: notes
 -   \`\`In God we trust; others must provide data''
 :::
@@ -501,6 +518,9 @@ RETAIL SCANNER DATA
 
 -   Do analytics make or justify decisions?
 -   High- or low-trust environment? Tolerance for uncertainty?
+
+        - You have limited credibility. You may only get a few strikes
+
 -   Do messengers get rewarded or shot?
 -   Are data available and integrated?
 -   Do teams work together or compete?
@@ -547,8 +567,6 @@ RETAIL SCANNER DATA
 
 -   Agencies lie about data sometimes
 
--   You have limited credibility. You may only get a few strikes
-
 -   "If it's written in LaTeX, it's probably correct"
 
 ::: notes
@@ -566,21 +584,19 @@ RETAIL SCANNER DATA
 -   Given enough data, most flexible models should perform similarly
 :::
 
-# Our Class
+# MGT 100
 
 ## Course Design Principles
 
 -   Survey the field with pointers for deeper learning
 
--   Focus on understanding: <br>"Skillful LLM use will run laps around unskilled LLM use"
+-   Focus on understanding: <br>"When it comes to LLMs, skillful prompting leaves amateurs in the dust."
 
--   Free materials
-
--   Communication
+-   Strict communication policies
 
     ```         
-    1. Website for syllabus, slides, scripts, data, readings
-    2. Canvas for groups, deliverables & grades
+    1. Website for class content
+    2. Canvas for study groups & grades
     3. Piazza for all asynchronous interaction. No email or canvas messages
     4. After class, break or office hours for live discussions
     ```
@@ -592,27 +608,33 @@ RETAIL SCANNER DATA
     R?](https://www.datacamp.com/blog/top-15-data-scientist-skills){target="_blank"}
 :::
 
-## Tips to get an A
+## Gen AI effects on productivity
+
+![](images/GenAIeffects.png){fig-align="center" width="4in"}
+
+::: aside
+- [source](https://archive.ph/cTMzY)
+- Jobs where Gen AI decreases the skill gap are at risk
+::: 
+
+## Tips to max your learning
 
 -   Read the syllabus carefully
 
--   Contribute in class as suggested in the syllabus
+-   Contribute as suggested in the syllabus
 
 -   Budget 5-10 hours/week
 
 -   Between classes:
 
     ```         
-    1. Do homework solo
+    1. Understand script, do homework 
     2. Check homework with group, resolve differences
-    3. Monitor Piazza 
-    4. Read for the next class
-    5. Fix a time/location, repeat 8 times 
+    3. Monitor Piazza and read for the next class
     ```
 
-
 ::: aside
--   Midterms and final will be open-paper, closed-device. In-person attendance required.
+-   Exams are open-paper, closed-device. Live attendance required, plan ahead.
 :::
 
 ## Studying and Integrity
@@ -630,6 +652,7 @@ RETAIL SCANNER DATA
 
     ```         
     - Be advised, you may get what you pay for
+    - Free models are sometimes worse than useless
     ```
 
 
@@ -769,9 +792,9 @@ Client
 
 ## Recap
 
--   Data Viz are best way to start in customer analytics
+-   Data Viz should be the first step in customer analytics
 
--   Customer analytics : Using customer data to improve decisions
+-   Customer analytics : <br>Using customer data to improve decisions
 
 -   Marketing : Meeting customer needs profitably
 

@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Kenneth C. Wilbur and Daniel Yavorsky">
-  <title>Visualization, Customer Data, Intro</title>
+  <title>Visualization, Intro</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -326,7 +326,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Visualization, Customer Data, Intro</h1>
+  <h1 class="title">Visualization, Intro</h1>
   <p class="subtitle">MGT 100 Week 1</p>
 
 <div class="quarto-title-authors">
@@ -357,6 +357,7 @@ Kenneth C. Wilbur and Daniel Yavorsky
 
 <aside class="notes">
 <ul>
+<li>Data tables are older than english, christianity, even zero (est. 3 b.c.) – history of 0:</li>
 <li>This is a drawing of an ancient Mesopotamian clay tablet</li>
 <li>Found near the Euphrates river in iraq</li>
 <li>Estimated to be 3500 years old</li>
@@ -526,8 +527,9 @@ Kenneth C. Wilbur and Daniel Yavorsky
 <h2>Data <em>Provenance</em></h2>
 <ul>
 <li><p>describes people, entities, and activities involved in producing, compiling, transforming &amp; sharing data</p>
-<pre><code>    - Verifiability requires source &amp; cleaning scripts</code></pre></li>
-<li><p>Crucial in determining quality, reliability, trustworthiness</p></li>
+<pre><code>- Verifiability requires source &amp; cleaning scripts</code></pre></li>
+<li><p>Crucial in determining quality, reliability, trustworthiness</p>
+<pre><code>- Interpreting provenance requires and deepens domain expertise</code></pre></li>
 <li><p>Important aspects: Customer consent; Data privacy; Missingness remedies; Contractually permissible uses</p></li>
 <li><p>When can you fully trust provenance information?</p>
 <pre><code>  - Best to treat provenance as hypotheses to be verified
@@ -539,17 +541,18 @@ Kenneth C. Wilbur and Daniel Yavorsky
 <h2>Questions to ask</h2>
 <ul>
 <li><p>Data Origin, Measures, Quality, Verifiability</p>
-<pre><code>  -   Where did the data come from?
+<pre><code>  -   How were the data produced?
   -   Who collected it, when and why?
   -   How is each variable measured? (surveys, APIs, sensors, etc; units)
   -   Is there a data dictionary or changelog?
   -   How can I verify individual datapoints?
-  -   Is the data certified by any external party?</code></pre></li>
+  -   Is the data certified by any third party?</code></pre></li>
 <li><p>Processing &amp; Transformation</p>
 <pre><code>  -   What cleaning or manipulation was done?
-  -   Who performed it and why?
+  -   Who performed it and why? Can I see their scripts?
   -   Were missing values imputed? How?
   -   How were outliers handled?</code></pre></li>
+<li><p>GIGO: Garbage In, Garbage Out. Don’t analyze noise</p></li>
 </ul>
 
 <aside><div>
@@ -558,14 +561,16 @@ Kenneth C. Wilbur and Daniel Yavorsky
 <section id="viz-can-build-trust-understanding" class="slide level2">
 <h2>Viz can build trust, understanding</h2>
 <ul>
-<li><p>Viz are <em>lingua franca</em> across disciplines</p></li>
 <li><p>Eyeballs can interpret pictures quickly</p>
-<pre><code>- Our brains evolved to interpret visual patterns and make predictions</code></pre></li>
-<li><p>Easily replicated -&gt; more easily trusted</p></li>
-<li><p>Understandable to managers</p></li>
+<pre><code>- We all interpret visual patterns and make predictions</code></pre></li>
 <li><p>Can detect unknown errors</p></li>
-<li><p>Best when they raise deeper questions</p>
-<pre><code>    - Asking the next question indicates trust</code></pre></li>
+<li><p>Understandable to managers</p>
+<pre><code>- Viz choices enable narrative understanding</code></pre></li>
+<li><p>Viz are <em>lingua franca</em> across disciplines</p>
+<pre><code>- Easily replicated -\&gt; more easily trusted</code></pre></li>
+<li><p>Successful viz raise deeper questions</p>
+<pre><code>- Asking the next question indicates acceptance
+- "I wonder why that is...." or "Maybe that's because..."</code></pre></li>
 </ul>
 <aside class="notes">
 <ul>
@@ -598,7 +603,7 @@ Kenneth C. Wilbur and Daniel Yavorsky
 <li>You can choose visualization elements to communicate your preferred interpretation, by highlighting particular contrasts or aspects of the data</li>
 <li>There are a LOT of degrees of freedom to do that</li>
 <li>Source is “1 dataset 100 visualizations” .. A data visualization agency challenged itself to represent a simple dataset in 100 different ways. Here are 6</li>
-<li>Each image presents a different comparison … let’s walk through a few of them.
+<li>Each image presents a different comparison … let’s walk through a few of them. Go slow. Ask, “What does this first viz emphasize?”
 <ol type="1">
 <li>emphasizes absolute changes over time within country</li>
 <li>emphasizes 2022 datapoints by country</li>
@@ -625,12 +630,12 @@ Kenneth C. Wilbur and Daniel Yavorsky
 <aside><div>
 <p><a href="https://100.datavizproject.com/?trk=feed_main-feed-card_feed-article-content" target="_blank">source</a></p>
 </div></aside></section>
-<section id="how-to-not-mislead-with-viz" class="slide level2">
-<h2>How to Not Mislead with Viz</h2>
+<section id="honest-viz" class="slide level2">
+<h2>Honest Viz</h2>
 <ol type="1">
-<li><p>Start axes from 0 and choose scales judiciously</p></li>
-<li><p>Do not add, edit or trim data points</p></li>
-<li><p>Limit discretizations and smoothing</p></li>
+<li><p>Start axes from 0, choose scales judiciously</p></li>
+<li><p>Show all relevant data, label accurately. Don’t edit, trim</p></li>
+<li><p>Discretize and smoothe judiciously</p></li>
 </ol>
 <div class="quarto-figure quarto-figure-right">
 <figure>
@@ -759,7 +764,7 @@ Kenneth C. Wilbur and Daniel Yavorsky
 
 <aside><div>
 <ul>
-<li><em>related</em> Expert systems, business intelligence, data science</li>
+<li><em>related</em> Expert systems, business intelligence, data science, AI</li>
 </ul>
 </div></aside></section>
 <section id="first-law-of-customer-analytics" class="slide level2">
@@ -775,7 +780,127 @@ Kenneth C. Wilbur and Daniel Yavorsky
 <li>Is talking to customers fun?</li>
 </ul>
 </div></aside></section>
+<section id="second-law-of-customer-analytics" class="slide level2">
+<h2>Second Law of Customer Analytics</h2>
+<ul>
+<li><p>Mo’ Customers, Mo’ Profits</p></li>
+<li><p>More Customers -&gt; <br>More Revenue -&gt; <br>More Profit</p>
+<pre><code>- These are empirical tendencies, not logical necessities
+- Individual customers can be unprofitable if (price-cost)&lt;0</code></pre></li>
+<li><p>Objective: Maximize Long-term Profits</p>
+<pre><code>  - Long-term focus aligns our interest with customers
+  - Sidesteps or reduces most ethical dilemmas</code></pre></li>
+</ul>
+</section>
+<section id="example-of-great-marketing-netflix" class="slide level2">
+<h2>Example of Great Marketing: Netflix</h2>
+<ul>
+<li><p>Consumer surplus</p>
+<pre><code>  - Suppose customer pays $20/month, watches 60 hours: $0.33 per entertainment hour, or $0.13/hour with ads, or less with shared accounts
+  - A la carte rentals are more like $1+/hour
+  - Non-video entertainment is much more expensive
+  - Social benefits may accrue from shared viewing
+  - Other streaming services may be competitive</code></pre></li>
+<li><p>Producer surplus</p>
+<pre><code>  - NFLX spent $13B on content in 2023, 230 million subscribers, about $4.70/user/month
+  - Cost structure: High fixed, low marginal 
+  - Ads likely earning around $4-5 per recipient/month
+  - Net profit margin about 20-22% in a competitive category</code></pre></li>
+</ul>
+
+<aside><div>
+<ul>
+<li>Other EDLP businesses: Costco, Trader Joes, Walmart (vs High-Low)</li>
+<li>Keen tension between short-term management and long-term strategies</li>
+</ul>
+</div></aside></section>
+<section id="how-can-we-use-customer-data" class="slide level2">
+<h2>How can we use customer data?</h2>
+<ul>
+<li><p>Businesses have only four ways to make money:<br> Acquire, develop, retain and “fire” customers</p>
+<pre><code>This is called Customer relationship management (CRM)</code></pre></li>
+<li><p>Marketing mix: Improve product offerings, prices, promotion, distribution</p></li>
+<li><p>Understand customer heterogeneity for targeting, personalization, recommendations, product development…</p></li>
+<li><p>Privacy and security, e.g.&nbsp;misuse, theft, regulatory compliance</p></li>
+</ul>
+<aside class="notes">
+<ul>
+<li>We’ll go deeper into that first bullet in week 9; this is how smart firms think about customer data internally</li>
+<li>That 2nd bullet reflects the outdated “4 Ps” thinking we talked about last week, but illustrates some available levers</li>
+<li>Third bullet will be the focus of weeks 3 &amp; 6</li>
+<li>What are examples of privacy &amp; security? (Ad fraud, financial fraud, …)</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="example-nielsen" class="slide level2">
+<h2>Example: Nielsen</h2>
+<p>CONSUMER PANEL DATA</p>
+<pre><code>      - The Consumer Panel Data include longitudinal data beginning in 2004 with annual updates. These data track a panel of 40,000–60,000 US households and their purchases of fast-moving consumer goods from a wide range of retail outlets across all US markets. </code></pre>
+<p>RETAIL SCANNER DATA</p>
+<pre><code>      - Retail Scanner Data consist of weekly pricing, volume, and store environment information generated by point-of-sale systems from more than 90 participating retail chains across all US markets. Data begin in 2006 and include annual updates. </code></pre>
+</section>
 <section id="section-2" class="slide level2">
+<h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/goya1.png" class="quarto-figure quarto-figure-center" style="width:8in"></p>
+</figure>
+</div>
+<aside class="notes">
+<ul>
+<li>“On July 9, 2020, the CEO of Goya, a national Latin foods brand with an estimated $2 billion in annual global sales, praised President Donald Trump during a White House meeting.”</li>
+<li>Source: Liaukonyte, Tuchman &amp; Zhu (2022)</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+<aside><div>
+<p><a href="https://pubsonline.informs.org/doi/pdf/10.1287/mksc.2022.1386" target="_blank">source</a></p>
+</div></aside></section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/goya2.png" class="quarto-figure quarto-figure-center" style="width:6.5in"></p>
+</figure>
+</div>
+<aside class="notes">
+<ul>
+<li>Despite the calls for boycott, total sales rose, mostly because Republican areas started buying Goya</li>
+<li>Without customer data, we would be shooting in the dark in trying to figure out how social media polarization affected brand sales</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-4" class="slide level2">
 <h2><!--#4 flavors of analytics--></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -783,7 +908,7 @@ Kenneth C. Wilbur and Daniel Yavorsky
 </figure>
 </div>
 </section>
-<section id="section-3" class="slide level2">
+<section id="section-5" class="slide level2">
 <h2><!--#Funnel--></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -829,153 +954,6 @@ Kenneth C. Wilbur and Daniel Yavorsky
 <p><a href="https://drive.google.com/file/d/1CODf7SpBS_-19jmR_mDCOaQRf3V24uaw/view?usp=sharing" target="_blank"><em>Conversion Rate Optimization Report</em></a></p>
 </div></aside></section></section>
 <section>
-<section id="customer-data" class="title-slide slide level1 center">
-<h1>Customer Data</h1>
-
-</section>
-<section id="customer-data-1" class="slide level2">
-<h2>Customer Data</h2>
-<ul>
-<li><p>Customer data show how customers and consumers learn, feel, behave and use products and services</p></li>
-<li><p>Customer data increasingly drives marketing, but implementation varies widely</p></li>
-</ul>
-<aside class="notes">
-<ul>
-<li>…“use of customer data to improve business decisionmaking”</li>
-<li>… “practice of meeting customer needs profitably”</li>
-<li>We have new marketing analytics techniques, e.g.&nbsp;geofencing, retargeting, website morphing, sentiment analysis, seeded word-of-mouth</li>
-<li>Marketing analytics have improved many traditional functions, e.g. ad targeting, pricing, product design, fraud detection, ROI measurements</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="how-can-we-use-customer-data" class="slide level2">
-<h2>How can we use customer data?</h2>
-<ul>
-<li>Customer relationship management: Acquire, develop, retain and “fire” customers</li>
-<li>Marketing mix: Improve product offerings, prices, promotion, distribution</li>
-<li>Understand customer heterogeneity for targeting, personalization, recommendations, product development…</li>
-<li>Privacy and security, e.g.&nbsp;misuse, theft, regulatory compliance</li>
-</ul>
-<aside class="notes">
-<ul>
-<li>We’ll go deeper into that first bullet in week 9; this is how smart firms think about customer data internally</li>
-<li>That 2nd bullet reflects the outdated “4 Ps” thinking we talked about last week, but illustrates some available levers</li>
-<li>Third bullet will be the focus of weeks 3 &amp; 6</li>
-<li>What are examples of privacy &amp; security? (Ad fraud, financial fraud, …)</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="example-nielsen" class="slide level2">
-<h2>Example: Nielsen</h2>
-<p>CONSUMER PANEL DATA</p>
-<pre><code>      - The Consumer Panel Data include longitudinal data beginning in 2004 with annual updates. These data track a panel of 40,000–60,000 US households and their purchases of fast-moving consumer goods from a wide range of retail outlets across all US markets. </code></pre>
-<p>RETAIL SCANNER DATA</p>
-<pre><code>      - Retail Scanner Data consist of weekly pricing, volume, and store environment information generated by point-of-sale systems from more than 90 participating retail chains across all US markets. Data begin in 2006 and include annual updates. </code></pre>
-</section>
-<section id="section-4" class="slide level2">
-<h2></h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/goya1.png" class="quarto-figure quarto-figure-center" style="width:8in"></p>
-</figure>
-</div>
-<aside class="notes">
-<ul>
-<li>“On July 9, 2020, the CEO of Goya, a national Latin foods brand with an estimated $2 billion in annual global sales, praised President Donald Trump during a White House meeting.”</li>
-<li>Source: Liaukonyte, Tuchman &amp; Zhu (2022)</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-
-<aside><div>
-<p><a href="https://pubsonline.informs.org/doi/pdf/10.1287/mksc.2022.1386" target="_blank">source</a></p>
-</div></aside></section>
-<section id="section-5" class="slide level2">
-<h2></h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/goya2.png" class="quarto-figure quarto-figure-center" style="width:6.5in"></p>
-</figure>
-</div>
-<aside class="notes">
-<ul>
-<li>Despite the calls for boycott, total sales rose, mostly because Republican areas started buying Goya</li>
-<li>Without customer data, we would be shooting in the dark in trying to figure out how social media polarization affected brand sales</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="customer-data-guiding-principle" class="slide level2 smaller">
-<h2>Customer Data: Guiding Principle</h2>
-<ul>
-<li><p>Start simple. Complexify slowly. Why?</p></li>
-<li><p>Never assume data are correct, clean, complete or as described.</p>
-<pre><code>  - It's impossible to certify an absence of problems
-  - Most commercial datasets have issues
-  - Issues often detected months after project starts
-  - ~70-90% of data scientist time spent checking and cleaning data
-  - Credibility is hard to gain, easy to lose</code></pre></li>
-</ul>
-<div class="quarto-figure quarto-figure-right">
-<figure>
-<p><img data-src="images/DStweet.png" class="quarto-figure quarto-figure-right" style="width:7in"></p>
-</figure>
-</div>
-<aside class="notes">
-<ul>
-<li>How do you find the right balance between data trust and data skepticism? (Start simply)</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section></section>
-<section>
 <section id="using-customer-data-for-customer-analytics" class="title-slide slide level1 center">
 <h1>Using Customer Data for Customer Analytics</h1>
 
@@ -1002,6 +980,11 @@ Kenneth C. Wilbur and Daniel Yavorsky
 <li>May think data == magic</li>
 <li>May prefer hunches or misunderstand uncertainty</li>
 </ul>
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><img data-src="images/DStweet.png" class="quarto-figure quarto-figure-right" style="width:5in"></p>
+</figure>
+</div>
 <aside class="notes">
 <ul>
 <li>``In God we trust; others must provide data’’</li>
@@ -1030,11 +1013,12 @@ Kenneth C. Wilbur and Daniel Yavorsky
 <section id="challenges-cultural" class="slide level2">
 <h2>Challenges: Cultural</h2>
 <ul>
-<li>Do analytics make or justify decisions?</li>
-<li>High- or low-trust environment? Tolerance for uncertainty?</li>
-<li>Do messengers get rewarded or shot?</li>
-<li>Are data available and integrated?</li>
-<li>Do teams work together or compete?</li>
+<li><p>Do analytics make or justify decisions?</p></li>
+<li><p>High- or low-trust environment? Tolerance for uncertainty?</p>
+<pre><code>- You have limited credibility. You may only get a few strikes</code></pre></li>
+<li><p>Do messengers get rewarded or shot?</p></li>
+<li><p>Are data available and integrated?</p></li>
+<li><p>Do teams work together or compete?</p></li>
 </ul>
 <aside class="notes">
 <ul>
@@ -1094,7 +1078,6 @@ Kenneth C. Wilbur and Daniel Yavorsky
 <pre><code>  treatment effects are usually small</code></pre></li>
 <li><p>Demographics don’t predict behavior very well</p></li>
 <li><p>Agencies lie about data sometimes</p></li>
-<li><p>You have limited credibility. You may only get a few strikes</p></li>
 <li><p>“If it’s written in LaTeX, it’s probably correct”</p></li>
 </ul>
 <aside class="notes">
@@ -1120,19 +1103,18 @@ Kenneth C. Wilbur and Daniel Yavorsky
       }</style></aside>
 </section></section>
 <section>
-<section id="our-class" class="title-slide slide level1 center">
-<h1>Our Class</h1>
+<section id="mgt-100" class="title-slide slide level1 center">
+<h1>MGT 100</h1>
 
 </section>
 <section id="course-design-principles" class="slide level2">
 <h2>Course Design Principles</h2>
 <ul>
 <li><p>Survey the field with pointers for deeper learning</p></li>
-<li><p>Focus on understanding: <br>“Skillful LLM use will run laps around unskilled LLM use”</p></li>
-<li><p>Free materials</p></li>
-<li><p>Communication</p>
-<pre><code>1. Website for syllabus, slides, scripts, data, readings
-2. Canvas for groups, deliverables &amp; grades
+<li><p>Focus on understanding: <br>“When it comes to LLMs, skillful prompting leaves amateurs in the dust.”</p></li>
+<li><p>Strict communication policies</p>
+<pre><code>1. Website for class content
+2. Canvas for study groups &amp; grades
 3. Piazza for all asynchronous interaction. No email or canvas messages
 4. After class, break or office hours for live discussions</code></pre></li>
 <li><p><a href="https://kennethcwilbur.github.io/mgt100/" target="_blank">Course site &amp; schedule</a></p></li>
@@ -1143,23 +1125,35 @@ Kenneth C. Wilbur and Daniel Yavorsky
 <li>How do survey courses differ from other classes? | <a href="https://www.datacamp.com/blog/top-15-data-scientist-skills" target="_blank">Why R?</a></li>
 </ul>
 </div></aside></section>
-<section id="tips-to-get-an-a" class="slide level2">
-<h2>Tips to get an A</h2>
+<section id="gen-ai-effects-on-productivity" class="slide level2">
+<h2>Gen AI effects on productivity</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/GenAIeffects.png" class="quarto-figure quarto-figure-center" style="width:4in"></p>
+</figure>
+</div>
+
+<aside><div>
+<ul>
+<li><a href="https://archive.ph/cTMzY">source</a></li>
+<li>Jobs where Gen AI decreases the skill gap are at risk</li>
+</ul>
+</div></aside></section>
+<section id="tips-to-max-your-learning" class="slide level2">
+<h2>Tips to max your learning</h2>
 <ul>
 <li><p>Read the syllabus carefully</p></li>
-<li><p>Contribute in class as suggested in the syllabus</p></li>
+<li><p>Contribute as suggested in the syllabus</p></li>
 <li><p>Budget 5-10 hours/week</p></li>
 <li><p>Between classes:</p>
-<pre><code>1. Do homework solo
+<pre><code>1. Understand script, do homework 
 2. Check homework with group, resolve differences
-3. Monitor Piazza 
-4. Read for the next class
-5. Fix a time/location, repeat 8 times </code></pre></li>
+3. Monitor Piazza and read for the next class</code></pre></li>
 </ul>
 
 <aside><div>
 <ul>
-<li>Midterms and final will be open-paper, closed-device. In-person attendance required.</li>
+<li>Exams are open-paper, closed-device. Live attendance required, plan ahead.</li>
 </ul>
 </div></aside></section>
 <section id="studying-and-integrity" class="slide level2">
@@ -1170,7 +1164,8 @@ Kenneth C. Wilbur and Daniel Yavorsky
 <pre><code>- We do not collect or assess homeworks
 - Exam questions will test your familiarity and understanding of homework answers</code></pre></li>
 <li><p>We encourage you to use Gen AI; we use it too</p>
-<pre><code>- Be advised, you may get what you pay for</code></pre></li>
+<pre><code>- Be advised, you may get what you pay for
+- Free models are sometimes worse than useless</code></pre></li>
 </ul>
 </section>
 <section id="section-6" class="slide level2">
@@ -1325,8 +1320,8 @@ Kenneth C. Wilbur and Daniel Yavorsky
 <section id="recap" class="slide level2">
 <h2>Recap</h2>
 <ul>
-<li><p>Data Viz are best way to start in customer analytics</p></li>
-<li><p>Customer analytics : Using customer data to improve decisions</p></li>
+<li><p>Data Viz should be the first step in customer analytics</p></li>
+<li><p>Customer analytics : <br>Using customer data to improve decisions</p></li>
 <li><p>Marketing : Meeting customer needs profitably</p></li>
 <li><p>Analytics types: <br>Descriptive, Diagnostic, Predictive, Prescriptive</p></li>
 <li><p>Summarize, select, filter, arrange, mutate, group_by</p></li>

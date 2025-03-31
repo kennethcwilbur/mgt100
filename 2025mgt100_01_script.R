@@ -38,18 +38,17 @@ update.packages("tidyverse")  # <-- do this periodically
 library(tidyverse)            # <-- do this every time you restart R and/or open RStudio
 
 
-## Let's import our customer dataset 
+## Let's import our customer dataset-- simulated to sidestep privacy and IP concerns
     
     # First, download the customer and phone datasets from 
     #       https://github.com/kennethcwilbur/mgt100/raw/main/mgt100-data.zip
 
-    # Unzip the data into its own folder. A directory structure should look like:
-    
+    # You should create a local directory with subfolders, e.g.
+
       # Mgt 100
-          # / class_scripts
+          # / scripts
           # / data
-          # / homework_scripts
-          # / slides
+          # / slides_and_notes
           # / syllabus
 
     # The Base-R function read.csv() imports data stored in csv format into R
@@ -64,22 +63,29 @@ library(tidyverse)            # <-- do this every time you restart R and/or open
     getwd()
     
     # Notice whether the path includes slashes or backslashes; your input to R should match
+    # Traditionally, slashes are MacOS and backslashes on Windows
 
     # And then you can change that directory with (update the path first)
-    setwd("G:/My Drive/aaaCURRENT/2024mgt100/scripts")
-    
+    setwd("/Users/kennethcwilbur/Downloads")
+
+    # Digression () attached to a word indicates a function name
+    # For example, variable names may overlap function names (e.g. "mean")
+    getwd<-3
+    rm(getwd)
+    getwd()
+    # We pass parameters into functions in the parentheses
     
     # The imported dataset is called a "data.frame" in R
     # We assign that data.frame object to the name "cust.dat" with the assignment operator (<-)
         # You can type < and then - or use the shortcut alt-minus
         # You can get away with "=" instead but "<-" is safer and clearer
     
-    cust_dat <- read_csv("../data/smartphone_customer_data.csv")
+    cust_dat <- read_csv("2025mgt100-data/smartphone_customer_data.csv")
 
     ## (Mac users can try "./data/" if ".." doesn't work)
     ## R has many ways to do most things, e.g. read.csv in Base R
     
-## Let's look at the data
+## Your first step should *always* be to visually inspect the data
     
     # In RStudio, you can click the object name or run View() to see the data
     
@@ -93,6 +99,9 @@ library(tidyverse)            # <-- do this every time you restart R and/or open
     
     cdat <- cust_dat
     rm(cdat)
+    
+    # You could alternatively use the = operator, but it offends some 
+    #    mathematicians, and may be too easily confused with == ("double-equals")
     
     # Both the View() and print approaches can be overwhelming for large datasets
     # R has a number of built-in functions for quickly summarizing a dataset.
@@ -112,6 +121,7 @@ library(tidyverse)            # <-- do this every time you restart R and/or open
     #     customer demographic and usage characteristics
     #     purchase environment data
     #     purchased phone characteristics  
+    #     brief phone review text
 
     # Demographic variables
     
@@ -144,6 +154,8 @@ library(tidyverse)            # <-- do this every time you restart R and/or open
         # price         - price in dollars
         # screen_size   - measurement in inches of the diagonal of the phone's primary display
     
+    # Customer satisfaction
+        # review        = brief text indicating customer's review of the phone
     
 ## Data Manipulation
     
@@ -152,7 +164,8 @@ library(tidyverse)            # <-- do this every time you restart R and/or open
     # It also has a "pipe" operator
     # The main idea of pipes is to transform g(f(x)) into x |> f() |> g()
     # so that your code reads left to right, instead of inner-parentheses to outer-parentheses
-    
+    # Script readability is very important when teams maintain a large codebase
+      
     #1. filter() selects rows
     
     filter(cust_dat, age == 24)
@@ -209,7 +222,8 @@ library(tidyverse)            # <-- do this every time you restart R and/or open
         
         cust_dat |> 
             filter(brand=="samsung", size_cat=="l", years_ago==2) |> 
-            summarize(avg_game_min = mean(gaming))
+            summarize(avg_game_min = mean(gaming)) |>
+            unlist()
     
     
 # Dataset Export
@@ -227,27 +241,11 @@ library(tidyverse)            # <-- do this every time you restart R and/or open
     # we can export this table to csv with the write_csv() function
     # write_csv() takes two main arguments: (1) the R object to write out and (2) the path/to/filename.csv 
     
-    write_csv(n_by_age, file="../data/n_by_age.csv")
+    write_csv(n_by_age, file="n_by_age.csv")
     
-    # instead of specifying the full path/to/filename.csv, you can use a shortcut if you 
-    # know the current "working directory".  The working directory is where R looks to read/write
-    # files if you don't specify a complete path/to/filename.csv.  Let's figure out the current
-    # working directory
+    # You can use R commands to manipulate the local file system
     
-    getwd()
-    
-    # you can change the working directory with setwd("path/to/new/directory")
-    
-    setwd("G:/My Drive/aaaCURRENT/2024mgt100/scripts")
-    
-    # if you want to write to the current working directory, you can create the CSV file 
-    # there using the shortcut notation: write_csv(r_object, file="filename.csv")
-    
-    write_csv(n_by_age, file="../data/n_by_age.csv")
-    
-    # I'll delete those files from my file system since I don't need to keep them
-    
-    file.remove("../data/n_by_age.csv")
+    file.remove("n_by_age.csv")
     
     
 # Getting help
@@ -266,22 +264,23 @@ library(tidyverse)            # <-- do this every time you restart R and/or open
     
     # more good sources : Google, Stackoverflow, your favorite Gen AI
     
-    # If you have an error text you want to understand, google it
+    # If you have an error text you want to understand, search the error text string
 
     # Often, Stackoverflow will have a relevant thread that is prominent in the 
     # search results
 
     # You will find multiple candidate answers that are ranked by helpfulness
     
-    # 3rd best source: Large language models like chatgpt or copilot
-    # These guys are helpful to understand what might terms might be related to your need.
-    # They are usually partially accurate, but seldom fully accurate if your question is 
-    # reasonably complicated.
-    # They often help you surface the right terms for googling, which will help you 
-    # find the right stackoverflow page.
-    
+    # Another good source: Large language models like claude, chatgpt, etc
+    # The good is that you can interact with them and they can explain in natural language
+    # The bad is that they may hallucinate
+    # The ugly is that you may get what you pay for, so productivity may depend on subscription price
+
     # 4th best source: Piazza. It's a good chance that an instructor or classmate can help
-    # But please do not ask how to do the homework questions. 
+    # But please do not ask how to do the homework questions. The purpose of the questions is
+    # for you to build skills by figuring them out. 
+    # But, if you get stuck on something, and you exhaust your other resources, then
+    # we Piazza is the spot to get un-stuck
     
 
 
@@ -359,20 +358,14 @@ cust_dat |>
 # The data enter as "aesthetic mappings" (or aes() for short)
 # and we combine the steps with the + operator (rather than the pipe)
 
-?ggplot
-
-# this "grammar of graphics" allows you to make a very wide variety of plots
-# to understand ggplot more deeply, read https://www.tandfonline.com/doi/pdf/10.1198/jcgs.2009.07098
-
 # before we get to details, compare the base R boxplot command to the ggplot command
 
-ggplot(cust_dat, aes(y = height)) +
+ggplot(data=cust_dat, mapping=aes(y = height)) +
   geom_boxplot()
 
 # the first argument to ggplot() is "data" and
 # the first argument to geom_xxx() is "mapping"
-# we can often omit "data=" and "mapping=" because they are defaults
-# Thus, the following code creates the same plot, but with less typing
+# we typically omit "data=" and "mapping=" because they are defaults
 
 # Arguments passed into ggplot, like aes, are "inherited" by subsequent properties, like geom_boxplot
 # Or, subsequent properties can take their own inputs
@@ -402,6 +395,11 @@ ggplot(cust_dat, aes(y = height)) +
 # to dig into the plotting options (ie, function arguments) in more detail, either
 # 1. call ?geom_boxplot in R, or
 # 2. read the ggplot2 book, available online for free at: https://ggplot2-book.org/
+
+?ggplot
+
+# this "grammar of graphics" allows you to make a very wide variety of plots
+# to understand ggplot more deeply, read https://www.tandfonline.com/doi/pdf/10.1198/jcgs.2009.07098
 
 # Boxplots mainly show quantiles and outliers, on purpose.  
 # Histograms show us more details without the same focus on quantiles.
@@ -557,7 +555,7 @@ ggplot(cust_dat, aes(brand, total_minutes)) +     # usual stuff
   ggtitle("Usage Distributions by Brand") +       # add a title
   xlab("Brand") +                                 # x axis label
   ylab("Total Weekly Minutes of Phone Usage") +   # y axis label
-  ylim(550, 1550) +                               # specify the vertial range
+  ylim(0, 1950) +                               # specify the vertical range
   theme_dark()                                    # not my favorite theme.. too spooky
 
 # We see pretty similar usage distributions across the three brands.
@@ -573,7 +571,7 @@ cust_dat |>
     max = max(total_minutes)
   )
 
-# You can see why we think graphics are easier to learn from than tables
+# You can see why we think graphics are easier to interpret than tables
 
 
 # + Faceting -----
@@ -597,7 +595,7 @@ cust_dat |>
   ggplot(aes(total_minutes)) +
   geom_histogram()
 
-# a better way is to use facet_wrap() or facet_grid()
+# use facet_wrap() or facet_grid() to compare histograms across brands
 
 ggplot(cust_dat, aes(total_minutes)) +
   facet_grid(rows = vars(brand)) +

@@ -66,7 +66,7 @@ library(tidyverse)            # <-- do this every time you restart R and/or open
     # Traditionally, slashes are MacOS and backslashes on Windows
 
     # And then you can change that directory with (update the path first)
-    setwd("/Users/kennethcwilbur/Downloads")
+    setwd("/Users/kennethcwilbur/Desktop/mgt100/scripts")
 
     # Digression () attached to a word indicates a function name
     # For example, variable names may overlap function names (e.g. "mean")

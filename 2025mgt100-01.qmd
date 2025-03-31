@@ -7,6 +7,8 @@ format:
   revealjs:
     auto-stretch: false
     theme: default
+    pdf-max-pages-per-slide: 1 
+    pdf-separate-fragments: false 
 slide-number: c
 editor_options: 
   chunk_output_type: inline 
@@ -14,6 +16,14 @@ editor:
   markdown: 
     wrap: 72
 ---
+
+##
+
+![](images/kenfam.png){fig-align="center" width="13in"}
+
+::: aside
+Dog==Draymond AKA Dray AKA Click Clack AKA Major Jealous<br> Cat==Captain Kitty AKA Liquid AKA Hunter AKA Boomer
+:::
 
 # Data Visualizations (Viz)
 
@@ -25,7 +35,7 @@ editor:
         - Great visualizations raise new questions          
     ```
 
-## Prehistoric Data Viz
+## Data Viz are older than 0
 ![](images/oldviz.png){fig-align="center" width="4in"}
 
 ::: aside
@@ -33,14 +43,15 @@ editor:
 :::
 
 ::: notes
--   Data tables are older than english, christianity, even zero (est. 3 b.c.)
--- history of 0: 
+-   Data tables are older than english; older than zero (est. 3 b.c.)
 -   This is a drawing of an ancient Mesopotamian clay tablet
--   Found near the Euphrates river in iraq
 -   Estimated to be 3500 years old
+-   Found near the Euphrates river in iraq
 -   Data entry and data visualization are older than English
--   Key lesson here: Only cavemen visualize data as tables
+-   Next question raised: Are those blanks zeros or NAs ?
+(what's an NA?)
 -   Tables require study; pictures teach
+-   Key lesson here: Only cavemen visualize data as tables
 :::
 
 ## Translated
@@ -53,23 +64,30 @@ editor:
 -   A appears to be the sum of B(or E) and F
 -   Looks like it may be accounting for construction labor or payments
 -   Interesting that the date is relative
+-   Column F is labeled "Arrears"--again, raising the question, are those zeros or NAs?
 :::
 
-## When Elon bought Twitter
 
-![](images/Twitter-follower-shift.png){fig-align="center" width="9in"}
+## 
+
+![](images/cancer.png){fig-align="center" width="5.5in"}
 
 ::: notes
--   This may be obvious with hindsight, but was not so clear at the time
--   Done by data journalist Jeremy Merrill at WaPo
--   Called a 'baseline chart'
--   Not sure why they put time on the y axis tho?
--   Hakeem Jeffries shift was when he decided to run for speaker
+-   portrait shape
+-   shows absolute increase in risk, implies proportional increase
+-   offers heterogeneous information, both for you and your loved one
+-   provides information without undue effort to influence behavior
+-   pleasing visual presentation (fonts/colors) despite grave topic
+- Next questions: Is this causal? What's the uncertainty?
 :::
 
-## [DraftKings, FanDuel Searches during an NFL Game, 9-10 P.M.](https://drive.google.com/open?id=175yrLDY-W15TgBtumPa11WnwMwCeUmSF){target="_blank"}
+## [](https://drive.google.com/open?id=175yrLDY-W15TgBtumPa11WnwMwCeUmSF){target="_blank"}
 
 ![](images/dfs_search_2015.png){fig-align="center" width="10in"}
+
+::: aside
+Google searches for DraftKings, FanDuel during an NFL Game, 9-10 P.M. EST
+:::
 
 ::: notes
 -   This graphic shows minute-by-minute search for DraftKings and
@@ -88,24 +106,13 @@ editor:
     problem
 :::
 
-## 
-
-![](images/cancer.png){fig-align="center" width="5.5in"}
-
-::: notes
--   portrait shape
--   shows absolute increase in risk, implies proportional increase
--   offers heterogeneous information, both for you and your loved one
--   provides information without undue effort to influence behavior
--   pleasing visual presentation (fonts/colors) despite grave topic
-- Next questions: Is this causal? What's the uncertainty?
-:::
 
 ## [SDPD Crime Reports Near UCSD](http://bar.rady.ucsd.edu/maps.html){target="_blank"}
 
 ![](images/ucsd_crime_2012.png){fig-align="center" width="6.5in"}
 
 -   When is data zero vs. missing? Provenance is key
+-   What kind of decisions could this inform?
 
 ::: notes
 -   This map shows SDPD data on crimes reported near UCSD's main campus
@@ -118,12 +125,6 @@ editor:
     tutorial to do a bunch of cool analytics stuff
 -   Updating this with 2022 data would be a good challenge if you have
     free time
--   Provenance: Where did the data come from? How was it collected? How
-    was it cleaned? How was it transformed?
--   You cannot understand data without understanding Provenance
--   Provenance information is often missing, incomplete or incorrect
--   Visualizations help to test and build confidence in provenance
-    information
 :::
 
 ## Data *Provenance*
@@ -131,19 +132,19 @@ editor:
 -   describes people, entities, and activities involved in producing,
     compiling, transforming & sharing data
 
-        - Verifiability requires source & cleaning scripts
+        - Verifiability requires source data & cleaning scripts
 
 -   Crucial in determining quality, reliability, trustworthiness
 
-        - Interpreting provenance requires and deepens domain expertise
+        - Investigating provenance requires and deepens domain expertise
+        - Typically turns up unexpected information, and sometimes errors
 
--   Important aspects: Customer consent; Data privacy; Missingness
-    remedies; Contractually permissible uses
+-   When can you trust provenance information?
 
--   When can you fully trust provenance information?
-
-          - Best to treat provenance as hypotheses to be verified
+          - Best to treat provenance as hypotheses to be verified in the data
           - Usually, provenance descriptions are missing or imperfect
+          - Financial info is most likely to be accurate due (accounting, auditing)
+          - Considerations: Consent; Privacy; Missingness; Permissible uses
           - Sometimes, provenance descriptions are marketing documents
 
 
@@ -156,7 +157,7 @@ editor:
           -   How is each variable measured? (surveys, APIs, sensors, etc; units)
           -   Is there a data dictionary or changelog?
           -   How can I verify individual datapoints?
-          -   Is the data certified by any third party?
+          -   Certified by any third party? Who relies on them, for what?
           
 -   Processing & Transformation
 
@@ -165,39 +166,39 @@ editor:
           -   Were missing values imputed? How?
           -   How were outliers handled?
 
-- GIGO: Garbage In, Garbage Out. Don't analyze noise
-
 ::: aside
-[Go deeper](https://technologyadvice.com/blog/business-intelligence/data-provenance/){target="_blank"}
+- GIGO: Garbage In, Garbage Out. Don't analyze noise
+- [Go deeper](https://technologyadvice.com/blog/business-intelligence/data-provenance/){target="_blank"}
 :::
 
 ## Viz can build trust, understanding
 
 -   Eyeballs can interpret pictures quickly
 
-        - We all interpret visual patterns and make predictions
-
--   Can detect unknown errors
+        - Human brains are great at interpreting visual patterns, predictions
+        - Can detect unknown errors
 
 -   Understandable to managers
 
-        - Viz choices enable narrative understanding
+        - Viz choices enable narrative understanding, another common brain function
 
 -   Viz are *lingua franca* across disciplines
 
-        - Easily replicated -\> more easily trusted
+        - Easily replicated -> more easily trusted
+        - Trust can is a major issue in some corporate cultures
 
--   Successful viz raise deeper questions
+-   Viz succeed when they raise deeper questions
 
         - Asking the next question indicates acceptance
         - "I wonder why that is...." or "Maybe that's because..."
+        - Viz usualy won't settle the matter; hence, the first step
 
 ::: notes
 -   Pictures are easier than models or tables
--   Managers won't always understand viz accurately, but they'll always
+-   Managers won't always understand viz accurately, but they'll usually
     be interested
 -   it's ironic we use such an obscure term (lingua franca) to mean
-    something that everybody understands
+    something that everybody can understand
 :::
 
 
@@ -236,7 +237,7 @@ editor:
 
 ## Honest Viz
 
-1. Start axes from 0, choose scales judiciously 
+1. Usually start axes from 0, choose scales judiciously 
 
 2. Show all relevant data, label accurately. Don't edit, trim
 
@@ -245,7 +246,7 @@ editor:
 ![](images/mislead.png){fig-align="right" width="3.5in"}
 
 ::: aside 
-More [here](https://flowingdata.com/projects/dishonest-charts/) 
+[Go deeper](https://flowingdata.com/projects/dishonest-charts/) 
 :::
 
 ::: notes
@@ -263,22 +264,27 @@ You want to avoid mistaken interpretations of your work, and identify misleading
 ::: aside
 -   What does each picture tell us?
     [Source](https://www.research.autodesk.com/publications/same-stats-different-graphs/){target="_blank"}
-- This is why we don't just use regression to summarize
+- This is why we shouldn't just use regression to summarize data
 :::
 
 ::: notes
-- The most common use of visualizations is private, for an analyst to understand the properties of a new dataset
+- The most common use of visualizations is private, for an analyst to understand the properties of a dataset
 -   The 4 datasets all generate the same OLS estimate for beta
 -   The relationships are quite different and imply different things
 -   If you only summarize with regression, you might miss smth important
-- As a consultant and researcher, when I observe a junior colleague fail to visualize a dataset, I form a certain expectation
+- As a consultant and researcher, when I observe a junior colleague neglect to visualize a dataset prior to analysis, I form a certain expectation
 :::
 
 
 # Customer Analytics
 
+
 ::: notes
 -   Bring name tents & sharpies on day 1
+:::
+
+::: aside
+
 :::
 
 ## Customer
@@ -309,16 +315,21 @@ You want to avoid mistaken interpretations of your work, and identify misleading
 ## Analytics
 
 -   Using data to improve decisions
--   Started by Charles Taylor in the 1880s
--   Popularized by *Moneyball* (2011)
--   Measurement, Heuristics, Graphics, Models, Predictions, Automation,
-    ...
+-   Started by Charles Taylor in the 1880s (mostly)
+-   Popularized by *Moneyball* (2011) 
+-   Measurement, Heuristics, Graphics, Models, Predictions, Automation, Optimization, Personalization, ...
 -   Can be deceptively difficult
 
 ![](images/Moneyball_Poster.jpg){fig-align="right" width="1.5in"}
 
+::: notes
+- Popularized more by the movie than the book
+- I worked with a $50b CPG firm between 2015-2018 which spent $1b+ on coupons but had never previously measured returns on that spending. Managers involved called the effort 'Project Moneyball'
+:::
+
 ::: aside
 -   *related* Expert systems, business intelligence, data science, AI
+-   Terms change frequently
 :::
 
 ## First Law of Customer Analytics
@@ -326,8 +337,8 @@ You want to avoid mistaken interpretations of your work, and identify misleading
 -   No Customers, No Business
 
 -   No Customers -\> <br>No Revenue -\> <br>No Profit -\> <br>No
-    Business
-
+    Business <br>*QED*
+    
 ::: aside
 -   Which owners or employees in the business can afford to ignore
     customers?
@@ -336,17 +347,20 @@ You want to avoid mistaken interpretations of your work, and identify misleading
 
 ## Second Law of Customer Analytics
 
--   Mo' Customers, Mo' Profits
+-   More Customers, More Profits
 
--   More Customers -\> <br>More Revenue -\> <br>More Profit 
+-   More Customers -\> <br>More Revenue -\> <br>More Profit <br>*QED*
 
         - These are empirical tendencies, not logical necessities
         - Individual customers can be unprofitable if (price-cost)<0
 
-- Objective: Maximize Long-term Profits
+- Marketing Objective: Maximize Long-term Profits
 
-        - Long-term focus aligns our interest with customers
+        - Long-term focus mostly aligns our interest with customers
+        - Goal is not only to acquire customers; also, keep and develop them
         - Sidesteps or reduces most ethical dilemmas
+        - Short-run objective may profit before liability; I won't teach 
+        
         
 
 ## Example of Great Marketing: Netflix
@@ -354,8 +368,8 @@ You want to avoid mistaken interpretations of your work, and identify misleading
 - Consumer surplus
 
         - Suppose customer pays $20/month, watches 60 hours: $0.33 per entertainment hour, or $0.13/hour with ads, or less with shared accounts
-        - A la carte rentals are more like $1+/hour
-        - Non-video entertainment is much more expensive
+        - A la carte rentals are more like $1-2+/hour
+        - Non-video entertainment tends to be much more expensive
         - Social benefits may accrue from shared viewing
         - Other streaming services may be competitive
         
@@ -368,22 +382,22 @@ You want to avoid mistaken interpretations of your work, and identify misleading
 
 ::: aside
 - Other EDLP businesses: Costco, Trader Joes, Walmart (vs High-Low)
-- Keen tension between short-term management and long-term strategies
+- Common tension between short-term management and long-term strategies
 :::
         
         
 
 ## How can we use customer data?
 
--   Businesses have only four ways to make money:<br>
+-   Businesses have 4, and only 4, ways to make money:<br>
 Acquire, develop, retain and "fire" customers
 
-        This is called Customer relationship management (CRM)
+        This is called Customer relationship management (CRM): week 9
 
--   Marketing mix: Improve product offerings, prices, promotion,
+-   Marketing mix ("4 P's"): Improve product offerings, prices, promotion,
     distribution
 
--   Understand customer heterogeneity for targeting, personalization,
+-   Incorporate customer heterogeneity for targeting, personalization,
     recommendations, product development...
 
 -   Privacy and security, e.g. misuse, theft, regulatory compliance
@@ -468,8 +482,9 @@ Customer Development)
 ::: notes
 -800 ecommerce pros were surveyed about data-driven conversion tactics
 -Companies using 9+ methods were most satisfied with their conversion
-rates -Pros thought the optimal number of AB tests was 3-5 per month -As
-you can see, predictive & prescriptive analytics can be substantially
+rates 
+-Pros thought the optimal number of AB tests was 3-5 per month 
+-As you can see, predictive & prescriptive analytics can be substantially
 more sophisticated than the simple funnel idea
 :::
 
@@ -560,7 +575,8 @@ Report*](https://drive.google.com/file/d/1CODf7SpBS_-19jmR_mDCOaQRf3V24uaw/view?
 -   Selection effects are usually large
 
     ```         
-      treatment effects are usually small
+      treatment effects are usually small 
+      Key exceptions: Price or "free" giveaways
     ```
 
 -   Demographics don't predict behavior very well
@@ -586,11 +602,14 @@ Report*](https://drive.google.com/file/d/1CODf7SpBS_-19jmR_mDCOaQRf3V24uaw/view?
 
 # MGT 100
 
+            - I am assuming you read the syllabus carefully
+
+
 ## Course Design Principles
 
--   Survey the field with pointers for deeper learning
+-   Survey the field broadly, pointers for deeper learning
 
--   Focus on understanding: <br>"When it comes to LLMs, skillful prompting leaves amateurs in the dust."
+-   Focus on conceptual understanding: <br>"When it comes to LLMs, skillful prompting leaves amateurs in the dust."
 
 -   Strict communication policies
 
@@ -614,27 +633,29 @@ Report*](https://drive.google.com/file/d/1CODf7SpBS_-19jmR_mDCOaQRf3V24uaw/view?
 
 ::: aside
 - [source](https://archive.ph/cTMzY)
-- Jobs where Gen AI decreases the skill gap are at risk
+- Jobs where Gen AI decreases the skill gap may be at risk
 ::: 
 
 ## Tips to max your learning
 
 -   Read the syllabus carefully
 
--   Contribute as suggested in the syllabus
+-   Attend and contribute as suggested in the syllabus
 
 -   Budget 5-10 hours/week
 
 -   Between classes:
 
     ```         
-    1. Understand script, do homework 
-    2. Check homework with group, resolve differences
-    3. Monitor Piazza and read for the next class
+    1. Step through script carefully, understand everything.
+    2. Do homework questions on your own
+    3. Check homework with group, resolve differences
+    4. Monitor Piazza and read for the next class
+    5. Compile notes and homework answers to facilitate exam prep
     ```
 
 ::: aside
--   Exams are open-paper, closed-device. Live attendance required, plan ahead.
+-   Exams are open-paper, closed-device. Live attendance required, please plan ahead.
 :::
 
 ## Studying and Integrity
@@ -644,13 +665,15 @@ Report*](https://drive.google.com/file/d/1CODf7SpBS_-19jmR_mDCOaQRf3V24uaw/view?
 -   It is OK to share homework scripts and answers
 
     ```         
-    - We do not collect or assess homeworks
-    - Exam questions will test your familiarity and understanding of homework answers
+    - We do not collect or assess homeworks. 
+    - We do not provide homework answers.
+    - Exam questions will test your familiarity and understanding of homework answers. More details forthcoming 
     ```
 
--   We encourage you to use Gen AI; we use it too
+-   We encourage you to use Gen AI thoughtfully; we use it too
 
     ```         
+    - LLMs are poor substitutes for human understanding
     - Be advised, you may get what you pay for
     - Free models are sometimes worse than useless
     ```
@@ -693,6 +716,8 @@ Client
 -   Features: Aspects of a product that provide additional tangible or
     intangible benefits
 
+-   Value proposition: utility( Core benefit + features - price )
+
 -   Contribution margin: Price --- marginal cost
 
 -   Competitor: Any paid or free alternative that addresses the core
@@ -707,7 +732,7 @@ Client
 
 ## Market level
 
--   Market: A group of potential customers with the same core need
+-   Market: Potential customer group with common core need
 
 -   Segment: Distinct subgroup of similar customers
 
@@ -716,21 +741,41 @@ Client
 -   Positioning: Specification of product features to suit targeted
     segments
 
--   Marketing: Practice of meeting customer needs profitably [How to be
-    good at marketing](https://www.youtube.com/watch?v=g_HPJ6KEQsM){target="_blank"}
+-   Marketing: Practice of meeting customer needs profitably 
+
+          - Marketing: Business discipline that focuses most on customers
+          - Ads & sales: Worthless without good value prop and positive margin
+          - Poor implementation commonly leads to confusion with bullshit ("persuasive speech without regard for the truth" --Frankfurt 2005)
+          
+::: aside
+[How to be good at marketing](https://www.youtube.com/watch?v=g_HPJ6KEQsM){target="_blank"}
+[On Bullshit](https://archive.org/details/on-bullshit-by-harry-frankfurt)
+:::
 
 ::: notes
 -   Each market is composed of one of more segments
 -   "STP" is a common marketing strategy framework
 -   Marketing requires customer needs discovery/understanding, provision
     of an efficient solution, and pricing appropriately for everybody
+- The word "marketing" does not appear in Frankfurt's book (but advertising does)
 :::
 
 ## Legacy Terms
 
 -   3/4/5 C's: Customer, Competitor, Company; <br>Context; Complementors
 
--   4/.../10 P's: <br>Price, Product, Promotion, Place AKA distribution
+-   STP: Segmentation, Targeting, Positioning AKA Marketing Strategy
+
+-   4/.../10 P's: <br>Price, Product, Promotion, Place AKA distribution AKA Marketing Tactics
+
+            - You need to know these well if you interview for marketing roles
+            - Generations of marketing professionals were educated to think this way, e.g. MGT 103 and Harvard MBAs
+            - Still relevant, but less, thanks to customer data abundance & analytics 
+            
+::: aside
+Start [here](https://griffinandco.marketing/blog/2018/10/25/the-5cs-of-marketing){target="_blank"} or [here](https://www.coursera.org/articles/4-ps-of-marketing){target="_blank"} or [here](https://en.wikipedia.org/wiki/Marketing){target="_blank"}
+:::
+
 
 # Coding & Script
 
@@ -748,7 +793,7 @@ Client
 
 -   Good habit: Test chunks as you code
 
--   Test = Check that output matches expectation
+-   Test = Manipulate text, verify output matches expectation
 
 -   "Go slow to go fast"
 
@@ -771,7 +816,7 @@ Client
 
 -   Why?
 
--   Old pipe was %\>%
+-   Old pipe was %\>% ; remains widely used
 
 ## Today's script
 
@@ -792,9 +837,9 @@ Client
 
 ## Recap
 
--   Data Viz should be the first step in customer analytics
-
 -   Customer analytics : <br>Using customer data to improve decisions
+
+-   Data Viz should be the first step in customer analytics
 
 -   Marketing : Meeting customer needs profitably
 
@@ -808,14 +853,14 @@ Client
 ## Going further
 
 -   [Marketing Analytics for Data-Rich
-    Environments](https://drive.google.com/file/d/1OjbctcHPksDpLy5QgrLdfj02FDEtEHrF/view?usp=share_link){target="_blank"}
+    Environments](https://drive.google.com/file/d/1eF1upn8QEu5Xkk_HwlKqyr5MCx19CSsx/view?usp=sharing){target="_blank"}
     
 -   [GGplot2 YT video](https://www.youtube.com/watch?v=HPJn1CMvtmI){target="_blank"}
 
 -   [*R for Data Science (2e)*](https://r4ds.hadley.nz/){target="_blank"}
 
 -   [*R for Marketing Research and
-    Analytics*](https://drive.google.com/file/d/1OjpRFS6XRCdhyZGRv6l9DOONTIbFlbWi/view){target="_blank"}
+    Analytics*](https://drive.google.com/file/d/1eIZEtL5nrsQ1sknIARUQVtxLFyrHItMq/view){target="_blank"}
 
 -   [GGplot2 Book](https://ggplot2-book.org/){target="_blank"}
 

@@ -629,7 +629,7 @@ Report*](https://drive.google.com/file/d/1CODf7SpBS_-19jmR_mDCOaQRf3V24uaw/view?
 
 ## Gen AI effects on productivity
 
-![](images/GenAIeffects.png){fig-align="center" width="4in"}
+![](images/GenAIEffects.png){fig-align="center" width="4in"}
 
 ::: aside
 - [source](https://archive.ph/cTMzY)

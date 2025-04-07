@@ -530,7 +530,7 @@ ggplot(cust_dat, aes(height, handsize)) +
   geom_smooth(method = "lm", color = "firebrick")
 
 # You can see ggplot options on this cheat sheet:
-# https://drive.google.com/file/d/1m3R2uhd18UvJqWx7bqD6Bf8oGvy_LEBt/view?usp=share_link
+# https://drive.google.com/file/d/1KMMtKtjzTiLJOJm4_UnJT3b0lEY6n-KQ/view?usp=sharing
 # let's take a quick look. there is a lot! 
 
 

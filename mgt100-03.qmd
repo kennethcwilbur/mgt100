@@ -664,11 +664,6 @@ Multiple R-squared:      1,	Adjusted R-squared:      1
 F-statistic: 1.226e+09 on 2 and 97 DF,  p-value: < 2.2e-16
 ```
 
-
-## 
-
-![](images/demandbiasregresults.png){fig-align="center" width="5in"}
-
 ##
 
 ![](images/demandbias2.png){fig-align="center" width="10in"}

@@ -1,6 +1,11 @@
-## Week 7
+## MGT 100 : Pricing
 
-# Today we use the heterogeneous demand model from week 6 to optimize prices.
+# Today we use a heterogeneous demand model to optimize S1's price from 
+# Samsung's perspective.
+
+# We'll use the model to draw a demand curve; calculate various point and arc 
+#    elasticities; compare the constant-elasticity pricing rule to demand 
+#    model pricing; and consider how optimizing S1's price affects S2 demand
 
 rm(list=ls()) # optional clean-up
 setwd("G:/My Drive/aaaCURRENT/mgt100/scripts")

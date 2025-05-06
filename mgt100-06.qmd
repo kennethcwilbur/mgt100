@@ -40,6 +40,13 @@ Possible explanations:
 :::
 
 
+## 
+
+![](images/camel3stepladder.png){fig-align="center" width=5.9in}
+
+::: aside
+[source](https://camelcamelcamel.com/product/B087279HM1?tp=all&cpf=amazon-new-used){target="_blank"}. See also PriceSpy, SmartScout; but not Honey or Keepa
+:::
 
 # How firms set prices
 - Importance and challenge
@@ -79,6 +86,7 @@ Possible explanations:
 #### Stated-Preference Data
 - Open-ended: How much are you wtp? $___
 - Prompted: Would you buy (product) at ($price)?
+- Interviews, Focus Groups, Von Westendorp surveys
 - Conjoint Analysis: Designs can be incentivized or not
 
 #### Revealed-Preference Data
@@ -250,23 +258,18 @@ credible market research and related expertise
 - These factors also pertain to other price setting approaches 
 :::
 
-## Conjoint works for pricing too
-
-![](images/conjoint_price_attribute.png)
-
-
 ## Van Westendorp Pricing Model
 
 - Goal: Estimate stated WTP *range* for each customer
 
-- Survey target customers: At what price is (product)...
+- Survey target customers: At price $X is (product)...
 
         - Too Cheap? I.e., that you would question its quality
         - Acceptably Cheap?
         - Acceptably Expensive?
         - Too Expensive? I.e., that you would not consider buying 
 
-- Plot CDFs 
+- Ask for my values of $X, then plot 4 CDFs
 
         - Too Cheap and Acceptably Cheap decrease with price
         - Acceptably Expensive and Too Expensive increase with price
@@ -282,11 +285,11 @@ credible market research and related expertise
 
 - "Too cheap" meets "Acceptably Expensive": "Point of Marginal Cheapness"
 
-          - VW says: Don't price below PMC
+          - VW says: Price<PMC signals poor quality
 
 - "Acceptably Cheap" meets "Too Expensive": "Point of Marginal Expensiveness"
 
-          - VW says: Don't price above PME
+          - VW says: Price>PME prices out most of your market
 
 - "Too Cheap" meets "Too Expensive": Min. # of price-refusers
 
@@ -309,6 +312,13 @@ credible market research and related expertise
 - Thinking about intersections of 4 CDFs is sufficiently difficult that it will dazzle some consulting clients
 - Probably best to use this to evaluate other price-setting approaches outputs, rather than on its own to set price
 :::
+
+
+## Conjoint works for pricing too
+
+![](images/conjoint_price_attribute.png)
+
+
 
 ## Signals and *Perceived Quality*
 
@@ -508,7 +518,8 @@ If you really like this stuff, take Ania's consumer behavior elective in winter 
 - Cut measures shape and ability for light to pass through; hence, sparkle, which everyone likes
 :::
 
-## Decoy Effect Research
+
+## Estimating Decoy Effects
 
 - Context: Online diamond sales
 
@@ -526,29 +537,33 @@ If you really like this stuff, take Ania's consumer behavior elective in winter 
           - Decoy-dominant relationships were frequent
           - Estimated decoy/dominant effect on time-to-sale
 
+::: aside
+[Here](https://drive.google.com/file/d/1-oCY2mGHdLq2_yxL8hJTMQPU_8TYZ25y/view?usp=sharing){target="_blank"} is a snippet of the diamonds data, including prices and attributes
+:::
+
+
 ## Dominant-Dominated Diamond Pair {.smaller .scrollable}
 
-- **Dominant/decoy pair** defined as either:
+- Dominant/decoy pair defined as either:
   1. Same attributes, different prices
-  2. Dominated attributes, disordered prices
-  - In both cases, dominant is more attractive, decoy is less attractive
+  2. Dominated attributes, same price
+  3. Dominated attributes, disordered prices
 
-- **Example**: 
-  - **Dominant**: 1-carat, Excellent cut, D color, VVS1 clarity, $3000 price
-  - **Decoy**: 1-carat, Very Good cut, D color, VVS1 clarity, $3500 price
+- Example: 
+  - Dominant: 1-carat, Excellent cut, D color, VVS1 clarity, $3000 price
+  - Decoy: 1-carat, Very Good cut, D color, VVS1 clarity, $3000 price
 
-- Search result listings made decoy/dominant pair detection difficult, so detection depended on frequency of dominant/decoy listings
+- Authors observe listings by date and can estimate the listing ordering algorithm
+- However, authors do not observe individual user search results, so findings estimate a model of how search results appeared to customers
 
 
-## Findings
+## Model estimates indicate
 
 - 11%-25% of diamond listings had a dominant or decoy listing
 - Dominant diamonds sold 1.8-3.2x faster with decoy listings
 - Simulations predict Decoy Effect increased retailer's gross profit by 14.3%
 
-::: aside
-[Here](https://drive.google.com/file/d/1-oCY2mGHdLq2_yxL8hJTMQPU_8TYZ25y/view?usp=sharing){target="_blank"} is a snippet of the diamonds data, including prices and attributes
-:::
+
 
 ---
 

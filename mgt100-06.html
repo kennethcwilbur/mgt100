@@ -8,7 +8,7 @@
 <link href="mgt100-06_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="mgt100-06_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="mgt100-06_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.57">
+  <meta name="generator" content="quarto-1.4.555">
 
   <meta name="author" content="Kenneth C. Wilbur and Dan Yavorsky">
   <title>Pricing</title>
@@ -373,6 +373,17 @@ Kenneth C. Wilbur and Dan Yavorsky
 <aside><div>
 <p><a href="https://www.ebitdacatalyst.com/pricing-strategy/costco-prices-bargains-brilliance-brand-consistency" target="_blank">source</a> “Bargains on bargains”… Why not use signs?</p>
 </div></aside></section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/camel3stepladder.png" class="quarto-figure quarto-figure-center" style="width:5.9in"></p>
+</figure>
+</div>
+
+<aside><div>
+<p><a href="https://camelcamelcamel.com/product/B087279HM1?tp=all&amp;cpf=amazon-new-used" target="_blank">source</a>. See also PriceSpy, SmartScout; but not Honey or Keepa</p>
+</div></aside></section>
 <section>
 <section id="how-firms-set-prices" class="title-slide slide level1 center">
 <h1>How firms set prices</h1>
@@ -418,6 +429,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <ul>
 <li>Open-ended: How much are you wtp? $___</li>
 <li>Prompted: Would you buy (product) at ($price)?</li>
+<li>Interviews, Focus Groups, Von Westendorp surveys</li>
 <li>Conjoint Analysis: Designs can be incentivized or not</li>
 </ul>
 <h4 id="revealed-preference-data">Revealed-Preference Data</h4>
@@ -476,7 +488,7 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-2" class="slide level2">
+<section id="section-3" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -490,7 +502,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>How often is each approach used?</li>
 </ul>
 </div></aside></section>
-<section id="section-3" class="slide level2">
+<section id="section-4" class="slide level2">
 <h2></h2>
 <p><img data-src="images/openview2023pricing.png" data-out-width="\linewidth"></p>
 
@@ -500,7 +512,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>Top 3 strategies are so common that others are unreported</li>
 </ul>
 </div></aside></section>
-<section id="section-4" class="slide level2">
+<section id="section-5" class="slide level2">
 <h2></h2>
 <p><img data-src="images/spannetal1.png" data-out-width="\linewidth"></p>
 
@@ -657,20 +669,16 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="conjoint-works-for-pricing-too" class="slide level2">
-<h2>Conjoint works for pricing too</h2>
-<p><img data-src="images/conjoint_price_attribute.png"></p>
-</section>
 <section id="van-westendorp-pricing-model" class="slide level2">
 <h2>Van Westendorp Pricing Model</h2>
 <ul>
 <li><p>Goal: Estimate stated WTP <em>range</em> for each customer</p></li>
-<li><p>Survey target customers: At what price is (product)…</p>
+<li><p>Survey target customers: At price $X is (product)…</p>
 <pre><code>  - Too Cheap? I.e., that you would question its quality
   - Acceptably Cheap?
   - Acceptably Expensive?
   - Too Expensive? I.e., that you would not consider buying </code></pre></li>
-<li><p>Plot CDFs</p>
+<li><p>Ask for my values of $X, then plot 4 CDFs</p>
 <pre><code>  - Too Cheap and Acceptably Cheap decrease with price
   - Acceptably Expensive and Too Expensive increase with price
   - Crossing points bound the Acceptable Price Range </code></pre></li>
@@ -681,7 +689,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>R package <a href="https://cran.r-project.org/web/packages/pricesensitivitymeter/pricesensitivitymeter.pdf" target="_blank">pricesensitivitymeter</a></li>
 </ul>
 </div></aside></section>
-<section id="section-5" class="slide level2 scrollable">
+<section id="section-6" class="slide level2 scrollable">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -690,9 +698,9 @@ Kenneth C. Wilbur and Dan Yavorsky
 </div>
 <ul>
 <li><p>“Too cheap” meets “Acceptably Expensive”: “Point of Marginal Cheapness”</p>
-<pre><code>    - VW says: Don't price below PMC</code></pre></li>
+<pre><code>    - VW says: Price&lt;PMC signals poor quality</code></pre></li>
 <li><p>“Acceptably Cheap” meets “Too Expensive”: “Point of Marginal Expensiveness”</p>
-<pre><code>    - VW says: Don't price above PME</code></pre></li>
+<pre><code>    - VW says: Price&gt;PME prices out most of your market</code></pre></li>
 <li><p>“Too Cheap” meets “Too Expensive”: Min. # of price-refusers</p></li>
 <li><p>“Good Value” meets “Expensive”: Possibly max. # of price-accepters</p></li>
 <li><p>Strengths</p>
@@ -721,6 +729,10 @@ Kenneth C. Wilbur and Dan Yavorsky
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="conjoint-works-for-pricing-too" class="slide level2">
+<h2>Conjoint works for pricing too</h2>
+<p><img data-src="images/conjoint_price_attribute.png"></p>
 </section>
 <section id="signals-and-perceived-quality" class="slide level2">
 <h2>Signals and <em>Perceived Quality</em></h2>
@@ -785,7 +797,7 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-6" class="slide level2">
+<section id="section-7" class="slide level2">
 <h2></h2>
 <p><img data-src="images/krishna%202009%20fig1.png"></p>
 
@@ -898,7 +910,7 @@ We’ll go through a few more (inexhaustive) If you really like this stuff, take
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-7" class="slide level2">
+<section id="section-8" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1067,8 +1079,8 @@ We’ll go through a few more (inexhaustive) If you really like this stuff, take
 <li>All 4 attributes are essentially discrete, allowing exact comparisons and clear dominant/dominating relationships</li>
 </ul>
 </div></aside></section>
-<section id="decoy-effect-research" class="slide level2">
-<h2>Decoy Effect Research</h2>
+<section id="estimating-decoy-effects" class="slide level2">
+<h2>Estimating Decoy Effects</h2>
 <ul>
 <li><p>Context: Online diamond sales</p>
 <pre><code>    - #1 online diamond retailer, 50% share, big US brand 
@@ -1083,37 +1095,36 @@ We’ll go through a few more (inexhaustive) If you really like this stuff, take
     - Decoy-dominant relationships were frequent
     - Estimated decoy/dominant effect on time-to-sale</code></pre></li>
 </ul>
-</section>
+
+<aside><div>
+<p><a href="https://drive.google.com/file/d/1-oCY2mGHdLq2_yxL8hJTMQPU_8TYZ25y/view?usp=sharing" target="_blank">Here</a> is a snippet of the diamonds data, including prices and attributes</p>
+</div></aside></section>
 <section id="dominant-dominated-diamond-pair" class="slide level2 smaller scrollable">
 <h2>Dominant-Dominated Diamond Pair</h2>
 <ul>
-<li><strong>Dominant/decoy pair</strong> defined as either:
+<li>Dominant/decoy pair defined as either:
 <ol type="1">
 <li>Same attributes, different prices</li>
+<li>Dominated attributes, same price</li>
 <li>Dominated attributes, disordered prices</li>
-</ol>
+</ol></li>
+<li>Example:
 <ul>
-<li>In both cases, dominant is more attractive, decoy is less attractive</li>
+<li>Dominant: 1-carat, Excellent cut, D color, VVS1 clarity, $3000 price</li>
+<li>Decoy: 1-carat, Very Good cut, D color, VVS1 clarity, $3000 price</li>
 </ul></li>
-<li><strong>Example</strong>:
-<ul>
-<li><strong>Dominant</strong>: 1-carat, Excellent cut, D color, VVS1 clarity, $3000 price</li>
-<li><strong>Decoy</strong>: 1-carat, Very Good cut, D color, VVS1 clarity, $3500 price</li>
-</ul></li>
-<li>Search result listings made decoy/dominant pair detection difficult, so detection depended on frequency of dominant/decoy listings</li>
+<li>Authors observe listings by date and can estimate the listing ordering algorithm</li>
+<li>However, authors do not observe individual user search results, so findings estimate a model of how search results appeared to customers</li>
 </ul>
 </section>
-<section id="findings" class="slide level2">
-<h2>Findings</h2>
+<section id="model-estimates-indicate" class="slide level2">
+<h2>Model estimates indicate</h2>
 <ul>
 <li>11%-25% of diamond listings had a dominant or decoy listing</li>
 <li>Dominant diamonds sold 1.8-3.2x faster with decoy listings</li>
 <li>Simulations predict Decoy Effect increased retailer’s gross profit by 14.3%</li>
 </ul>
-
-<aside><div>
-<p><a href="https://drive.google.com/file/d/1-oCY2mGHdLq2_yxL8hJTMQPU_8TYZ25y/view?usp=sharing" target="_blank">Here</a> is a snippet of the diamonds data, including prices and attributes</p>
-</div></aside></section>
+</section>
 <section id="economic-factors-price-discrimination" class="slide level2 smaller scrollable">
 <h2>Economic factors: Price discrimination</h2>
 <ul>
@@ -1128,7 +1139,7 @@ We’ll go through a few more (inexhaustive) If you really like this stuff, take
 <li><p>Always frame price differences as discounts</p></li>
 </ul>
 </section>
-<section id="section-8" class="slide level2">
+<section id="section-9" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1527,7 +1538,18 @@ We’ll go through a few more (inexhaustive) If you really like this stuff, take
         }
         return false;
       }
-      const onCopySuccess = function(e) {
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1559,29 +1581,7 @@ We’ll go through a few more (inexhaustive) If you really like this stuff, take
         }, 1000);
         // clear code selection
         e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
       });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        // For code content inside modals, clipBoardJS needs to be initialized with a container option
-        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1589,7 +1589,7 @@ We’ll go through a few more (inexhaustive) If you really like this stuff, take
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

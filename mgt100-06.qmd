@@ -191,7 +191,7 @@ credible market research and related expertise
 
        - Usually, functional benefits or non-price cost savings    
 
-4. EVC = Price(y) + ( NonPriceCosts(y) - NonPriceCosts(x) ) + IncrementalValue(x$\vert$y)
+4. EVC(x$\vert$y) = Price(y) + ( NonPriceCosts(x) - NonPriceCosts(y) ) + IncrementalValue(x$\vert$y)
 
        - In practice, 99% of effort is getting the assumptions right 
     
@@ -199,7 +199,6 @@ credible market research and related expertise
 ## EVC tips
 
 - y might not be a commercial product. 
-
 
 - EVC and y often vary across customer segments
 
@@ -667,7 +666,15 @@ A very big deal in this graph: Nintendo Switch price had no nominal decrease for
 
 ## Class script
 
-- Use demand model to trace out a demand curve and optimize price
+- Use demand model to trace out a demand curve 
+
+- Compare different arc elasticity results
+
+- Conduct a grid search to find the profit-maximizing price, all else constant
+
+- Compare the grid search result to the CE-demand price
+
+- Consider multi-product price optimization
 
 ![](images/scroll.jpg){fig-align="right" width=2in}
 

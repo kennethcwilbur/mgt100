@@ -419,12 +419,34 @@ We've been hearing takes like this for generations
 :::
 
 ## 
+ 
+![](images/prog_pros.png){fig-align=center width=6in}
+
+::: aside
+[2024 data source](https://www.iab.com/insights/internet-advertising-revenue-report-full-year-2024/){target="_blank"}
+:::
+
+## 
 
 ![](images/zuck1.png){fig-align=center width=8.5in}
 
 ::: aside
 - [source](https://www.theverge.com/meta/659506/mark-zuckerberg-ai-facebook-ads)
 :::
+
+## Programmatic downsides
+
+- Infrastructure maximizes correlational returns
+
+- Attribution/credit "stealing"
+
+- Many relevant outcomes: Difficult to measure
+
+- Goliath sellers, illegal monopolies, enshitification
+
+- Fraud, Algorithmic opacity, Privacy regulations
+
+- "Ad Tech Tax" : 20-50% of ad spend
 
 ## 
 

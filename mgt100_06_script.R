@@ -289,7 +289,7 @@ mc2 <- 490
 # price of S1 changes
 # Recall that regular market price of S2 was $899
 
-s2dat <- tibble(scenario = 1:length(pvec), price = 899, share = smat[, 4])
+s2dat <- tibble(scenario = 1:length(pvec), price = 899, share = smat[, 6])
 # Recall smat[,4] contains demand model predictions of S2 share as price of S1 changes 
 
 s2dat <- s2dat |> mutate(

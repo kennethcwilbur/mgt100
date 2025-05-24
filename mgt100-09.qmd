@@ -1,5 +1,5 @@
 ---
-title: "Customer Revenue"
+title: "Predictive Customer Analytics"
 subtitle: "UCSD MGT 100 Week 09"
 author: "[Kenneth C. Wilbur](http://Kennethcwilbur.com) and Dan Yavorsky"
 output: html_document
@@ -7,20 +7,33 @@ format:
   revealjs:
     auto-stretch: false
     theme: default
+    pdf-max-pages-per-slide: 1 
+    pdf-separate-fragments: false 
 slide-number: c
 editor_options: 
   chunk_output_type: inline 
-editor: 
-  markdown: 
-    wrap: 72
 ---
 
-## Let's reflect
+# Predictive Customer Analytics
 
--   [Bass
-    (1969)](https://drive.google.com/file/d/1j0cTi7Ck4eALMqP2Tfl6oKqDk8I2Lhv4/view?usp=share_link)
-    
-![](images/mirror.jpg){fig-align="right" width="3in"}
+- Importance of Customer Acquisition
+
+- Market size: How many customers experience the core need?
+
+- Diffusion: How does the served market change over time?
+
+    - Model based on  [Bass (1969)](https://drive.google.com/file/d/1eitW-EncbPxkOFWiGSzeaLXpQkVEh4pa/view?usp=drive_link){target="_blank"} 
+
+
+- CLV: How profitable are customer relationships?
+
+::: notes
+-   Until now, we have taken the perspective of a dispassionate
+    economist or market analyst. But, most customer analytics work
+    happens inside firms. Let's consider how you look at the market when
+    you're inside a company.
+:::
+
 
 ::: notes
 - This paper was published several years before even I was born
@@ -34,7 +47,7 @@ editor:
 ## Importance of Customer Acquisition 
 
 -   [Einav et al.
-    (2021)](https://www.nber.org/system/files/working_papers/w29561/w29561.pdf)
+    (2021)](https://www.nber.org/system/files/working_papers/w29561/w29561.pdf){target="_blank"} 
     analyzed all US Visa CC transaction data
 
         - >$1T spent in 32B transactions by 428MM cards at 1MM stores from 2016-19
@@ -72,18 +85,7 @@ $\text{BrandRev.} = \sum spend \equiv \sum \frac{stores}{1} \frac{cards}{stores}
     store, visit or transaction level metrics
 :::
 
-## Customer Revenue Metrics
 
--   Market size: How many customers might purchase?
--   Diffusion: How does the served market change over time?
--   CLV: How profitable are customer relationships?
-
-::: notes
--   Until now, we have taken the perspective of a dispassionate
-    economist or market analyst. But, most customer analytics work
-    happens inside firms. Let's consider how you look at the market when
-    you're inside a company.
-:::
 
 ## Market Size
 
@@ -138,9 +140,9 @@ $\text{BrandRev.} = \sum spend \equiv \sum \frac{stores}{1} \frac{cards}{stores}
 -   Market size $\approx$ \$13.3B/year
 
 -   Let's check [Grand View
-    Research](https://www.grandviewresearch.com/industry-analysis/mattress-market)
+    Research](https://www.grandviewresearch.com/industry-analysis/mattress-market){target="_blank"} 
     &
-    [ISPA](https://sleepproducts.org/resources/statistics/industry-sales-data/)
+    [ISPA](https://sleepproducts.org/resources/statistics/industry-sales-data/){target="_blank"} 
 
 ::: notes
 -   Consider 2nd homes & hotels vs. homeless population
@@ -182,7 +184,7 @@ $\text{BrandRev.} = \sum spend \equiv \sum \frac{stores}{1} \frac{cards}{stores}
 - Unfortunately USDA stopped updating these data publicly, probably because Mintel increased price too much
 :::
 
-## Predicting Diffusion: [Bass (1969)](https://en.wikipedia.org/wiki/Bass_diffusion_model)
+## Predicting Diffusion: [Bass (1969)](https://en.wikipedia.org/wiki/Bass_diffusion_model){target="_blank"} 
 
 -   $M$ : Market size (we'll estimate this)
 
@@ -252,7 +254,7 @@ $$\frac{dA(t)}{dt}=pR(t)+q\frac{A(t)}{M}R(t)$$
 
 -   Or, notice that $\frac{dA(t)}{dt}=pR(t)+q\frac{A(t)}{M}R(t)$
     $=p(M-A(t)) + q* \frac{A(t)}{M}(M-A(t))$
-    $=pM + (q-p)A(t)-\frac{q}{M} A(t)^2$
+    $=pM + (q-p)A(t)+\frac{q}{M} A(t)^2$
 
 -   We can regress $\frac{dA(t)}{dt}$ on a quadratic in installed base
 
@@ -273,8 +275,9 @@ $$min_\beta (Y-X\beta)'(Y-X\beta)$$
 $$min_\beta [X'(Y-X\beta)]^2$$
 
     "In theory, there's no difference between theory & practice. In practice, there is." 
-    Many models offer multiple estimators. Some models have no estimators
-    Subfield that studies estimators: "econometrics"
+    Some models offer multiple estimators. Some models have no estimators
+    Estimates often differ due to assumptions and numerical properties
+    Subfield that invents estimators and studies their properties: "econometrics"
 
 ::: notes
 - Estimation performance may depend on numerical properties, availability of existing algorithms, etc.
@@ -324,7 +327,7 @@ Which of these new products will succeed?
 :::
 
 ::: aside
-More: [Kickstarter](https://www.kickstarter.com/), [Product Hunt](https://www.producthunt.com/), [Gizmodo](https://gizmodo.com/)
+More: [Kickstarter](https://www.kickstarter.com/){target="_blank"}, [Product Hunt](https://www.producthunt.com/){target="_blank"}, [Gizmodo](https://gizmodo.com/){target="_blank"} 
 :::
 
 
@@ -343,16 +346,16 @@ More: [Kickstarter](https://www.kickstarter.com/), [Product Hunt](https://www.pr
 
 -   Heterogeneity might drive adoption timing
 
-        - Adoption driven by consumer income, need or risk attitudes?
+        - Adoption driven by consumer preferences, needs, income, risk attitudes?
 
 -   Markets typically evolve after introduction
 
-        - Production becomes more efficient, prices and costs fall
+        - Production becomes more efficient & reliable; costs fall; price may fall
         - New features, technology generations, safety improves 
-        - Competitors enter and target unserved customers
+        - Competitors introduce variants targeting unserved customers
         - Network effects, e.g. smartphone compatibility with chargers or accessories
         - Complementors, e.g. Verizon stores, iFixIt, Genius Bar
-        - Consumer preferences, e.g. reliability matters more with time
+        - Consumer preferences, e.g. expected reliability rises over time
 
 ::: notes
 -   Features: Smartphone cameras improve, GPS improves, 4G beats 2G, etc
@@ -372,23 +375,23 @@ More: [Kickstarter](https://www.kickstarter.com/), [Product Hunt](https://www.pr
 ![](images/discordceoquote.png){fig-align="center" fig-width=9in}
 
 ::: aside
-[Source](https://web.archive.org/web/20240516070323/https://www.theverge.com/24134914/discord-ceo-gaming-chat-teens-safety-moderation-decoder-interview)
+[Source](https://web.archive.org/web/20240516070323/https://www.theverge.com/24134914/discord-ceo-gaming-chat-teens-safety-moderation-decoder-interview){target="_blank"} 
 :::
 
 ## Core Needs Data: Google Trends 
 
-- It's relatively easy to measure Served Available Market
+- Best available way to measure unserved market
 
 - [Google Trends](https://trends.google.com/){target="_blank"} reports search volume indices by keyword, place, time, service
 
       - Also identifies keyword topics, trending terms & related queries
-      - Samples the query database, reports estimates not totals
-      - Requires a minimum query volume to avoid privacy violations
+      - Samples the query database, reports estimates not actual counts
+      - Requires a minimum query volume for reporting
       - Free, so it could get sunsetted
 
 ::: aside
-- [A 2012 introduction and demonstration by Google's chief economist](https://drive.google.com/file/d/18aecUVA9gxUTuaItl4i-ceB9sDxVAhb1/view?usp=drive_link)
-- Or see a [more recent analysis](https://drive.google.com/file/d/18iNUBfw55raGFLOfMC-H6n55OvdToY0G/view?usp=drive_link)
+- [A 2012 introduction and demonstration by Google's chief economist](https://drive.google.com/file/d/18aecUVA9gxUTuaItl4i-ceB9sDxVAhb1/view?usp=drive_link){target="_blank"} 
+- Or see a [more recent analysis](https://drive.google.com/file/d/18iNUBfw55raGFLOfMC-H6n55OvdToY0G/view?usp=drive_link){target="_blank"} 
 :::
 
 
@@ -398,9 +401,9 @@ More: [Kickstarter](https://www.kickstarter.com/), [Product Hunt](https://www.pr
 -   CLV is the most powerful customer analytics metric
 
         - Expresses the firm's value of an individual customer relationship as the net present value of expected future customer profits
-        - Pioneered in catalogue retailers in the 1980s
+        - Pioneered by catalogue retailers in the 1980s
         - Has spread widely, but not yet everywhere
-        - CLV metrics enable quantification, and hence serious discussion, of <br>novel policies
+        - CLV metrics enable quantification & serious discussion of new policies
         
 ::: notes
 -   Catalogue retailers had huge customer databases, and mailed out
@@ -427,7 +430,7 @@ More: [Kickstarter](https://www.kickstarter.com/), [Product Hunt](https://www.pr
     chronically homeless has fallen by 74%."
 
 ::: aside
-- [Source](https://web.archive.org/web/20240330030348/https://www.newyorker.com/magazine/2014/09/22/home-free)
+- [Source](https://web.archive.org/web/20240330030348/https://www.newyorker.com/magazine/2014/09/22/home-free){target="_blank"} 
 :::
 
 ::: notes
@@ -581,13 +584,14 @@ More: [Kickstarter](https://www.kickstarter.com/), [Product Hunt](https://www.pr
 
 -   CLV models are typically misspecified & uncertain
 
-        - CLV-based policies may be self-fulfilling
-        - Treat someone as unprofitable, they may act that way      
+        - Main drawback: Contains no customer purchase model
+        - CLV-based policies may be self-fulfilling: 
+        Treat someone as unprofitable, they may act that way      
 
--   Guiding Principle
+-   Guiding Principles
 
         - The firm and the customer share an interest in creating an optimum level of customer value. Using CLV metrics for value creation benefits everyone
-        - The firm and the customer have opposing interests in price. Using CLV for margin extraction creates perverse incentives for customers
+        - The firm and the customer have opposing interests in price. Using CLV for margin extraction harms the model's predictive validity, and may generate perverse customer incentives 
         - Customer dissatisfaction may reveal CLV flaws; requires careful attention
         - Hence many firms now measure point-of-sale satisfaction
 
@@ -610,25 +614,21 @@ More: [Kickstarter](https://www.kickstarter.com/), [Product Hunt](https://www.pr
 
       - What missing information do you need to calculate the current value of the tutoring arrangement?
 
+
+# Wrapping up
+
 ## Class script
 
 -   Let's estimate the Bass model
 
 ![](images/scroll.jpg){fig-align="right" width="2in"}
 
-# Wrapping up
-
-## Homework
-
--   Let's take a look
-
-![](images/homework.jpg){fig-align="right" width="4in"}
 
 ## Recap
 
 -   Customer acquisitions best predict revenues
 -   Market size estimates how many people share a core need
--   Diffusion models predict how served market changes
+-   Diffusion models predict how served market changes 
 -   CLV metrics can quantify and enable novel policies
 
 ![](images/recap.png){fig-align="right" width="2in"}
@@ -636,17 +636,17 @@ More: [Kickstarter](https://www.kickstarter.com/), [Product Hunt](https://www.pr
 ## Going further
 
 -   [Innovation Diffusion and New Product Growth Models (Peres et al.
-    2009)](https://www.sciencedirect.com/science/article/pii/S0167811610000236)
+    2009)](https://www.sciencedirect.com/science/article/pii/S0167811610000236){target="_blank"} 
 
 -   [Customer-Base Valuation in a Contractual Setting with Heterogeneity
     (Fader & Hardie
-    2010)](https://drive.google.com/file/d/148LB_atkG7Q7awUkZHQseEXigCUHxAnU/view?usp=share_link)
+    2010)](https://drive.google.com/file/d/14zg5gPEOqlqp_JZ_bRmewCsqOmoOBKdH/view?usp=drive_link){target="_blank"} 
 
 -   [Exploring the Distribution of Customer Lifetime Value (Fader &
     Hardie
-    2017)](https://drive.google.com/file/d/1v_U9A1_NcpdxkvrRvsNY9fAQpVhwgnFT/view?usp=share_link)
+    2017)](https://drive.google.com/file/d/150sD29FpyzpQ9B0WL5kHwJdrwpp9bf_S/view?usp=drive_link){target="_blank"} 
 
 -   [Firing your best customers (Avery & Fournier
-    2012)](https://drive.google.com/file/d/1EQvYdwR63xz4hXheQeXip8F-uzFooqNZ/view?usp=share_link)
+    2012)](https://drive.google.com/file/d/15Ix93FCBM8JPqLPcUcIlL_2sxHRedVqs/view?usp=drive_link){target="_blank"} 
 
 ![](images/takingoff.png){fig-align="right" width="2in"}

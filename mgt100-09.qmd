@@ -568,7 +568,7 @@ More: [Kickstarter](https://www.kickstarter.com/){target="_blank"}, [Product Hun
 
 ::: aside
 - 5% of gamblers cost online gambling operators 20% of their revenue
-- So, operators block and limit frequent winners. Pros use "beards." [More here](https://archive.ph/LERIB){target="_blank"}
+- So, operators block and limit frequent winners. Pros use "beards." More [here](https://archive.ph/LERIB){target="_blank"} & [here](https://archive.ph/4dDzB){target="_blank"}
 :::
 
 ::: notes
@@ -582,16 +582,16 @@ More: [Kickstarter](https://www.kickstarter.com/){target="_blank"}, [Product Hun
         - E.g., can you connect customer identity across different credit card #s?
         - Think about measurement error in retention rate
 
--   CLV models are typically misspecified & uncertain
+-   CLV models are predictive analytics, not prescriptive or diagnostic
 
-        - Main drawback: Contains no customer purchase model
-        - CLV-based policies may be self-fulfilling: 
+        - CLV contains no customer purchase model
+        - Heterogeneous CLV-based policies may be self-fulfilling: 
         Treat someone as unprofitable, they may act that way      
 
 -   Guiding Principles
 
-        - The firm and the customer share an interest in creating an optimum level of customer value. Using CLV metrics for value creation benefits everyone
-        - The firm and the customer have opposing interests in price. Using CLV for margin extraction harms the model's predictive validity, and may generate perverse customer incentives 
+        - Firm & customer both can benefit from higher customer value. CLV metrics for value creation benefits everyone
+        - Firm & customer have opposing interests in price. CLV for margin extraction may generate perverse customer incentives 
         - Customer dissatisfaction may reveal CLV flaws; requires careful attention
         - Hence many firms now measure point-of-sale satisfaction
 
@@ -604,8 +604,34 @@ More: [Kickstarter](https://www.kickstarter.com/){target="_blank"}, [Product Hun
 -   This frontier is actively moving
 :::
  
- 
- 
+
+## Example: CLV for Pricing
+
+- Assume price is \$100, margin \$50, retention 50%, <br>discount rate 10%, horizon T=1 
+
+          CLV = 50 + .5 * 50 / 1.1 = $72.72
+
+- Suppose you consider increasing price to $120, holding all else constant
+
+          Then, CLV = 70 + .5 * 70 / 1.1 = $101.82
+
+- Should you raise the price?
+
+          What is this analysis missing?
+          How could we resolve that problem?
+          Hint: CLV is predictive analytics, not diagnostic or prescriptive
+
+::: aside
+More [here](https://archive.ph/O6Wv0){target="_blank"} or [here](https://drive.google.com/file/d/15njIpqcSy99e4l04kAfhDvvDjgIirkRo/view?usp=drive_link){target="_blank"}
+:::
+
+::: notes
+The law of demand says that increasing price causally reduces sales
+Hence increasing price must lower retention, as well as reducing acquisition
+A demand model could quantify the price/retention tradeoff to accurately revise the retention assumption given a price change
+:::
+
+
 ## <!--#Intermission-->
 
 ![](images/intermission.jpg){fig-align="center" width="6in"}

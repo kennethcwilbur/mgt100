@@ -14,7 +14,7 @@ editor_options:
   chunk_output_type: inline 
 ---
 
-# Predictive Customer Analytics
+# Predictive Customer Analytics{.smaller}
 
 - Importance of Customer Acquisition
 
@@ -22,10 +22,10 @@ editor_options:
 
 - Diffusion: How does the served market change over time?
 
-    - Model based on  [Bass (1969)](https://drive.google.com/file/d/1eitW-EncbPxkOFWiGSzeaLXpQkVEh4pa/view?usp=drive_link){target="_blank"} 
-
+    - Model based on [Bass (1969)](https://drive.google.com/file/d/1eitW-EncbPxkOFWiGSzeaLXpQkVEh4pa/view?usp=drive_link){target="_blank"}
 
 - CLV: How profitable are customer relationships?
+
 
 ::: notes
 -   Until now, we have taken the perspective of a dispassionate
@@ -86,6 +86,55 @@ $\text{BrandRev.} = \sum spend \equiv \sum \frac{stores}{1} \frac{cards}{stores}
 :::
 
 
+## Predictive Analytics
+
+- Weather forecasts
+
+        - What to do, what to wear
+
+- Stock prices
+
+        - Buy or sell, how much, when
+
+- Safety
+
+        - Where to live, how to transport
+
+- Lifespan
+
+        - Schooling, savings/spending, work/retire
+        
+- Product quality
+
+        - Buy now/later, return, warranty, insurance
+        
+## Predictive Analytics
+
+- Correlations alone can enable powerful predictions
+
+- Causal drivers will improve predictions
+
+        - But we do not need to know all the causal drivers to make predictions
+        
+        - E.g., future behavior often predicted using past behavior
+        
+- Predictive analytics are not prescriptive or diagnostic        
+
+        - Predictive analytics are oft misused & overinterpreted
+
+- Predictive Analytics typically have wide error bars
+
+        - Often ignored by those who don't understand ... and those who do
+        
+        - Accounting for data variability, estimation error and model uncertainty .. CIs get wide
+
+## Meet Dray
+
+![](images/dray4b.png){fig-align="center" fig-width="5in"}
+
+::: aside
+Dray has a powerful predictive analytics engine between his ears
+:::
 
 ## Market Size
 
@@ -258,8 +307,8 @@ $$\frac{dA(t)}{dt}=pR(t)+q\frac{A(t)}{M}R(t)$$
 
 -   We can regress $\frac{dA(t)}{dt}$ on a quadratic in installed base
 
-        - Then recover p, q & M from the parameter estimates
-        - We'll do both
+        - If you want, recover p, q & M from the parameter estimates
+        - (3 equations with 3 unknowns)
 
 -   Extensions: Multiple markets, hazard models, <br>types of
     "influence"
@@ -275,7 +324,7 @@ $$min_\beta (Y-X\beta)'(Y-X\beta)$$
 $$min_\beta [X'(Y-X\beta)]^2$$
 
     "In theory, there's no difference between theory & practice. In practice, there is." 
-    Some models offer multiple estimators. Some models have no estimators
+    Some theorical models offer multiple estimators. Some have no estimators
     Estimates often differ due to assumptions and numerical properties
     Subfield that invents estimators and studies their properties: "econometrics"
 
@@ -304,7 +353,13 @@ $$min_\beta [X'(Y-X\beta)]^2$$
 
 ## Inspired by epidemiology
 
-![](images/diffusion_curve.png){fig-align="center" width="8in"}
+![](images/diffusion_curve.png){fig-align="center" width="6.5in"}
+
+::: aside
+- Blue is PDF (adoptions), Yellow is CDF (cume adoptions)
+- We often equate adoptions and sales early in a product lifecycle
+:::
+
 
 ::: notes
 -   Distinguish between current and cume sales in the graph
@@ -315,7 +370,8 @@ $$min_\beta [X'(Y-X\beta)]^2$$
 
 ## Which new products will catch on?
 
-![](images/newproducts.png){fig-align="center" width="9in"}
+![](images/newproducts.png){fig-align="center" width="8in"}
+
 
 ::: notes
 Fastest way to get rich: Invent a new product that sells a lot
@@ -378,9 +434,28 @@ More: [Kickstarter](https://www.kickstarter.com/){target="_blank"}, [Product Hun
 [Source](https://web.archive.org/web/20240516070323/https://www.theverge.com/24134914/discord-ceo-gaming-chat-teens-safety-moderation-decoder-interview){target="_blank"} 
 :::
 
-## Core Needs Data: Google Trends 
+## Market Size & Career Choice
 
-- Best available way to measure unserved market
+- Your first job includes a bet on a market
+
+          - Mature market: Big, reputable employers, established career tracks
+          - But markets typically decline at some point
+
+          - Growing market: Exciting, high risk, high reward, more opportunity  
+          - But market may not take off as you expect
+
+          - Will your skillset enable a transition if needed?
+
+- Today's safe option might not be safe!
+
+          - Mature markets will decline
+          - New markets will grow
+          - Consider diffusion trends, not just current market size
+
+
+## Core Needs Data: Google Trends
+
+- Best available indicator of unserved market
 
 - [Google Trends](https://trends.google.com/){target="_blank"} reports search volume indices by keyword, place, time, service
 

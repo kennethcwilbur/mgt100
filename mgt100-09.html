@@ -8,7 +8,7 @@
 <link href="mgt100-09_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="mgt100-09_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="mgt100-09_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.57">
+  <meta name="generator" content="quarto-1.4.555">
 
   <meta name="author" content="Kenneth C. Wilbur and Dan Yavorsky">
   <title>Predictive Customer Analytics</title>
@@ -339,7 +339,7 @@
 
 </section>
 <section>
-<section id="predictive-customer-analytics" class="title-slide slide level1 center">
+<section id="predictive-customer-analytics" class="title-slide slide level1 smaller center">
 <h1>Predictive Customer Analytics</h1>
 <ul>
 <li><p>Importance of Customer Acquisition</p></li>
@@ -449,6 +449,48 @@
           display:block!important;
       }</style></aside>
 </section>
+<section id="predictive-analytics" class="slide level2">
+<h2>Predictive Analytics</h2>
+<ul>
+<li><p>Weather forecasts</p>
+<pre><code>  - What to do, what to wear</code></pre></li>
+<li><p>Stock prices</p>
+<pre><code>  - Buy or sell, how much, when</code></pre></li>
+<li><p>Safety</p>
+<pre><code>  - Where to live, how to transport</code></pre></li>
+<li><p>Lifespan</p>
+<pre><code>  - Schooling, savings/spending, work/retire</code></pre></li>
+<li><p>Product quality</p>
+<pre><code>  - Buy now/later, return, warranty, insurance</code></pre></li>
+</ul>
+</section>
+<section id="predictive-analytics-1" class="slide level2">
+<h2>Predictive Analytics</h2>
+<ul>
+<li><p>Correlations alone can enable powerful predictions</p></li>
+<li><p>Causal drivers will improve predictions</p>
+<pre><code>  - But we do not need to know all the causal drivers to make predictions
+
+  - E.g., future behavior often predicted using past behavior</code></pre></li>
+<li><p>Predictive analytics are not prescriptive or diagnostic</p>
+<pre><code>  - Predictive analytics are oft misused &amp; overinterpreted</code></pre></li>
+<li><p>Predictive Analytics typically have wide error bars</p>
+<pre><code>  - Often ignored by those who don't understand ... and those who do
+
+  - Accounting for data variability, estimation error and model uncertainty .. CIs get wide</code></pre></li>
+</ul>
+</section>
+<section id="meet-dray" class="slide level2">
+<h2>Meet Dray</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/dray4b.png" class="quarto-figure quarto-figure-center" data-fig-width="5in"></p>
+</figure>
+</div>
+
+<aside><div>
+<p>Dray has a powerful predictive analytics engine between his ears</p>
+</div></aside></section>
 <section id="market-size" class="slide level2">
 <h2>Market Size</h2>
 <ul>
@@ -683,8 +725,8 @@
 <ul>
 <li><p>Or, notice that <span class="math inline">\(\frac{dA(t)}{dt}=pR(t)+q\frac{A(t)}{M}R(t)\)</span> <span class="math inline">\(=p(M-A(t)) + q* \frac{A(t)}{M}(M-A(t))\)</span> <span class="math inline">\(=pM + (q-p)A(t)+\frac{q}{M} A(t)^2\)</span></p></li>
 <li><p>We can regress <span class="math inline">\(\frac{dA(t)}{dt}\)</span> on a quadratic in installed base</p>
-<pre><code>- Then recover p, q &amp; M from the parameter estimates
-- We'll do both</code></pre></li>
+<pre><code>- If you want, recover p, q &amp; M from the parameter estimates
+- (3 equations with 3 unknowns)</code></pre></li>
 <li><p>Extensions: Multiple markets, hazard models, <br>types of “influence”</p></li>
 </ul>
 </section>
@@ -697,7 +739,7 @@
 <p><span class="math display">\[min_\beta (Y-X\beta)'(Y-X\beta)\]</span></p>
 <p><span class="math display">\[min_\beta [X'(Y-X\beta)]^2\]</span></p>
 <pre><code>"In theory, there's no difference between theory &amp; practice. In practice, there is." 
-Some models offer multiple estimators. Some models have no estimators
+Some theorical models offer multiple estimators. Some have no estimators
 Estimates often differ due to assumptions and numerical properties
 Subfield that invents estimators and studies their properties: "econometrics"</code></pre>
 <aside class="notes">
@@ -747,9 +789,10 @@ Subfield that invents estimators and studies their properties: "econometrics"</c
 <h2>Inspired by epidemiology</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/diffusion_curve.png" class="quarto-figure quarto-figure-center" style="width:8in"></p>
+<p><img data-src="images/diffusion_curve.png" class="quarto-figure quarto-figure-center" style="width:6.5in"></p>
 </figure>
 </div>
+
 <aside class="notes">
 <ul>
 <li>Distinguish between current and cume sales in the graph</li>
@@ -767,12 +810,17 @@ Subfield that invents estimators and studies their properties: "econometrics"</c
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section>
+<aside><div>
+<ul>
+<li>Blue is PDF (adoptions), Yellow is CDF (cume adoptions)</li>
+<li>We often equate adoptions and sales early in a product lifecycle</li>
+</ul>
+</div></aside></section>
 <section id="which-new-products-will-catch-on" class="slide level2">
 <h2>Which new products will catch on?</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/newproducts.png" class="quarto-figure quarto-figure-center" style="width:9in"></p>
+<p><img data-src="images/newproducts.png" class="quarto-figure quarto-figure-center" style="width:8in"></p>
 </figure>
 </div>
 <aside class="notes">
@@ -846,10 +894,27 @@ Subfield that invents estimators and studies their properties: "econometrics"</c
 <aside><div>
 <p><a href="https://web.archive.org/web/20240516070323/https://www.theverge.com/24134914/discord-ceo-gaming-chat-teens-safety-moderation-decoder-interview" target="_blank">Source</a></p>
 </div></aside></section>
+<section id="market-size-career-choice" class="slide level2">
+<h2>Market Size &amp; Career Choice</h2>
+<ul>
+<li><p>Your first job includes a bet on a market</p>
+<pre><code>    - Mature market: Big, reputable employers, established career tracks
+    - But markets typically decline at some point
+
+    - Growing market: Exciting, high risk, high reward, more opportunity  
+    - But market may not take off as you expect
+
+    - Will your skillset enable a transition if needed?</code></pre></li>
+<li><p>Today’s safe option might not be safe!</p>
+<pre><code>    - Mature markets will decline
+    - New markets will grow
+    - Consider diffusion trends, not just current market size</code></pre></li>
+</ul>
+</section>
 <section id="core-needs-data-google-trends" class="slide level2">
 <h2>Core Needs Data: Google Trends</h2>
 <ul>
-<li><p>Best available way to measure unserved market</p></li>
+<li><p>Best available indicator of unserved market</p></li>
 <li><p><a href="https://trends.google.com/" target="_blank">Google Trends</a> reports search volume indices by keyword, place, time, service</p>
 <pre><code>- Also identifies keyword topics, trending terms &amp; related queries
 - Samples the query database, reports estimates not actual counts
@@ -1463,7 +1528,18 @@ Treat someone as unprofitable, they may act that way      </code></pre></li>
         }
         return false;
       }
-      const onCopySuccess = function(e) {
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1495,29 +1571,7 @@ Treat someone as unprofitable, they may act that way      </code></pre></li>
         }, 1000);
         // clear code selection
         e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
       });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        // For code content inside modals, clipBoardJS needs to be initialized with a container option
-        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1525,7 +1579,7 @@ Treat someone as unprofitable, they may act that way      </code></pre></li>
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

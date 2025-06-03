@@ -901,7 +901,7 @@ NOPAT_T = f(\{ACQ_{T-t},RET_{T-t}\}_{t=1,...,T})
 <h2>Asset Price Game</h2>
 <ul>
 <li><p>You are VCs trading start-up shares (“assets”)</p></li>
-<li><p>Each team starts with 3 assets and $20 cash</p></li>
+<li><p>Each team starts with 3 assets and $20 million cash</p></li>
 <li><p>Teams can make money in 1 of 3 ways:</p>
 <ol type="1">
 <li>Collect dividends</li>
@@ -928,20 +928,23 @@ NOPAT_T = f(\{ACQ_{T-t},RET_{T-t}\}_{t=1,...,T})
 <h2>Trading</h2>
 <p>4 allowable trading statements:</p>
 <ol type="1">
-<li>State a selling price: “Team (w) ASKS $a.bc”</li>
-<li>State a buying offer: “Team (x) BIDS $d.ef”</li>
+<li>State a selling price: “Team (w) ASKS $a.bc” or “WANTS TO SELL AT $a.bc”</li>
+<li>State a buying offer: “Team (x) BIDS $d.ef” or “Team (x) WANTS TO BUY at $d.ef”</li>
 <li>Accept a selling price: “Team (y) ACCEPTS Team (w)’s ask”</li>
 <li>Accept a buying offer: “Team (z) ACCEPTS Team (x)’s bid”</li>
 </ol>
 <p>Rules:</p>
 <ul>
-<li><p>No more than 1 ASK or BID per team per round</p></li>
-<li><p>No ASK more than the lowest open ask (why?)</p></li>
-<li><p>No BID less than the highest open bid</p></li>
-<li><p>You can only ask/bid/accept if you have the asset or cash to cover</p></li>
+<li><p>Max 1 (ASK or BID) per team per round</p>
+<ul>
+<li>No limit on ACCEPTs</li>
+</ul></li>
+<li><p>No BID &lt; highest open bid or ASK &gt; lowest open ask</p></li>
+<li><p>Smallest increment: $0.50</p></li>
+<li><p>You can only bid/accept if you have the asset or cash to cover</p></li>
 <li><p>We track all trades; you track your own assets, payouts and cash by round</p>
 <ul>
-<li><a href="https://docs.google.com/spreadsheets/d/1WRXSRIrywx1cn-V5UPSngYRpUf8GsqX_5a2cKMTuuz8/copy" target="_blank">Copy this google sheet</a>; let’s walk through it</li>
+<li><a href="https://docs.google.com/spreadsheets/d/1WRXSRIrywx1cn-V5UPSngYRpUf8GsqX_5a2cKMTuuz8/view" target="_blank">Open this google sheet</a>; let’s walk through it</li>
 </ul></li>
 <li><p>Raise your hand to ask/bid/accept</p></li>
 <li><p>Any questions?</p></li>
@@ -973,11 +976,30 @@ NOPAT_T = f(\{ACQ_{T-t},RET_{T-t}\}_{t=1,...,T})
 <section id="section-1" class="slide level2">
 <h2></h2>
 <ul>
-<li><p>What happened?</p></li>
-<li><p>Why did that happen?</p></li>
+<li><p>How did prices change across rounds?</p></li>
 <li><p>What strategy did your team use?</p></li>
-<li><p>How might this connect to real financial markets?</p></li>
+<li><p>How did that work out?</p></li>
+<li><p>How might this connect to real financial markets?</p>
+<pre><code>    - Takeaway #1
+    - Takeaway #2</code></pre></li>
 </ul>
+<aside class="notes">
+<ul>
+<li>Takeaway 1: Most people don’t bother to calculate fair value. Even with strong incentives and full information. Therefore, the market price easily may depart from economic fundamentals. This happens frequently in asset markets. The efficient markets hypothesis is only a hypothesis; it is valuable, but you should absolutely not assume that it always holds. If you do calculate fair value, you have a massive advantage in trading markets. If you do not calculate fair value, you have a massive disadvantage relative to those who do calculate fair value.</li>
+<li>Takeaway 2: What people do clearly see is how prices are changing. It’s not unusual for people to notice a trend of rising asset prices, then extrapolate from that trend to predict continually rising asset prices. About 85-90% of the time this classroom experiment is run, an asset price bubble develops through the first 4-5 rounds, and then pops at the end. Asset price bubbles have happened many many times throughout history, including in real estate, cryptocurrency, NFTs and elsewhere. The amazing thing about asset price bubbles, from the perspective of those who know the fair value, is that you cannot predict when they will pop. Because the more they inflate, the more data there is to strengthen noise traders’ extrapolations of continually rising prices.<br>
+</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section></section>
 <section>
 <section id="wrapping-up" class="title-slide slide level1 center">

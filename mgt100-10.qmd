@@ -369,7 +369,7 @@ Eg. ["Triangle retention chart"](https://articles.sequoiacap.com/retention){targ
 
 - You are VCs trading start-up shares ("assets")
 
-- Each team starts with 3 assets and $20 cash
+- Each team starts with 3 assets and $20 million cash
 
 - Teams can make money in 1 of 3 ways:
 
@@ -395,19 +395,22 @@ After $n$th round, every surviving asset pays an extra $6
 
 4 allowable trading statements: 
 
-1. State a selling price: "Team (w) ASKS $a.bc" 
-2. State a buying offer: "Team (x) BIDS $d.ef" 
+1. State a selling price: "Team (w) ASKS $a.bc" or "WANTS TO SELL AT $a.bc"
+2. State a buying offer: "Team (x) BIDS $d.ef" or "Team (x) WANTS TO BUY at $d.ef" 
 3. Accept a selling price: "Team (y) ACCEPTS Team (w)'s ask"
 4. Accept a buying offer: "Team (z) ACCEPTS Team (x)'s bid" 
 
 Rules:
 
-- No more than 1 ASK or BID per team per round
-- No ASK more than the lowest open ask (why?)
-- No BID less than the highest open bid
-- You can only ask/bid/accept if you have the asset or cash to cover
+- Max 1 (ASK or BID) per team per round
+
+    - No limit on ACCEPTs
+
+- No BID < highest open bid or ASK > lowest open ask
+- Smallest increment: \$0.50
+- You can only bid/accept if you have the asset or cash to cover
 - We track all trades; you track your own assets, payouts and cash by round
-    - [Copy this google sheet](https://docs.google.com/spreadsheets/d/1WRXSRIrywx1cn-V5UPSngYRpUf8GsqX_5a2cKMTuuz8/copy){target="_blank"}; let's walk through it
+    - [Open this google sheet](https://docs.google.com/spreadsheets/d/1WRXSRIrywx1cn-V5UPSngYRpUf8GsqX_5a2cKMTuuz8/view){target="_blank"}; let's walk through it
 - Raise your hand to ask/bid/accept
 
 - Any questions?
@@ -423,14 +426,21 @@ Rules:
 
 ## 
 
-- What happened?
-
-- Why did that happen?
+- How did prices change across rounds?
 
 - What strategy did your team use?
 
+- How did that work out?
+
 - How might this connect to real financial markets?
 
+          - Takeaway #1
+          - Takeaway #2
+          
+::: notes
+- Takeaway 1: Most people don't bother to calculate fair value. Even with strong incentives and full information. Therefore, the market price easily may depart from economic fundamentals. This happens frequently in asset markets. The efficient markets hypothesis is only a hypothesis; it is valuable, but you should absolutely not assume that it always holds. If you do calculate fair value, you have a massive advantage in trading markets. If you do not calculate fair value, you have a massive disadvantage relative to those who do calculate fair value. 
+- Takeaway 2: What people do clearly see is how prices are changing. It's not unusual for people to notice a trend of rising asset prices, then extrapolate from that trend to predict continually rising asset prices. About 85-90% of the time this classroom experiment is run, an asset price bubble develops through the first 4-5 rounds, and then pops at the end. Asset price bubbles have happened many many times throughout history, including in real estate, cryptocurrency, NFTs and elsewhere. The amazing thing about asset price bubbles, from the perspective of those who know the fair value, is that you cannot predict when they will pop. Because the more they inflate, the more data there is to strengthen noise traders' extrapolations of continually rising prices.  
+:::
 
 
 # Wrapping up

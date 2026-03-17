@@ -1,7 +1,7 @@
 ---
 title: "Visualization, Intro"
 subtitle: "MGT 100 Week 1"
-author: "Kenneth C. Wilbur and Daniel Yavorsky"
+author: "[Kenneth C. Wilbur](http://Kennethcwilbur.com) and Daniel Yavorsky"
 output: html_document
 format: 
   revealjs:
@@ -12,9 +12,6 @@ format:
 slide-number: c
 editor_options: 
   chunk_output_type: inline 
-editor: 
-  markdown: 
-    wrap: 72
 ---
 
 ##

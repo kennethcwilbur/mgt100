@@ -168,7 +168,7 @@ Dray has a powerful predictive analytics engine between his ears
 -   3 ways to estimate:
     -   "Top Down" Total Addressable Market (TAM) : <br>How many people
         have the core need?
-    -   "Bottom up" Served Available Market (TAM): <br>How many people currently
+    -   "Bottom up" Served Available Market (SAM): <br>How many people currently
         pay to solve the core need?
         -   TAM=SAM+Unserved
     -   Analyst estimates

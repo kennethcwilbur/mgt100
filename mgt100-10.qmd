@@ -411,7 +411,7 @@ Rules:
 - You can only bid/accept if you have the asset or cash to cover
 - We track all trades; you track your own assets, payouts and cash by round
     - [Open this google sheet](https://docs.google.com/spreadsheets/d/1WRXSRIrywx1cn-V5UPSngYRpUf8GsqX_5a2cKMTuuz8/view){target="_blank"}; let's walk through it
-- Raise your hand to ask/bid/accept
+- Raise your hand to ask/bid/accept ; be ready to speak
 
 - Any questions?
 

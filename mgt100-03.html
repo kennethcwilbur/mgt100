@@ -8,7 +8,7 @@
 <link href="mgt100-03_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="mgt100-03_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="mgt100-03_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.57">
+  <meta name="generator" content="quarto-1.4.555">
 
   <meta name="author" content="Kenneth C. Wilbur and Dan Yavorsky">
   <title>Demand Modeling</title>
@@ -356,7 +356,7 @@ Kenneth C. Wilbur and Dan Yavorsky
 </div>
 
 <aside class="notes">
-<p>Philip Wright was a Harvard economics professor who worked at the US Tariff Commission Wright (1928) was trying to predict the tax revenue that would be raised by a tariff on linseed oil, by predicting how much foreign demand would fall as a function of hte change in price Here, Wright explains S&amp;D ideas usually credited to Alfred Marshall (1890)</p>
+<p>Philip Wright was a Harvard economics professor who worked at the US Tariff Commission Wright (1928) was trying to predict the tax revenue that would be raised by a tariff on linseed oil, by predicting how much foreign demand would fall as a function of the change in price Here, Wright explains S&amp;D ideas usually credited to Alfred Marshall (1890)</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -435,11 +435,11 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="demand-curves-challenges" class="slide level2">
 <h2>Demand Curves: Challenges</h2>
 <ul>
-<li><p>Idealized demand curves are hard to estimate (why?)</p></li>
+<li><p>Idealized demand curves can be hard to estimate (why?)</p></li>
 <li><p>Where do product attributes come in?</p>
 <pre><code>  - What if we don't observe all attributes? "Price endogeneity"</code></pre></li>
 <li><p>Many things can predict demand</p>
-<pre><code>  - preferences, information, advertising, quality, match value, quality, complements, substitutes, competitor prices, entry, taxes and other policies, retail distribution, nature of equilibrium, stockpiling, consumer income, ...</code></pre></li>
+<pre><code>  - preferences, information, advertising, quality, match value, complements, substitutes, interoperability, competitor prices, switching costs, entry, taxes and other policies, retail distribution, nature of equilibrium, stockpiling, consumer income, ...</code></pre></li>
 <li><p>What do we need to estimate Demand?</p>
 <pre><code>  - Observable, exogenous variation in costs or price
   - Otherwise, "price endogeneity" will bias demand estimates</code></pre></li>
@@ -493,13 +493,16 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="price-experiments" class="slide level2">
 <h2>Price Experiments</h2>
 <ul>
-<li><p>Ideally, the best way to learn demand, because you create exogenous price variation; but…</p>
+<li><p>Yes-and: Price experiments create exogenous price variation, which works synergistically with demand modeling. But…</p>
 <ul>
 <li><p>Competitors &amp; consumers can observe price variation</p></li>
 <li><p>May change purchase timing, stockpiling or <br>reference prices</p></li>
 <li><p>Competitors, distribution partners or suppliers may react</p></li>
 </ul></li>
-<li><p>Hence, experimenting to learn demand may change future demand</p></li>
+<li><p>Hence, price experiments can change future demand</p>
+<ul>
+<li>Price experiments without demand modeling leaves money on the table</li>
+</ul></li>
 </ul>
 </section>
 <section id="demand-modeling-pros" class="slide level2">
@@ -1482,7 +1485,18 @@ These approaches are beyond the scope of this class</code></pre></li>
         }
         return false;
       }
-      const onCopySuccess = function(e) {
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1514,29 +1528,7 @@ These approaches are beyond the scope of this class</code></pre></li>
         }, 1000);
         // clear code selection
         e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
       });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        // For code content inside modals, clipBoardJS needs to be initialized with a container option
-        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1544,7 +1536,7 @@ These approaches are beyond the scope of this class</code></pre></li>
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

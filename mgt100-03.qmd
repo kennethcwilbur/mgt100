@@ -1,12 +1,14 @@
 ---
 title: "Demand Modeling"
 subtitle: "UCSD MGT 100 Week 3"
-author: "Kenneth C. Wilbur and Dan Yavorsky"
+author: "[Kenneth C. Wilbur](http://Kennethcwilbur.com) and Dan Yavorsky"
 output: html_document
 format: 
   revealjs:
     auto-stretch: false
     theme: default
+    pdf-max-pages-per-slide: 1 
+    pdf-separate-fragments: false 
 slide-number: c
 editor_options: 
   chunk_output_type: inline 
@@ -30,7 +32,7 @@ editor_options:
 
 ::: notes
 Philip Wright was a Harvard economics professor who worked at the US Tariff Commission
-Wright (1928) was trying to predict the tax revenue that would be raised by a tariff on linseed oil, by predicting how much foreign demand would fall as a function of hte change in price
+Wright (1928) was trying to predict the tax revenue that would be raised by a tariff on linseed oil, by predicting how much foreign demand would fall as a function of the change in price
 Here, Wright explains S&D ideas usually credited to Alfred Marshall (1890)
 :::
 
@@ -84,7 +86,7 @@ Here, Wright explains S&D ideas usually credited to Alfred Marshall (1890)
 
 ## Demand Curves: Challenges
 
--   Idealized demand curves are hard to estimate (why?)
+-   Idealized demand curves can be hard to estimate (why?)
 
 -   Where do product attributes come in?
 
@@ -93,7 +95,7 @@ Here, Wright explains S&D ideas usually credited to Alfred Marshall (1890)
 
 -   Many things can predict demand
 
-          - preferences, information, advertising, quality, match value, quality, complements, substitutes, competitor prices, entry, taxes and other policies, retail distribution, nature of equilibrium, stockpiling, consumer income, ...
+          - preferences, information, advertising, quality, match value, complements, substitutes, interoperability, competitor prices, switching costs, entry, taxes and other policies, retail distribution, nature of equilibrium, stockpiling, consumer income, ...
 
 -   What do we need to estimate Demand?
 
@@ -132,7 +134,7 @@ Here, Wright explains S&D ideas usually credited to Alfred Marshall (1890)
 
 ## Price Experiments
 
--   Ideally, the best way to learn demand, because you create exogenous price variation; but...
+- Yes-and: Price experiments create exogenous price variation, which works synergistically with demand modeling. But...
 
     -   Competitors & consumers can observe price variation
 
@@ -140,7 +142,9 @@ Here, Wright explains S&D ideas usually credited to Alfred Marshall (1890)
 
     -   Competitors, distribution partners or suppliers may react
 
--   Hence, experimenting to learn demand may change future demand
+-   Hence, price experiments can change future demand
+
+    - Price experiments without demand modeling leaves money on the table
 
 ## Demand Modeling: Pros
 

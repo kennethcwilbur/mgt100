@@ -6,11 +6,11 @@
 <script src="mgt100-01_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="mgt100-01_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="mgt100-01_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="mgt100-01_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="mgt100-01_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.57">
+<link href="mgt100-01_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
-  <meta name="author" content="Kenneth C. Wilbur and Daniel Yavorsky">
+  <meta name="author" content="Kenneth C. Wilbur">
+  <meta name="author" content="Daniel Yavorsky">
   <title>Visualization, Intro</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -30,209 +30,14 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="mgt100-01_files/libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="mgt100-01_files/libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
+  <link rel="stylesheet" href="custom.css">
   <link href="mgt100-01_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="mgt100-01_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="mgt100-01_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="mgt100-01_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="mgt100-01_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="mgt100-01_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
-
-  .callout {
-    margin-top: 1em;
-    margin-bottom: 1em;  
-    border-radius: .25rem;
-  }
-
-  .callout.callout-style-simple { 
-    padding: 0em 0.5em;
-    border-left: solid #acacac .3rem;
-    border-right: solid 1px silver;
-    border-top: solid 1px silver;
-    border-bottom: solid 1px silver;
-    display: flex;
-  }
-
-  .callout.callout-style-default {
-    border-left: solid #acacac .3rem;
-    border-right: solid 1px silver;
-    border-top: solid 1px silver;
-    border-bottom: solid 1px silver;
-  }
-
-  .callout .callout-body-container {
-    flex-grow: 1;
-  }
-
-  .callout.callout-style-simple .callout-body {
-    font-size: 1rem;
-    font-weight: 400;
-  }
-
-  .callout.callout-style-default .callout-body {
-    font-size: 0.9rem;
-    font-weight: 400;
-  }
-
-  .callout.callout-titled.callout-style-simple .callout-body {
-    margin-top: 0.2em;
-  }
-
-  .callout:not(.callout-titled) .callout-body {
-      display: flex;
-  }
-
-  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
-    padding-left: 1.6em;
-  }
-
-  .callout.callout-titled .callout-header {
-    padding-top: 0.2em;
-    margin-bottom: -0.2em;
-  }
-
-  .callout.callout-titled .callout-title  p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-    
-  .callout.callout-titled.callout-style-simple .callout-content  p {
-    margin-top: 0;
-  }
-
-  .callout.callout-titled.callout-style-default .callout-content  p {
-    margin-top: 0.7em;
-  }
-
-  .callout.callout-style-simple div.callout-title {
-    border-bottom: none;
-    font-size: .9rem;
-    font-weight: 600;
-    opacity: 75%;
-  }
-
-  .callout.callout-style-default  div.callout-title {
-    border-bottom: none;
-    font-weight: 600;
-    opacity: 85%;
-    font-size: 0.9rem;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
-
-  .callout.callout-style-default div.callout-content {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
-
-  .callout.callout-style-simple .callout-icon::before {
-    height: 1rem;
-    width: 1rem;
-    display: inline-block;
-    content: "";
-    background-repeat: no-repeat;
-    background-size: 1rem 1rem;
-  }
-
-  .callout.callout-style-default .callout-icon::before {
-    height: 0.9rem;
-    width: 0.9rem;
-    display: inline-block;
-    content: "";
-    background-repeat: no-repeat;
-    background-size: 0.9rem 0.9rem;
-  }
-
-  .callout-title {
-    display: flex
-  }
-    
-  .callout-icon::before {
-    margin-top: 1rem;
-    padding-right: .5rem;
-  }
-
-  .callout.no-icon::before {
-    display: none !important;
-  }
-
-  .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
-  }
-
-  .callout.callout-titled .callout-icon::before {
-    margin-top: .5rem;
-    padding-right: .5rem;
-  }
-
-  .callout:not(.callout-titled) .callout-icon::before {
-    margin-top: 1rem;
-    padding-right: .5rem;
-  }
-
-  /* Callout Types */
-
-  div.callout-note {
-    border-left-color: #4582ec !important;
-  }
-
-  div.callout-note .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
-  }
-
-  div.callout-note.callout-style-default .callout-title {
-    background-color: #dae6fb
-  }
-
-  div.callout-important {
-    border-left-color: #d9534f !important;
-  }
-
-  div.callout-important .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-important.callout-style-default .callout-title {
-    background-color: #f7dddc
-  }
-
-  div.callout-warning {
-    border-left-color: #f0ad4e !important;
-  }
-
-  div.callout-warning .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-warning.callout-style-default .callout-title {
-    background-color: #fcefdc
-  }
-
-  div.callout-tip {
-    border-left-color: #02b875 !important;
-  }
-
-  div.callout-tip .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-tip.callout-style-default .callout-title {
-    background-color: #ccf1e3
-  }
-
-  div.callout-caution {
-    border-left-color: #fd7e14 !important;
-  }
-
-  div.callout-caution .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
-  }
-
-  div.callout-caution.callout-style-default .callout-title {
-    background-color: #ffe5d0
-  }
-
-  </style>
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -320,52 +125,111 @@
       margin-right: 0; 
     }
   </style>
+  <!-- Google tag (gtag.js) -->
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MVJF5Z0C5J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-MVJF5Z0C5J');
+  </script>
+  <script>
+    // Inject audio player into title slide after page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      var titleSlide = document.getElementById('title-slide');
+      if (titleSlide) {
+        var audio = document.createElement('audio');
+        audio.controls = true;
+        audio.src = 'mgt100_theme_song.mp3';
+        audio.style.marginTop = '0.5em';
+        titleSlide.appendChild(audio);
+      }
+    });
+  </script>
 </head>
 <body class="quarto-light">
+<script src="mathjax-config.js"></script>
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Visualization, Intro</h1>
+  <h1 class="title"><strong>Visualization, Intro</strong></h1>
   <p class="subtitle">MGT 100 Week 1</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Kenneth C. Wilbur and Daniel Yavorsky 
+<a href="https://kennethcwilbur.com" target="_blank">Kenneth C. Wilbur</a> 
 </div>
+        <p class="quarto-title-affiliation">
+            Professor of Marketing and Analytics
+          </p>
+        <p class="quarto-title-affiliation">
+            University of California, San Diego
+          </p>
+    </div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="https://www.linkedin.com/in/dyavorsky/" target="_blank">Daniel Yavorsky</a> 
 </div>
+        <p class="quarto-title-affiliation">
+            SVP-Analytics
+          </p>
+        <p class="quarto-title-affiliation">
+            GBK Collective
+          </p>
+    </div>
 </div>
 
+  <p class="date">This version: March 2026 | License: CC BY 4.0 | We use javascript to track readership.<br>We welcome reuse with attribution. Please share widely.</p>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/kenfam.png" class="quarto-figure quarto-figure-center" style="width:13in"></p>
+<p><img data-src="images/kenfam.png" class="quarto-figure quarto-figure-center" height="450"></p>
 </figure>
 </div>
-
-<aside><div>
-<p>Dog==Draymond AKA Dray AKA Click Clack AKA Major Jealous<br> Cat==Captain Kitty AKA Liquid AKA Hunter AKA Boomer</p>
-</div></aside></section>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Dog==Draymond || Dray || Click Clack || Major Jealous<br> Cat==Luka || Liquid || Hunter || Octopus</p>
+</div>
+</div>
+</div>
+</section>
 <section>
 <section id="data-visualizations-viz" class="title-slide slide level1 center">
 <h1>Data Visualizations (Viz)</h1>
 <ul>
-<li><p>“The greatest value of a picture is when it forces us to notice what we never expected to see.”</p>
-<pre><code>    - Boxplot Inventor John Tukey
-    - Great visualizations raise new questions          </code></pre></li>
+<li>“The greatest value of a picture is when it forces us to notice what we never expected to see.”
+<ul>
+<li>Boxplot Inventor John Tukey</li>
+<li>Great visualizations raise new questions</li>
+</ul></li>
 </ul>
+<div class="source-url">
+<p><a href="https://archive.org/details/exploratorydataa0000tuke_7616" target="_blank">Tukey (1977)</a></p>
+</div>
 </section>
 <section id="data-viz-are-older-than-0" class="slide level2">
 <h2>Data Viz are older than 0</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/oldviz.png" class="quarto-figure quarto-figure-center" style="width:4in"></p>
+<p><img data-src="images/oldviz.png" class="quarto-figure quarto-figure-center" height="400"></p>
 </figure>
 </div>
-
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>This ancient Mesopotamian clay tablet is estimated to be 3,500 years old. Data visualization is older than English and older than zero. Are those blanks zeros or missing values?</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://www.datafix.com.au/BASHing/2020-08-12.html" target="_blank">source</a></p>
+</div>
 <aside class="notes">
 <ul>
 <li>Data tables are older than english; older than zero (est. 3 b.c.)</li>
@@ -373,7 +237,7 @@ Kenneth C. Wilbur and Daniel Yavorsky
 <li>Estimated to be 3500 years old</li>
 <li>Found near the Euphrates river in iraq</li>
 <li>Data entry and data visualization are older than English</li>
-<li>Next question raised: Are those blanks zeros or NAs ? (what’s an NA?)</li>
+<li>Next question raised: Are those blanks zeros or NAs? (what’s an NA?)</li>
 <li>Tables require study; pictures teach</li>
 <li>Key lesson here: Only cavemen visualize data as tables</li>
 </ul>
@@ -388,15 +252,20 @@ Kenneth C. Wilbur and Daniel Yavorsky
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<aside><div>
-<p><a href="https://www.datafix.com.au/BASHing/2020-08-12.html" target="_blank">source</a></p>
-</div></aside></section>
+</section>
 <section id="translated" class="slide level2">
 <h2>Translated</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/oldviz2.png" class="quarto-figure quarto-figure-center" style="width:6in"></p>
+<p><img data-src="images/oldviz2.png" class="quarto-figure quarto-figure-center" height="400"></p>
 </figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>This attempted translation shows what appears to be accounting for construction labor. Columns B and E look like duplicates, and A appears to sum B and F. Are those blanks zeros or missing data?</p>
+</div>
+</div>
 </div>
 <aside class="notes">
 <ul>
@@ -421,11 +290,23 @@ Kenneth C. Wilbur and Daniel Yavorsky
 </section>
 <section id="section-1" class="slide level2">
 <h2></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/cancer.png" class="quarto-figure quarto-figure-center" style="width:5.5in"></p>
+<p><img data-src="images/cancer.png" class="quarto-figure quarto-figure-center" height="600"></p>
 </figure>
 </div>
+</div><div class="column" style="width:40%;">
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>This visualization shows absolute increase in cancer risk and offers information for different audiences, with a pleasing presentation despite a grave topic.</p>
+<p>Does the graph show how much a person’s cancer risk changes when they change their drinking behavior? (I.e., a “causal effect”)</p>
+</div>
+</div>
+</div>
+</div></div>
 <aside class="notes">
 <ul>
 <li>portrait shape</li>
@@ -448,13 +329,60 @@ Kenneth C. Wilbur and Daniel Yavorsky
       }</style></aside>
 </section>
 <section id="section-2" class="slide level2">
-<h2><a href="https://drive.google.com/open?id=175yrLDY-W15TgBtumPa11WnwMwCeUmSF" target="_blank"></a></h2>
+<h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/dfs_search_2015.png" class="quarto-figure quarto-figure-center" style="width:10in"></p>
+<p><img data-src="images/owid_population_growth.png" class="quarto-figure quarto-figure-center" height="420"></p>
 </figure>
 </div>
-
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>The world population curve has a sigmoid shape, also known as an S curve, in which growth increases and later decreases. A pop science book, <em>Population Bomb</em> by Ehrlich (1968), forecast mass starvation, since population was increasing exponentially but food production was increasing linearly.</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://docs.google.com/presentation/d/1wQD2O976nyZdn4qm7OFSY9FTBCaVVTY4hEnyh3_EYas/edit?slide=id.p7#slide=id.p7" target="_blank">Our World in Data</a></p>
+</div>
+<aside class="notes">
+<ul>
+<li>Population curve is a textbook sigmoid/S-curve</li>
+<li>Growth rate peaked ~1962 at ~2.1%/year, now ~1%/year</li>
+<li>UN medium-variant projection: ~10.4B by 2100</li>
+<li>Key driver: fertility decline (next slide topic?)</li>
+<li>The post-2024 portion is a projection, not observed data</li>
+<li>Sigmoid = logistic growth curve, common in biology, epidemiology, technology adoption</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/dfs_search_2015.png" class="quarto-figure quarto-figure-center" height="500"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Google searches for DraftKings, FanDuel during an NFL Game, 9-10 P.M. EST. Commercial minutes are shaded. What do you see?</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://drive.google.com/open?id=175yrLDY-W15TgBtumPa11WnwMwCeUmSF" target="_blank">Du et al.&nbsp;(2019)</a></p>
+</div>
 <aside class="notes">
 <ul>
 <li>This graphic shows minute-by-minute search for DraftKings and Fanduel ads during the first thursday nfl game in 2015</li>
@@ -475,20 +403,24 @@ Kenneth C. Wilbur and Daniel Yavorsky
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<aside><div>
-<p>Google searches for DraftKings, FanDuel during an NFL Game, 9-10 P.M. EST</p>
-</div></aside></section>
+</section>
 <section id="sdpd-crime-reports-near-ucsd" class="slide level2">
-<h2><a href="http://bar.rady.ucsd.edu/maps.html" target="_blank">SDPD Crime Reports Near UCSD</a></h2>
+<h2>SDPD Crime Reports Near UCSD</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/ucsd_crime_2012.png" class="quarto-figure quarto-figure-center" style="width:6.5in"></p>
+<p><img data-src="images/ucsd_crime_2012.png" class="quarto-figure quarto-figure-center" height="400"></p>
 </figure>
 </div>
-<ul>
-<li>When is data zero vs.&nbsp;missing? Provenance is key</li>
-<li>What kind of decisions could this inform?</li>
-</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>When is data zero vs.&nbsp;missing? Provenance is key. What kind of decisions could this inform?</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="http://bar.rady.ucsd.edu/maps.html" target="_blank">Hansen</a></p>
+</div>
 <aside class="notes">
 <ul>
 <li>This map shows SDPD data on crimes reported near UCSD’s main campus in 2012</li>
@@ -509,60 +441,61 @@ Kenneth C. Wilbur and Daniel Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="data-provenance" class="slide level2">
+<section id="data-provenance" class="slide level2 smaller">
 <h2>Data <em>Provenance</em></h2>
 <ul>
-<li><p>describes people, entities, and activities involved in producing, compiling, transforming &amp; sharing data</p>
-<pre><code>- Verifiability requires source data &amp; cleaning scripts</code></pre></li>
-<li><p>Crucial in determining quality, reliability, trustworthiness</p>
-<pre><code>- Investigating provenance requires and deepens domain expertise
-- Typically turns up unexpected information, and sometimes errors</code></pre></li>
-<li><p>When can you trust provenance information?</p>
-<pre><code>  - Best to treat provenance as hypotheses to be verified in the data
-  - Usually, provenance descriptions are missing or imperfect
-  - Financial info is most likely to be accurate due (accounting, auditing)
-  - Considerations: Consent; Privacy; Missingness; Permissible uses
-  - Sometimes, provenance descriptions are marketing documents</code></pre></li>
+<li>Describes people, entities, and activities involved in producing, compiling, transforming &amp; sharing data
+<ul>
+<li>Verifiability requires source data &amp; cleaning scripts</li>
+</ul></li>
+<li>Crucial in determining quality, reliability, trustworthiness
+<ul>
+<li>Investigating provenance requires and deepens domain expertise</li>
+<li>Typically turns up unexpected information, and sometimes errors</li>
+</ul></li>
+<li>When can you trust provenance information?
+<ul>
+<li>Best to treat provenance as hypotheses to be verified in the data</li>
+<li>Usually, provenance descriptions are missing or imperfect</li>
+<li>Financial variables are most likely to be accurate due to auditing requirements</li>
+<li>Considerations: Consent; Privacy; Missingness; Permissible uses</li>
+<li>Sometimes, provenance descriptions are marketing documents</li>
+</ul></li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>GIGO: Garbage In, Garbage Out. Don’t analyze noise.</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://technologyadvice.com/blog/business-intelligence/data-provenance/" target="_blank">Jungco (2025)</a></p>
+</div>
 </section>
-<section id="questions-to-ask" class="slide level2">
-<h2>Questions to ask</h2>
-<ul>
-<li><p>Data Origin, Measures, Quality, Verifiability</p>
-<pre><code>  -   How were the data produced?
-  -   Who collected it, when and why?
-  -   How is each variable measured? (surveys, APIs, sensors, etc; units)
-  -   Is there a data dictionary or changelog?
-  -   How can I verify individual datapoints?
-  -   Certified by any third party? Who relies on them, for what?</code></pre></li>
-<li><p>Processing &amp; Transformation</p>
-<pre><code>  -   What cleaning or manipulation was done?
-  -   Who performed it and why? Can I see their scripts?
-  -   Were missing values imputed? How?
-  -   How were outliers handled?</code></pre></li>
-</ul>
-
-<aside><div>
-<ul>
-<li>GIGO: Garbage In, Garbage Out. Don’t analyze noise</li>
-<li><a href="https://technologyadvice.com/blog/business-intelligence/data-provenance/" target="_blank">Go deeper</a></li>
-</ul>
-</div></aside></section>
-<section id="viz-can-build-trust-understanding" class="slide level2">
+<section id="viz-can-build-trust-understanding" class="slide level2 smaller">
 <h2>Viz can build trust, understanding</h2>
 <ul>
-<li><p>Eyeballs can interpret pictures quickly</p>
-<pre><code>- Human brains are great at interpreting visual patterns, predictions
-- Can detect unknown errors</code></pre></li>
-<li><p>Understandable to managers</p>
-<pre><code>- Viz choices enable narrative understanding, another common brain function</code></pre></li>
-<li><p>Viz are <em>lingua franca</em> across disciplines</p>
-<pre><code>- Easily replicated -&gt; more easily trusted
-- Trust can is a major issue in some corporate cultures</code></pre></li>
-<li><p>Viz succeed when they raise deeper questions</p>
-<pre><code>- Asking the next question indicates acceptance
-- "I wonder why that is...." or "Maybe that's because..."
-- Viz usualy won't settle the matter; hence, the first step</code></pre></li>
+<li>Eyeballs can interpret pictures quickly
+<ul>
+<li>Human brains are great at interpreting visual patterns, predictions</li>
+<li>Can detect unexpected errors</li>
+</ul></li>
+<li>Understandable to non-specialists, including customers and managers
+<ul>
+<li>Viz choices enable narrative understanding, another common brain function</li>
+</ul></li>
+<li>Viz are <em>lingua franca</em> across disciplines
+<ul>
+<li>Easily replicated -&gt; more easily trusted</li>
+<li>Trust can be a major issue in some corporate cultures</li>
+</ul></li>
+<li>Viz succeed when they raise deeper questions
+<ul>
+<li>Asking the next question indicates acceptance; facts prompt explanations</li>
+<li>“I wonder why that is….” or “Maybe that’s because…”</li>
+<li>Viz usually won’t settle major debates, but viz is the first step</li>
+</ul></li>
 </ul>
 <aside class="notes">
 <ul>
@@ -582,14 +515,57 @@ Kenneth C. Wilbur and Daniel Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-3" class="slide level2">
+<section id="section-4" class="slide level2 smaller">
+<h2></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/merrill-number%20goes%20up.png" class="quarto-figure quarto-figure-center" height="180"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/merrill-lines%20diverge.png" class="quarto-figure quarto-figure-center" height="180"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/merrill-number%20goes%20updown%20when%20something%20happened.png" class="quarto-figure quarto-figure-center" height="180"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/merrill-bimodal.webp" class="quarto-figure quarto-figure-center" height="180"></p>
+</figure>
+</div>
+</div></div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>“Graphics journalists urge that each chart should make exactly one point – and it should be obvious how to read it. Often charts say (1) number goes up/down recently, (2) number goes up/down when some event occurred, (3) one set of lines diverges from another set of lines (or, one line is an outlier compared to the rest), (4) the distribution is bimodal.” –Jeremy Merrill, WaPo <br><br> “Scientific charts are often the opposite of this – they have four variables, six symbols and are explained two pages away.”</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-5" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/1data6viz.png" class="quarto-figure quarto-figure-center" style="height:7in"></p>
+<p><img data-src="images/1data6viz.png" class="quarto-figure quarto-figure-center" height="400"></p>
 </figure>
 </div>
-
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>The same dataset can be represented many different ways, each emphasizing different comparisons. Here is a very simple dataset; what comparison does each graphic communicate? How would you summarize each graphic in a sentence?</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://100.datavizproject.com/?trk=feed_main-feed-card_feed-article-content" target="_blank">source</a></p>
+</div>
 <aside class="notes">
 <ul>
 <li>You can choose visualization elements to communicate your preferred interpretation, by highlighting particular contrasts or aspects of the data</li>
@@ -619,22 +595,35 @@ Kenneth C. Wilbur and Daniel Yavorsky
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<aside><div>
-<p><a href="https://100.datavizproject.com/?trk=feed_main-feed-card_feed-article-content" target="_blank">source</a></p>
-</div></aside></section>
+</section>
 <section id="honest-viz" class="slide level2">
 <h2>Honest Viz</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
 <ol type="1">
-<li><p>Usually start axes from 0, choose scales judiciously</p></li>
-<li><p>Show all relevant data, label accurately. Don’t edit, trim</p></li>
-<li><p>Discretize and smoothe judiciously</p></li>
+<li>Usually start axes from 0, choose scales judiciously</li>
+<li>Show all relevant data, label accurately</li>
+<li>Discretize and smooth judiciously</li>
+<li>Show uncertainty when relevant</li>
+<li>Cite data sources</li>
 </ol>
-<div class="quarto-figure quarto-figure-right">
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Misleading visualizations can indicate bad faith. You want to avoid mistaken interpretations of your work, and identify misleading impressions created by others.</p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/mislead.png" class="quarto-figure quarto-figure-right" style="width:3.5in"></p>
+<p><img data-src="images/mislead.png" class="quarto-figure quarto-figure-center" height="400"></p>
 </figure>
 </div>
-
+</div></div>
+<div class="source-url">
+<p><a href="https://flowingdata.com/projects/dishonest-charts/" target="_blank">Go deeper</a></p>
+</div>
 <aside class="notes">
 <p>There are so many degrees of freedom, that data viz could instead lead to misunderstanding (rather than understanding) Misleading viz can indicate bad faith You want to avoid mistaken interpretations of your work, and identify misleading impressions created by others</p>
 <style type="text/css">
@@ -648,20 +637,27 @@ Kenneth C. Wilbur and Daniel Yavorsky
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<aside><div>
-<p><a href="https://flowingdata.com/projects/dishonest-charts/">Go deeper</a></p>
-</div></aside></section>
-<section id="visualize-data-before-you-analyze" class="slide level2">
-<h2>Visualize data before you analyze</h2>
+</section>
+<section id="visualize-data-before-you-model-anything" class="slide level2">
+<h2>Visualize data before you model anything</h2>
 <ul>
 <li>4 Datasets, Same <span class="math inline">\(\hat{\beta}^{OLS}\)</span>, i.e.&nbsp;same <span class="math inline">\(\frac{x'x}{x'y}\)</span></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/4datasets_samebeta.png" class="quarto-figure quarto-figure-center" style="width:8in"></p>
+<p><img data-src="images/4datasets_samebeta.png" class="quarto-figure quarto-figure-center" height="350"></p>
 </figure>
 </div>
-
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>What does each picture tell us? This is why we shouldn’t just use regression to summarize data</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://www.research.autodesk.com/publications/same-stats-different-graphs/" target="_blank">Matejka &amp; Fitzmaurice (2017)</a></p>
+</div>
 <aside class="notes">
 <ul>
 <li>The most common use of visualizations is private, for an analyst to understand the properties of a dataset</li>
@@ -681,12 +677,7 @@ Kenneth C. Wilbur and Daniel Yavorsky
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<aside><div>
-<ul>
-<li>What does each picture tell us? <a href="https://www.research.autodesk.com/publications/same-stats-different-graphs/" target="_blank">Source</a></li>
-<li>This is why we shouldn’t just use regression to summarize data</li>
-</ul>
-</div></aside></section></section>
+</section></section>
 <section>
 <section id="customer-analytics" class="title-slide slide level1 center">
 <h1>Customer Analytics</h1>
@@ -705,23 +696,32 @@ Kenneth C. Wilbur and Daniel Yavorsky
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-
-<aside><div>
-
-</div></aside></section>
-<section id="customer" class="slide level2">
+</section>
+<section id="customer" class="slide level2 smaller">
 <h2>Customer</h2>
+<div class="columns">
+<div class="column" style="width:65%;">
 <ul>
 <li>Receives good or service in exchange for payment (money, time, attention)</li>
 <li>Has agency: Can say “no”</li>
 <li>“The purpose of business is to create and keep a customer.”<br>-Drucker</li>
+<li>“There is only one boss. The customer. And he can fire everybody in the company from the chairman on down, simply by spending his money somewhere else.” -Walton</li>
+<li>“In the long term, there’s never any misalignment between customer interests and shareholder interests.” -Bezos</li>
 </ul>
-<div class="quarto-figure quarto-figure-right">
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><em>related</em> Consumer, Client</p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:35%;">
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/dalle_happy_customer.png" class="quarto-figure quarto-figure-right" width="275"></p>
+<p><img data-src="images/dalle_happy_customer.png" class="quarto-figure quarto-figure-center" height="350"></p>
 </figure>
 </div>
-
+</div></div>
 <aside class="notes">
 <ul>
 <li>The image is a dall-e2 drawing of ‘happy customer with a shopping cart’</li>
@@ -739,23 +739,32 @@ Kenneth C. Wilbur and Daniel Yavorsky
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<aside><div>
-<p><em>related</em> Consumer, Client</p>
-</div></aside></section>
+</section>
 <section id="analytics" class="slide level2">
 <h2>Analytics</h2>
+<div class="columns">
+<div class="column" style="width:65%;">
 <ul>
 <li>Using data to improve decisions</li>
-<li>Started by Charles Taylor in the 1880s (mostly)</li>
-<li>Popularized by <em>Moneyball</em> (2011)</li>
+<li>Popularized by Charles Taylor in 1910s</li>
+<li>Further popularized by <em>Moneyball</em> (2011)</li>
 <li>Measurement, Heuristics, Graphics, Models, Predictions, Automation, Optimization, Personalization, …</li>
 <li>Can be deceptively difficult</li>
 </ul>
-<div class="quarto-figure quarto-figure-right">
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><em>related</em> Expert systems, business intelligence, data science, AI. Terms change frequently.</p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:35%;">
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/Moneyball_Poster.jpg" class="quarto-figure quarto-figure-right" style="width:1.5in"></p>
+<p><img data-src="images/Moneyball_Poster.jpg" class="quarto-figure quarto-figure-center" height="200"></p>
 </figure>
 </div>
+</div></div>
 <aside class="notes">
 <ul>
 <li>Popularized more by the movie than the book</li>
@@ -772,71 +781,84 @@ Kenneth C. Wilbur and Daniel Yavorsky
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-
-<aside><div>
-<ul>
-<li><em>related</em> Expert systems, business intelligence, data science, AI</li>
-<li>Terms change frequently</li>
-</ul>
-</div></aside></section>
+</section>
 <section id="first-law-of-customer-analytics" class="slide level2">
 <h2>First Law of Customer Analytics</h2>
 <ul>
-<li><p>No Customers, No Business</p></li>
-<li><p>No Customers -&gt; <br>No Revenue -&gt; <br>No Profit -&gt; <br>No Business <br><em>QED</em></p></li>
+<li>No Customers, No Business</li>
+<li>No Customers -&gt; <br>No Revenue -&gt; <br>No Profit -&gt; <br>No Business <br><em>QED</em></li>
 </ul>
-
-<aside><div>
-<ul>
-<li>Which owners or employees in the business can afford to ignore customers?</li>
-<li>Is talking to customers fun?</li>
-</ul>
-</div></aside></section>
-<section id="second-law-of-customer-analytics" class="slide level2">
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Which owners or employees in the business can afford to ignore customers?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="second-law-of-customer-analytics" class="slide level2 smaller">
 <h2>Second Law of Customer Analytics</h2>
 <ul>
-<li><p>More Customers, More Profits</p></li>
-<li><p>More Customers -&gt; <br>More Revenue -&gt; <br>More Profit <br><em>QED</em></p>
-<pre><code>- These are empirical tendencies, not logical necessities
-- Individual customers can be unprofitable if (price-cost)&lt;0</code></pre></li>
-<li><p>Marketing Objective: Maximize Long-term Profits</p>
-<pre><code>  - Long-term focus mostly aligns our interest with customers
-  - Goal is not only to acquire customers; also, keep and develop them
-  - Sidesteps or reduces most ethical dilemmas
-  - Short-run objective may profit before liability; I won't teach </code></pre></li>
+<li>More Customers, More Profits</li>
+<li>More Customers -&gt; <br>More Revenue -&gt; <br>More Profit <br><em>QED</em>
+<ul>
+<li>These are empirical tendencies, not logical necessities</li>
+<li>Individual customers can be unprofitable if (price-cost)&lt;0</li>
+</ul></li>
+<li>Marketing Objective: Maximize Long-term Profits
+<ul>
+<li>Long-term focus mostly aligns our interest with customers</li>
+<li>Goal is not only to acquire customers; also, keep and develop them</li>
+<li>Sidesteps or reduces most ethical dilemmas</li>
+<li>Short-run objective may profit prior to liability; I won’t teach</li>
+</ul></li>
 </ul>
 </section>
-<section id="example-of-great-marketing-netflix" class="slide level2">
+<section id="example-of-great-marketing-netflix" class="slide level2 smaller">
 <h2>Example of Great Marketing: Netflix</h2>
 <ul>
-<li><p>Consumer surplus</p>
-<pre><code>  - Suppose customer pays $20/month, watches 60 hours: $0.33 per entertainment hour, or $0.13/hour with ads, or less with shared accounts
-  - A la carte rentals are more like $1-2+/hour
-  - Non-video entertainment tends to be much more expensive
-  - Social benefits may accrue from shared viewing
-  - Other streaming services may be competitive</code></pre></li>
-<li><p>Producer surplus</p>
-<pre><code>  - NFLX spent $13B on content in 2023, 230 million subscribers, about $4.70/user/month
-  - Cost structure: High fixed, low marginal 
-  - Ads likely earning around $4-5 per recipient/month
-  - Net profit margin about 20-22% in a competitive category</code></pre></li>
-</ul>
-
-<aside><div>
+<li>Consumer surplus
 <ul>
-<li>Other EDLP businesses: Costco, Trader Joes, Walmart (vs High-Low)</li>
-<li>Common tension between short-term management and long-term strategies</li>
+<li>Suppose customer pays $20/month, watches 60 hours: $0.33 per entertainment hour, or $0.13/hour with ads, or less with shared accounts</li>
+<li>A la carte rentals are more like $1-2+/hour</li>
+<li>Non-video entertainment tends to be much more expensive</li>
+<li>Social benefits may accrue from shared viewing</li>
+<li>Other streaming services may be competitive</li>
+</ul></li>
+<li>Producer surplus
+<ul>
+<li>NFLX spent $13B on content in 2023, 230 million subscribers, about $4.70/user/month</li>
+<li>Cost structure: High fixed, low marginal</li>
+<li>Ads likely earning around $4-5 per recipient/month</li>
+<li>Net profit margin about 20-22% in a competitive category</li>
+</ul></li>
 </ul>
-</div></aside></section>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Other EDLP (vs High-Low) businesses: Costco, Trader Joes, Walmart. Common tension between short-term management and long-term strategies.</p>
+</div>
+</div>
+</div>
+</section>
 <section id="how-can-we-use-customer-data" class="slide level2">
 <h2>How can we use customer data?</h2>
 <ul>
-<li><p>Businesses have 4, and only 4, ways to make money:<br> Acquire, develop, retain and “fire” customers</p>
-<pre><code>This is called Customer relationship management (CRM): week 9</code></pre></li>
-<li><p>Marketing mix (“4 P’s”): Improve product offerings, prices, promotion, distribution</p></li>
-<li><p>Incorporate customer heterogeneity for targeting, personalization, recommendations, product development…</p></li>
-<li><p>Privacy and security, e.g.&nbsp;misuse, theft, regulatory compliance</p></li>
+<li>Businesses have 4, and only 4, ways to make money:<br>Acquire, develop, retain and “fire” customers
+<ul>
+<li>This is called Customer Relationship Management (CRM): week 9</li>
+</ul></li>
+<li>Marketing mix (“4 P’s”): Improve product offerings, prices, promotion, distribution</li>
+<li>Incorporate customer heterogeneity for targeting, personalization, recommendations, product development…</li>
+<li>Privacy and security, e.g.&nbsp;misuse, theft, regulatory compliance</li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Firing customers is typically indirect, such as withdrawing preferred products or declining to encourage further purchasing</p>
+</div>
+</div>
+</div>
 <aside class="notes">
 <ul>
 <li>We’ll go deeper into that first bullet in week 9; this is how smart firms think about customer data internally</li>
@@ -859,16 +881,41 @@ Kenneth C. Wilbur and Daniel Yavorsky
 <section id="example-nielsen" class="slide level2">
 <h2>Example: Nielsen</h2>
 <p>CONSUMER PANEL DATA</p>
-<pre><code>      - The Consumer Panel Data include longitudinal data beginning in 2004 with annual updates. These data track a panel of 40,000–60,000 US households and their purchases of fast-moving consumer goods from a wide range of retail outlets across all US markets. </code></pre>
+<ul>
+<li>The Consumer Panel Data include longitudinal data beginning in 2004. These data track a panel of 40,000–60,000 US households and their purchases of fast-moving consumer goods from a wide range of retail outlets across all US markets.</li>
+</ul>
 <p>RETAIL SCANNER DATA</p>
-<pre><code>      - Retail Scanner Data consist of weekly pricing, volume, and store environment information generated by point-of-sale systems from more than 90 participating retail chains across all US markets. Data begin in 2006 and include annual updates. </code></pre>
+<ul>
+<li>Retail Scanner Data consist of weekly pricing, volume, and in-store marketing info generated by point-of-sale systems from 90+ participating retail chains across all US markets. Data begin in 2006.</li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Consumer panel and retail scanner data are foundational to customer analytics in consumer packaged goods. What business questions could these data help answer?</p>
+</div>
+</div>
+</div>
 </section>
-<section id="section-4" class="slide level2">
+<section id="section-6" class="slide level2">
 <h2></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/goya1.png" class="quarto-figure quarto-figure-center" style="width:8in"></p>
+<p><img data-src="images/goya1.png" class="quarto-figure quarto-figure-center" height="600"></p>
 </figure>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>On July 9, 2020, the CEO of Goya praised President Trump during a White House meeting, generating calls for a consumer boycott.</p>
+</div>
+</div>
+</div>
+</div></div>
+<div class="source-url">
+<p><a href="https://pubsonline.informs.org/doi/pdf/10.1287/mksc.2022.1386" target="_blank">Liaukonyte, Tuchman &amp; Zhu (2022)</a></p>
 </div>
 <aside class="notes">
 <ul>
@@ -886,16 +933,27 @@ Kenneth C. Wilbur and Daniel Yavorsky
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-
-<aside><div>
-<p><a href="https://pubsonline.informs.org/doi/pdf/10.1287/mksc.2022.1386" target="_blank">source</a></p>
-</div></aside></section>
-<section id="section-5" class="slide level2">
+</section>
+<section id="section-7" class="slide level2">
 <h2></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/goya2.png" class="quarto-figure quarto-figure-center" style="width:6.5in"></p>
+<p><img data-src="images/goya2.png" class="quarto-figure quarto-figure-center" height="600"></p>
 </figure>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Despite calls for a boycott, total sales rose, mostly because Republican areas started buying Goya. Without customer data, we would be shooting in the dark.</p>
+</div>
+</div>
+</div>
+</div></div>
+<div class="source-url">
+<p><a href="https://pubsonline.informs.org/doi/pdf/10.1287/mksc.2022.1386" target="_blank">Liaukonyte, Tuchman &amp; Zhu (2022)</a></p>
 </div>
 <aside class="notes">
 <ul>
@@ -914,23 +972,40 @@ Kenneth C. Wilbur and Daniel Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-6" class="slide level2">
-<h2><!--#4 flavors of analytics--></h2>
+<section id="section-8" class="slide level2">
+<h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/4typesofanalytics.png" class="quarto-figure quarto-figure-center" style="width:11in"></p>
+<p><img data-src="images/yavorsky-4types.png" class="quarto-figure quarto-figure-center" height="400"></p>
 </figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Descriptive (what happened), diagnostic (why), predictive (what will happen), and prescriptive (what should we do). Which type is hardest?</p>
+</div>
+</div>
 </div>
 </section>
-<section id="section-7" class="slide level2">
-<h2><!--#Funnel--></h2>
+<section id="section-9" class="slide level2">
+<h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/funnel.png" class="quarto-figure quarto-figure-center"></p>
+<p><img data-src="images/funnel.png" class="quarto-figure quarto-figure-center" height="400"></p>
 </figure>
 </div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Retail has always been an early adopter of customer analytics. E-commerce funnels illustrate descriptive and diagnostic analytics in action. What causes drop-offs at each level?</p>
+</div>
+</div>
+</div>
 <aside class="notes">
-<p>-Retail has always been an early adopter of customer analytics -Catalogue retailers were the OGs -E-commerce more recently - talk about how to measure each of these Talk about drop-offs from each level to the next -Talk about easy ways to turn drop-offs into actions -These are examples of descriptive &amp; diagnostic analytics -(aside: there are 3, and only 3, ways to make money: Customer Acquisition, Customer Retention, Customer Development)</p>
+<ul>
+<li>Retail has always been an early adopter of customer analytics</li>
+<li>Catalogue retailers were the OGs -E-commerce more recently - talk about how to measure each of these Talk about drop-offs from each level to the next -Talk about easy ways to turn drop-offs into actions -These are examples of descriptive &amp; diagnostic analytics -(aside: there are 3, and only 3, ways to make money: Customer Acquisition, Customer Retention, Customer Development)</li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -947,99 +1022,25 @@ Kenneth C. Wilbur and Daniel Yavorsky
 <h2>E-commerce Analytics</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/ecommerce_analytics.png" class="quarto-figure quarto-figure-center" style="width:11in"></p>
+<p><img data-src="images/ecommerce_analytics.png" class="quarto-figure quarto-figure-center" height="400"></p>
 </figure>
 </div>
-<aside class="notes">
-<p>-800 ecommerce pros were surveyed about data-driven conversion tactics -Companies using 9+ methods were most satisfied with their conversion rates -Pros thought the optimal number of AB tests was 3-5 per month -As you can see, predictive &amp; prescriptive analytics can be substantially more sophisticated than the simple funnel idea</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-
-<aside><div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>800 e-commerce pros were surveyed; companies using 9+ data-driven methods were most satisfied with their conversion rates. The optimal number of A/B tests was 3-5 per month.</p>
+</div>
+</div>
+</div>
+<div class="source-url">
 <p><a href="https://drive.google.com/file/d/1CODf7SpBS_-19jmR_mDCOaQRf3V24uaw/view?usp=sharing" target="_blank"><em>Conversion Rate Optimization Report</em></a></p>
-</div></aside></section></section>
-<section>
-<section id="using-customer-data-for-customer-analytics" class="title-slide slide level1 center">
-<h1>Using Customer Data for Customer Analytics</h1>
-
-</section>
-<section id="how-do-we-do-customer-analytics" class="slide level2 scrollable smaller">
-<h2>How do we “do” customer analytics?</h2>
-<ul>
-<li>Decide objectives &amp; outcome metrics</li>
-<li>Collect, wrangle, clean &amp; verify relevant data</li>
-<li>Analyze data</li>
-<li>Communicate analyses and recommendations</li>
-<li>Make decisions</li>
-<li>Implement data-driven decisions</li>
-<li>Retrospectively evaluate and improve</li>
-<li>Repeat</li>
-<li>…Once you have a stable process, automate carefully &amp; monitor</li>
-</ul>
-</section>
-<section id="challenges-executives" class="slide level2">
-<h2>Challenges: Executives</h2>
-<ul>
-<li>May be territorial, or incentivized to be</li>
-<li>May worry that analytics will constrain or replace them</li>
-<li>May think data == magic</li>
-<li>May prefer hunches or misunderstand uncertainty</li>
-</ul>
-<div class="quarto-figure quarto-figure-right">
-<figure>
-<p><img data-src="images/DStweet.png" class="quarto-figure quarto-figure-right" style="width:5in"></p>
-</figure>
 </div>
 <aside class="notes">
 <ul>
-<li>``In God we trust; others must provide data’’</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="challenges-analysts" class="slide level2">
-<h2>Challenges: Analysts</h2>
-<ul>
-<li>Expensive</li>
-<li>Hard to find</li>
-<li>Not always current</li>
-<li>Not always interested in business</li>
-</ul>
-</section>
-<section id="challenges-cultural" class="slide level2">
-<h2>Challenges: Cultural</h2>
-<ul>
-<li><p>Do analytics make or justify decisions?</p></li>
-<li><p>High- or low-trust environment? Tolerance for uncertainty?</p>
-<pre><code>- You have limited credibility. You may only get a few strikes</code></pre></li>
-<li><p>Do messengers get rewarded or shot?</p></li>
-<li><p>Are data available and integrated?</p></li>
-<li><p>Do teams work together or compete?</p></li>
-</ul>
-<aside class="notes">
-<ul>
-<li>CFO: ``what’s the ROI on the ad budget?’’</li>
-<li>CMO: ``1 million percent’’</li>
-<li>Simple data descriptives are often displayed on ``dashboards’’</li>
-<li>Facilitates human anomaly detection and decisionmaking, but underuses data</li>
+<li>800 ecommerce pros were surveyed about data-driven conversion tactics</li>
+<li>Companies using 9+ methods were most satisfied with their conversion rates</li>
+<li>Pros thought the optimal number of AB tests was 3-5 per month</li>
+<li>As you can see, predictive &amp; prescriptive analytics can be substantially more sophisticated than the simple funnel idea</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -1084,16 +1085,48 @@ Kenneth C. Wilbur and Daniel Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="analytics-truisms" class="slide level2">
+<section id="why-is-analytics-hard" class="slide level2 smaller">
+<h2>Why is analytics hard?</h2>
+<div class="columns">
+<div class="column" style="width:20%;">
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><img data-src="images/yavorsky-thinks.png" class="quarto-figure quarto-figure-right"></p>
+</figure>
+</div>
+</div><div class="column" style="width:80%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/yavorsky-actually.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+</div></div>
+<ul>
+<li><strong>Executives</strong> may be territorial, prefer hunches, or misunderstand what data can and cannot do</li>
+<li><strong>Analysts</strong> are expensive, hard to find, and not always interested in the business context</li>
+<li><strong>Culture</strong> determines whether analytics makes decisions or merely justifies them; low-trust environments punish messengers and underuse data</li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Analytics works best when leadership creates an environment that enables investments in analytical frameworks and rewards disciplined decisionmaking, with retrospective decision evaluations and continuous-learning feedback loops. How have you seen analytics used in practice?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="analytics-truisms" class="slide level2 smaller">
 <h2>Analytics truisms</h2>
 <ul>
-<li><p>Analytics matters more in B2C than B2B (why?)</p></li>
-<li><p>Selection effects are usually large</p>
-<pre><code>  treatment effects are usually small 
-  Key exceptions: Price or "free" giveaways</code></pre></li>
-<li><p>Demographics don’t predict behavior very well</p></li>
-<li><p>Agencies lie about data sometimes</p></li>
-<li><p>“If it’s written in LaTeX, it’s probably correct”</p></li>
+<li>Analytics matters more in B2C than B2B (why?)</li>
+<li>Selection effects are usually large
+<ul>
+<li>treatment effects are usually small</li>
+<li>Key exceptions: Price or “free” giveaways</li>
+</ul></li>
+<li>Demographics don’t predict behavior very well</li>
+<li>Agencies lie about data sometimes</li>
+<li>“If it’s written in LaTeX, it’s probably correct”</li>
+<li>Stable analytics-&gt;decision loops should be automated and monitored carefully</li>
 </ul>
 <aside class="notes">
 <ul>
@@ -1118,111 +1151,27 @@ Kenneth C. Wilbur and Daniel Yavorsky
       }</style></aside>
 </section></section>
 <section>
-<section id="mgt-100" class="title-slide slide level1 center">
-<h1>MGT 100</h1>
-<pre><code>        - I am assuming you read the syllabus carefully</code></pre>
-</section>
-<section id="course-design-principles" class="slide level2">
-<h2>Course Design Principles</h2>
-<ul>
-<li><p>Survey the field broadly, pointers for deeper learning</p></li>
-<li><p>Focus on conceptual understanding: <br>“When it comes to LLMs, skillful prompting leaves amateurs in the dust.”</p></li>
-<li><p>Strict communication policies</p>
-<pre><code>1. Website for class content
-2. Canvas for study groups &amp; grades
-3. Piazza for all asynchronous interaction. No email or canvas messages
-4. After class, break or office hours for live discussions</code></pre></li>
-<li><p><a href="https://kennethcwilbur.github.io/mgt100/" target="_blank">Course site &amp; schedule</a></p></li>
-</ul>
-
-<aside><div>
-<ul>
-<li>How do survey courses differ from other classes? | <a href="https://www.datacamp.com/blog/top-15-data-scientist-skills" target="_blank">Why R?</a></li>
-</ul>
-</div></aside></section>
-<section id="gen-ai-effects-on-productivity" class="slide level2">
-<h2>Gen AI effects on productivity</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/GenAIEffects.png" class="quarto-figure quarto-figure-center" style="width:4in"></p>
-</figure>
-</div>
-
-<aside><div>
-<ul>
-<li><a href="https://archive.ph/cTMzY">source</a></li>
-<li>Jobs where Gen AI decreases the skill gap may be at risk</li>
-</ul>
-</div></aside></section>
-<section id="tips-to-max-your-learning" class="slide level2">
-<h2>Tips to max your learning</h2>
-<ul>
-<li><p>Read the syllabus carefully</p></li>
-<li><p>Attend and contribute as suggested in the syllabus</p></li>
-<li><p>Budget 5-10 hours/week</p></li>
-<li><p>Between classes:</p>
-<pre><code>1. Step through script carefully, understand everything.
-2. Do homework questions on your own
-3. Check homework with group, resolve differences
-4. Monitor Piazza and read for the next class
-5. Compile notes and homework answers to facilitate exam prep</code></pre></li>
-</ul>
-
-<aside><div>
-<ul>
-<li>Exams are open-paper, closed-device. Live attendance required, please plan ahead.</li>
-</ul>
-</div></aside></section>
-<section id="studying-and-integrity" class="slide level2">
-<h2>Studying and Integrity</h2>
-<ul>
-<li><p>We assign attending students to study groups in week 2</p></li>
-<li><p>It is OK to share homework scripts and answers</p>
-<pre><code>- We do not collect or assess homeworks. 
-- We do not provide homework answers.
-- Exam questions will test your familiarity and understanding of homework answers. More details forthcoming </code></pre></li>
-<li><p>We encourage you to use Gen AI thoughtfully; we use it too</p>
-<pre><code>- LLMs are poor substitutes for human understanding
-- Be advised, you may get what you pay for
-- Free models are sometimes worse than useless</code></pre></li>
-</ul>
-</section>
-<section id="section-8" class="slide level2">
-<h2><!--#Intermission--></h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/intermission.jpg" class="quarto-figure quarto-figure-center" style="width:6in"></p>
-</figure>
-</div>
-<ul>
-<li>Please write down your intentions for this class. <br>How will you measure your effort?</li>
-</ul>
-</section></section>
-<section>
 <section id="vocab" class="title-slide slide level1 center">
 <h1>Vocab</h1>
-<p>Common language helps communication</p>
+<p>Common language facilitates communication</p>
 </section>
 <section id="customer-level" class="slide level2">
 <h2>Customer level</h2>
 <ul>
-<li><p>Core need: identifiable problem a customer wants to solve. Could be functional, emotional, social, profit-motivated, etc. Related: desire, want, pain point</p></li>
-<li><p>Core benefit: Customer’s desired outcome of a purchase. E.g., commuters need to get to school, not necessarily cars</p></li>
-<li><p>Consumer: Entity that experiences the core benefit</p></li>
-<li><p>Customer: Entity that purchases and pays</p></li>
+<li>Core need: identifiable problem a customer wants to solve. Could be functional, emotional, social, profit-motivated, etc. Related: desire, want, pain point</li>
+<li>Core benefit: Customer’s desired outcome of a purchase. E.g., commuters need to get to school, not necessarily cars</li>
+<li>Consumer: Entity that experiences the core benefit</li>
+<li>Customer: Entity that purchases and pays</li>
 </ul>
-
-<aside><div>
-<p>Client</p>
-</div></aside></section>
+</section>
 <section id="product-level" class="slide level2">
 <h2>Product level</h2>
 <ul>
-<li><p>Product/service/experience: Distinct offering that provides the core benefit</p></li>
-<li><p>Features: Aspects of a product that provide additional tangible or intangible benefits</p></li>
-<li><p>Value proposition: utility( Core benefit + features - price )</p></li>
-<li><p>Contribution margin: Price — marginal cost</p></li>
-<li><p>Competitor: Any paid or free alternative that addresses the core need. E.g., commute by bike, walk, bus, trolley, Uber, scooter, skateboard; work from home</p></li>
+<li>Product/service/experience: Distinct offering that provides the core benefit</li>
+<li>Features: Aspects of a product that provide additional tangible or intangible benefits</li>
+<li>Value proposition: utility( Core benefit + features - price )</li>
+<li>Contribution margin: Price — marginal cost</li>
+<li>Competitor: Any paid or free alternative that addresses the core need. E.g., commute by bike, walk, bus, trolley, Uber, scooter, skateboard; work from home</li>
 </ul>
 <aside class="notes">
 <ul>
@@ -1243,16 +1192,20 @@ Kenneth C. Wilbur and Daniel Yavorsky
 <section id="market-level" class="slide level2">
 <h2>Market level</h2>
 <ul>
-<li><p>Market: Potential customer group with common core need</p></li>
-<li><p>Segment: Distinct subgroup of similar customers</p></li>
-<li><p>Targeting: Which segment(s) a firm tries to serve</p></li>
-<li><p>Positioning: Specification of product features to suit targeted segments</p></li>
-<li><p>Marketing: Practice of meeting customer needs profitably</p>
-<pre><code>  - Marketing: Business discipline that focuses most on customers
-  - Ads &amp; sales: Worthless without good value prop and positive margin
-  - Poor implementation commonly leads to confusion with bullshit ("persuasive speech without regard for the truth" --Frankfurt 2005)</code></pre></li>
+<li>Market: Potential customer group with common core need</li>
+<li>Segment: Distinct subgroup of similar customers</li>
+<li>Targeting: Which segment(s) a firm tries to serve</li>
+<li>Positioning: Specification of product features to suit targeted segments</li>
+<li>Marketing: Practice of meeting customer needs profitably
+<ul>
+<li>Marketing: Business discipline that focuses most on customers</li>
+<li>Ads &amp; sales: Worthless without good value prop and positive margin</li>
+<li>Poor implementation and short-term focus commonly lead to confusion with bullshit (“persuasive speech without regard for the truth” –Frankfurt 2005)</li>
+</ul></li>
 </ul>
-
+<div class="source-url">
+<p><a href="https://www.youtube.com/watch?v=g_HPJ6KEQsM" target="_blank">How to be good at marketing</a> | <a href="https://archive.org/details/on-bullshit-by-harry-frankfurt" target="_blank">Frankfurt (2005)</a></p>
+</div>
 <aside class="notes">
 <ul>
 <li>Each market is composed of one of more segments</li>
@@ -1271,61 +1224,93 @@ Kenneth C. Wilbur and Daniel Yavorsky
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<aside><div>
-<p><a href="https://www.youtube.com/watch?v=g_HPJ6KEQsM" target="_blank">How to be good at marketing</a> <a href="https://archive.org/details/on-bullshit-by-harry-frankfurt">On Bullshit</a></p>
-</div></aside></section>
+</section>
 <section id="legacy-terms" class="slide level2">
 <h2>Legacy Terms</h2>
-<ul>
-<li><p>3/4/5 C’s: Customer, Competitor, Company; <br>Context; Complementors</p></li>
-<li><p>STP: Segmentation, Targeting, Positioning AKA Marketing Strategy</p></li>
-<li><p>4/…/10 P’s: <br>Price, Product, Promotion, Place AKA distribution AKA Marketing Tactics</p>
-<pre><code>    - You need to know these well if you interview for marketing roles
-    - Generations of marketing professionals were educated to think this way, e.g. MGT 103 and Harvard MBAs
-    - Still relevant, but less, thanks to customer data abundance &amp; analytics </code></pre></li>
-</ul>
-
-<aside><div>
-<p>Start <a href="https://griffinandco.marketing/blog/2018/10/25/the-5cs-of-marketing" target="_blank">here</a> or <a href="https://www.coursera.org/articles/4-ps-of-marketing" target="_blank">here</a> or <a href="https://en.wikipedia.org/wiki/Marketing" target="_blank">here</a></p>
-</div></aside></section></section>
-<section>
-<section id="coding-script" class="title-slide slide level1 center">
-<h1>Coding &amp; Script</h1>
-
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/yavorsky-traditional-framework.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>You need to know these well if you interview for marketing roles. Generations of marketing professionals were educated to think this way. Still relevant, but less, thanks to customer data abundance &amp; analytics.</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://griffinandco.marketing/blog/2018/10/25/the-5cs-of-marketing" target="_blank">Griffin &amp; Co</a> | <a href="https://www.coursera.org/articles/4-ps-of-marketing" target="_blank">Coursera</a> | <a href="https://en.wikipedia.org/wiki/Marketing" target="_blank">Wikipedia</a></p>
+</div>
 </section>
-<section id="coding-errors" class="slide level2">
-<h2>Coding errors</h2>
+<section id="mgt-100-principles" class="slide level2 smaller">
+<h2>MGT 100 Principles</h2>
 <ul>
-<li><p>“The good news about computers is that they do what you tell them to do. The bad news is that they do what you tell them to do.”</p></li>
-<li><p>Conjecture: <br>(debugging difficulty) is exponential in (lines of code)</p></li>
-<li><p>We can code fast or slow</p></li>
+<li>Survey the field broadly, pointers for deeper learning. <a href="https://www.datacamp.com/blog/top-15-data-scientist-skills" target="_blank">Why R?</a></li>
+<li>Piazza for all asynchronous interaction. No email or canvas messages
+<ul>
+<li>Important for fairness, timeliness, contribution scores &amp; instructional team collaboration</li>
+</ul></li>
+<li>“When it comes to LLMs, skillful prompting leaves amateurs in the dust.”</li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/three_fits.png" class="quarto-figure quarto-figure-center" height="280"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Y axes indicate the human-expert task-completion time (in hours) that a frontier agent can complete with 50% reliability. Cox (2006) said “How [the] translation from subject-matter problem to statistical model is done is often the most critical part of an analysis.” What is model mis-specification? How does this figure into the public conversation about future AI capabilities? Will AI become all-powerful or should you study and build skills?</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://www.lesswrong.com/posts/ZEuDH2W3XdRaTwpjD/hyperbolic-model-fits-metr-capabilities-estimate-worse-than" target="_blank">gjm (2025)</a></p>
+</div>
 </section>
-<section id="coding-habits" class="slide level2">
-<h2>Coding Habits</h2>
+<section id="section-10" class="slide level2">
+<h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/intermission.jpg" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Please write down your intentions for this class. How will you measure your effort? Please don’t say grades alone; grades are outcomes, not inputs.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="coding-script" class="slide level2">
+<h2>Coding &amp; Script</h2>
+<div class="columns">
+<div class="column" style="width:75%;">
 <ul>
-<li><p>Good habit: Test chunks as you code</p></li>
-<li><p>Test = Manipulate text, verify output matches expectation</p></li>
-<li><p>“Go slow to go fast”</p>
-<p><img data-src="images/turtoise.jpg" width="364"></p></li>
-</ul>
-
-<aside><div>
+<li>All LLMs continue to hallucinate and require hand-holding. Beware free LLMs, they can be worse than useless.</li>
+<li>Conjecture: <br>(debugging difficulty) is exponential in (lines of code)</li>
+<li>We can code fast or slow. “Go slow to go fast”</li>
+<li>Pipe: y &lt;- f(g(x)) is the same as y &lt;- x |&gt; g |&gt; f
 <ul>
-<li>Bad habit: Write the script, run it, see where it breaks</li>
-<li>Digression: Production code vs prototype code</li>
+<li>Old pipe was %&gt;% ; remains widely used</li>
+</ul></li>
 </ul>
-</div></aside></section>
-<section id="pipe" class="slide level2">
-<h2>Pipe |&gt;</h2>
-<ul>
-<li><p>y &lt;- f(g(x)) is the same as</p></li>
-<li><p>y &lt;- x |&gt;</p>
-<p>g |&gt;</p>
-<p>f</p></li>
-<li><p>Why?</p></li>
-<li><p>Old pipe was %&gt;% ; remains widely used</p></li>
-</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Bad habit: Write the whole script, run it, see where it breaks. Good habit: test each chunk before writing the next one.</p>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:25%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/turtoise.jpg" class="quarto-figure quarto-figure-center" height="180"></p>
+</figure>
+</div>
+</div></div>
 </section>
 <section id="todays-script" class="slide level2">
 <h2>Today’s script</h2>
@@ -1340,53 +1325,145 @@ Kenneth C. Wilbur and Daniel Yavorsky
 <li>Bivariate statistics</li>
 <li>Bivariate plots</li>
 </ul>
-<div class="quarto-figure quarto-figure-right">
-<figure>
-<p><img data-src="images/scroll.jpg" class="quarto-figure quarto-figure-right" style="width:2in"></p>
-</figure>
-</div>
+<p><img data-src="images/scroll.jpg" class="absolute" style="bottom: 20px; right: 20px; height: 100px; "></p>
 </section></section>
 <section>
 <section id="wrapping-up" class="title-slide slide level1 center">
 <h1>Wrapping up</h1>
 
 </section>
+<section id="competition" class="slide level2 smaller">
+<h2>Competition</h2>
+<div style="font-size: 0.7em;">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Week (relative to endorsement)</th>
+<th style="text-align: center;">Region</th>
+<th style="text-align: center;">Goya sales</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">-4</td>
+<td style="text-align: center;">Right-leaning</td>
+<td style="text-align: center;">87</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-3</td>
+<td style="text-align: center;">Right-leaning</td>
+<td style="text-align: center;">85</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-2</td>
+<td style="text-align: center;">Right-leaning</td>
+<td style="text-align: center;">87</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-1</td>
+<td style="text-align: center;">Right-leaning</td>
+<td style="text-align: center;">90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">Right-leaning</td>
+<td style="text-align: center;">140</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">Right-leaning</td>
+<td style="text-align: center;">133</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">Right-leaning</td>
+<td style="text-align: center;">110</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">Right-leaning</td>
+<td style="text-align: center;">95</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-4</td>
+<td style="text-align: center;">Left-leaning</td>
+<td style="text-align: center;">158</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-3</td>
+<td style="text-align: center;">Left-leaning</td>
+<td style="text-align: center;">159</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-2</td>
+<td style="text-align: center;">Left-leaning</td>
+<td style="text-align: center;">158</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-1</td>
+<td style="text-align: center;">Left-leaning</td>
+<td style="text-align: center;">159</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">Left-leaning</td>
+<td style="text-align: center;">176</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">Left-leaning</td>
+<td style="text-align: center;">170</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">Left-leaning</td>
+<td style="text-align: center;">162</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">Left-leaning</td>
+<td style="text-align: center;">158</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Visualize Goya’s weekly average sales in right- and left-leaning regions pre/post a major endorsement.<br>Data: <code>goyadata &lt;- readRDS(url("https://raw.githubusercontent.com/kennethcwilbur/mgt100/main/data/goya_sales.rds"))</code></p>
+</div>
+</div>
+</div>
+<p><img data-src="images/competition.png" class="absolute" style="bottom: 20px; right: 20px; height: 120px; "></p>
+</section>
 <section id="recap" class="slide level2">
 <h2>Recap</h2>
 <ul>
-<li><p>Customer analytics : <br>Using customer data to improve decisions</p></li>
-<li><p>Data Viz should be the first step in customer analytics</p></li>
-<li><p>Marketing : Meeting customer needs profitably</p></li>
-<li><p>Analytics types: <br>Descriptive, Diagnostic, Predictive, Prescriptive</p></li>
-<li><p>Summarize, select, filter, arrange, mutate, group_by</p></li>
+<li>Customer analytics : <br>Using customer data to improve decisions</li>
+<li>Data Viz is the first step in customer analytics</li>
+<li>Marketing : Meeting customer needs profitably</li>
+<li>Analytics types: <br>Descriptive, Diagnostic, Predictive, Prescriptive</li>
+<li>Summarize, select, filter, arrange, mutate, group_by</li>
 </ul>
-<div class="quarto-figure quarto-figure-right">
-<figure>
-<p><img data-src="images/recap.png" class="quarto-figure quarto-figure-right" style="width:2in"></p>
-</figure>
-</div>
+<p><img data-src="images/recap.png" class="absolute" style="bottom: 20px; right: 20px; height: 100px; "></p>
 </section>
 <section id="going-further" class="slide level2">
 <h2>Going further</h2>
 <ul>
-<li><p><a href="https://drive.google.com/file/d/1eF1upn8QEu5Xkk_HwlKqyr5MCx19CSsx/view?usp=sharing" target="_blank">Marketing Analytics for Data-Rich Environments</a></p></li>
-<li><p><a href="https://www.youtube.com/watch?v=HPJn1CMvtmI" target="_blank">GGplot2 YT video</a></p></li>
-<li><p><a href="https://r4ds.hadley.nz/" target="_blank"><em>R for Data Science (2e)</em></a></p></li>
-<li><p><a href="https://www.bigbookofr.com/" target="_blank">Big Book of R</a>: Lovingly curated, well organized, free resource directory for nearly any R problem</p></li>
+<li><a href="https://clauswilke.com/dataviz/telling-a-story.html" target="_blank">Data-enabled storytelling (Wilke 2019)</a></li>
+<li><a href="https://www.youtube.com/watch?v=HPJn1CMvtmI" target="_blank">GGplot2 YT video</a></li>
+<li><a href="https://ggplot2-book.org/" target="_blank"><em>R for Data Science (3e)</em></a></li>
+<li><a href="https://www.bigbookofr.com/" target="_blank">Big Book of R</a>: Lovingly curated, well organized, free resource directory for nearly any R problem</li>
 </ul>
-<div class="quarto-figure quarto-figure-right">
-<figure>
-<p><img data-src="images/takingoff.png" class="quarto-figure quarto-figure-right" style="width:2in"></p>
-</figure>
-</div>
-<div class="quarto-auto-generated-content">
+<p><img data-src="images/takingoff.png" class="absolute" style="bottom: 20px; right: 20px; height: 100px; "></p>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
 
 </div>
-</div>
-</section></section>
-    </div>
-  </div>
+</div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
   <script src="mgt100-01_files/libs/revealjs/dist/reveal.js"></script>
@@ -1395,6 +1472,7 @@ Kenneth C. Wilbur and Daniel Yavorsky
   <script src="mgt100-01_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="mgt100-01_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="mgt100-01_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="mgt100-01_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="mgt100-01_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -1415,8 +1493,9 @@ Kenneth C. Wilbur and Daniel Yavorsky
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'pdfMaxPagesPerSlide': 1,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":false},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1570,7 +1649,7 @@ Kenneth C. Wilbur and Daniel Yavorsky
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1587,7 +1666,7 @@ Kenneth C. Wilbur and Daniel Yavorsky
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           RevealNotes,
@@ -1597,192 +1676,173 @@ Kenneth C. Wilbur and Daniel Yavorsky
       });
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
           }
+          return false;
         }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
           }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
           for (const childEl of codeEl.children) {
             if (isCodeAnnotation(childEl)) {
               childEl.remove();
             }
           }
           return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        // For code content inside modals, clipBoardJS needs to be initialized with a container option
-        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
             }
           }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
           }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
           }
-        } else {
-          return undefined;
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
         }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
-              }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
     
 
 </body></html>

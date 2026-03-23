@@ -1,0 +1,106 @@
+/* Custom CSS overrides for clean-revealjs template */
+
+/* Print/PDF settings - force landscape, prevent slide splits */
+@media print {
+  @page {
+    size: 11in 8.5in;
+    margin: 0;
+  }
+}
+
+/* Clip any residual overflow in print-pdf mode.
+   This helps but cannot prevent all page splits — content must fit within slides. */
+html.print-pdf .reveal .slides section {
+  overflow: hidden !important;
+}
+
+/* Darker body text color (default template uses #131516) */
+.reveal {
+  color: #0a0a0a;
+}
+
+/* Consistent lighter font-weight for all text */
+.reveal ul,
+.reveal ol,
+.reveal li,
+.reveal p {
+  font-weight: 300;
+}
+
+/* Full-height flex layout for content slides */
+.reveal section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.reveal h2 {
+  margin-bottom: 0.5em;
+  flex-shrink: 0;
+}
+
+/* Make .smaller less aggressive (default is ~0.7em, this uses 0.85em) */
+.reveal .smaller {
+  font-size: 0.85em;
+}
+
+/* Alternative: if specific slides need different treatment */
+.reveal .medium {
+  font-size: 0.9em;
+}
+
+/* Source URL styling - in flexbox flow, pushed to bottom */
+.reveal .source-url {
+  margin-top: auto;
+  margin-bottom: 0;
+  padding-left: 5%;
+  font-size: 0.5em;
+  color: #444444;
+  text-align: left;
+  flex-shrink: 0;
+}
+
+/* Call-out box styling */
+.reveal .callout.callout-note,
+.reveal .callout.callout-note .callout-body,
+.reveal .callout.callout-note .callout-content,
+.reveal .callout.callout-note .callout-content p {
+  color: #0a0a0a !important;
+}
+
+/* Code blocks / sub-bullets styling - slightly lighter color, same weight */
+.reveal pre,
+.reveal pre code,
+.reveal code,
+.reveal pre code span,
+.reveal .sourceCode,
+.reveal section pre,
+.reveal section code,
+.reveal section pre code {
+  color: #2a2a2a !important;
+  background: transparent !important;
+  font-weight: 300 !important;
+}
+
+.reveal .callout.callout-note {
+  border-left: 3px solid #107895;
+  padding-top: 0.5em;
+  margin: 0.5em 0 0.5em 0;
+  font-size: 0.7em;
+  flex-shrink: 0;
+  width: fit-content;
+}
+
+/* Title slide license/date styling - smaller and lighter */
+.reveal #title-slide .date,
+.reveal .quarto-title-block .date {
+  font-size: 0.5em;
+  color: #888888;
+  font-weight: 300;
+}
+
+/* Author name link styling */
+.reveal .quarto-title-author-name a {
+  color: #107895 !important;
+  text-decoration: underline !important;
+}

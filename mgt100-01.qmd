@@ -211,31 +211,31 @@ GIGO: Garbage In, Garbage Out. Don't analyze noise.
 - it's ironic we use such an obscure term (lingua franca) to mean something that everybody can understand
 :::
 
-## {.smaller}
+## {style="padding-top: 0; margin-top: -20px;"}
 
-:::: {.columns}
+:::: {.columns style="margin-top: -10px; gap: 0px;"}
 
-::: {.column width="50%"}
-![](images/merrill-number goes up.png){fig-align="center" height="180px"}
+::: {.column style="width: 50%; line-height: 0;"}
+![](images/merrill-number goes up.png){fig-align="center" height="243px" style="margin: 0 0 3px 0;"}
 
-![](images/merrill-lines diverge.png){fig-align="center" height="180px"}
+![](images/merrill-lines diverge.png){fig-align="center" height="243px" style="margin: 3px 0 0 0;"}
 :::
 
-::: {.column width="50%"}
-![](images/merrill-number goes updown when something happened.png){fig-align="center" height="180px"}
+::: {.column style="width: 50%; line-height: 0;"}
+![](images/merrill-number goes updown when something happened.png){fig-align="center" height="243px" style="margin: 0 0 3px 0;"}
 
-![](images/merrill-bimodal.webp){fig-align="center" height="180px"}
+![](images/merrill-bimodal.png){fig-align="center" height="243px" style="margin: 3px 0 0 0;"}
 :::
 
 ::::
 
-::: {.callout-note appearance="minimal"}
-"Graphics journalists urge that each chart should make exactly one point – and it should be obvious how to read it. Often charts say (1) number goes up/down recently, (2) number goes up/down when some event occurred, (3) one set of lines diverges from another set of lines (or, one line is an outlier compared to the rest), (4) the distribution is bimodal." --Jeremy Merrill, WaPo <br><br> "Scientific charts are often the opposite of this – they have four variables, six symbols and are explained two pages away."
+::: {.callout-note appearance="minimal" style="font-size: 0.8em; margin-top: 3px;"}
+"Graphics journalists urge that each chart should make exactly one point – and it should be obvious how to read it. Often charts say (1) number goes up/down recently, (2) number goes up/down when some event occurred, (3) one set of lines diverges from another set of lines (or, one line is an outlier compared to the rest), (4) the distribution is bimodal." --Jeremy Merrill, WaPo. "Scientific charts are often the opposite of this -- they have four variables, six symbols and are explained two pages away."
 :::
 
 ##
 
-![](images/1data6viz.png){fig-align="center" height="400px"}
+![](images/1data6viz.png){fig-align="center" height="450px"}
 
 ::: {.callout-note appearance="minimal"}
 The same dataset can be represented many different ways, each emphasizing different comparisons. Here is a very simple dataset; what comparison does each graphic communicate? How would you summarize each graphic in a sentence?
@@ -706,8 +706,6 @@ Bad habit: Write the whole script, run it, see where it breaks. Good habit: test
 
 ## Today's script
 
-- [Install/update R and Rstudio](https://www.rstudio.com/products/rstudio/download/){target="_blank"}
-- [Posit.Cloud](https://posit.cloud/){target="_blank"}
 - Data Import/export
 - Data manipulation, summarization
 - 5 verbs: Summarize, select, filter, arrange, mutate, group_by
@@ -745,6 +743,8 @@ Bad habit: Write the whole script, run it, see where it breaks. Good habit: test
 
 ::: {.callout-note appearance="minimal"}
 Visualize Goya's weekly average sales in right- and left-leaning regions pre/post a major endorsement.<br>Data: `goyadata <- readRDS(url("https://raw.githubusercontent.com/kennethcwilbur/mgt100/main/data/goya_sales.rds"))`
+
+Your visualization should make a clear point and be very easy to understand.
 :::
 
 ![](images/competition.png){.absolute bottom="20" right="20" height="120px"}

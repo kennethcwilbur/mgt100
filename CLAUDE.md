@@ -250,3 +250,11 @@ Available as edge-case tools when standard classes are insufficient:
 - mgt100-09.qmd
 - mgt100-10.qmd
 - mgt100-conjoint.qmd
+
+## Preferences (synced across machines via Google Drive)
+
+- **No silent content changes**: Never modify slide deck content (words, numbers, links) unless explicitly asked. Formatting changes must preserve every word.
+- **Use absolute paths**: In Bash commands, use absolute paths instead of `cd` to avoid unnecessary permission prompts.
+- **Re-render after changes**: Always re-render HTML/PDF and verify after non-trivial changes (layout, images, structural edits).
+- **Push workflow**: Use `scripts/push_to_github.sh` to push to GitHub. Never run git directly on Google Drive — the FUSE filesystem doesn't support it reliably.
+- **Two machines**: The user works from two machines. Machine-local setup (GitHub token, packages, permissions) must be repeated on each.

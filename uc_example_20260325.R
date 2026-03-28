@@ -96,12 +96,13 @@ gm <- ggplot(df2, aes(x = CAFrAdmRate, y = GradRate, label = campus, group = cam
   geom_point(aes(color = year, shape=year, group=campus)) +
   geom_line(aes(color = year, group = campus), alpha=.3, show.legend = TRUE) +  
   geom_text_repel(
-    data = df2 %>% filter(year == "2024"),  # Filter to include only 2023 data points
-    aes(label = campus),
-    segment.color = NA,  # Remove line segments
-    nudge_x = 0.01,  # Optional: adjust text position
-    nudge_y = 0.01,  # Optional: adjust text position
+    aes(label = ifelse(year == "2025", campus, "")),
+    segment.color = NA,
+    nudge_x = 0.01,
+    nudge_y = 0.01,
     show.legend = FALSE, size=3,
+    seed = 42,
+    max.overlaps = Inf,
   ) +
   #  geom_smooth(method = "lm", se = TRUE, color = "blue", size = 1, aes(group=1))+
   scale_color_manual(values = c("2021" = "gray88", "2022" = "gray66", 

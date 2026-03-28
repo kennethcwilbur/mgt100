@@ -1,32 +1,43 @@
 ---
-title: "Demand Modeling"
-subtitle: "UCSD MGT 100 Week 3"
-author: "[Kenneth C. Wilbur](http://Kennethcwilbur.com) and Dan Yavorsky"
-output: html_document
-format: 
-  revealjs:
-    auto-stretch: false
-    theme: default
-    pdf-max-pages-per-slide: 1 
-    pdf-separate-fragments: false 
-slide-number: c
-editor_options: 
-  chunk_output_type: inline 
+title: "**Demand Modeling**"
+subtitle: "MGT 100 Week 3"
+author:
+  - name: "<a href='https://kennethcwilbur.com' target='_blank'>Kenneth C. Wilbur</a>"
+    affiliations:
+      - name: Professor of Marketing and Analytics
+      - name: University of California, San Diego
+  - name: "<a href='https://www.linkedin.com/in/dyavorsky/' target='_blank'>Daniel Yavorsky</a>"
+    affiliations:
+      - name: SVP-Analytics
+      - name: GBK Collective
+date: today
+date-format: "[This version: ]MMMM YYYY[ | License: CC BY 4.0 | We use javascript to track readership.<br>We welcome reuse with attribution. Please share widely.]"
+format:
+  clean-revealjs:
+    slide-number: c
+    chalkboard:
+      buttons: false
+    css: custom.css
+    include-in-header: gtag.html
 ---
 
 
 # Demand Curves
- 
--   Theory
--   Challenges
--   What firms do
+
+- Theory
+- Challenges
+- What firms do
 
 
-## 
+##
 
-![](images/wright1928a.png){fig-align="center" width="8.5in"}
+![](images/wright1928a.png){fig-align="center" height="450px"}
 
-::: aside
+::: {.callout-note appearance="minimal"}
+SUGGESTION: This 1928 paper by Philip Wright introduced the idea that supply and demand jointly determine price and quantity. Understanding this causal relationship is the foundation of demand modeling. Why might it matter for a business to distinguish between correlation and causation in their price-quantity data?
+:::
+
+::: {.source-url}
 [Wright (1928)](https://drive.google.com/file/d/1PccpUSBpR23V2tdSQ8mUeccQ9-EBwPgL/view?usp=drive_link){target="_blank"}, describing a causal relationship between P and Q
 :::
 
@@ -40,221 +51,203 @@ Here, Wright explains S&D ideas usually credited to Alfred Marshall (1890)
 
 ## Inverse Demand Curve
 
-![](images/mrmc.jpg){fig-align="center" width="6.5in"}
+![](images/mrmc.jpg){fig-align="center" height="400px"}
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: The demand curve plots price on the y-axis and quantity on the x-axis — "inverse" because economics convention puts the independent variable (price) on the vertical axis. Has any company you've worked for, or heard of, explicitly discussed its demand curve? Why not?
+:::
 
 ::: notes
--   What's this? why do we call it inverse?
--   How would a company use this?
--   Has anybody worked for a company?
--   What was the company's demand curve?
--   does anybody have a parent or a sibling or a friend who works for a company?
--   What was that company's demand curve?
--   has anybody ever heard a company CEO or employee talk about what their demand curve was?
--   Have you heard anybody ask these questions before? Why not?
+- What's this? why do we call it inverse?
+- How would a company use this?
+- Has anybody worked for a company?
+- What was the company's demand curve?
+- does anybody have a parent or a sibling or a friend who works for a company?
+- What was that company's demand curve?
+- has anybody ever heard a company CEO or employee talk about what their demand curve was?
+- Have you heard anybody ask these questions before? Why not?
 :::
 
 
 
 ## Demand Curves: Theory
 
--   Useful theoretical concept that summarizes market response to price
+- Useful theoretical concept that summarizes market response to price
+    - Why is it useful?
+- Often taught with perfect competition
+    - Typically assumes stable, competitive, frictionless markets w free entry, full information, no differentiation
+    - Model predicts zero LR economic profits
+    - Any evidence?
+- Also, taught with monopoly i.e. market power
+    - What is market power? How would we measure it?
 
-    ```         
-      - Why is it useful? 
-    ```
-
--   Often taught with perfect competition
-
-    ```         
-      - Typically assumes stable, competitive, frictionless markets w free entry, full information, no differentiation 
-      - Model predicts zero LR economic profits
-      - Any evidence?
-    ```
-
--   Also, taught with monopoly i.e. market power
-
-    ```         
-      - What is market power? How would we measure it?
-    ```
-
-::: notes
--   why useful? it lets you make counterfactual predictions. (what predictions?)
--   No differentiation? What markets have no differentiation? Commodities... maybe? Stock market?
--   what does competitive mean exactly? how do we measure it?
--   intellectual property rights, company capabilities, consumer information sets all limit direct competition in most markets
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Demand curves are useful because they enable counterfactual predictions — "what would happen to sales if we changed the price?" Perfect competition assumes no differentiation, but most real markets have some. What markets come closest to perfect competition?
 :::
 
-## Demand Curves: Challenges
+::: notes
+- why useful? it lets you make counterfactual predictions. (what predictions?)
+- No differentiation? What markets have no differentiation? Commodities... maybe? Stock market?
+- what does competitive mean exactly? how do we measure it?
+- intellectual property rights, company capabilities, consumer information sets limit direct competition in most markets
+:::
 
--   Idealized demand curves can be hard to estimate (why?)
+## Demand Curves: Challenges {.smaller}
 
--   Where do product attributes come in?
+- Idealized demand curves can be hard to estimate (why?)
+- Where do product attributes come in?
+    - What if we don't observe all attributes? "Price endogeneity"
+- Many things can predict demand
+    - preferences, information, advertising, quality, match value, complements, substitutes, interoperability, competitor prices, switching costs, entry, taxes and other policies, retail distribution, nature of equilibrium, stockpiling, consumer income, ...
+- What do we need to estimate Demand?
+    - Observable, exogenous variation in costs or price
+    - Otherwise, "price endogeneity" will bias demand estimates
 
-          - What if we don't observe all attributes? "Price endogeneity"
-
-
--   Many things can predict demand
-
-          - preferences, information, advertising, quality, match value, complements, substitutes, interoperability, competitor prices, switching costs, entry, taxes and other policies, retail distribution, nature of equilibrium, stockpiling, consumer income, ...
-
--   What do we need to estimate Demand?
-
-          - Observable, exogenous variation in costs or price
-          - Otherwise, "price endogeneity" will bias demand estimates
-
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Estimating demand is harder than it sounds — the list of factors that affect demand is long, and many are unobservable. The key insight: you need exogenous variation in price to separate the causal effect from mere correlation. What does "exogenous" mean here?
+:::
 
 ::: notes
--   We're going to need a model and exogenous price variation to estimate demand
+- We're going to need a model and exogenous price variation to estimate demand
 :::
 
 ## How firms learn demand
 
--   Market research
+- Market research
+    - Conjoint analysis, customer interviews, simulated purchase environments
+- Expert judgments, e.g. salesforce input
+- Cost-driven price adjustments
+    - Often one-sided
+- Demand modeling with archival data
+- Price experiments
+    - Market tests, digital experiments, bandits, digital coupons
+- Best practice: triangulation
 
-        - Conjoint analysis, customer interviews, simulated purchase environments 
-
--   Expert judgments, e.g. salesforce input
-
--   Cost-driven price adjustments
-
-          - Often one-sided
-
--   Demand modeling with archival data
-
--   Price experiments
-
-          - Market tests, digital experiments, bandits, digital coupons
-
--   Best practice: triangulation
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Firms use many approaches to learn demand, but best practice is triangulation — combining multiple methods. Why might relying on a single approach be risky?
+:::
 
 ::: notes
--   In many markets, costs can drive prices up, but they seldom drive them down
--   If we disregard reactance and dynamics (stockpiling, reference prices, competitors), experiments are the single best way to learn demand, e.g. dube & misra (2019)
+- In many markets, costs can drive prices up, but they seldom drive them down
+- If we disregard reactance and dynamics (stockpiling, reference prices, competitors), experiments are the single best way to learn demand, e.g. dube & misra (2019)
 :::
 
 ## Price Experiments
 
 - Yes-and: Price experiments create exogenous price variation, which works synergistically with demand modeling. But...
-
-    -   Competitors & consumers can observe price variation
-
-    -   May change purchase timing, stockpiling or <br>reference prices
-
-    -   Competitors, distribution partners or suppliers may react
-
--   Hence, price experiments can change future demand
-
+    - Competitors & consumers can observe price variation
+    - May change purchase timing, stockpiling or <br>reference prices
+    - Competitors, distribution partners or suppliers may react
+- Hence, price experiments can change future demand
     - Price experiments without demand modeling leaves money on the table
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Price experiments create the exogenous variation needed for causal inference, but they're not free — competitors can observe your experiments, and customers may change behavior. Why would combining experiments with demand modeling be better than either alone?
+:::
 
 ## Demand Modeling: Pros
 
--   Relatively inexpensive for large organizations
-
--   Fully compatible with price experiments
-
-          - Either/or framing would be a false dichotomy: "Yes-and"
-
--   Confidential, fast
-
--   Depends on real consumer choices, i.e. revealed preferences
-
-          - As opposed to stated preferences
-
+- Relatively inexpensive for large organizations
+- Fully compatible with price experiments
+    - Either/or framing would be a false dichotomy: "Yes-and"
+- Confidential, fast
+- Depends on real consumer choices, i.e. revealed preferences
+    - As opposed to stated preferences
 - Enables demand predictions at counterfactual prices
-
 - Enables predictions of competitor pricing response
-
 - Prediction accuracy: evaluable after price changes
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Demand modeling uses real consumer choices (revealed preferences) rather than survey responses (stated preferences). It's also confidential and fast compared to running market experiments. What's the difference between revealed and stated preferences, and why does it matter?
+:::
 
 ## Demand Modeling: Cons
 
--   Requires data, exogenous price variation, time, effort, training, commitment, trust, organizational buy-in
+- Requires data, exogenous price variation, time, effort, training, commitment, trust, organizational buy-in
+- Always subject to untestable modeling assumptions
+- Requires the near future to resemble the recent past
+    - To be fair, all predictive analytic techniques require these 3
 
--   Always subject to untestable modeling assumptions
-
--   Requires the near future to resemble the recent past
-
-    ```         
-        - To be fair, all predictive analytic techniques require these 3
-    ```
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Having data is not enough — you also need variation in price. If price never changed, you couldn't estimate demand. Also, your demand model assumes the near future will resemble the recent past. When might this assumption fail most dramatically?
+:::
 
 ::: notes
--   Data and variation are distinct; e.g. if price never changed, good luck estimating demand
--   what does exogenous mean? We'll talk about that more later
--   corr(future, past): Your estimated demand curve might become unreliable just when you need it the most
--   Hence most often used in mature, stable markets; not so much in startups
--   If you don't know what you're doing, you can pay a nearly infinite amount for the service
--   If you do it wrong, it may range from useless to badly misleading (would you know?)
+- Data and variation are distinct; e.g. if price never changed, good luck estimating demand
+- what does exogenous mean? We'll talk about that more later
+- corr(future, past): Your estimated demand curve might become unreliable just when you need it the most
+- Hence most often used in mature, stable markets; not so much in startups
+- If you don't know what you're doing, you can pay a nearly infinite amount for the service
+- If you do it wrong, it may range from useless to badly misleading (would you know?)
 :::
 
 # Do Demand Models Work? {.smaller}
 
--   Evidence is supportive, but not thick
-
-        - Informally, I know several people who maintain demand models in large orgs
-        - Formal evidence requires researchers and firm to collaboratively (a) estimate demand, (b) act on demand estimates, (c) observe how actions affect outcomes, & (d) report the results publicly. Hard to do & incentives conflict
-        - Demand modeling can also go badly, e.g. due to price endogeneity
-
-
-    -   [Misra & Nair (2011)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1474462){target="_blank"} : B2B sales & salesforce compensation
-
-    -   [Nair et al. (2017)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2399676){target="_blank"} : Casino loyalty rewards
-
-    -   [Pathak and Shi (2021)](https://economics.mit.edu/research/publications/how-well-do-structural-demand-models-work-counterfactual-predictions-school){target="_blank"} : School choice
-
-    -   [Dube and Misra (2023)](https://drive.google.com/file/d/1Jsr9BvPI4IKrHnr6O_pNBKF_gotCxWFH/view?usp=sharing){target="_blank"} : ZipRecruiter ad pricing
-    
-    -   [Ko et al. (2024)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4293532){target="_blank"} : E-Commerce apparel promotions
+- Evidence is supportive, but not thick
+    - Informally, I know several people who maintain demand models in large orgs
+    - Formal evidence requires researchers and firm to collaboratively (a) estimate demand, (b) act on demand estimates, (c) observe how actions affect outcomes, & (d) report the results publicly. Hard to do & incentives conflict
+    - Demand modeling can also go badly, e.g. due to price endogeneity
+    - [Misra & Nair (2011)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1474462){target="_blank"} : B2B sales & salesforce compensation
+    - [Nair et al. (2017)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2399676){target="_blank"} : Casino loyalty rewards
+    - [Pathak and Shi (2021)](https://economics.mit.edu/research/publications/how-well-do-structural-demand-models-work-counterfactual-predictions-school){target="_blank"} : School choice
+    - [Dube and Misra (2023)](https://drive.google.com/file/d/1Jsr9BvPI4IKrHnr6O_pNBKF_gotCxWFH/view?usp=sharing){target="_blank"} : ZipRecruiter ad pricing
+    - [Ko et al. (2024)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4293532){target="_blank"} : E-Commerce apparel promotions
 
 # Multinomial Logit
 
--   history, math, properties, discussion
+- history, math, properties, discussion
 
 ## Multinomial Logit (MNL) {.smaller}
 
--   Time tested, famous, popular demand model
--   Ported to econ from stats & psych by McFadden (1974, 1978, 1981; "Logistic regression'')
+- Time tested, famous, popular demand model
+- Ported to econ from stats & psych by McFadden (1974, 1978, 1981; "Logistic regression'')
 
-![](images/mcfadden2000t1.png){fig-align="center" width="9in"}
+![](images/mcfadden2000t1.png){fig-align="center" height="300px"}
 
+::: {.callout-note appearance="minimal"}
+SUGGESTION: McFadden used MNL to predict BART ridership before it launched — and his predictions closely matched actual ridership. This was a major early validation for the model. Why did survey-based predictions overestimate BART ridership compared to the model-based approach?
+:::
 
 ::: notes
--   McFadden was an economist working to empiricize theoretical models of individual choice
--   In early 1970s, he was funded by NSF to predict how BART would change transit in SF
+- McFadden was an economist working to empiricize theoretical models of individual choice
+- In early 1970s, he was funded by NSF to predict how BART would change transit in SF
 - He organized a team that collected pre-BART transportations choices by commuters in neighborhoods that were to receive BART stations. Product attributes included things like walking distance, waiting time, financial cost, and automotive preference dummy
--   He estimated a MNL using pre-BART individual level survey data, then simulated how transit choices would change after BART began operation
--   This table shows how his predictions mapped onto the post-BART choices: he pretty much nailed his BART ridership predictions
--   This stood in contrast to survey-based results, which predicted much larger BART ridership
--   High-profile early "win" for MNL, combined with theoretical interpretation, led to model adoption
+- He estimated a MNL using pre-BART individual level survey data, then simulated how transit choices would change after BART began operation
+- This table shows how his predictions mapped onto the post-BART choices: he pretty much nailed his BART ridership predictions
+- This stood in contrast to survey-based results, which predicted much larger BART ridership
+- High-profile early "win" for MNL, combined with theoretical interpretation, led to model adoption
 :::
 
 ## Multinomial Logit (MNL) {.scrollable .smaller}
 
--   Let $i$ index consumers, $j=1,...,J$ products, and $t$ index choice occasions
-
--   Assume each $i$ gets indirect utility $u_{ijt}$ from product $j$ in market $t$:
+- Let $i$ index consumers, $j=1,...,J$ products, and $t$ index choice occasions
+- Assume each $i$ gets indirect utility $u_{ijt}$ from product $j$ in market $t$:
 
 $$u_{ijt}=x_{jt}\beta-\alpha p_{jt}+\epsilon_{ijt}$$
 
--   Then, assuming each $i$ picks the $j$ that maximizes $u_{ijt}$, has unit demand, and that $\epsilon_{ijt}\sim$*i.i.d.*$EV_1(0,1)$, market share is
+- Then, assuming each $i$ picks the $j$ that maximizes $u_{ijt}$, has unit demand, and that $\epsilon_{ijt}\sim$*i.i.d.*$EV_1(0,1)$, market share is
 
 $$Prob.\{u_{ijt}>u_{ikt}\forall{k\ne j}\}\equiv s_{jt}=\frac{e^{x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}$$
 
 With $N_t$ consumers, $q_{jt}(\vec{x}; \vec{p})=N_t s_{jt}$. See Train 2009 sec 3.10 for proof
 
--   Estimating $\alpha$ and $\beta$ enables us to predict *every product's quantity response* to a change in *any product's attributes* $x_{jt}$ or price $p_{jt}$
+- Estimating $\alpha$ and $\beta$ enables us to predict *every product's quantity response* to a change in *any product's attributes* $x_{jt}$ or price $p_{jt}$
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: The key result: market share is a function of all products' attributes and prices. Estimating $\alpha$ and $\beta$ lets you predict how any product's sales would change if any product's price or attributes changed. Why is this so powerful for a firm?
+:::
 
 ::: notes
--   AKA multinomial logistic regression
--   t could be repeated observations of a single market, multiple distinct markets at the same time, or both
--   We obtain the market share formula by integrating the likelihood of u_ijt exceeding all other u_ikt's, over the space of the epsilons and the i's
--   the reason we assume iid EV(0,1) is bc it gives us this nice tractable expression with useful properties
--   s_jt is bounded by 0 and 1
+- AKA multinomial logistic regression
+- t could be repeated observations of a single market, multiple distinct markets at the same time, or both
+- We obtain the market share formula by integrating the likelihood of u_ijt exceeding all other u_ikt's, over the space of the epsilons and the i's
+- the reason we assume iid EV(0,1) is bc it gives us this nice tractable expression with useful properties
+- s_jt is bounded by 0 and 1
 :::
 
 ## MNL: Common factors {.scrollable .smaller}
 
--   Suppose $\gamma_{t}$ indicates how popular the category is in market $t$, so utility is $u_{ijt}=\gamma_{t}+x_{jt}\beta-\alpha p_{jt}+\epsilon_{ijt}$. Then market share becomes
+- Suppose $\gamma_{t}$ indicates how popular the category is in market $t$, so utility is $u_{ijt}=\gamma_{t}+x_{jt}\beta-\alpha p_{jt}+\epsilon_{ijt}$. Then market share becomes
 
 $$s_{jt}=\frac{e^{\gamma_{t}+x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^J e^{\gamma_{t}+x_{kt}\beta-\alpha p_{kt}}}$$
 
@@ -264,119 +257,132 @@ $$s_{jt}=\frac{e^{x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^J e^{x_{kt}\beta-\alpha
 
 - Similar exercise applies to individual-specific intercepts $\gamma_i$, or individual-time interactions $\gamma_{it}$. Only differences across products affect predicted market shares
 
-::: notes
--   Hence any factor that doesn't vary across products will drop out of the model
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Any factor that affects all products equally — like overall category popularity or individual taste for the category — cancels out of market shares. Only differences across products matter for predicting which product a consumer chooses. Why does this simplification make the model more practical?
 :::
 
-## MNL: Share differences { .smaller}
+::: notes
+- Hence any factor that doesn't vary across products will drop out of the model
+:::
 
--   We set product $j=1$ utility to $u_{i1t}=\epsilon_{i1t}$ to normalize utility, i.e.
+## MNL: Share differences {.smaller}
+
+- We set product $j=1$ utility to $u_{i1t}=\epsilon_{i1t}$ to normalize utility, i.e.
 
 $$s_{1t}=\frac{1}{\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}$$
 
--   Hence for every $j\ne 1$, consider an affine transformation of market shares:
+- Hence for every $j\ne 1$, consider an affine transformation of market shares:
 
 $$ln(s_{jt})-ln(s_{1t})=x_{jt}\beta-\alpha p_{jt}$$
 
--   Looks like a regression equation... we sometimes add an error $\xi_{jt}$ to represent unobserved product attributes:
+- Looks like a regression equation... we sometimes add an error $\xi_{jt}$ to represent unobserved product attributes:
 
 $$ln(s_{jt})-ln(s_{1t})=x_{jt}\beta-\alpha p_{jt}+\xi_{jt}$$
 
--   We use the $(J-1)T$ *differences* in market shares to estimate demand parameters
+- We use the $(J-1)T$ *differences* in market shares to estimate demand parameters
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: By normalizing one product's utility to zero (often the "outside option" of not purchasing), we can transform the model into something that looks like a regression equation. This is the key to making MNL estimable with standard tools.
+:::
 
 ::: notes
--   Often, we normalize the non-purchase option which has no attributes, and call it the "outside option"
+- Often, we normalize the non-purchase option which has no attributes, and call it the "outside option"
 :::
 
 ## MNL Estimation {.smaller}
 
 Define $y_{ijt} \equiv 1\{i \text{ chose } j \text{ in } t\}$. I.e., $y_{ijt}=1$ iff $i$ choose $j$ at $t$; otherwise $y_{ijt}=0$.
 
-1. Maximum likelihood: Assume the probability of observation $\{i,j,t\}$ is $s_{jt}^{y_{ijt}}$; <br>then lik. is $L(\beta    )=\prod\limits_{\forall i,j,t} s_{jt}^{y_{ijt}}$; & choose parameters to maximize log lik: 
+1. Maximum likelihood: Assume the probability of observation $\{i,j,t\}$ is $s_{jt}^{y_{ijt}}$; <br>then lik. is $L(\beta    )=\prod\limits_{\forall i,j,t} s_{jt}^{y_{ijt}}$; & choose parameters to maximize log lik:
 
 $$\sum_{\forall i,j,t} y_{ijt}\ln s_{jt}$$
 
 
-2. Method of Moments: Choose $\alpha$ and $\beta$ to solve some vector of "moments," i.e. interactions between exogenous observables $z$ and error terms, e.g.  
+2. Method of Moments: Choose $\alpha$ and $\beta$ to solve some vector of "moments," i.e. interactions between exogenous observables $z$ and error terms, e.g.
 
 $$ \sum_{\forall j,t}z_{jt} (\frac{\sum_{\forall i}y_{ijt}}{N_t} - s_{jt})=0$$
 
 3. Linearize the model, choose parameters to minimize the sum of square errors
 
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Three estimation approaches exist: maximum likelihood (most common), method of moments, and least squares on the linearized model. Each makes different tradeoffs in assumptions and computational requirements.
+:::
 
 ## MNL Goodness-of-fit Statistics {.smaller}
 
--   Discrete choice models predict *choice probabilities* rather than *choices*, because utility is always unobserved; hence nonstandard fit statistics
+- Discrete choice models predict *choice probabilities* rather than *choices*, because utility is always unobserved; hence nonstandard fit statistics
+- Predicted outcomes are inherently stochastic, so limited predictive ability
 
--   Predicted outcomes are inherently stochastic, so limited predictive ability
-
-1.  Likelihood Ratio Test: (not R-sq)
+1. Likelihood Ratio Test: (not R-sq)
 
 $$\rho=1-\frac{ln L(\hat\beta)}{ln L(0)}$$
 
--   As $L(\hat\beta)\to 1$, $ln L(\hat\beta)\to 0$, $\rho\to 1$
--   As $ln L(\hat\beta)\to ln L(0)$, $\rho\to 0$
+- As $L(\hat\beta)\to 1$, $ln L(\hat\beta)\to 0$, $\rho\to 1$
+- As $ln L(\hat\beta)\to ln L(0)$, $\rho\to 0$
+    - Heuristic: 0.2-0.4 is pretty good
 
-            -   Heuristic: 0.2-0.4 is pretty good
+2. Hit Rate: % of individuals for whom most-probable choice was actually chosen
 
-2.  Hit Rate: % of individuals for whom most-probable choice was actually chosen
+3. R-sq using prediction errors at the $jt$ level
 
-3.  R-sq using prediction errors at the $jt$ level
-
-::: notes
--   #3 is appealing idea but based on fewer data points than estimation
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Because MNL predicts probabilities rather than deterministic outcomes, standard R-squared doesn't apply. A likelihood ratio $\rho$ between 0.2-0.4 is considered good — much lower than what you'd expect from a linear regression. Why is predictive ability inherently limited in discrete choice models?
 :::
 
-## MNL Pros
+::: notes
+- #3 is appealing idea but based on fewer data points than estimation
+:::
+
+## MNL Pros {.smaller}
 
 1. Microfounded, i.e. behavioral predictions are consistent with a clearly specified theory of consumer choice
-
-          - Theory is utility maximization
-          - Economists widely believe that microfounded models are more generalizable than purely statistical models*
-
+    - Theory is utility maximization
+    - Economists widely believe that microfounded models are more generalizable than purely statistical models*
 2. Extensible to accommodate preference heterogeneity
-
-          - We'll cover 3 types of extensions in heterogeneous demand modeling
-
-
+    - We'll cover 3 types of extensions in heterogeneous demand modeling
 3. Likelihood function is globally concave in the parameters, ensuring fast and reliable estimation
+    - Remember our local vs. global optimum discussion?
 
-          - Remember our local vs. global optimum discussion?        
-
-::: aside
-*[This paper](https://economics.mit.edu/sites/default/files/2023-11/Theory_Transfer.pdf){target="_blank"} supports this belief
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Microfoundation means the model's predictions are consistent with a theory of how consumers actually make choices (utility maximization). Economists believe this makes predictions more generalizable to new situations. Do you find this argument convincing?
 :::
 
-## MNL Cons
+::: {.source-url}
+*[Andrews, Fudenberg, Lei, Liang, and Wu (2023)](https://economics.mit.edu/sites/default/files/2023-11/Theory_Transfer.pdf){target="_blank"} supports this belief
+:::
+
+## MNL Cons {.smaller}
 
 1. Assuming $\epsilon_{ijt}\sim$*i.i.d.*$EV_1(0,1)$ is convenient but unrealistic
-
-        - More likely, more similar products would experience more similar demand shocks
-        - Alternatives exist but can be computationally expensive
-
-2. Analyst selects the choice set $j=1,...,J$, market size $N_t$, attributes $x_{jt}$, and price structure $p_{jt}$. 
-
-        - What's a j? What's a t? What's in x? How do we measure p? Who's in N?
-        - "Tuning factors" or "Analyst degrees of freedom"
-
+    - More likely, more similar products would experience more similar demand shocks
+    - Alternatives exist but can be computationally expensive
+2. Analyst selects the choice set $j=1,...,J$, market size $N_t$, attributes $x_{jt}$, and price structure $p_{jt}$.
+    - What's a j? What's a t? What's in x? How do we measure p? Who's in N?
+    - "Tuning factors" or "Analyst degrees of freedom"
 3. Market share derivatives depend on market shares alone (IIA; see Train Sec. 3.6)
+4. Price Endogeneity
+    - Affects all demand models, not just MNL
 
-4. Price Endogeneity 
-
-          - Affects all demand models, not just MNL
+::: {.callout-note appearance="minimal"}
+SUGGESTION: The i.i.d. assumption means all "unexplained" taste shocks are independent — but in reality, similar products likely face correlated demand shocks. IIA (Independence of Irrelevant Alternatives) is a particularly well-known limitation. What practical problems could IIA cause for a firm trying to predict market shares?
+:::
 
 ::: notes
--   Unobservables would likely be correlated across people, products and markets
--   We would expect more-differentiated products to face less-elastic demand, holding market shares constant
--   Derivatives statement presented without proof, refer interested students to the chapter. Some people think this property is appealingly simple, but it would be more realistic if the derivatives depended on the attribute levels or prices directly
+- Unobservables would likely be correlated across people, products and markets
+- We would expect more-differentiated products to face less-elastic demand, holding market shares constant
+- Derivatives statement presented without proof, refer interested students to the chapter. Some people think this property is appealingly simple, but it would be more realistic if the derivatives depended on the attribute levels or prices directly
 :::
 
 ## IIA: Deeper dive
 
--   Famous example from McFadden (1974)
--   Suppose you estimate demand for transportation with three options: {Blue Bus, Red Bus, Car}, each with 33% market share
--   Now suppose you painted the red buses blue and want to predict market shares in the new choice set: {Blue Bus, Car}
--   MNL will predict Blue Bus and Car shares of 50%, not 67% and 33% (why?)
+- Famous example from McFadden (1974)
+- Suppose you estimate demand for transportation with three options: {Blue Bus, Red Bus, Car}, each with 33% market share
+- Now suppose you painted the red buses blue and want to predict market shares in the new choice set: {Blue Bus, Car}
+- MNL will predict Blue Bus and Car shares of 50%, not 67% and 33% (why?)
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: The Red Bus/Blue Bus example illustrates IIA: MNL cannot capture that buses are closer substitutes for each other than for cars. Painting the red bus blue doesn't change the underlying substitution patterns, but MNL treats all alternatives symmetrically. What real products might have this problem?
+:::
 
 ## IIA: Remedies
 
@@ -384,23 +390,29 @@ IIA is testable & usually rejected by data
 
 Common remedies:
 
-1.  Extend the model to impose structure on choice set, <br>e.g. Nested Logit or Ordered Logit
+1. Extend the model to impose structure on choice set, <br>e.g. Nested Logit or Ordered Logit
+2. Change $\epsilon_{ijt}\sim$*i.i.d.*$EV_1(0,1)$, e.g. Multivariate Probit with correlated errors
+3. Change model structure so IIA property does not obtain, e.g. heterogeneous logit
 
-2.  Change $\epsilon_{ijt}\sim$*i.i.d.*$EV_1(0,1)$, e.g. Multivariate Probit with correlated errors
+::: {.callout-note appearance="minimal"}
+SUGGESTION: IIA is testable and usually rejected by data, but multiple remedies exist. The most common in marketing is the heterogeneous (mixed) logit, which we'll cover later. Each remedy adds complexity — what tradeoffs might that involve?
+:::
 
-3.  Change model structure so IIA property does not obtain, e.g. heterogeneous logit
-
-# Price endogeneity: <br>35 INSANE explanations 
+# Price endogeneity: <br>35 INSANE explanations
 
 - #4 will SHOCK you. Like, comment, subscribe
 - Covered on the exam...ask lots of questions
 
 
-## 
+##
 
-![](images/wright1928b.png){fig-align="center" width="13in"}
+![](images/wright1928b.png){fig-align="center" height="450px"}
 
-::: aside
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Wright's key insight: to trace out a demand curve, you need factors that shift supply but not demand (and vice versa). Without such "instruments," observed price and quantity reflect both curves simultaneously. Why can't we just use price and quantity data alone?
+:::
+
+::: {.source-url}
 [Wright (1928)](https://drive.google.com/file/d/1PccpUSBpR23V2tdSQ8mUeccQ9-EBwPgL/view?usp=drive_link){target="_blank"}
 :::
 
@@ -412,44 +424,55 @@ We need demand shifters to trace out the supply curve
 If we only have endogenous P&Q, we cannot estimate either curve's shifts, since both move frequently
 :::
 
-## 2. Fundamental issue 
+## 2. Fundamental issue {.smaller}
 
-
--   Demand model is a causal price-quantity relationship <br>
+- Demand model is a causal price-quantity relationship <br>
 Yet observed prices may correlate with other demand and supply determinants<br>
 Exogenous price variation req'd to distinguish correlation from causation ("identification")
+    - Price endogeneity is a "data problem" not a "model problem"
+    - Can be hard to verify empirically--needed data is missing--but widely believed important
+    - Implies wrong demand slope, biased demand predictions
+- Sign of bias depends on unobserved correlation
+    - If corr(price,unobs)<0 --> estimated demand is "too flat" or too elastic
+    - If corr(price,unobs)>0 --> "too steep" or too inelastic
+    - Affects all demand models, not just MNL
 
-        - Price endogeneity is a "data problem" not a "model problem"
-        - Can be hard to verify empirically--needed data is missing--but widely believed important
-        - Implies wrong demand slope, biased demand predictions
-
--   Sign of bias depends on unobserved correlation
-
-        - If corr(price,unobs)<0 --> estimated demand is "too flat" or too elastic
-        - If corr(price,unobs)>0 --> "too steep" or too inelastic
-        - Affects all demand models, not just MNL
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Price endogeneity is a data problem, not a model problem — it affects any demand model, not just MNL. The sign of the bias depends on the unobserved correlation: positive correlation makes demand look too inelastic, negative makes it look too elastic. Which direction do you think is more common in practice?
+:::
 
 ## 3. E-Commerce Example
 
 - Imagine an unobserved demand shock, such as a viral Instagram post, increases Amazon product awareness and sales
-
 - Sales spike, inventory drops, automated pricing system increases price to monetize remaining inventory
-
 - What do data show? Corr(sales, price) > 0 !!
+    - Common enough to be unsurprising when this happens
 
-        - Common enough to be unsurprising when this happens
+::: {.callout-note appearance="minimal"}
+SUGGESTION: This is a concrete example of positive price-quantity correlation caused by an unobserved demand shock. The viral post is the omitted variable. If you naively estimated demand from this data, what would your demand curve look like?
+:::
 
 ## 4. An Analogy
 
+:::: {.columns}
+
+::: {.column width="60%"}
 - Foot size data significantly predict reading comprehension among children!
-
-        - In fact, age causes both foot size 
-        - And age causes reading comprehension 
-        - Without age, you cannot accurately estimate the causal relationship between foot size and reading comprehension. You can only measure the correlation
-
-![](images/footsize.png){fig-align="center" width="1.3in"}
-
+    - In fact, age causes both foot size
+    - And age causes reading comprehension
+    - Without age, you cannot accurately estimate the causal relationship between foot size and reading comprehension. You can only measure the correlation
 - Also, crib purchases significantly predict childbirth!
+:::
+
+::: {.column width="40%"}
+![](images/footsize.png){fig-align="center" height="300px"}
+:::
+
+::::
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Age is the omitted variable that causes both foot size and reading ability. Without controlling for age, you'd wrongly conclude that big feet cause reading skill. Price endogeneity works the same way — an omitted variable drives both price and quantity.
+:::
 
 ::: notes
 People with tiny feet cannot read. Like, at all
@@ -460,98 +483,117 @@ People with tiny feet cannot read. Like, at all
 ## 5. Sports example
 
 - You have data on Lakers ticket prices and sales before and after the Luka trade
-
-- Prices and sales are both higher after the trade 
-
+- Prices and sales are both higher after the trade
 - Does this mean that higher price caused higher sales?
 
-![](images/luka.webp){fig-align="right" width="4in"}
+![](images/luka.webp){fig-align="center" height="250px"}
 
-## 6. Example: Digital systems 
+::: {.callout-note appearance="minimal"}
+SUGGESTION: The Luka trade shifted demand — more fans want to see the Lakers now. Prices and attendance both rose, but the higher price didn't cause the higher attendance. What's the omitted variable here?
+:::
 
+## 6. Example: Digital systems
+
+:::: {.columns}
+
+::: {.column width="60%"}
 - Uber surge pricing: <br>
 Positive Demand shocks increase price<br>
 Negative Supply shocks increase price
-
 - System adjusts the price without knowing the causes
+    - Many digital inventory-based pricing systems are similar
+:::
 
-        Many digital inventory-based pricing systems are similar
+::: {.column width="40%"}
+![](images/surge.webp){fig-align="center" height="300px"}
+:::
 
-![](images/surge.webp){fig-align="right" width="2.6in"}
+::::
 
-::: aside
-[Read more](https://anubpattnaik.medium.com/how-does-uber-do-price-surge-using-location-data-cfee03415022){target="_blank"}
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Uber's surge pricing algorithm responds to both demand shocks (everyone wants a ride) and supply shocks (fewer drivers available). The system raises price without knowing the cause, which means observed price-quantity data mixes both curves.
+:::
+
+::: {.source-url}
+[Pattnaik](https://anubpattnaik.medium.com/how-does-uber-do-price-surge-using-location-data-cfee03415022){target="_blank"}
 :::
 
 ## 7. Shrinkflation
 
-![](images/shrinkflation.jpg){fig-align="center" width="6in"}
+![](images/shrinkflation.jpg){fig-align="center" height="280px"}
 
-      Shrink the package, maintain the price
-      Also, "Skimpflation" : reduce ingredient intensity
+- Shrink the package, maintain the price
+- Also, "Skimpflation" : reduce ingredient intensity
 
-::: aside
-More examples [here](https://archive.ph/uYt1j){target="_blank"} and [here](https://old.reddit.com/r/shrinkflation/top/?sort=top&t=all{target="_blank"})<br>
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Shrinkflation is a hidden price increase — the nominal price stays constant but the per-unit price rises. If your demand model only tracks the sticker price, it misses this variation entirely. How would this affect your demand estimates?
+:::
+
+::: {.source-url}
+[Archived examples](https://archive.ph/uYt1j){target="_blank"} | [r/shrinkflation](https://old.reddit.com/r/shrinkflation/top/?sort=top&t=all){target="_blank"}
 :::
 
 ## 8. Multiple determinants
 
 - Price causes quantity demanded; but so do other things
 
-![](images/multipledeterminants.png){fig-align="center" width="7.5in"}
+![](images/multipledeterminants.png){fig-align="center" height="350px"}
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Price is just one of many factors that determine quantity demanded. If any of these other factors correlate with price and are unobserved, your price coefficient will be biased. Which of these factors are hardest to measure?
+:::
 
 
 
 ## 9. Oft-unobserved price correlates
 
-1. Changes in consumer preferences, income, market size 
-
+1. Changes in consumer preferences, income, market size
 2. Retail distribution, prominence, stocking
-
 3. Digital marketing, including search ads, display ads, affiliates, influencers, coupons
-
 4. Competitor prices, preference shocks, retail, dig mktg
 
 Any may correlate with equilibrium prices, leading to endogeneity biases if left uncontrolled
 
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Each of these four categories can independently create endogeneity bias. Consumer preferences, retail distribution, digital marketing, and competitor actions all can correlate with price and affect demand. How many of these can a typical firm observe in its data?
+:::
 
 
-## 10. General model interpretation
+
+## 10. General model interpretation {.smaller}
 
 - Posit a model $q=f(x,p,e)$ for $p=$price, $q=$quantity, <br>$e=$error reflecting all relevant unobservables; estimate $\frac{dq}{dp}$
-
 - What does $\frac{dq}{dp}$ mean exactly? 2 possibilities:
+    1. Correlation: Empirical tendency of q to change with p, holding other observable attributes x constant
+    2. Causality: Causal effect of 1-unit change of p on q
+    - 1 is descriptive analytics; 2 is diagnostic analytics
+- Standard econometric assumptions only admit #2 when $corr(p,e)==0$ ("exogenous")
+    - Hence, what the estimates can teach us depends on what we cannot see
+    - This is a tricky situation: When can we trust our demand model?
+    - Answer 1: When we have exogenous price variation, hence corr(p,e)==0; OR
+    - Answer 2: When we observe all demand drivers; but this is difficult to verify
 
-      1. Correlation: Empirical tendency of q to change with p, holding other observable attributes x constant
-      2. Causality: Causal effect of 1-unit change of p on q
-      1 is descriptive analytics; 2 is diagnostic analytics
-
-- Standard econometric assumptions only admit #2 when $corr(p,e)==0$ ("exogenous")      
-
-      Hence, what the estimates can teach us depends on what we cannot see
-      This is a tricky situation: When can we trust our demand model?
-      Answer 1: When we have exogenous price variation, hence corr(p,e)==0; OR
-      Answer 2: When we observe all demand drivers; but this is difficult to verify
+::: {.callout-note appearance="minimal"}
+SUGGESTION: The distinction between correlation and causation is the core issue. Without exogenous price variation, your demand estimate is descriptive (what tends to happen) rather than causal (what would happen if you changed the price). When would the distinction matter most for a firm's decisions?
+:::
 
 
 
-## 11a. Simulation
+## 11a. Simulation {.smaller}
 
 - Suppose 2 firms, correlated cost shocks and correlated prices, MNL demand
-
 - Suppose true demand is $q_1=f(p_1, p_2, \epsilon_1, \epsilon_2)$
-
 - Suppose we use OLS to estimate $q_1=\alpha + p_1\beta + \epsilon$
-
 - We mistakenly believe that $corr(p,\epsilon)==0$
-
-          Incorrect: corr(p_1,p_2)>0, and p2 omitted, hence p2 is in epsilon
-
+    - Incorrect: corr(p_1,p_2)>0, and p2 omitted, hence p2 is in epsilon
 - $\hat{\beta}$ is *biased* to fit the model's assumption that $\sum p_1\epsilon=0$
-
 - Wrong $\hat{\beta}$ means wrong demand curve slope<br>
 ...implies wrong demand predictions in response to price<br>
 ...recommended price will be wrong, may reduce profit
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: This simulation shows how omitting a correlated variable (competitor price) biases the own-price coefficient. The naive model gets the wrong slope, which leads to wrong demand predictions and potentially profit-reducing pricing decisions.
+:::
 
 ## 11b. Simulated data generating process
 
@@ -570,12 +612,12 @@ intercept2  <- 9               # baseline utility for product 2
 # (Outside option utility is normalized to 0)
 
 # Simulate cost shocks for the two firms (correlated)
-shock1 <- rnorm(n_periods)                          
+shock1 <- rnorm(n_periods)
 shock2 <- rho * shock1 + (1 - rho) * rnorm(n_periods)
 
 # Derive prices from costs (higher cost shock -> higher price)
 base_cost <- 1
-price1 <- 3 * base_cost + shock1  
+price1 <- 3 * base_cost + shock1
 price2 <- 3 * base_cost + shock2
 cor(price1, price2)
 
@@ -586,7 +628,7 @@ data <- tibble(
   shock2 = shock2,
   price1 = price1,
   price2 = price2
-) %>% 
+) %>%
   mutate(
     # Indirect utilities for each product and outside option:
     U1 = intercept1 - alpha * price1,
@@ -615,8 +657,11 @@ model_full  <- lm(Q1 ~ price1 + price2, data = data)
 summary(model_full)
 ```
 
+::: {.callout-note appearance="minimal"}
+SUGGESTION: This simulation generates data from a known MNL model with two firms whose cost shocks are correlated ($\rho=0.9$). Because both firms' prices respond to correlated shocks, omitting one firm's price biases the other's demand estimate.
+:::
 
-::: aside
+::: {.source-url}
 [Source code](https://drive.google.com/file/d/12ymiHGmilJANlvBgrj5FZYWNasKTCWMu/view?usp=sharing){target="_blank"}
 :::
 
@@ -631,18 +676,18 @@ Call:
 lm(formula = Q1 ~ price1, data = data)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--1.31867 -0.34908 -0.00637  0.32919  1.19378 
+     Min       1Q   Median       3Q      Max
+-1.31867 -0.34908 -0.00637  0.32919  1.19378
 
 Coefficients:
-            Estimate Std. Error t value Pr(>|t|)    
+            Estimate Std. Error t value Pr(>|t|)
 (Intercept) 51.78942    0.17660  293.26   <2e-16 ***
 price1      -0.59737    0.05565  -10.73   <2e-16 ***
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 Residual standard error: 0.5011 on 98 degrees of freedom
-Multiple R-squared:  0.5404,	Adjusted R-squared:  0.5357 
+Multiple R-squared:  0.5404,	Adjusted R-squared:  0.5357
 F-statistic: 115.2 on 1 and 98 DF,  p-value: < 2.2e-16
 
 > model_full  <- lm(Q1 ~ price1 + price2, data = data)
@@ -652,115 +697,133 @@ Call:
 lm(formula = Q1 ~ price1 + price2, data = data)
 
 Residuals:
-       Min         1Q     Median         3Q        Max 
--4.177e-04 -6.103e-05  7.340e-06  7.187e-05  7.270e-04 
+       Min         1Q     Median         3Q        Max
+-4.177e-04 -6.103e-05  7.340e-06  7.187e-05  7.270e-04
 
 Coefficients:
-              Estimate Std. Error t value Pr(>|t|)    
+              Estimate Std. Error t value Pr(>|t|)
 (Intercept)  5.000e+01  7.456e-05  670528   <2e-16 ***
 price1      -4.999e+00  1.321e-04  -37832   <2e-16 ***
 price2       4.998e+00  1.489e-04   33571   <2e-16 ***
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 Residual standard error: 0.0001478 on 97 degrees of freedom
-Multiple R-squared:      1,	Adjusted R-squared:      1 
+Multiple R-squared:      1,	Adjusted R-squared:      1
 F-statistic: 1.226e+09 on 2 and 97 DF,  p-value: < 2.2e-16
 ```
 
+::: {.callout-note appearance="minimal"}
+SUGGESTION: The naive model (omitting price2) estimates a price coefficient of -0.60, far from the true value of -5.0. The full model (including price2) recovers the true parameters almost exactly. This demonstrates how severe omitted variable bias can be.
+:::
+
 ##
 
-![](images/demandbias2.png){fig-align="center" width="10in"}
+![](images/demandbias2.png){fig-align="center" height="450px"}
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: This visualization shows the estimated demand curves from both models. The naive model's flatter slope means it underestimates how responsive demand is to price changes — leading to systematic overpricing.
+:::
 
 ##
 
-![](images/demandbias2colors.png){fig-align="center" width="10in"}
+![](images/demandbias2colors.png){fig-align="center" height="450px"}
 
-## Common solutions
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Adding color reveals how the bias arises: observations with high competitor prices (warm colors) cluster at high own-prices and high own-quantities, creating an upward-pulling force on the estimated slope. The full model accounts for this.
+:::
 
--   Experiments 
+## Common solutions {.smaller}
 
-        Randomizing price eliminates confounding with unobservables
-        Gold standard, but has drawbacks mentioned earlier
-
+- Experiments
+    - Randomizing price eliminates confounding with unobservables
+    - Gold standard, but has drawbacks mentioned earlier
 - Quasi-experiments using archival data
-
-      1. Instrumental variables
-      2. Regression discontinuities
-      3. Natural experiments
-      4. Difference-in-differences
-      5. Synthetic controls
-      6. Double/debiased machine learning
-      These approaches are beyond the scope of this class
-
+    1. Instrumental variables
+    2. Regression discontinuities
+    3. Natural experiments
+    4. Difference-in-differences
+    5. Synthetic controls
+    6. Double/debiased machine learning
+    - These approaches are beyond the scope of this class
 - Model the price-setting process
+    - But without exogenous price variation, this is difficult to evaluate
+- Best practice: Triangulate
 
-        But without exogenous price variation, this is difficult to evaluate
-
-- Best practice: Triangulate      
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Experiments are the gold standard for creating exogenous price variation, but quasi-experimental methods can work with archival data when experiments aren't feasible. Best practice is to triangulate across methods. Which approach seems most practical for a firm you might work for?
+:::
 
 ## Exogenous smartphone price variation
 
 - Smartphone discounts are randomly assigned, <br>
 thus we have exogenous price variation to identify $\beta$
+    - This class focuses on how we can use demand models
+    - Endogeneity remedies: Future metrics classes or graduate study
+    - Treat the topic as a demand modeling risk to be understood
 
-        - This class focuses on how we can use demand models
-
-        - Endogeneity remedies: Future metrics classes or graduate study
-        
-        - Treat the topic as a demand modeling risk to be understood
+::: {.callout-note appearance="minimal"}
+SUGGESTION: In our class dataset, smartphone discounts are randomly assigned, which eliminates endogeneity concerns. This lets us focus on what we can do with demand models, treating endogeneity as a risk to understand rather than a problem to solve here.
+:::
 
 ::: notes
 - When archival demand modeling disagrees with price experiments, endogeneity is a possible culprit, among other possibilities. It's important, but we could easily spend the rest of the quarter on this topic, and we would rather spend the time on what we can do with models.
--   Your standard advice to a firm would be to induce nonobvious experimental variation when possible in order to estimate price responsiveness, such as price variation across markets or targeted coupons
--   Price response tends to be pretty strong so you don't necessarily need a big intervention
+- Your standard advice to a firm would be to induce nonobvious experimental variation when possible in order to estimate price responsiveness, such as price variation across markets or targeted coupons
+- Price response tends to be pretty strong so you don't necessarily need a big intervention
 :::
 
-## <!--#Intermission-->
+##
 
-![](images/intermission.jpg){fig-align="center" width="6in"}
+![](images/intermission.jpg){fig-align="center" height="400px"}
 
--   Describe price endogeneity in your own words
-
-          Generate a novel example related to price and demand
-          Explain how to resolve it
+- Describe price endogeneity in your own words
+    - Generate a novel example related to price and demand
+    - Explain how to resolve it
 
 ## Class script
 
--   Wrangle data
--   Estimate MNL
--   Interpret parameters and SEs
--   Assess model fit
+- Wrangle data
+- Estimate MNL
+- Interpret parameters and SEs
+- Assess model fit
 
-![](images/scroll.jpg){fig-align="right" width="2in"}
+![](images/scroll.jpg){.absolute bottom="20" right="20" height="100px"}
 
 # Wrapping up
 
+## Competition
+
+- SUGGESTION: Using the smartphone data from class, estimate a MNL demand model with at least two product attributes plus price
+- Visualize the estimated demand curve for one product: predicted market share as a function of that product's price, holding all else constant
+- Interpret the price coefficient: what does it imply about a $1 price increase?
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Your visualization should make a clear point and be easy to understand. Test it on your friends before you submit.
+:::
+
+![](images/competition.png){.absolute bottom="20" right="20" height="120px"}
+
 ## Recap {.smaller}
 
--   Demand modeling enables data-driven sales predictions for counterfactual prices and attributes, facilitating profit maximization
--   MNL is popular bc it is powerful, microfounded and tractable
--   MNL has limitations (eg, IIA), but is extesnible by modeling heterogeneity
--   Price endogeneity is a data problem that biases demand parameter estimates when price is correlated with unobserved supply or demand shifters. Usually resolved with exogenous price variation
+- Demand modeling enables data-driven sales predictions for counterfactual prices and attributes, facilitating profit maximization
+- MNL is popular bc it is powerful, microfounded and tractable
+- MNL has limitations (eg, IIA), but is extensible by modeling heterogeneity
+- Price endogeneity is a data problem that biases demand parameter estimates when price is correlated with unobserved supply or demand shifters. Usually resolved with exogenous price variation
 
-![](images/recap.png){fig-align="right" width="2in"}
+![](images/recap.png){.absolute bottom="20" right="20" height="100px"}
 
 ## Going further {.smaller}
 
--   [Supply, Demand, and the Instrumental Variable: Lessons for Data Scientists from the Economist’s Toolbox](https://medium.com/data-science/supply-demand-and-the-instrumental-variable-lessons-for-data-scientists-from-the-economists-21af225187cd){target="_blank"}
-
+- [Supply, Demand, and the Instrumental Variable: Lessons for Data Scientists from the Economist's Toolbox](https://medium.com/data-science/supply-demand-and-the-instrumental-variable-lessons-for-data-scientists-from-the-economists-21af225187cd){target="_blank"}
 - [Causal inference in economics and marketing (Varian 2016)](https://drive.google.com/file/d/1vPl8oULQrZDQN8RlKolufLuwETLd-I3Z/view?usp=sharing){target="_blank"}
-
--   [Discrete Choice Analysis with R](https://drive.google.com/file/d/1KHzy6TkFxy5LArFv6cNpCMWEiLCO8tEl/view?usp=sharing){target="_blank"}
-
--   [Microeconometric models of consumer demand by Dube (2018)](https://drive.google.com/file/d/1JsTh_ZYI1hU2TR93qmPYgsEuYIU4Upu_/view?usp=sharing){target="_blank"}
-
--   [Empirical Models of Demand and Supply in Differentiated Products Industries by Gandhi & Nevo](https://drive.google.com/file/d/1Js1sJgxxaA2Ph_4SuhcKxLS9FYqoZFm3/view?usp=sharing){target="_blank"}
+- [Discrete Choice Analysis with R](https://drive.google.com/file/d/1KHzy6TkFxy5LArFv6cNpCMWEiLCO8tEl/view?usp=sharing){target="_blank"}
+- [Microeconometric models of consumer demand by Dube (2018)](https://drive.google.com/file/d/1JsTh_ZYI1hU2TR93qmPYgsEuYIU4Upu_/view?usp=sharing){target="_blank"}
+- [Empirical Models of Demand and Supply in Differentiated Products Industries by Gandhi & Nevo](https://drive.google.com/file/d/1Js1sJgxxaA2Ph_4SuhcKxLS9FYqoZFm3/view?usp=sharing){target="_blank"}
 
 ::: notes
--   Varian (2016) covers causal inference in marketing
--   Dube (2019) surveys the literature on demand modeling
--   Gandhi & Nevo survey demand modeling & consider it simultaneously with supply modeling. Nevo was the chief economist at the FTC, Gandhi at AirBnB
+- Varian (2016) covers causal inference in marketing
+- Dube (2019) surveys the literature on demand modeling
+- Gandhi & Nevo survey demand modeling & consider it simultaneously with supply modeling. Nevo was the chief economist at the FTC, Gandhi at AirBnB
 :::
 
-![](images/takingoff.png){fig-align="right" width="2in"}
+![](images/takingoff.png){.absolute bottom="20" right="20" height="100px"}

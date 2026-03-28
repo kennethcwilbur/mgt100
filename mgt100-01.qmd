@@ -106,12 +106,33 @@ Does the graph show how much a person's cancer risk changes when they change the
 - Next questions: Is this causal? What's the uncertainty?
 :::
 
+## Viz can build trust, understanding {.smaller}
+
+- Eyeballs can interpret pictures quickly
+    - Human brains are great at interpreting visual patterns, predictions
+    - Can detect unexpected errors
+- Understandable to non-specialists, including customers and managers
+    - Viz choices enable narrative understanding, another common brain function
+- Viz are *lingua franca* across disciplines
+    - Easily replicated -> more easily trusted
+    - Trust can be a major issue in some corporate cultures
+- Viz succeed when they raise deeper questions
+    - Asking the next question indicates acceptance; facts prompt explanations
+    - "I wonder why that is...." or "Maybe that's because..."
+    - Viz usually won't settle major debates, but viz is the first step
+
+::: notes
+- Pictures are easier than models or tables
+- Managers won't always understand viz accurately, but they'll usually be interested
+- it's ironic we use such an obscure term (lingua franca) to mean something that everybody can understand
+:::
+
 ##
 
 ![](images/owid_population_growth.png){fig-align="center" height="420px"}
 
 ::: {.callout-note appearance="minimal"}
-The world population curve has a sigmoid shape, also known as an S curve, in which growth increases and later decreases. A pop science book, *Population Bomb* by Ehrlich (1968), forecast mass starvation, since population was increasing exponentially but food production was increasing linearly.
+The world population curve has a sigmoid shape, also known as an S curve, in which growth increases and later decreases. A pop science book, *Population Bomb* by Ehrlich (1968), forecast mass starvation, since population was increasing exponentially but food production was increasing linearly. Why was Ehrlich's forecast so far from correct?
 :::
 
 ::: {.source-url}
@@ -125,6 +146,8 @@ The world population curve has a sigmoid shape, also known as an S curve, in whi
 - Key driver: fertility decline (next slide topic?)
 - The post-2024 portion is a projection, not observed data
 - Sigmoid = logistic growth curve, common in biology, epidemiology, technology adoption
+- Ehrlich assumed that exponential growth would continue indefinitely, a faulty assumption
+- Ehrlich failed to appreciate the effects of how declining child mortality, improving contraception and family planning would affect future mortality, even though the signs were there in the data
 :::
 
 ##
@@ -188,27 +211,6 @@ GIGO: Garbage In, Garbage Out. Don't analyze noise.
 
 ::: {.source-url}
 [Jungco (2025)](https://technologyadvice.com/blog/business-intelligence/data-provenance/){target="_blank"}
-:::
-
-## Viz can build trust, understanding {.smaller}
-
-- Eyeballs can interpret pictures quickly
-    - Human brains are great at interpreting visual patterns, predictions
-    - Can detect unexpected errors
-- Understandable to non-specialists, including customers and managers
-    - Viz choices enable narrative understanding, another common brain function
-- Viz are *lingua franca* across disciplines
-    - Easily replicated -> more easily trusted
-    - Trust can be a major issue in some corporate cultures
-- Viz succeed when they raise deeper questions
-    - Asking the next question indicates acceptance; facts prompt explanations
-    - "I wonder why that is...." or "Maybe that's because..."
-    - Viz usually won't settle major debates, but viz is the first step
-
-::: notes
-- Pictures are easier than models or tables
-- Managers won't always understand viz accurately, but they'll usually be interested
-- it's ironic we use such an obscure term (lingua franca) to mean something that everybody can understand
 :::
 
 ## {style="padding-top: 0; margin-top: -20px;"}
@@ -301,7 +303,7 @@ You want to avoid mistaken interpretations of your work, and identify misleading
 ![](images/4datasets_samebeta.png){fig-align="center" height="350px"}
 
 ::: {.callout-note appearance="minimal"}
-What does each picture tell us? This is why we shouldn't just use regression to summarize data
+What does each picture tell us? This is why we shouldn't just use regression to summarize data. What's wrong with this example?
 :::
 
 ::: {.source-url}
@@ -401,31 +403,31 @@ Which owners or employees in the business can afford to ignore customers?
 ## Example of Great Marketing: Netflix {.smaller}
 
 - Consumer surplus
-    - Suppose customer pays $20/month, watches 60 hours: $0.33 per entertainment hour, or $0.13/hour with ads, or less with shared accounts
+    - Suppose customer pays $20/month, watches 60 hours: $0.33 per entertainment hour, or $0.15/hour with ads, or less with shared accounts
     - A la carte rentals are more like $1-2+/hour
     - Non-video entertainment tends to be much more expensive
     - Social benefits may accrue from shared viewing
     - Other streaming services may be competitive
 - Producer surplus
-    - NFLX spent $13B on content in 2023, 230 million subscribers, about $4.70/user/month
+    - NFLX spent $18B on content in 2025, 325 million subscribers, about $4.60/user/month
     - Cost structure: High fixed, low marginal
     - Ads likely earning around $4-5 per recipient/month
-    - Net profit margin about 20-22% in a competitive category
+    - Net profit margin about 24% in a competitive category
 
 ::: {.callout-note appearance="minimal"}
-Other EDLP (vs High-Low) businesses: Costco, Trader Joes, Walmart. Common tension between short-term management and long-term strategies.
+Strategic consistency encourages customer loyalty. Other EDLP (vs High-Low) businesses: Costco, Trader Joes, Walmart. Common tension between short-term management and long-term strategies. Do you know how Southwest Airlines changed its strategies recently?
 :::
 
 ## How can we use customer data?
 
 - Businesses have 4, and only 4, ways to make money:<br>Acquire, develop, retain and "fire" customers
-    - This is called Customer Relationship Management (CRM): week 9
+    - This is called Customer Relationship Management (CRM): week 8
 - Marketing mix ("4 P's"): Improve product offerings, prices, promotion, distribution
 - Incorporate customer heterogeneity for targeting, personalization, recommendations, product development...
 - Privacy and security, e.g. misuse, theft, regulatory compliance
 
 ::: {.callout-note appearance="minimal"}
-Firing customers is typically indirect, such as withdrawing preferred products or declining to encourage further purchasing
+Firing customers is typically indirect, such as withdrawing preferred products or declining to encourage further purchasing. Why is it usually controversial within the company?
 :::
 
 ::: notes
@@ -525,7 +527,7 @@ Retail has always been an early adopter of customer analytics. E-commerce funnel
 ![](images/ecommerce_analytics.png){fig-align="center" height="400px"}
 
 ::: {.callout-note appearance="minimal"}
-800 e-commerce pros were surveyed; companies using 9+ data-driven methods were most satisfied with their conversion rates. The optimal number of A/B tests was 3-5 per month.
+800 e-commerce pros were surveyed; companies using 9+ data-driven methods were most satisfied with their conversion rates. The optimal number of A/B tests was 3-5 per month.<br>This model is also known as the purchase journey. How does it facilitate decisionmaking?
 :::
 
 ::: {.source-url}
@@ -579,7 +581,7 @@ Retail has always been an early adopter of customer analytics. E-commerce funnel
 Analytics works best when leadership creates an environment that enables investments in analytical frameworks and rewards disciplined decisionmaking, with retrospective decision evaluations and continuous-learning feedback loops. How have you seen analytics used in practice?
 :::
 
-## Analytics truisms {.smaller}
+## Analytics truisms
 
 - Analytics matters more in B2C than B2B (why?)
 - Selection effects are usually large
@@ -635,7 +637,7 @@ Common language facilitates communication
     - Poor implementation and short-term focus commonly lead to confusion with bullshit ("persuasive speech without regard for the truth" --Frankfurt 2005)
 
 ::: {.source-url}
-[How to be good at marketing](https://www.youtube.com/watch?v=g_HPJ6KEQsM){target="_blank"} | [Frankfurt (2005)](https://archive.org/details/on-bullshit-by-harry-frankfurt){target="_blank"}
+[How to be good at marketing, by yours truly](https://www.youtube.com/watch?v=g_HPJ6KEQsM){target="_blank"} | [Frankfurt (2005)](https://archive.org/details/on-bullshit-by-harry-frankfurt){target="_blank"}
 :::
 
 ::: notes
@@ -650,7 +652,7 @@ Common language facilitates communication
 ![](images/yavorsky-traditional-framework.png){fig-align="center" height="350px"}
 
 ::: {.callout-note appearance="minimal"}
-You need to know these well if you interview for marketing roles. Generations of marketing professionals were educated to think this way. Still relevant, but less, thanks to customer data abundance & analytics.
+You need to know these well if you interview for marketing roles. Generations of marketing professionals were educated to think this way. Still relevant, but less central, thanks to customer data & analytics abundance. MGT 103 complements this course well by covering these topics in depth, but without the same deep focus on customer data.
 :::
 
 ::: {.source-url}
@@ -679,7 +681,7 @@ Y axes indicate the human-expert task-completion time (in hours) that a frontier
 ![](images/intermission.jpg){fig-align="center" height="400px"}
 
 ::: {.callout-note appearance="minimal"}
-Please write down your intentions for this class. How will you measure your effort? Please don't say grades alone; grades are outcomes, not inputs.
+Please write down your intentions for this class on Canvas. How will you measure your effort? Please don't say grades alone; grades are outcomes, not inputs.
 :::
 
 ## Coding & Script
@@ -718,7 +720,7 @@ Bad habit: Write the whole script, run it, see where it breaks. Good habit: test
 
 # Wrapping up
 
-## Competition {.smaller}
+## Week 1 Competition {.smaller}
 
 ::: {style="font-size: 0.7em;"}
 | Week (relative to endorsement) | Region | Goya sales |
@@ -744,7 +746,7 @@ Bad habit: Write the whole script, run it, see where it breaks. Good habit: test
 ::: {.callout-note appearance="minimal"}
 Visualize Goya's weekly average sales in right- and left-leaning regions pre/post a major endorsement.<br>Data: `goyadata <- readRDS(url("https://raw.githubusercontent.com/kennethcwilbur/mgt100/main/data/goya_sales.rds"))`
 
-Your visualization should make a clear point and be very easy to understand.
+Your visualization should make a clear point and be very easy to understand. Submit your R script and visualization on Canvas.
 :::
 
 ![](images/competition.png){.absolute bottom="20" right="20" height="120px"}
@@ -763,7 +765,8 @@ Your visualization should make a clear point and be very easy to understand.
 
 - [Data-enabled storytelling (Wilke 2019)](https://clauswilke.com/dataviz/telling-a-story.html){target="_blank"}
 - [GGplot2 YT video](https://www.youtube.com/watch?v=HPJn1CMvtmI){target="_blank"}
-- [*R for Data Science (3e)*](https://ggplot2-book.org/){target="_blank"}
+- [Elegant Graphics for Data Analysis (3e)](https://ggplot2-book.org/){target="_blank"}
 - [Big Book of R](https://www.bigbookofr.com/){target="_blank"}: Lovingly curated, well organized, free resource directory for nearly any R problem
+- [A Layered Grammar of Graphics (Wickham 2007)](https://drive.google.com/file/d/1tCpTd3kaodD4FPgUF5dUjol1RhuZUXao/view?usp=drive_link){target="_blank"}
 
 ![](images/takingoff.png){.absolute bottom="20" right="20" height="100px"}

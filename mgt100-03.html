@@ -6,11 +6,11 @@
 <script src="mgt100-03_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="mgt100-03_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="mgt100-03_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="mgt100-03_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="mgt100-03_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.555">
+<link href="mgt100-03_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
-  <meta name="author" content="Kenneth C. Wilbur and Dan Yavorsky">
+  <meta name="author" content="Kenneth C. Wilbur">
+  <meta name="author" content="Daniel Yavorsky">
   <title>Demand Modeling</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -30,209 +30,14 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="mgt100-03_files/libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="mgt100-03_files/libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
+  <link rel="stylesheet" href="custom.css">
   <link href="mgt100-03_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="mgt100-03_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="mgt100-03_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="mgt100-03_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="mgt100-03_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="mgt100-03_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
-
-  .callout {
-    margin-top: 1em;
-    margin-bottom: 1em;  
-    border-radius: .25rem;
-  }
-
-  .callout.callout-style-simple { 
-    padding: 0em 0.5em;
-    border-left: solid #acacac .3rem;
-    border-right: solid 1px silver;
-    border-top: solid 1px silver;
-    border-bottom: solid 1px silver;
-    display: flex;
-  }
-
-  .callout.callout-style-default {
-    border-left: solid #acacac .3rem;
-    border-right: solid 1px silver;
-    border-top: solid 1px silver;
-    border-bottom: solid 1px silver;
-  }
-
-  .callout .callout-body-container {
-    flex-grow: 1;
-  }
-
-  .callout.callout-style-simple .callout-body {
-    font-size: 1rem;
-    font-weight: 400;
-  }
-
-  .callout.callout-style-default .callout-body {
-    font-size: 0.9rem;
-    font-weight: 400;
-  }
-
-  .callout.callout-titled.callout-style-simple .callout-body {
-    margin-top: 0.2em;
-  }
-
-  .callout:not(.callout-titled) .callout-body {
-      display: flex;
-  }
-
-  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
-    padding-left: 1.6em;
-  }
-
-  .callout.callout-titled .callout-header {
-    padding-top: 0.2em;
-    margin-bottom: -0.2em;
-  }
-
-  .callout.callout-titled .callout-title  p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-    
-  .callout.callout-titled.callout-style-simple .callout-content  p {
-    margin-top: 0;
-  }
-
-  .callout.callout-titled.callout-style-default .callout-content  p {
-    margin-top: 0.7em;
-  }
-
-  .callout.callout-style-simple div.callout-title {
-    border-bottom: none;
-    font-size: .9rem;
-    font-weight: 600;
-    opacity: 75%;
-  }
-
-  .callout.callout-style-default  div.callout-title {
-    border-bottom: none;
-    font-weight: 600;
-    opacity: 85%;
-    font-size: 0.9rem;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
-
-  .callout.callout-style-default div.callout-content {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
-
-  .callout.callout-style-simple .callout-icon::before {
-    height: 1rem;
-    width: 1rem;
-    display: inline-block;
-    content: "";
-    background-repeat: no-repeat;
-    background-size: 1rem 1rem;
-  }
-
-  .callout.callout-style-default .callout-icon::before {
-    height: 0.9rem;
-    width: 0.9rem;
-    display: inline-block;
-    content: "";
-    background-repeat: no-repeat;
-    background-size: 0.9rem 0.9rem;
-  }
-
-  .callout-title {
-    display: flex
-  }
-    
-  .callout-icon::before {
-    margin-top: 1rem;
-    padding-right: .5rem;
-  }
-
-  .callout.no-icon::before {
-    display: none !important;
-  }
-
-  .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
-  }
-
-  .callout.callout-titled .callout-icon::before {
-    margin-top: .5rem;
-    padding-right: .5rem;
-  }
-
-  .callout:not(.callout-titled) .callout-icon::before {
-    margin-top: 1rem;
-    padding-right: .5rem;
-  }
-
-  /* Callout Types */
-
-  div.callout-note {
-    border-left-color: #4582ec !important;
-  }
-
-  div.callout-note .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
-  }
-
-  div.callout-note.callout-style-default .callout-title {
-    background-color: #dae6fb
-  }
-
-  div.callout-important {
-    border-left-color: #d9534f !important;
-  }
-
-  div.callout-important .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-important.callout-style-default .callout-title {
-    background-color: #f7dddc
-  }
-
-  div.callout-warning {
-    border-left-color: #f0ad4e !important;
-  }
-
-  div.callout-warning .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-warning.callout-style-default .callout-title {
-    background-color: #fcefdc
-  }
-
-  div.callout-tip {
-    border-left-color: #02b875 !important;
-  }
-
-  div.callout-tip .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
-  }
-
-  div.callout-tip.callout-style-default .callout-title {
-    background-color: #ccf1e3
-  }
-
-  div.callout-caution {
-    border-left-color: #fd7e14 !important;
-  }
-
-  div.callout-caution .callout-icon::before {
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
-  }
-
-  div.callout-caution.callout-style-default .callout-title {
-    background-color: #ffe5d0
-  }
-
-  </style>
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -320,23 +125,64 @@
       margin-right: 0; 
     }
   </style>
+  <!-- Google tag (gtag.js) -->
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MVJF5Z0C5J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-MVJF5Z0C5J');
+  </script>
+  <script>
+    // Inject audio player into title slide after page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      var titleSlide = document.getElementById('title-slide');
+      if (titleSlide) {
+        var audio = document.createElement('audio');
+        audio.controls = true;
+        audio.src = 'mgt100_theme_song.mp3';
+        audio.style.marginTop = '0.5em';
+        titleSlide.appendChild(audio);
+      }
+    });
+  </script>
 </head>
 <body class="quarto-light">
+<script src="mathjax-config.js"></script>
   <div class="reveal">
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Demand Modeling</h1>
-  <p class="subtitle">UCSD MGT 100 Week 3</p>
+  <h1 class="title"><strong>Demand Modeling</strong></h1>
+  <p class="subtitle">MGT 100 Week 3</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Kenneth C. Wilbur and Dan Yavorsky 
+<a href="https://kennethcwilbur.com" target="_blank">Kenneth C. Wilbur</a> 
 </div>
+        <p class="quarto-title-affiliation">
+            Professor of Marketing and Analytics
+          </p>
+        <p class="quarto-title-affiliation">
+            University of California, San Diego
+          </p>
+    </div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="https://www.linkedin.com/in/dyavorsky/" target="_blank">Daniel Yavorsky</a> 
 </div>
+        <p class="quarto-title-affiliation">
+            SVP-Analytics
+          </p>
+        <p class="quarto-title-affiliation">
+            GBK Collective
+          </p>
+    </div>
 </div>
 
+  <p class="date">This version: March 2026 | License: CC BY 4.0 | We use javascript to track readership.<br>We welcome reuse with attribution. Please share widely.</p>
 </section>
 <section>
 <section id="demand-curves" class="title-slide slide level1 center">
@@ -351,10 +197,19 @@ Kenneth C. Wilbur and Dan Yavorsky
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/wright1928a.png" class="quarto-figure quarto-figure-center" style="width:8.5in"></p>
+<p><img data-src="images/wright1928a.png" class="quarto-figure quarto-figure-center" height="450"></p>
 </figure>
 </div>
-
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: This 1928 paper by Philip Wright introduced the idea that supply and demand jointly determine price and quantity. Understanding this causal relationship is the foundation of demand modeling. Why might it matter for a business to distinguish between correlation and causation in their price-quantity data?</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://drive.google.com/file/d/1PccpUSBpR23V2tdSQ8mUeccQ9-EBwPgL/view?usp=drive_link" target="_blank">Wright (1928)</a>, describing a causal relationship between P and Q</p>
+</div>
 <aside class="notes">
 <p>Philip Wright was a Harvard economics professor who worked at the US Tariff Commission Wright (1928) was trying to predict the tax revenue that would be raised by a tariff on linseed oil, by predicting how much foreign demand would fall as a function of the change in price Here, Wright explains S&amp;D ideas usually credited to Alfred Marshall (1890)</p>
 <style type="text/css">
@@ -368,15 +223,20 @@ Kenneth C. Wilbur and Dan Yavorsky
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<aside><div>
-<p><a href="https://drive.google.com/file/d/1PccpUSBpR23V2tdSQ8mUeccQ9-EBwPgL/view?usp=drive_link" target="_blank">Wright (1928)</a>, describing a causal relationship between P and Q</p>
-</div></aside></section>
+</section>
 <section id="inverse-demand-curve" class="slide level2">
 <h2>Inverse Demand Curve</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/mrmc.jpg" class="quarto-figure quarto-figure-center" style="width:6.5in"></p>
+<p><img data-src="images/mrmc.jpg" class="quarto-figure quarto-figure-center" height="400"></p>
 </figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: The demand curve plots price on the y-axis and quantity on the x-axis — “inverse” because economics convention puts the independent variable (price) on the vertical axis. Has any company you’ve worked for, or heard of, explicitly discussed its demand curve? Why not?</p>
+</div>
+</div>
 </div>
 <aside class="notes">
 <ul>
@@ -404,21 +264,34 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="demand-curves-theory" class="slide level2">
 <h2>Demand Curves: Theory</h2>
 <ul>
-<li><p>Useful theoretical concept that summarizes market response to price</p>
-<pre><code>  - Why is it useful? </code></pre></li>
-<li><p>Often taught with perfect competition</p>
-<pre><code>  - Typically assumes stable, competitive, frictionless markets w free entry, full information, no differentiation 
-  - Model predicts zero LR economic profits
-  - Any evidence?</code></pre></li>
-<li><p>Also, taught with monopoly i.e.&nbsp;market power</p>
-<pre><code>  - What is market power? How would we measure it?</code></pre></li>
+<li>Useful theoretical concept that summarizes market response to price
+<ul>
+<li>Why is it useful?</li>
+</ul></li>
+<li>Often taught with perfect competition
+<ul>
+<li>Typically assumes stable, competitive, frictionless markets w free entry, full information, no differentiation</li>
+<li>Model predicts zero LR economic profits</li>
+<li>Any evidence?</li>
+</ul></li>
+<li>Also, taught with monopoly i.e.&nbsp;market power
+<ul>
+<li>What is market power? How would we measure it?</li>
+</ul></li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Demand curves are useful because they enable counterfactual predictions — “what would happen to sales if we changed the price?” Perfect competition assumes no differentiation, but most real markets have some. What markets come closest to perfect competition?</p>
+</div>
+</div>
+</div>
 <aside class="notes">
 <ul>
 <li>why useful? it lets you make counterfactual predictions. (what predictions?)</li>
 <li>No differentiation? What markets have no differentiation? Commodities… maybe? Stock market?</li>
 <li>what does competitive mean exactly? how do we measure it?</li>
-<li>intellectual property rights, company capabilities, consumer information sets all limit direct competition in most markets</li>
+<li>intellectual property rights, company capabilities, consumer information sets limit direct competition in most markets</li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -432,18 +305,31 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="demand-curves-challenges" class="slide level2">
+<section id="demand-curves-challenges" class="slide level2 smaller">
 <h2>Demand Curves: Challenges</h2>
 <ul>
-<li><p>Idealized demand curves can be hard to estimate (why?)</p></li>
-<li><p>Where do product attributes come in?</p>
-<pre><code>  - What if we don't observe all attributes? "Price endogeneity"</code></pre></li>
-<li><p>Many things can predict demand</p>
-<pre><code>  - preferences, information, advertising, quality, match value, complements, substitutes, interoperability, competitor prices, switching costs, entry, taxes and other policies, retail distribution, nature of equilibrium, stockpiling, consumer income, ...</code></pre></li>
-<li><p>What do we need to estimate Demand?</p>
-<pre><code>  - Observable, exogenous variation in costs or price
-  - Otherwise, "price endogeneity" will bias demand estimates</code></pre></li>
+<li>Idealized demand curves can be hard to estimate (why?)</li>
+<li>Where do product attributes come in?
+<ul>
+<li>What if we don’t observe all attributes? “Price endogeneity”</li>
+</ul></li>
+<li>Many things can predict demand
+<ul>
+<li>preferences, information, advertising, quality, match value, complements, substitutes, interoperability, competitor prices, switching costs, entry, taxes and other policies, retail distribution, nature of equilibrium, stockpiling, consumer income, …</li>
+</ul></li>
+<li>What do we need to estimate Demand?
+<ul>
+<li>Observable, exogenous variation in costs or price</li>
+<li>Otherwise, “price endogeneity” will bias demand estimates</li>
+</ul></li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Estimating demand is harder than it sounds — the list of factors that affect demand is long, and many are unobservable. The key insight: you need exogenous variation in price to separate the causal effect from mere correlation. What does “exogenous” mean here?</p>
+</div>
+</div>
+</div>
 <aside class="notes">
 <ul>
 <li>We’re going to need a model and exogenous price variation to estimate demand</li>
@@ -463,16 +349,29 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="how-firms-learn-demand" class="slide level2">
 <h2>How firms learn demand</h2>
 <ul>
-<li><p>Market research</p>
-<pre><code>- Conjoint analysis, customer interviews, simulated purchase environments </code></pre></li>
-<li><p>Expert judgments, e.g.&nbsp;salesforce input</p></li>
-<li><p>Cost-driven price adjustments</p>
-<pre><code>  - Often one-sided</code></pre></li>
-<li><p>Demand modeling with archival data</p></li>
-<li><p>Price experiments</p>
-<pre><code>  - Market tests, digital experiments, bandits, digital coupons</code></pre></li>
-<li><p>Best practice: triangulation</p></li>
+<li>Market research
+<ul>
+<li>Conjoint analysis, customer interviews, simulated purchase environments</li>
+</ul></li>
+<li>Expert judgments, e.g.&nbsp;salesforce input</li>
+<li>Cost-driven price adjustments
+<ul>
+<li>Often one-sided</li>
+</ul></li>
+<li>Demand modeling with archival data</li>
+<li>Price experiments
+<ul>
+<li>Market tests, digital experiments, bandits, digital coupons</li>
+</ul></li>
+<li>Best practice: triangulation</li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Firms use many approaches to learn demand, but best practice is triangulation — combining multiple methods. Why might relying on a single approach be risky?</p>
+</div>
+</div>
+</div>
 <aside class="notes">
 <ul>
 <li>In many markets, costs can drive prices up, but they seldom drive them down</li>
@@ -493,40 +392,67 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="price-experiments" class="slide level2">
 <h2>Price Experiments</h2>
 <ul>
-<li><p>Yes-and: Price experiments create exogenous price variation, which works synergistically with demand modeling. But…</p>
+<li>Yes-and: Price experiments create exogenous price variation, which works synergistically with demand modeling. But…
 <ul>
-<li><p>Competitors &amp; consumers can observe price variation</p></li>
-<li><p>May change purchase timing, stockpiling or <br>reference prices</p></li>
-<li><p>Competitors, distribution partners or suppliers may react</p></li>
+<li>Competitors &amp; consumers can observe price variation</li>
+<li>May change purchase timing, stockpiling or <br>reference prices</li>
+<li>Competitors, distribution partners or suppliers may react</li>
 </ul></li>
-<li><p>Hence, price experiments can change future demand</p>
+<li>Hence, price experiments can change future demand
 <ul>
 <li>Price experiments without demand modeling leaves money on the table</li>
 </ul></li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Price experiments create the exogenous variation needed for causal inference, but they’re not free — competitors can observe your experiments, and customers may change behavior. Why would combining experiments with demand modeling be better than either alone?</p>
+</div>
+</div>
+</div>
 </section>
 <section id="demand-modeling-pros" class="slide level2">
 <h2>Demand Modeling: Pros</h2>
 <ul>
-<li><p>Relatively inexpensive for large organizations</p></li>
-<li><p>Fully compatible with price experiments</p>
-<pre><code>  - Either/or framing would be a false dichotomy: "Yes-and"</code></pre></li>
-<li><p>Confidential, fast</p></li>
-<li><p>Depends on real consumer choices, i.e.&nbsp;revealed preferences</p>
-<pre><code>  - As opposed to stated preferences</code></pre></li>
-<li><p>Enables demand predictions at counterfactual prices</p></li>
-<li><p>Enables predictions of competitor pricing response</p></li>
-<li><p>Prediction accuracy: evaluable after price changes</p></li>
+<li>Relatively inexpensive for large organizations</li>
+<li>Fully compatible with price experiments
+<ul>
+<li>Either/or framing would be a false dichotomy: “Yes-and”</li>
+</ul></li>
+<li>Confidential, fast</li>
+<li>Depends on real consumer choices, i.e.&nbsp;revealed preferences
+<ul>
+<li>As opposed to stated preferences</li>
+</ul></li>
+<li>Enables demand predictions at counterfactual prices</li>
+<li>Enables predictions of competitor pricing response</li>
+<li>Prediction accuracy: evaluable after price changes</li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Demand modeling uses real consumer choices (revealed preferences) rather than survey responses (stated preferences). It’s also confidential and fast compared to running market experiments. What’s the difference between revealed and stated preferences, and why does it matter?</p>
+</div>
+</div>
+</div>
 </section>
 <section id="demand-modeling-cons" class="slide level2">
 <h2>Demand Modeling: Cons</h2>
 <ul>
-<li><p>Requires data, exogenous price variation, time, effort, training, commitment, trust, organizational buy-in</p></li>
-<li><p>Always subject to untestable modeling assumptions</p></li>
-<li><p>Requires the near future to resemble the recent past</p>
-<pre><code>    - To be fair, all predictive analytic techniques require these 3</code></pre></li>
+<li>Requires data, exogenous price variation, time, effort, training, commitment, trust, organizational buy-in</li>
+<li>Always subject to untestable modeling assumptions</li>
+<li>Requires the near future to resemble the recent past
+<ul>
+<li>To be fair, all predictive analytic techniques require these 3</li>
+</ul></li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Having data is not enough — you also need variation in price. If price never changed, you couldn’t estimate demand. Also, your demand model assumes the near future will resemble the recent past. When might this assumption fail most dramatically?</p>
+</div>
+</div>
+</div>
 <aside class="notes">
 <ul>
 <li>Data and variation are distinct; e.g.&nbsp;if price never changed, good luck estimating demand</li>
@@ -551,16 +477,16 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="do-demand-models-work" class="title-slide slide level1 smaller center">
 <h1>Do Demand Models Work?</h1>
 <ul>
-<li><p>Evidence is supportive, but not thick</p>
-<pre><code>- Informally, I know several people who maintain demand models in large orgs
-- Formal evidence requires researchers and firm to collaboratively (a) estimate demand, (b) act on demand estimates, (c) observe how actions affect outcomes, &amp; (d) report the results publicly. Hard to do &amp; incentives conflict
-- Demand modeling can also go badly, e.g. due to price endogeneity</code></pre>
+<li>Evidence is supportive, but not thick
 <ul>
-<li><p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1474462" target="_blank">Misra &amp; Nair (2011)</a> : B2B sales &amp; salesforce compensation</p></li>
-<li><p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2399676" target="_blank">Nair et al.&nbsp;(2017)</a> : Casino loyalty rewards</p></li>
-<li><p><a href="https://economics.mit.edu/research/publications/how-well-do-structural-demand-models-work-counterfactual-predictions-school" target="_blank">Pathak and Shi (2021)</a> : School choice</p></li>
-<li><p><a href="https://drive.google.com/file/d/1Jsr9BvPI4IKrHnr6O_pNBKF_gotCxWFH/view?usp=sharing" target="_blank">Dube and Misra (2023)</a> : ZipRecruiter ad pricing</p></li>
-<li><p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4293532" target="_blank">Ko et al.&nbsp;(2024)</a> : E-Commerce apparel promotions</p></li>
+<li>Informally, I know several people who maintain demand models in large orgs</li>
+<li>Formal evidence requires researchers and firm to collaboratively (a) estimate demand, (b) act on demand estimates, (c) observe how actions affect outcomes, &amp; (d) report the results publicly. Hard to do &amp; incentives conflict</li>
+<li>Demand modeling can also go badly, e.g.&nbsp;due to price endogeneity</li>
+<li><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1474462" target="_blank">Misra &amp; Nair (2011)</a> : B2B sales &amp; salesforce compensation</li>
+<li><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2399676" target="_blank">Nair et al.&nbsp;(2017)</a> : Casino loyalty rewards</li>
+<li><a href="https://economics.mit.edu/research/publications/how-well-do-structural-demand-models-work-counterfactual-predictions-school" target="_blank">Pathak and Shi (2021)</a> : School choice</li>
+<li><a href="https://drive.google.com/file/d/1Jsr9BvPI4IKrHnr6O_pNBKF_gotCxWFH/view?usp=sharing" target="_blank">Dube and Misra (2023)</a> : ZipRecruiter ad pricing</li>
+<li><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4293532" target="_blank">Ko et al.&nbsp;(2024)</a> : E-Commerce apparel promotions</li>
 </ul></li>
 </ul>
 </section>
@@ -580,8 +506,15 @@ Kenneth C. Wilbur and Dan Yavorsky
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/mcfadden2000t1.png" class="quarto-figure quarto-figure-center" style="width:9in"></p>
+<p><img data-src="images/mcfadden2000t1.png" class="quarto-figure quarto-figure-center" height="300"></p>
 </figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: McFadden used MNL to predict BART ridership before it launched — and his predictions closely matched actual ridership. This was a major early validation for the model. Why did survey-based predictions overestimate BART ridership compared to the model-based approach?</p>
+</div>
+</div>
 </div>
 <aside class="notes">
 <ul>
@@ -608,8 +541,8 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="multinomial-logit-mnl-1" class="slide level2 scrollable smaller">
 <h2>Multinomial Logit (MNL)</h2>
 <ul>
-<li><p>Let <span class="math inline">\(i\)</span> index consumers, <span class="math inline">\(j=1,...,J\)</span> products, and <span class="math inline">\(t\)</span> index choice occasions</p></li>
-<li><p>Assume each <span class="math inline">\(i\)</span> gets indirect utility <span class="math inline">\(u_{ijt}\)</span> from product <span class="math inline">\(j\)</span> in market <span class="math inline">\(t\)</span>:</p></li>
+<li>Let <span class="math inline">\(i\)</span> index consumers, <span class="math inline">\(j=1,...,J\)</span> products, and <span class="math inline">\(t\)</span> index choice occasions</li>
+<li>Assume each <span class="math inline">\(i\)</span> gets indirect utility <span class="math inline">\(u_{ijt}\)</span> from product <span class="math inline">\(j\)</span> in market <span class="math inline">\(t\)</span>:</li>
 </ul>
 <p><span class="math display">\[u_{ijt}=x_{jt}\beta-\alpha p_{jt}+\epsilon_{ijt}\]</span></p>
 <ul>
@@ -620,6 +553,13 @@ Kenneth C. Wilbur and Dan Yavorsky
 <ul>
 <li>Estimating <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> enables us to predict <em>every product’s quantity response</em> to a change in <em>any product’s attributes</em> <span class="math inline">\(x_{jt}\)</span> or price <span class="math inline">\(p_{jt}\)</span></li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: The key result: market share is a function of all products’ attributes and prices. Estimating <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> lets you predict how any product’s sales would change if any product’s price or attributes changed. Why is this so powerful for a firm?</p>
+</div>
+</div>
+</div>
 <aside class="notes">
 <ul>
 <li>AKA multinomial logistic regression</li>
@@ -651,6 +591,13 @@ Kenneth C. Wilbur and Dan Yavorsky
 <ul>
 <li>Similar exercise applies to individual-specific intercepts <span class="math inline">\(\gamma_i\)</span>, or individual-time interactions <span class="math inline">\(\gamma_{it}\)</span>. Only differences across products affect predicted market shares</li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Any factor that affects all products equally — like overall category popularity or individual taste for the category — cancels out of market shares. Only differences across products matter for predicting which product a consumer chooses. Why does this simplification make the model more practical?</p>
+</div>
+</div>
+</div>
 <aside class="notes">
 <ul>
 <li>Hence any factor that doesn’t vary across products will drop out of the model</li>
@@ -684,6 +631,13 @@ Kenneth C. Wilbur and Dan Yavorsky
 <ul>
 <li>We use the <span class="math inline">\((J-1)T\)</span> <em>differences</em> in market shares to estimate demand parameters</li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: By normalizing one product’s utility to zero (often the “outside option” of not purchasing), we can transform the model into something that looks like a regression equation. This is the key to making MNL estimable with standard tools.</p>
+</div>
+</div>
+</div>
 <aside class="notes">
 <ul>
 <li>Often, we normalize the non-purchase option which has no attributes, and call it the “outside option”</li>
@@ -708,32 +662,48 @@ Kenneth C. Wilbur and Dan Yavorsky
 </ol>
 <p><span class="math display">\[\sum_{\forall i,j,t} y_{ijt}\ln s_{jt}\]</span></p>
 <ol start="2" type="1">
-<li>Method of Moments: Choose <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> to solve some vector of “moments,” i.e.&nbsp;interactions between exogenous observables <span class="math inline">\(z\)</span> and error terms, e.g.&nbsp;</li>
+<li>Method of Moments: Choose <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> to solve some vector of “moments,” i.e.&nbsp;interactions between exogenous observables <span class="math inline">\(z\)</span> and error terms, e.g.</li>
 </ol>
 <p><span class="math display">\[ \sum_{\forall j,t}z_{jt} (\frac{\sum_{\forall i}y_{ijt}}{N_t} - s_{jt})=0\]</span></p>
 <ol start="3" type="1">
 <li>Linearize the model, choose parameters to minimize the sum of square errors</li>
 </ol>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Three estimation approaches exist: maximum likelihood (most common), method of moments, and least squares on the linearized model. Each makes different tradeoffs in assumptions and computational requirements.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="mnl-goodness-of-fit-statistics" class="slide level2 smaller">
 <h2>MNL Goodness-of-fit Statistics</h2>
 <ul>
-<li><p>Discrete choice models predict <em>choice probabilities</em> rather than <em>choices</em>, because utility is always unobserved; hence nonstandard fit statistics</p></li>
-<li><p>Predicted outcomes are inherently stochastic, so limited predictive ability</p></li>
+<li>Discrete choice models predict <em>choice probabilities</em> rather than <em>choices</em>, because utility is always unobserved; hence nonstandard fit statistics</li>
+<li>Predicted outcomes are inherently stochastic, so limited predictive ability</li>
 </ul>
 <ol type="1">
 <li>Likelihood Ratio Test: (not R-sq)</li>
 </ol>
 <p><span class="math display">\[\rho=1-\frac{ln L(\hat\beta)}{ln L(0)}\]</span></p>
 <ul>
-<li><p>As <span class="math inline">\(L(\hat\beta)\to 1\)</span>, <span class="math inline">\(ln L(\hat\beta)\to 0\)</span>, <span class="math inline">\(\rho\to 1\)</span></p></li>
-<li><p>As <span class="math inline">\(ln L(\hat\beta)\to ln L(0)\)</span>, <span class="math inline">\(\rho\to 0\)</span></p>
-<pre><code>    -   Heuristic: 0.2-0.4 is pretty good</code></pre></li>
+<li>As <span class="math inline">\(L(\hat\beta)\to 1\)</span>, <span class="math inline">\(ln L(\hat\beta)\to 0\)</span>, <span class="math inline">\(\rho\to 1\)</span></li>
+<li>As <span class="math inline">\(ln L(\hat\beta)\to ln L(0)\)</span>, <span class="math inline">\(\rho\to 0\)</span>
+<ul>
+<li>Heuristic: 0.2-0.4 is pretty good</li>
+</ul></li>
 </ul>
 <ol start="2" type="1">
 <li><p>Hit Rate: % of individuals for whom most-probable choice was actually chosen</p></li>
 <li><p>R-sq using prediction errors at the <span class="math inline">\(jt\)</span> level</p></li>
 </ol>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Because MNL predicts probabilities rather than deterministic outcomes, standard R-squared doesn’t apply. A likelihood ratio <span class="math inline">\(\rho\)</span> between 0.2-0.4 is considered good — much lower than what you’d expect from a linear regression. Why is predictive ability inherently limited in discrete choice models?</p>
+</div>
+</div>
+</div>
 <aside class="notes">
 <ul>
 <li>#3 is appealing idea but based on fewer data points than estimation</li>
@@ -750,34 +720,60 @@ Kenneth C. Wilbur and Dan Yavorsky
           display:block!important;
       }</style></aside>
 </section>
-<section id="mnl-pros" class="slide level2">
+<section id="mnl-pros" class="slide level2 smaller">
 <h2>MNL Pros</h2>
 <ol type="1">
-<li><p>Microfounded, i.e.&nbsp;behavioral predictions are consistent with a clearly specified theory of consumer choice</p>
-<pre><code>   - Theory is utility maximization
-   - Economists widely believe that microfounded models are more generalizable than purely statistical models*</code></pre></li>
-<li><p>Extensible to accommodate preference heterogeneity</p>
-<pre><code>   - We'll cover 3 types of extensions in heterogeneous demand modeling</code></pre></li>
-<li><p>Likelihood function is globally concave in the parameters, ensuring fast and reliable estimation</p>
-<pre><code>   - Remember our local vs. global optimum discussion?        </code></pre></li>
+<li>Microfounded, i.e.&nbsp;behavioral predictions are consistent with a clearly specified theory of consumer choice
+<ul>
+<li>Theory is utility maximization</li>
+<li>Economists widely believe that microfounded models are more generalizable than purely statistical models*</li>
+</ul></li>
+<li>Extensible to accommodate preference heterogeneity
+<ul>
+<li>We’ll cover 3 types of extensions in heterogeneous demand modeling</li>
+</ul></li>
+<li>Likelihood function is globally concave in the parameters, ensuring fast and reliable estimation
+<ul>
+<li>Remember our local vs.&nbsp;global optimum discussion?</li>
+</ul></li>
 </ol>
-
-<aside><div>
-<p>*<a href="https://economics.mit.edu/sites/default/files/2023-11/Theory_Transfer.pdf" target="_blank">This paper</a> supports this belief</p>
-</div></aside></section>
-<section id="mnl-cons" class="slide level2">
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Microfoundation means the model’s predictions are consistent with a theory of how consumers actually make choices (utility maximization). Economists believe this makes predictions more generalizable to new situations. Do you find this argument convincing?</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p>*<a href="https://economics.mit.edu/sites/default/files/2023-11/Theory_Transfer.pdf" target="_blank">Andrews, Fudenberg, Lei, Liang, and Wu (2023)</a> supports this belief</p>
+</div>
+</section>
+<section id="mnl-cons" class="slide level2 smaller">
 <h2>MNL Cons</h2>
 <ol type="1">
-<li><p>Assuming <span class="math inline">\(\epsilon_{ijt}\sim\)</span><em>i.i.d.</em><span class="math inline">\(EV_1(0,1)\)</span> is convenient but unrealistic</p>
-<pre><code> - More likely, more similar products would experience more similar demand shocks
- - Alternatives exist but can be computationally expensive</code></pre></li>
-<li><p>Analyst selects the choice set <span class="math inline">\(j=1,...,J\)</span>, market size <span class="math inline">\(N_t\)</span>, attributes <span class="math inline">\(x_{jt}\)</span>, and price structure <span class="math inline">\(p_{jt}\)</span>.</p>
-<pre><code> - What's a j? What's a t? What's in x? How do we measure p? Who's in N?
- - "Tuning factors" or "Analyst degrees of freedom"</code></pre></li>
-<li><p>Market share derivatives depend on market shares alone (IIA; see Train Sec. 3.6)</p></li>
-<li><p>Price Endogeneity</p>
-<pre><code>   - Affects all demand models, not just MNL</code></pre></li>
+<li>Assuming <span class="math inline">\(\epsilon_{ijt}\sim\)</span><em>i.i.d.</em><span class="math inline">\(EV_1(0,1)\)</span> is convenient but unrealistic
+<ul>
+<li>More likely, more similar products would experience more similar demand shocks</li>
+<li>Alternatives exist but can be computationally expensive</li>
+</ul></li>
+<li>Analyst selects the choice set <span class="math inline">\(j=1,...,J\)</span>, market size <span class="math inline">\(N_t\)</span>, attributes <span class="math inline">\(x_{jt}\)</span>, and price structure <span class="math inline">\(p_{jt}\)</span>.
+<ul>
+<li>What’s a j? What’s a t? What’s in x? How do we measure p? Who’s in N?</li>
+<li>“Tuning factors” or “Analyst degrees of freedom”</li>
+</ul></li>
+<li>Market share derivatives depend on market shares alone (IIA; see Train Sec. 3.6)</li>
+<li>Price Endogeneity
+<ul>
+<li>Affects all demand models, not just MNL</li>
+</ul></li>
 </ol>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: The i.i.d. assumption means all “unexplained” taste shocks are independent — but in reality, similar products likely face correlated demand shocks. IIA (Independence of Irrelevant Alternatives) is a particularly well-known limitation. What practical problems could IIA cause for a firm trying to predict market shares?</p>
+</div>
+</div>
+</div>
 <aside class="notes">
 <ul>
 <li>Unobservables would likely be correlated across people, products and markets</li>
@@ -804,16 +800,30 @@ Kenneth C. Wilbur and Dan Yavorsky
 <li>Now suppose you painted the red buses blue and want to predict market shares in the new choice set: {Blue Bus, Car}</li>
 <li>MNL will predict Blue Bus and Car shares of 50%, not 67% and 33% (why?)</li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: The Red Bus/Blue Bus example illustrates IIA: MNL cannot capture that buses are closer substitutes for each other than for cars. Painting the red bus blue doesn’t change the underlying substitution patterns, but MNL treats all alternatives symmetrically. What real products might have this problem?</p>
+</div>
+</div>
+</div>
 </section>
 <section id="iia-remedies" class="slide level2">
 <h2>IIA: Remedies</h2>
 <p>IIA is testable &amp; usually rejected by data</p>
 <p>Common remedies:</p>
 <ol type="1">
-<li><p>Extend the model to impose structure on choice set, <br>e.g.&nbsp;Nested Logit or Ordered Logit</p></li>
-<li><p>Change <span class="math inline">\(\epsilon_{ijt}\sim\)</span><em>i.i.d.</em><span class="math inline">\(EV_1(0,1)\)</span>, e.g.&nbsp;Multivariate Probit with correlated errors</p></li>
-<li><p>Change model structure so IIA property does not obtain, e.g.&nbsp;heterogeneous logit</p></li>
+<li>Extend the model to impose structure on choice set, <br>e.g.&nbsp;Nested Logit or Ordered Logit</li>
+<li>Change <span class="math inline">\(\epsilon_{ijt}\sim\)</span><em>i.i.d.</em><span class="math inline">\(EV_1(0,1)\)</span>, e.g.&nbsp;Multivariate Probit with correlated errors</li>
+<li>Change model structure so IIA property does not obtain, e.g.&nbsp;heterogeneous logit</li>
 </ol>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: IIA is testable and usually rejected by data, but multiple remedies exist. The most common in marketing is the heterogeneous (mixed) logit, which we’ll cover later. Each remedy adds complexity — what tradeoffs might that involve?</p>
+</div>
+</div>
+</div>
 </section></section>
 <section>
 <section id="price-endogeneity-35-insane-explanations" class="title-slide slide level1 center">
@@ -827,10 +837,19 @@ Kenneth C. Wilbur and Dan Yavorsky
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/wright1928b.png" class="quarto-figure quarto-figure-center" style="width:13in"></p>
+<p><img data-src="images/wright1928b.png" class="quarto-figure quarto-figure-center" height="450"></p>
 </figure>
 </div>
-
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Wright’s key insight: to trace out a demand curve, you need factors that shift supply but not demand (and vice versa). Without such “instruments,” observed price and quantity reflect both curves simultaneously. Why can’t we just use price and quantity data alone?</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://drive.google.com/file/d/1PccpUSBpR23V2tdSQ8mUeccQ9-EBwPgL/view?usp=drive_link" target="_blank">Wright (1928)</a></p>
+</div>
 <aside class="notes">
 <p>Same guy that we opened with– on the very next page after introducing supply &amp; demand Wright gives the classic S&amp;D identification argument We need supply shifters to trace out the demand curve We need demand shifters to trace out the supply curve If we only have endogenous P&amp;Q, we cannot estimate either curve’s shifts, since both move frequently</p>
 <style type="text/css">
@@ -844,47 +863,76 @@ Kenneth C. Wilbur and Dan Yavorsky
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<aside><div>
-<p><a href="https://drive.google.com/file/d/1PccpUSBpR23V2tdSQ8mUeccQ9-EBwPgL/view?usp=drive_link" target="_blank">Wright (1928)</a></p>
-</div></aside></section>
-<section id="fundamental-issue" class="slide level2">
+</section>
+<section id="fundamental-issue" class="slide level2 smaller">
 <h2>2. Fundamental issue</h2>
 <ul>
-<li><p>Demand model is a causal price-quantity relationship <br> Yet observed prices may correlate with other demand and supply determinants<br> Exogenous price variation req’d to distinguish correlation from causation (“identification”)</p>
-<pre><code>- Price endogeneity is a "data problem" not a "model problem"
-- Can be hard to verify empirically--needed data is missing--but widely believed important
-- Implies wrong demand slope, biased demand predictions</code></pre></li>
-<li><p>Sign of bias depends on unobserved correlation</p>
-<pre><code>- If corr(price,unobs)&lt;0 --&gt; estimated demand is "too flat" or too elastic
-- If corr(price,unobs)&gt;0 --&gt; "too steep" or too inelastic
-- Affects all demand models, not just MNL</code></pre></li>
+<li>Demand model is a causal price-quantity relationship <br> Yet observed prices may correlate with other demand and supply determinants<br> Exogenous price variation req’d to distinguish correlation from causation (“identification”)
+<ul>
+<li>Price endogeneity is a “data problem” not a “model problem”</li>
+<li>Can be hard to verify empirically–needed data is missing–but widely believed important</li>
+<li>Implies wrong demand slope, biased demand predictions</li>
+</ul></li>
+<li>Sign of bias depends on unobserved correlation
+<ul>
+<li>If corr(price,unobs)&lt;0 –&gt; estimated demand is “too flat” or too elastic</li>
+<li>If corr(price,unobs)&gt;0 –&gt; “too steep” or too inelastic</li>
+<li>Affects all demand models, not just MNL</li>
+</ul></li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Price endogeneity is a data problem, not a model problem — it affects any demand model, not just MNL. The sign of the bias depends on the unobserved correlation: positive correlation makes demand look too inelastic, negative makes it look too elastic. Which direction do you think is more common in practice?</p>
+</div>
+</div>
+</div>
 </section>
 <section id="e-commerce-example" class="slide level2">
 <h2>3. E-Commerce Example</h2>
 <ul>
-<li><p>Imagine an unobserved demand shock, such as a viral Instagram post, increases Amazon product awareness and sales</p></li>
-<li><p>Sales spike, inventory drops, automated pricing system increases price to monetize remaining inventory</p></li>
-<li><p>What do data show? Corr(sales, price) &gt; 0 !!</p>
-<pre><code>  - Common enough to be unsurprising when this happens</code></pre></li>
+<li>Imagine an unobserved demand shock, such as a viral Instagram post, increases Amazon product awareness and sales</li>
+<li>Sales spike, inventory drops, automated pricing system increases price to monetize remaining inventory</li>
+<li>What do data show? Corr(sales, price) &gt; 0 !!
+<ul>
+<li>Common enough to be unsurprising when this happens</li>
+</ul></li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: This is a concrete example of positive price-quantity correlation caused by an unobserved demand shock. The viral post is the omitted variable. If you naively estimated demand from this data, what would your demand curve look like?</p>
+</div>
+</div>
+</div>
 </section>
 <section id="an-analogy" class="slide level2">
 <h2>4. An Analogy</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
 <ul>
-<li><p>Foot size data significantly predict reading comprehension among children!</p>
-<pre><code>  - In fact, age causes both foot size 
-  - And age causes reading comprehension 
-  - Without age, you cannot accurately estimate the causal relationship between foot size and reading comprehension. You can only measure the correlation</code></pre></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/footsize.png" class="quarto-figure quarto-figure-center" style="width:1.3in"></p>
-</figure>
-</div>
+<li>Foot size data significantly predict reading comprehension among children!
 <ul>
+<li>In fact, age causes both foot size</li>
+<li>And age causes reading comprehension</li>
+<li>Without age, you cannot accurately estimate the causal relationship between foot size and reading comprehension. You can only measure the correlation</li>
+</ul></li>
 <li>Also, crib purchases significantly predict childbirth!</li>
 </ul>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/footsize.png" class="quarto-figure quarto-figure-center" height="300"></p>
+</figure>
+</div>
+</div></div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Age is the omitted variable that causes both foot size and reading ability. Without controlling for age, you’d wrongly conclude that big feet cause reading skill. Price endogeneity works the same way — an omitted variable drives both price and quantity.</p>
+</div>
+</div>
+</div>
 <aside class="notes">
 <p>People with tiny feet cannot read. Like, at all</p>
 <style type="text/css">
@@ -902,45 +950,74 @@ Kenneth C. Wilbur and Dan Yavorsky
 <section id="sports-example" class="slide level2">
 <h2>5. Sports example</h2>
 <ul>
-<li><p>You have data on Lakers ticket prices and sales before and after the Luka trade</p></li>
-<li><p>Prices and sales are both higher after the trade</p></li>
-<li><p>Does this mean that higher price caused higher sales?</p></li>
+<li>You have data on Lakers ticket prices and sales before and after the Luka trade</li>
+<li>Prices and sales are both higher after the trade</li>
+<li>Does this mean that higher price caused higher sales?</li>
 </ul>
-<div class="quarto-figure quarto-figure-right">
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/luka.webp" class="quarto-figure quarto-figure-right" style="width:4in"></p>
+<p><img data-src="images/luka.webp" class="quarto-figure quarto-figure-center" height="250"></p>
 </figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: The Luka trade shifted demand — more fans want to see the Lakers now. Prices and attendance both rose, but the higher price didn’t cause the higher attendance. What’s the omitted variable here?</p>
+</div>
+</div>
 </div>
 </section>
 <section id="example-digital-systems" class="slide level2">
 <h2>6. Example: Digital systems</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
 <ul>
-<li><p>Uber surge pricing: <br> Positive Demand shocks increase price<br> Negative Supply shocks increase price</p></li>
-<li><p>System adjusts the price without knowing the causes</p>
-<pre><code>  Many digital inventory-based pricing systems are similar</code></pre></li>
+<li>Uber surge pricing: <br> Positive Demand shocks increase price<br> Negative Supply shocks increase price</li>
+<li>System adjusts the price without knowing the causes
+<ul>
+<li>Many digital inventory-based pricing systems are similar</li>
+</ul></li>
 </ul>
-<div class="quarto-figure quarto-figure-right">
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/surge.webp" class="quarto-figure quarto-figure-right" style="width:2.6in"></p>
+<p><img data-src="images/surge.webp" class="quarto-figure quarto-figure-center" height="300"></p>
 </figure>
 </div>
-
-<aside><div>
-<p><a href="https://anubpattnaik.medium.com/how-does-uber-do-price-surge-using-location-data-cfee03415022" target="_blank">Read more</a></p>
-</div></aside></section>
+</div></div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Uber’s surge pricing algorithm responds to both demand shocks (everyone wants a ride) and supply shocks (fewer drivers available). The system raises price without knowing the cause, which means observed price-quantity data mixes both curves.</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://anubpattnaik.medium.com/how-does-uber-do-price-surge-using-location-data-cfee03415022" target="_blank">Pattnaik</a></p>
+</div>
+</section>
 <section id="shrinkflation" class="slide level2">
 <h2>7. Shrinkflation</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/shrinkflation.jpg" class="quarto-figure quarto-figure-center" style="width:6in"></p>
+<p><img data-src="images/shrinkflation.jpg" class="quarto-figure quarto-figure-center" height="280"></p>
 </figure>
 </div>
-<pre><code>  Shrink the package, maintain the price
-  Also, "Skimpflation" : reduce ingredient intensity</code></pre>
-
-<aside><div>
-<p>More examples <a href="https://archive.ph/uYt1j" target="_blank">here</a> and <a href="https://old.reddit.com/r/shrinkflation/top/?sort=top&amp;t=all%7Btarget=%22_blank%22%7D">here</a><br></p>
-</div></aside></section>
+<ul>
+<li>Shrink the package, maintain the price</li>
+<li>Also, “Skimpflation” : reduce ingredient intensity</li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Shrinkflation is a hidden price increase — the nominal price stays constant but the per-unit price rises. If your demand model only tracks the sticker price, it misses this variation entirely. How would this affect your demand estimates?</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://archive.ph/uYt1j" target="_blank">Archived examples</a> | <a href="https://old.reddit.com/r/shrinkflation/top/?sort=top&amp;t=all" target="_blank">r/shrinkflation</a></p>
+</div>
+</section>
 <section id="multiple-determinants" class="slide level2">
 <h2>8. Multiple determinants</h2>
 <ul>
@@ -948,46 +1025,82 @@ Kenneth C. Wilbur and Dan Yavorsky
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/multipledeterminants.png" class="quarto-figure quarto-figure-center" style="width:7.5in"></p>
+<p><img data-src="images/multipledeterminants.png" class="quarto-figure quarto-figure-center" height="350"></p>
 </figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Price is just one of many factors that determine quantity demanded. If any of these other factors correlate with price and are unobserved, your price coefficient will be biased. Which of these factors are hardest to measure?</p>
+</div>
+</div>
 </div>
 </section>
 <section id="oft-unobserved-price-correlates" class="slide level2">
 <h2>9. Oft-unobserved price correlates</h2>
 <ol type="1">
-<li><p>Changes in consumer preferences, income, market size</p></li>
-<li><p>Retail distribution, prominence, stocking</p></li>
-<li><p>Digital marketing, including search ads, display ads, affiliates, influencers, coupons</p></li>
-<li><p>Competitor prices, preference shocks, retail, dig mktg</p></li>
+<li>Changes in consumer preferences, income, market size</li>
+<li>Retail distribution, prominence, stocking</li>
+<li>Digital marketing, including search ads, display ads, affiliates, influencers, coupons</li>
+<li>Competitor prices, preference shocks, retail, dig mktg</li>
 </ol>
 <p>Any may correlate with equilibrium prices, leading to endogeneity biases if left uncontrolled</p>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Each of these four categories can independently create endogeneity bias. Consumer preferences, retail distribution, digital marketing, and competitor actions all can correlate with price and affect demand. How many of these can a typical firm observe in its data?</p>
+</div>
+</div>
+</div>
 </section>
-<section id="general-model-interpretation" class="slide level2">
+<section id="general-model-interpretation" class="slide level2 smaller">
 <h2>10. General model interpretation</h2>
 <ul>
-<li><p>Posit a model <span class="math inline">\(q=f(x,p,e)\)</span> for <span class="math inline">\(p=\)</span>price, <span class="math inline">\(q=\)</span>quantity, <br><span class="math inline">\(e=\)</span>error reflecting all relevant unobservables; estimate <span class="math inline">\(\frac{dq}{dp}\)</span></p></li>
-<li><p>What does <span class="math inline">\(\frac{dq}{dp}\)</span> mean exactly? 2 possibilities:</p>
-<pre><code>1. Correlation: Empirical tendency of q to change with p, holding other observable attributes x constant
-2. Causality: Causal effect of 1-unit change of p on q
-1 is descriptive analytics; 2 is diagnostic analytics</code></pre></li>
-<li><p>Standard econometric assumptions only admit #2 when <span class="math inline">\(corr(p,e)==0\)</span> (“exogenous”)</p>
-<pre><code>Hence, what the estimates can teach us depends on what we cannot see
-This is a tricky situation: When can we trust our demand model?
-Answer 1: When we have exogenous price variation, hence corr(p,e)==0; OR
-Answer 2: When we observe all demand drivers; but this is difficult to verify</code></pre></li>
+<li>Posit a model <span class="math inline">\(q=f(x,p,e)\)</span> for <span class="math inline">\(p=\)</span>price, <span class="math inline">\(q=\)</span>quantity, <br><span class="math inline">\(e=\)</span>error reflecting all relevant unobservables; estimate <span class="math inline">\(\frac{dq}{dp}\)</span></li>
+<li>What does <span class="math inline">\(\frac{dq}{dp}\)</span> mean exactly? 2 possibilities:
+<ol type="1">
+<li>Correlation: Empirical tendency of q to change with p, holding other observable attributes x constant</li>
+<li>Causality: Causal effect of 1-unit change of p on q</li>
+</ol>
+<ul>
+<li>1 is descriptive analytics; 2 is diagnostic analytics</li>
+</ul></li>
+<li>Standard econometric assumptions only admit #2 when <span class="math inline">\(corr(p,e)==0\)</span> (“exogenous”)
+<ul>
+<li>Hence, what the estimates can teach us depends on what we cannot see</li>
+<li>This is a tricky situation: When can we trust our demand model?</li>
+<li>Answer 1: When we have exogenous price variation, hence corr(p,e)==0; OR</li>
+<li>Answer 2: When we observe all demand drivers; but this is difficult to verify</li>
+</ul></li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: The distinction between correlation and causation is the core issue. Without exogenous price variation, your demand estimate is descriptive (what tends to happen) rather than causal (what would happen if you changed the price). When would the distinction matter most for a firm’s decisions?</p>
+</div>
+</div>
+</div>
 </section>
-<section id="a.-simulation" class="slide level2">
+<section id="a.-simulation" class="slide level2 smaller">
 <h2>11a. Simulation</h2>
 <ul>
-<li><p>Suppose 2 firms, correlated cost shocks and correlated prices, MNL demand</p></li>
-<li><p>Suppose true demand is <span class="math inline">\(q_1=f(p_1, p_2, \epsilon_1, \epsilon_2)\)</span></p></li>
-<li><p>Suppose we use OLS to estimate <span class="math inline">\(q_1=\alpha + p_1\beta + \epsilon\)</span></p></li>
-<li><p>We mistakenly believe that <span class="math inline">\(corr(p,\epsilon)==0\)</span></p>
-<pre><code>    Incorrect: corr(p_1,p_2)&gt;0, and p2 omitted, hence p2 is in epsilon</code></pre></li>
-<li><p><span class="math inline">\(\hat{\beta}\)</span> is <em>biased</em> to fit the model’s assumption that <span class="math inline">\(\sum p_1\epsilon=0\)</span></p></li>
-<li><p>Wrong <span class="math inline">\(\hat{\beta}\)</span> means wrong demand curve slope<br> …implies wrong demand predictions in response to price<br> …recommended price will be wrong, may reduce profit</p></li>
+<li>Suppose 2 firms, correlated cost shocks and correlated prices, MNL demand</li>
+<li>Suppose true demand is <span class="math inline">\(q_1=f(p_1, p_2, \epsilon_1, \epsilon_2)\)</span></li>
+<li>Suppose we use OLS to estimate <span class="math inline">\(q_1=\alpha + p_1\beta + \epsilon\)</span></li>
+<li>We mistakenly believe that <span class="math inline">\(corr(p,\epsilon)==0\)</span>
+<ul>
+<li>Incorrect: corr(p_1,p_2)&gt;0, and p2 omitted, hence p2 is in epsilon</li>
+</ul></li>
+<li><span class="math inline">\(\hat{\beta}\)</span> is <em>biased</em> to fit the model’s assumption that <span class="math inline">\(\sum p_1\epsilon=0\)</span></li>
+<li>Wrong <span class="math inline">\(\hat{\beta}\)</span> means wrong demand curve slope<br> …implies wrong demand predictions in response to price<br> …recommended price will be wrong, may reduce profit</li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: This simulation shows how omitting a correlated variable (competitor price) biases the own-price coefficient. The naive model gets the wrong slope, which leads to wrong demand predictions and potentially profit-reducing pricing decisions.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="b.-simulated-data-generating-process" class="slide level2">
 <h2>11b. Simulated data generating process</h2>
@@ -1004,12 +1117,12 @@ intercept2  &lt;- 9               # baseline utility for product 2
 # (Outside option utility is normalized to 0)
 
 # Simulate cost shocks for the two firms (correlated)
-shock1 &lt;- rnorm(n_periods)                          
+shock1 &lt;- rnorm(n_periods)
 shock2 &lt;- rho * shock1 + (1 - rho) * rnorm(n_periods)
 
 # Derive prices from costs (higher cost shock -&gt; higher price)
 base_cost &lt;- 1
-price1 &lt;- 3 * base_cost + shock1  
+price1 &lt;- 3 * base_cost + shock1
 price2 &lt;- 3 * base_cost + shock2
 cor(price1, price2)
 
@@ -1020,7 +1133,7 @@ data &lt;- tibble(
   shock2 = shock2,
   price1 = price1,
   price2 = price2
-) %&gt;% 
+) %&gt;%
   mutate(
     # Indirect utilities for each product and outside option:
     U1 = intercept1 - alpha * price1,
@@ -1047,10 +1160,17 @@ summary(model_naive)
 
 model_full  &lt;- lm(Q1 ~ price1 + price2, data = data)
 summary(model_full)</code></pre>
-
-<aside><div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: This simulation generates data from a known MNL model with two firms whose cost shocks are correlated (<span class="math inline">\(\rho=0.9\)</span>). Because both firms’ prices respond to correlated shocks, omitting one firm’s price biases the other’s demand estimate.</p>
+</div>
+</div>
+</div>
+<div class="source-url">
 <p><a href="https://drive.google.com/file/d/12ymiHGmilJANlvBgrj5FZYWNasKTCWMu/view?usp=sharing" target="_blank">Source code</a></p>
-</div></aside></section>
+</div>
+</section>
 <section id="section-2" class="slide level2">
 <h2></h2>
 <pre><code>&gt; # 3. OLS regressions for Firm 1's demand
@@ -1061,18 +1181,18 @@ Call:
 lm(formula = Q1 ~ price1, data = data)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--1.31867 -0.34908 -0.00637  0.32919  1.19378 
+     Min       1Q   Median       3Q      Max
+-1.31867 -0.34908 -0.00637  0.32919  1.19378
 
 Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
+            Estimate Std. Error t value Pr(&gt;|t|)
 (Intercept) 51.78942    0.17660  293.26   &lt;2e-16 ***
 price1      -0.59737    0.05565  -10.73   &lt;2e-16 ***
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 Residual standard error: 0.5011 on 98 degrees of freedom
-Multiple R-squared:  0.5404,    Adjusted R-squared:  0.5357 
+Multiple R-squared:  0.5404,    Adjusted R-squared:  0.5357
 F-statistic: 115.2 on 1 and 98 DF,  p-value: &lt; 2.2e-16
 
 &gt; model_full  &lt;- lm(Q1 ~ price1 + price2, data = data)
@@ -1082,66 +1202,109 @@ Call:
 lm(formula = Q1 ~ price1 + price2, data = data)
 
 Residuals:
-       Min         1Q     Median         3Q        Max 
--4.177e-04 -6.103e-05  7.340e-06  7.187e-05  7.270e-04 
+       Min         1Q     Median         3Q        Max
+-4.177e-04 -6.103e-05  7.340e-06  7.187e-05  7.270e-04
 
 Coefficients:
-              Estimate Std. Error t value Pr(&gt;|t|)    
+              Estimate Std. Error t value Pr(&gt;|t|)
 (Intercept)  5.000e+01  7.456e-05  670528   &lt;2e-16 ***
 price1      -4.999e+00  1.321e-04  -37832   &lt;2e-16 ***
 price2       4.998e+00  1.489e-04   33571   &lt;2e-16 ***
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 Residual standard error: 0.0001478 on 97 degrees of freedom
-Multiple R-squared:      1, Adjusted R-squared:      1 
+Multiple R-squared:      1, Adjusted R-squared:      1
 F-statistic: 1.226e+09 on 2 and 97 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: The naive model (omitting price2) estimates a price coefficient of -0.60, far from the true value of -5.0. The full model (including price2) recovers the true parameters almost exactly. This demonstrates how severe omitted variable bias can be.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="section-3" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/demandbias2.png" class="quarto-figure quarto-figure-center" style="width:10in"></p>
+<p><img data-src="images/demandbias2.png" class="quarto-figure quarto-figure-center" height="450"></p>
 </figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: This visualization shows the estimated demand curves from both models. The naive model’s flatter slope means it underestimates how responsive demand is to price changes — leading to systematic overpricing.</p>
+</div>
+</div>
 </div>
 </section>
 <section id="section-4" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/demandbias2colors.png" class="quarto-figure quarto-figure-center" style="width:10in"></p>
+<p><img data-src="images/demandbias2colors.png" class="quarto-figure quarto-figure-center" height="450"></p>
 </figure>
 </div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Adding color reveals how the bias arises: observations with high competitor prices (warm colors) cluster at high own-prices and high own-quantities, creating an upward-pulling force on the estimated slope. The full model accounts for this.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="common-solutions" class="slide level2">
+<section id="common-solutions" class="slide level2 smaller">
 <h2>Common solutions</h2>
 <ul>
-<li><p>Experiments</p>
-<pre><code>Randomizing price eliminates confounding with unobservables
-Gold standard, but has drawbacks mentioned earlier</code></pre></li>
-<li><p>Quasi-experiments using archival data</p>
-<pre><code>1. Instrumental variables
-2. Regression discontinuities
-3. Natural experiments
-4. Difference-in-differences
-5. Synthetic controls
-6. Double/debiased machine learning
-These approaches are beyond the scope of this class</code></pre></li>
-<li><p>Model the price-setting process</p>
-<pre><code>  But without exogenous price variation, this is difficult to evaluate</code></pre></li>
-<li><p>Best practice: Triangulate</p></li>
+<li>Experiments
+<ul>
+<li>Randomizing price eliminates confounding with unobservables</li>
+<li>Gold standard, but has drawbacks mentioned earlier</li>
+</ul></li>
+<li>Quasi-experiments using archival data
+<ol type="1">
+<li>Instrumental variables</li>
+<li>Regression discontinuities</li>
+<li>Natural experiments</li>
+<li>Difference-in-differences</li>
+<li>Synthetic controls</li>
+<li>Double/debiased machine learning</li>
+</ol>
+<ul>
+<li>These approaches are beyond the scope of this class</li>
+</ul></li>
+<li>Model the price-setting process
+<ul>
+<li>But without exogenous price variation, this is difficult to evaluate</li>
+</ul></li>
+<li>Best practice: Triangulate</li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Experiments are the gold standard for creating exogenous price variation, but quasi-experimental methods can work with archival data when experiments aren’t feasible. Best practice is to triangulate across methods. Which approach seems most practical for a firm you might work for?</p>
+</div>
+</div>
+</div>
 </section>
 <section id="exogenous-smartphone-price-variation" class="slide level2">
 <h2>Exogenous smartphone price variation</h2>
 <ul>
-<li><p>Smartphone discounts are randomly assigned, <br> thus we have exogenous price variation to identify <span class="math inline">\(\beta\)</span></p>
-<pre><code>  - This class focuses on how we can use demand models
-
-  - Endogeneity remedies: Future metrics classes or graduate study
-
-  - Treat the topic as a demand modeling risk to be understood</code></pre></li>
+<li>Smartphone discounts are randomly assigned, <br> thus we have exogenous price variation to identify <span class="math inline">\(\beta\)</span>
+<ul>
+<li>This class focuses on how we can use demand models</li>
+<li>Endogeneity remedies: Future metrics classes or graduate study</li>
+<li>Treat the topic as a demand modeling risk to be understood</li>
+</ul></li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: In our class dataset, smartphone discounts are randomly assigned, which eliminates endogeneity concerns. This lets us focus on what we can do with demand models, treating endogeneity as a risk to understand rather than a problem to solve here.</p>
+</div>
+</div>
+</div>
 <aside class="notes">
 <ul>
 <li>When archival demand modeling disagrees with price experiments, endogeneity is a possible culprit, among other possibilities. It’s important, but we could easily spend the rest of the quarter on this topic, and we would rather spend the time on what we can do with models.</li>
@@ -1161,16 +1324,18 @@ These approaches are beyond the scope of this class</code></pre></li>
       }</style></aside>
 </section>
 <section id="section-5" class="slide level2">
-<h2><!--#Intermission--></h2>
+<h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/intermission.jpg" class="quarto-figure quarto-figure-center" style="width:6in"></p>
+<p><img data-src="images/intermission.jpg" class="quarto-figure quarto-figure-center" height="400"></p>
 </figure>
 </div>
 <ul>
-<li><p>Describe price endogeneity in your own words</p>
-<pre><code>  Generate a novel example related to price and demand
-  Explain how to resolve it</code></pre></li>
+<li>Describe price endogeneity in your own words
+<ul>
+<li>Generate a novel example related to price and demand</li>
+<li>Explain how to resolve it</li>
+</ul></li>
 </ul>
 </section>
 <section id="class-script" class="slide level2">
@@ -1181,39 +1346,47 @@ These approaches are beyond the scope of this class</code></pre></li>
 <li>Interpret parameters and SEs</li>
 <li>Assess model fit</li>
 </ul>
-<div class="quarto-figure quarto-figure-right">
-<figure>
-<p><img data-src="images/scroll.jpg" class="quarto-figure quarto-figure-right" style="width:2in"></p>
-</figure>
-</div>
+<p><img data-src="images/scroll.jpg" class="absolute" style="bottom: 20px; right: 20px; height: 100px; "></p>
 </section></section>
 <section>
 <section id="wrapping-up" class="title-slide slide level1 center">
 <h1>Wrapping up</h1>
 
 </section>
+<section id="competition" class="slide level2">
+<h2>Competition</h2>
+<ul>
+<li>SUGGESTION: Using the smartphone data from class, estimate a MNL demand model with at least two product attributes plus price</li>
+<li>Visualize the estimated demand curve for one product: predicted market share as a function of that product’s price, holding all else constant</li>
+<li>Interpret the price coefficient: what does it imply about a $1 price increase?</li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Your visualization should make a clear point and be easy to understand. Test it on your friends before you submit.</p>
+</div>
+</div>
+</div>
+<p><img data-src="images/competition.png" class="absolute" style="bottom: 20px; right: 20px; height: 120px; "></p>
+</section>
 <section id="recap" class="slide level2 smaller">
 <h2>Recap</h2>
 <ul>
 <li>Demand modeling enables data-driven sales predictions for counterfactual prices and attributes, facilitating profit maximization</li>
 <li>MNL is popular bc it is powerful, microfounded and tractable</li>
-<li>MNL has limitations (eg, IIA), but is extesnible by modeling heterogeneity</li>
+<li>MNL has limitations (eg, IIA), but is extensible by modeling heterogeneity</li>
 <li>Price endogeneity is a data problem that biases demand parameter estimates when price is correlated with unobserved supply or demand shifters. Usually resolved with exogenous price variation</li>
 </ul>
-<div class="quarto-figure quarto-figure-right">
-<figure>
-<p><img data-src="images/recap.png" class="quarto-figure quarto-figure-right" style="width:2in"></p>
-</figure>
-</div>
+<p><img data-src="images/recap.png" class="absolute" style="bottom: 20px; right: 20px; height: 100px; "></p>
 </section>
 <section id="going-further" class="slide level2 smaller">
 <h2>Going further</h2>
 <ul>
-<li><p><a href="https://medium.com/data-science/supply-demand-and-the-instrumental-variable-lessons-for-data-scientists-from-the-economists-21af225187cd" target="_blank">Supply, Demand, and the Instrumental Variable: Lessons for Data Scientists from the Economist’s Toolbox</a></p></li>
-<li><p><a href="https://drive.google.com/file/d/1vPl8oULQrZDQN8RlKolufLuwETLd-I3Z/view?usp=sharing" target="_blank">Causal inference in economics and marketing (Varian 2016)</a></p></li>
-<li><p><a href="https://drive.google.com/file/d/1KHzy6TkFxy5LArFv6cNpCMWEiLCO8tEl/view?usp=sharing" target="_blank">Discrete Choice Analysis with R</a></p></li>
-<li><p><a href="https://drive.google.com/file/d/1JsTh_ZYI1hU2TR93qmPYgsEuYIU4Upu_/view?usp=sharing" target="_blank">Microeconometric models of consumer demand by Dube (2018)</a></p></li>
-<li><p><a href="https://drive.google.com/file/d/1Js1sJgxxaA2Ph_4SuhcKxLS9FYqoZFm3/view?usp=sharing" target="_blank">Empirical Models of Demand and Supply in Differentiated Products Industries by Gandhi &amp; Nevo</a></p></li>
+<li><a href="https://medium.com/data-science/supply-demand-and-the-instrumental-variable-lessons-for-data-scientists-from-the-economists-21af225187cd" target="_blank">Supply, Demand, and the Instrumental Variable: Lessons for Data Scientists from the Economist’s Toolbox</a></li>
+<li><a href="https://drive.google.com/file/d/1vPl8oULQrZDQN8RlKolufLuwETLd-I3Z/view?usp=sharing" target="_blank">Causal inference in economics and marketing (Varian 2016)</a></li>
+<li><a href="https://drive.google.com/file/d/1KHzy6TkFxy5LArFv6cNpCMWEiLCO8tEl/view?usp=sharing" target="_blank">Discrete Choice Analysis with R</a></li>
+<li><a href="https://drive.google.com/file/d/1JsTh_ZYI1hU2TR93qmPYgsEuYIU4Upu_/view?usp=sharing" target="_blank">Microeconometric models of consumer demand by Dube (2018)</a></li>
+<li><a href="https://drive.google.com/file/d/1Js1sJgxxaA2Ph_4SuhcKxLS9FYqoZFm3/view?usp=sharing" target="_blank">Empirical Models of Demand and Supply in Differentiated Products Industries by Gandhi &amp; Nevo</a></li>
 </ul>
 <aside class="notes">
 <ul>
@@ -1232,19 +1405,15 @@ These approaches are beyond the scope of this class</code></pre></li>
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<div class="quarto-figure quarto-figure-right">
-<figure>
-<p><img data-src="images/takingoff.png" class="quarto-figure quarto-figure-right" style="width:2in"></p>
-</figure>
-</div>
-<div class="quarto-auto-generated-content">
+<p><img data-src="images/takingoff.png" class="absolute" style="bottom: 20px; right: 20px; height: 100px; "></p>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
 
 </div>
-</div>
-</section></section>
-    </div>
-  </div>
+</div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
   <script src="mgt100-03_files/libs/revealjs/dist/reveal.js"></script>
@@ -1253,6 +1422,7 @@ These approaches are beyond the scope of this class</code></pre></li>
   <script src="mgt100-03_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="mgt100-03_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="mgt100-03_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="mgt100-03_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="mgt100-03_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -1273,7 +1443,9 @@ These approaches are beyond the scope of this class</code></pre></li>
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":false},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1427,7 +1599,7 @@ These approaches are beyond the scope of this class</code></pre></li>
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1444,7 +1616,7 @@ These approaches are beyond the scope of this class</code></pre></li>
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           RevealNotes,
@@ -1454,40 +1626,55 @@ These approaches are beyond the scope of this class</code></pre></li>
       });
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
           }
+          return false;
         }
-        return false;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
           for (const childEl of codeEl.children) {
             if (isCodeAnnotation(childEl)) {
               childEl.remove();
@@ -1495,140 +1682,117 @@ These approaches are beyond the scope of this class</code></pre></li>
           }
           return codeEl.innerText;
         }
-      });
-      clipboard.on('success', function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
         }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
           }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      });
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
             }
           }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
           }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
           }
-        } else {
-          return undefined;
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
         }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
-              }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
     
 
 </body></html>

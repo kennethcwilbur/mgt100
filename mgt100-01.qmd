@@ -676,6 +676,38 @@ Y axes indicate the human-expert task-completion time (in hours) that a frontier
 [gjm (2025)](https://www.lesswrong.com/posts/ZEuDH2W3XdRaTwpjD/hyperbolic-model-fits-metr-capabilities-estimate-worse-than){target="_blank"}
 :::
 
+## How I use and don't use LLMs {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- I don't use LLMs to
+    - Communicate with humans I know<br>(don't want to offend)
+    - Read challenging material
+    - Ideate or scope projects
+    - Decide how to code what I want
+    - Verify code does what I asked
+    - Write first drafts of anything I care about<br>("Writing is thinking")
+:::
+
+::: {.column width="50%"}
+- I use Claude Code daily with `/effort max` to
+    - Suggest code plans and write code
+    - Check code output vs. prompts before I check it myself
+    - Troubleshoot and debug errors
+    - Copy edit and criticize my writing
+    - Complicated searches
+    - Summarize text and learn simple things
+:::
+
+::::
+
+- Ken's LLM Usage Principles: 1. Embrace discomfort, maintain and deepen my differentiating skillset. 2. Use LLMs to speed up low-level tasks with great training data. 3. Use domain knowledge to challenge LLM output, go to primary sources to verify key points. 4. Training data contain all perspectives found on the internet, the prompt determines which perspective is reflected in the response. 5. All complicated prompts contain unstated assumptions, don't ask the LLM to fill in the blanks. 6. Never use a free LLM.
+
+::: {.callout-note appearance="minimal" style="font-size: 1.15em;"}
+My use/non-use cases reflect my role as an academic researcher and educator. Your optimal use/non-use cases are likely to differ. Where has LLM use helped in your education? Has it ever limited your education? How can it help in MGT 100?
+:::
+
 ##
 
 ![](images/intermission.jpg){fig-align="center" height="400px"}

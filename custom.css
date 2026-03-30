@@ -3,7 +3,7 @@
 /* Print/PDF settings - force landscape, prevent slide splits */
 @media print {
   @page {
-    size: 11in 8.5in;
+    size: 10.9375in 7.2917in;
     margin: 0;
   }
 }

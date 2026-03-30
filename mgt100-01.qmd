@@ -659,6 +659,10 @@ You need to know these well if you interview for marketing roles. Generations of
 [Griffin & Co](https://griffinandco.marketing/blog/2018/10/25/the-5cs-of-marketing){target="_blank"} | [Coursera](https://www.coursera.org/articles/4-ps-of-marketing){target="_blank"} | [Wikipedia](https://en.wikipedia.org/wiki/Marketing){target="_blank"}
 :::
 
+##
+
+![](images/mgt100alum.png){fig-align="center" height="500px"}
+
 ## MGT 100 Principles {.smaller}
 
 - Survey the field broadly, pointers for deeper learning. [Why R?](https://www.datacamp.com/blog/top-15-data-scientist-skills){target="_blank"}

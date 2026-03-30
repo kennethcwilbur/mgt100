@@ -258,3 +258,4 @@ Available as edge-case tools when standard classes are insufficient:
 - **Re-render after changes**: Always re-render HTML/PDF and verify after non-trivial changes (layout, images, structural edits).
 - **Push workflow**: Use `scripts/push_to_github.sh` to push to GitHub. Never run git directly on Google Drive — the FUSE filesystem doesn't support it reliably.
 - **Two machines**: The user works from two machines. Machine-local setup (GitHub token, packages, permissions) must be repeated on each.
+- **PDF naming convention**: Slide deck PDFs must be named `mgt100-NN.pdf` (e.g., `mgt100-01.pdf`), matching the links in `index.html`. Never use `-slides` or other suffixes.

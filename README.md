@@ -108,3 +108,54 @@
 - All 36 callouts (including Competition) are marked `SUGGESTION:` and need user review
 - Competition slide assignment content is placeholder — needs actual assignment details
 - Competition slide needs to be added to all subsequent decks (05, 06, 07, 09, 10, conjoint)
+
+### 2026-03-29, ~1:30-4:15 PM PT
+
+**Task:** Instructor-guided revision of mgt100-03.qmd callouts, bullet text, and slide content
+
+**Changes performed:**
+
+1. **Slide 2**: Removed 4th paragraph from callout; merged 2nd and 3rd paragraphs
+2. **Slide 4**: Rewrote callout with Wright biographical context and discussion question; removed ", describing a causal relationship between P and Q" from source; increased image from 380px to 420px
+3. **Slide 5**: Renamed "Inverse Demand Curve" → "Demand Curve"; rewrote callout with MR/MC definitions and discussion questions
+4. **Slide 6**: Removed SUGGESTION prefix; removed "What is market power? How would we measure it?" sub-bullet
+5. **Slide 7**: Removed first bullet and first sub-bullet; added "brand image, consumer trust, certainty" to demand predictors list; rewrote callout about price endogeneity; removed `{.smaller}`
+6. **Slide 8**: Renamed "How firms learn demand" → "How firms usually learn demand"; removed SUGGESTION prefix; removed "Best practice: triangulation" bullet
+7. **Slide 9**: Added "input costs and competition" to bullet; rewrote callout with two discussion questions
+8. **Slide 10**: Removed SUGGESTION; changed "revealed and stated" → "revealed preferences and stated preferences"
+9. **Slide 11**: Changed "predictive analytic" → "predictive & prescriptive analytic"; rewrote callout; later removed "To be fair..." sub-bullet
+10. **Slide 12**: Added "Hayashida (2026) : Perishable food" to evidence list
+11. **New slide 13 (McFadden & BART)**: Added two-column slide with McFadden portrait and biographical bullets about BART research; callout about MNL introduction; later replaced photo with younger portrait from hetwebsite.net; changed "simulated" → "predicted"; added Ken Train note; moved after Multinomial Logit section header
+12. **Slide 15**: Deleted first two bullets (moved to McFadden slide); rewrote callout with BART prediction table discussion; added confidence interval question
+13. **Slides 16-17**: Deleted callouts from math slides
+14. **Slide 18**: Deleted callout
+15. **Slide 19**: Changed "lik." → "likelihood function"; deleted callout
+16. **Slide 20**: Deleted callout
+17. **Slide 21**: Changed "utility" → "income-constrained utility"; rewrote callout about MNL popularity and microfoundations
+18. **Slide 22**: Added "market share functions become harder to calculate"; rewrote callout with Box quote
+19. **Slide 23**: Expanded IIA example wording; added "product intercepts in utility"; removed "(why?)"; rewrote callout explaining equal utility inference
+20. **Slide 24**: Rewrote callout referencing heterogeneous demand modeling
+21. **Slide 26**: Rewrote callout with Wright S&D identification argument; added "100 years" note; reduced image to 380px with 0.75em callout font
+22. **Slide 27**: Changed "Demand model is" → "By definition, demand model is"; "may correlate" → "typically correlate"; rewrote callout comparing data science and econometrics; "less focused on action" → "more focused on inference than action"
+23. **Slide 28**: Deleted callout
+24. **Slide 29**: Consolidated sub-bullets; deleted callout
+25. **Slide 30**: Made Luka image smaller (180px) and absolute-positioned bottom-right; removed SUGGESTION
+26. **Slide 31**: Rewrote callout about automated pricing and endogeneity
+27. **Slide 32**: Rewrote callout about shrinkflation and price measurement; added Janssen and Kasinger (2025) source
+28. **Deleted slide 33** (Multiple determinants); renumbered 9→8, 10→9, 11a→10a, 11b→10b
+29. **Slide 33 (new)**: Rewrote callout about "Problem of Multiple Determinants"
+30. **Slide 34**: Multiple edits — "use data to estimate", math notation for q/p/x, "depends on $e$", math for corr(p,e), "typically unreasonable to expect"; callout: "great place to ask questions"
+31. **Slide 35**: Changed to "firm 1 uses", math notation for p2/corr; "OLS model's"; rewrote callout about competitor identification; increased callout font
+32. **Slide 36**: Rewrote callout: "Scroll to read the full script"
+33. **Slide 37**: Rewrote callout: "Scroll to compare price1 estimates"
+34. **Slide 38**: Rewrote callout comparing the two demand curves
+35. **Slide 39**: Rewrote callout about Price2 deciles
+36. **Slide 40**: Deleted callout; merged sub-bullet onto line 6
+37. **Slide 41**: Removed SUGGESTION prefix
+38. **Slide 42**: Changed sub-bullet to "If time, explain how you might resolve it"
+39. **Slide 45 (Competition)**: Replaced content with price endogeneity description assignment
+40. **Slides 46-47**: Removed `{.smaller}` for larger font
+
+**Verification:** Rendered HTML → PDF. Final deck: 47 slides, 47 PDF pages. All callouts reviewed and approved by instructor.
+
+**New image added:** `images/daniel_mcfadden.jpg` (portrait from hetwebsite.net)

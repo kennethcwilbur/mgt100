@@ -6,8 +6,8 @@
 <script src="mgt100-01_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="mgt100-01_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="mgt100-01_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="mgt100-01_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="mgt100-01_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.26">
 
   <meta name="author" content="Kenneth C. Wilbur">
   <meta name="author" content="Daniel Yavorsky">
@@ -141,11 +141,11 @@
       if (titleSlide) {
         var audio = document.createElement('audio');
         audio.controls = true;
-        audio.src = 'mgt100_theme_song.mp3';
+        audio.src = 'https://kennethcwilbur.github.io/mgt100/mgt100_theme_song.mp3';
         audio.style.marginTop = '0.5em';
         titleSlide.appendChild(audio);
         var link = document.createElement('a');
-        link.href = 'mgt100_theme_song.mp3';
+        link.href = 'https://kennethcwilbur.github.io/mgt100/mgt100_theme_song.mp3';
         link.download = 'mgt100_theme_song.mp3';
         link.textContent = '[download theme song]';
         link.style.fontSize = '0.3em';
@@ -163,7 +163,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title"><strong>Visualization, Intro</strong></h1>
-  <p class="subtitle">MGT 100 Week 1</p>
+  <p class="subtitle">Customer Analytics Week 1</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -190,7 +190,7 @@
     </div>
 </div>
 
-  <p class="date">This version: March 2026 | License: CC BY 4.0 | We use javascript to track readership.<br>We welcome reuse with attribution. Please share widely.</p>
+  <p class="date">This version: April 2026 | License: CC BY 4.0 | We use javascript to track readership.<br>We welcome reuse with attribution. Please share widely.</p>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
@@ -202,7 +202,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Dog==Draymond || Dray || Click Clack || Major Jealous<br> Cat==Luka || Liquid || Hunter || Octopus</p>
+<p>Dog==Draymond || Dray || Click Clack || Major Jealous<br> Cat==Luka || Liquid || Hunter || Captain Kitty</p>
 </div>
 </div>
 </div>
@@ -214,8 +214,8 @@
 <li>“The greatest value of a picture is when it forces us to notice what we never expected to see.”
 <ul>
 <li>Boxplot Inventor John Tukey</li>
-<li>Great visualizations raise new questions</li>
 </ul></li>
+<li>A visualization succeeds when it enables deeper questions, like “why”</li>
 </ul>
 <div class="source-url">
 <p><a href="https://archive.org/details/exploratorydataa0000tuke_7616" target="_blank">Tukey (1977)</a></p>
@@ -231,7 +231,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>This ancient Mesopotamian clay tablet is estimated to be 3,500 years old. Data visualization is older than English and older than zero. Are those blanks zeros or missing values?</p>
+<p>This ancient Mesopotamian clay tablet is estimated to be nearly 4,000 years old. Data visualization is older than English and older than zero. Are those blanks zeros or missing values?</p>
 </div>
 </div>
 </div>
@@ -336,23 +336,14 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="viz-can-build-trust-understanding" class="slide level2 smaller">
+<section id="viz-can-build-trust-understanding" class="slide level2">
 <h2>Viz can build trust, understanding</h2>
 <ul>
-<li>Eyeballs can interpret pictures quickly
-<ul>
-<li>Human brains are great at interpreting visual patterns, predictions</li>
-<li>Can detect unexpected errors</li>
-</ul></li>
-<li>Understandable to non-specialists, including customers and managers
-<ul>
-<li>Viz choices enable narrative understanding, another common brain function</li>
-</ul></li>
-<li>Viz are <em>lingua franca</em> across disciplines
-<ul>
-<li>Easily replicated -&gt; more easily trusted</li>
-<li>Trust can be a major issue in some corporate cultures</li>
-</ul></li>
+<li>Humans are great at interpreting visual patterns</li>
+<li>Can reveal unexpected data properties</li>
+<li>Understandable to non-specialists, including managers and customers</li>
+<li>Viz are <em>lingua franca</em> across disciplines</li>
+<li>Easily replicated -&gt; More easily trusted</li>
 <li>Viz succeed when they raise deeper questions
 <ul>
 <li>Asking the next question indicates acceptance; facts prompt explanations</li>
@@ -395,6 +386,7 @@
 <div class="source-url">
 <p><a href="https://docs.google.com/presentation/d/1wQD2O976nyZdn4qm7OFSY9FTBCaVVTY4hEnyh3_EYas/edit?slide=id.p7#slide=id.p7" target="_blank">Our World in Data</a></p>
 </div>
+<p><img data-src="images/popbomb.jpg" class="absolute" style="top: 100px; right: 20px; height: 270px; "></p>
 <aside class="notes">
 <ul>
 <li>Population curve is a textbook sigmoid/S-curve</li>
@@ -466,7 +458,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>When is data zero vs.&nbsp;missing? Provenance is key. What kind of decisions could this inform?</p>
+<p>This map graphs one year of San Diego Police Department police reports. When is data zero vs.&nbsp;missing? Provenance is key. What kind of decisions could this inform?</p>
 </div>
 </div>
 </div>
@@ -498,26 +490,22 @@
 <ul>
 <li>Describes people, entities, and activities involved in producing, compiling, transforming &amp; sharing data
 <ul>
+<li>Crucial in determining quality, reliability, trustworthiness</li>
 <li>Verifiability requires source data &amp; cleaning scripts</li>
-</ul></li>
-<li>Crucial in determining quality, reliability, trustworthiness
-<ul>
 <li>Investigating provenance requires and deepens domain expertise</li>
-<li>Typically turns up unexpected information, and sometimes errors</li>
+<li>Typically turns up unexpected information</li>
 </ul></li>
 <li>When can you trust provenance information?
 <ul>
-<li>Best to treat provenance as hypotheses to be verified in the data</li>
-<li>Usually, provenance descriptions are missing or imperfect</li>
+<li>Usually, provenance descriptions are imperfect. Best to treat provenance doc claims as hypotheses to be verified in the data</li>
 <li>Financial variables are most likely to be accurate due to auditing requirements</li>
-<li>Considerations: Consent; Privacy; Missingness; Permissible uses</li>
 <li>Sometimes, provenance descriptions are marketing documents</li>
 </ul></li>
 </ul>
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>GIGO: Garbage In, Garbage Out. Don’t analyze noise.</p>
+<p>A key principle in Business Analytics is GIGO: Garbage In, Garbage Out. Don’t analyze noise.</p>
 </div>
 </div>
 </div>
@@ -663,7 +651,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>What does each picture tell us? This is why we shouldn’t just use regression to summarize data. What’s wrong with this example?</p>
+<p>This is why we shouldn’t just use regression to summarize data. What does each picture tell us?</p>
 </div>
 </div>
 </div>
@@ -760,7 +748,7 @@
 <li>Using data to improve decisions</li>
 <li>Popularized by Charles Taylor in 1910s</li>
 <li>Further popularized by <em>Moneyball</em> (2011)</li>
-<li>Measurement, Heuristics, Graphics, Models, Predictions, Automation, Optimization, Personalization, …</li>
+<li>From less to more sophisticated: Measurement, Heuristics, Graphics, Models, Predictions, Automation, Optimization, Personalization, …</li>
 <li>Can be deceptively difficult</li>
 </ul>
 <div class="callout callout-note no-icon callout-style-simple">
@@ -819,12 +807,17 @@
 </ul></li>
 <li>Marketing Objective: Maximize Long-term Profits
 <ul>
-<li>Long-term focus mostly aligns our interest with customers</li>
-<li>Goal is not only to acquire customers; also, keep and develop them</li>
-<li>Sidesteps or reduces most ethical dilemmas</li>
-<li>Short-run objective may profit prior to liability; I won’t teach</li>
+<li>Long-term focus mostly aligns our interest with customers;<br>Sidesteps or reduces most ethical dilemmas</li>
+<li>Long-term focus seems to first attract customers, then retain and develop them</li>
 </ul></li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Marketing has a marketing problem. Most people confuse marketing with ads; sales; or bullshit (“persuasive speech without regard for the truth”). This is because real marketing decisions are made at the top of the org, and short-term incentives often lead marketers into unethical choices.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="example-of-great-marketing-netflix" class="slide level2 smaller">
 <h2>Example of Great Marketing: Netflix</h2>
@@ -832,23 +825,22 @@
 <li>Consumer surplus
 <ul>
 <li>Suppose customer pays $20/month, watches 60 hours: $0.33 per entertainment hour, or $0.15/hour with ads, or less with shared accounts</li>
-<li>A la carte rentals are more like $1-2+/hour</li>
+<li>A la carte rentals cost $1-2+/hour; other streaming services more per hour consumed</li>
 <li>Non-video entertainment tends to be much more expensive</li>
 <li>Social benefits may accrue from shared viewing</li>
-<li>Other streaming services may be competitive</li>
 </ul></li>
 <li>Producer surplus
 <ul>
 <li>NFLX spent $18B on content in 2025, 325 million subscribers, about $4.60/user/month</li>
 <li>Cost structure: High fixed, low marginal</li>
-<li>Ads likely earning around $4-5 per recipient/month</li>
+<li>Ads likely earning around $7-8 per recipient/month</li>
 <li>Net profit margin about 24% in a competitive category</li>
 </ul></li>
 </ul>
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Strategic consistency encourages customer loyalty. Other EDLP (vs High-Low) businesses: Costco, Trader Joes, Walmart. Common tension between short-term management and long-term strategies. Do you know how Southwest Airlines changed its strategies recently?</p>
+<p>Strategic consistency reduces customer risk. Other EDLP (vs High-Low) businesses: Costco, Trader Joes, Walmart. Common tension between short-term management and long-term strategies.</p>
 </div>
 </div>
 </div>
@@ -860,14 +852,13 @@
 <ul>
 <li>This is called Customer Relationship Management (CRM): week 8</li>
 </ul></li>
-<li>Marketing mix (“4 P’s”): Improve product offerings, prices, promotion, distribution</li>
+<li>Marketing mix (“4 P’s”): Improve product offerings, prices, promotion, distribution. Tactics we use to attract, develop, retain and fire customers</li>
 <li>Incorporate customer heterogeneity for targeting, personalization, recommendations, product development…</li>
-<li>Privacy and security, e.g.&nbsp;misuse, theft, regulatory compliance</li>
 </ul>
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Firing customers is typically indirect, such as withdrawing preferred products or declining to encourage further purchasing. Why is it usually controversial within the company?</p>
+<p>Firing customers is typically indirect, such as withdrawing preferred products or declining to encourage further purchasing. Why is firing customers usually controversial?</p>
 </div>
 </div>
 </div>
@@ -892,21 +883,18 @@
 </section>
 <section id="example-nielsen" class="slide level2">
 <h2>Example: Nielsen</h2>
-<p>CONSUMER PANEL DATA</p>
 <ul>
-<li>The Consumer Panel Data include longitudinal data beginning in 2004. These data track a panel of 40,000–60,000 US households and their purchases of fast-moving consumer goods from a wide range of retail outlets across all US markets.</li>
-</ul>
-<p>RETAIL SCANNER DATA</p>
-<ul>
-<li>Retail Scanner Data consist of weekly pricing, volume, and in-store marketing info generated by point-of-sale systems from 90+ participating retail chains across all US markets. Data begin in 2006.</li>
+<li><p><strong>Consumer Panel Data</strong> include longitudinal data beginning in 2004. These data track a panel of 40,000–60,000 US households and their purchases of fast-moving consumer goods from a wide range of retail outlets across all US markets.</p></li>
+<li><p><strong>Retail Scanner Data</strong> consist of weekly pricing, volume, and in-store marketing info generated by point-of-sale systems from 90+ participating retail chains across all US markets. Data begin in 2006.</p></li>
 </ul>
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Consumer panel and retail scanner data are foundational to customer analytics in consumer packaged goods. What business questions could these data help answer?</p>
+<p>Retail industry always adopts customer analytics frameworks early. Consumer panel and retail scanner data are foundational in packaged goods categories.</p>
 </div>
 </div>
 </div>
+<p><img data-src="images/Nielsen_Logo.jpg" class="absolute" style="top: -10px; right: 20px; height: 80px; "></p>
 </section>
 <section id="section-6" class="slide level2">
 <h2></h2>
@@ -1009,7 +997,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Retail has always been an early adopter of customer analytics. E-commerce funnels illustrate descriptive and diagnostic analytics in action. What causes drop-offs at each level?</p>
+<p>This model is also known as the purchase journey. Very likely the most popular empirical analytics framework ever in customer analytics. How does it facilitate decisionmaking?</p>
 </div>
 </div>
 </div>
@@ -1040,7 +1028,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>800 e-commerce pros were surveyed; companies using 9+ data-driven methods were most satisfied with their conversion rates. The optimal number of A/B tests was 3-5 per month.<br>This model is also known as the purchase journey. How does it facilitate decisionmaking?</p>
+<p>These bubbles represent analytics techniques used to address customer funnel-related goals. 800 e-commerce pros were surveyed; companies using 9+ data-driven methods were most satisfied with their conversion rates. The optimal number of A/B tests was 3-5 per month. Why do you think pop-ups are so common?</p>
 </div>
 </div>
 </div>
@@ -1070,12 +1058,18 @@
 <h2>Signs of a great analytics org</h2>
 <ul>
 <li>C-level champion(s), i.e.&nbsp;C{D,E,A,F,M,O}O</li>
+<li>Analytics career tracks are well established</li>
 <li>Centralized team regulates data, arch., standards &amp; tools</li>
 <li>Decentralized analysts collaborate with execs</li>
-<li>Analytics career tracks are well established</li>
 <li>Careful in-housing/outsourcing decisions about analytics</li>
-<li>Good examples?</li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>These are questions you can ask in job interviews.</p>
+</div>
+</div>
+</div>
 <aside class="notes">
 <ul>
 <li>Career tracks include individual contributors</li>
@@ -1103,13 +1097,13 @@
 <div class="column" style="width:20%;">
 <div class="quarto-figure quarto-figure-right">
 <figure>
-<p><img data-src="images/yavorsky-thinks.png" class="quarto-figure quarto-figure-right"></p>
+<p><img data-src="images/yavorsky-thinks.png" class="quarto-figure quarto-figure-right" style="width:100.0%"></p>
 </figure>
 </div>
 </div><div class="column" style="width:80%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/yavorsky-actually.png" class="quarto-figure quarto-figure-center" height="350"></p>
+<p><img data-src="images/yavorsky-actually.png" class="quarto-figure quarto-figure-center" height="298"></p>
 </figure>
 </div>
 </div></div>
@@ -1121,7 +1115,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Analytics works best when leadership creates an environment that enables investments in analytical frameworks and rewards disciplined decisionmaking, with retrospective decision evaluations and continuous-learning feedback loops. How have you seen analytics used in practice?</p>
+<p>Analytics works best when leadership creates an environment that enables analytics investments and rewards disciplined decisionmaking, with retrospective decision evaluations and continuous-learning feedback loops. How have you seen analytics used in practice?</p>
 </div>
 </div>
 </div>
@@ -1135,10 +1129,8 @@
 <li>treatment effects are usually small</li>
 <li>Key exceptions: Price or “free” giveaways</li>
 </ul></li>
-<li>Demographics don’t predict behavior very well</li>
 <li>Agencies lie about data sometimes</li>
 <li>“If it’s written in LaTeX, it’s probably correct”</li>
-<li>Stable analytics-&gt;decision loops should be automated and monitored carefully</li>
 </ul>
 <aside class="notes">
 <ul>
@@ -1175,13 +1167,20 @@
 <li>Consumer: Entity that experiences the core benefit</li>
 <li>Customer: Entity that purchases and pays</li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>In what markets does the customer often differ from the consumer? Known as “Choosing for others.”</p>
+</div>
+</div>
+</div>
 </section>
 <section id="product-level" class="slide level2">
 <h2>Product level</h2>
 <ul>
 <li>Product/service/experience: Distinct offering that provides the core benefit</li>
-<li>Features: Aspects of a product that provide additional tangible or intangible benefits</li>
-<li>Value proposition: utility( Core benefit + features - price )</li>
+<li>Features: Aspects of a product providing additional tangible or intangible benefits</li>
+<li>Value proposition: Statement that describes utility( Core benefit + features - price )</li>
 <li>Contribution margin: Price — marginal cost</li>
 <li>Competitor: Any paid or free alternative that addresses the core need. E.g., commute by bike, walk, bus, trolley, Uber, scooter, skateboard; work from home</li>
 </ul>
@@ -1212,9 +1211,15 @@
 <ul>
 <li>Marketing: Business discipline that focuses most on customers</li>
 <li>Ads &amp; sales: Worthless without good value prop and positive margin</li>
-<li>Poor implementation and short-term focus commonly lead to confusion with bullshit (“persuasive speech without regard for the truth” –Frankfurt 2005)</li>
 </ul></li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>In what markets do Uber and Zoom compete?</p>
+</div>
+</div>
+</div>
 <div class="source-url">
 <p><a href="https://www.youtube.com/watch?v=g_HPJ6KEQsM" target="_blank">How to be good at marketing, by yours truly</a> | <a href="https://archive.org/details/on-bullshit-by-harry-frankfurt" target="_blank">Frankfurt (2005)</a></p>
 </div>
@@ -1247,7 +1252,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>You need to know these well if you interview for marketing roles. Generations of marketing professionals were educated to think this way. Still relevant, but less central, thanks to customer data &amp; analytics abundance. MGT 103 complements this course well by covering these topics in depth, but without the same deep focus on customer data.</p>
+<p>You need to know these well if you interview for marketing roles. Generations of marketing professionals were educated and continue to think this way. Still relevant, but less central, thanks to customer data &amp; analytics abundance. MGT 103 complements this course well by covering these topics in depth, but without the same deep focus on customer data.</p>
 </div>
 </div>
 </div>
@@ -1289,8 +1294,8 @@
 <p><a href="https://www.lesswrong.com/posts/ZEuDH2W3XdRaTwpjD/hyperbolic-model-fits-metr-capabilities-estimate-worse-than" target="_blank">gjm (2025)</a></p>
 </div>
 </section>
-<section id="how-i-use-and-dont-use-llms" class="slide level2 smaller">
-<h2>How I use and don’t use LLMs</h2>
+<section id="how-i-use-and-dont-use-llms-apr.-2026" class="slide level2 smaller">
+<h2>How I use and don’t use LLMs (Apr.&nbsp;2026)</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <ul>
@@ -1340,7 +1345,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Please write down your intentions for this class on Canvas. How will you measure your effort? Please don’t say grades alone; grades are outcomes, not inputs.</p>
+<p>Please write down your intentions for this class on Canvas. How will you measure your effort? Please don’t say grades alone; grades are outcomes, not inputs. Measurement is central in analytics; you cannot manage what you do not measure.</p>
 </div>
 </div>
 </div>
@@ -1350,7 +1355,6 @@
 <div class="columns">
 <div class="column" style="width:75%;">
 <ul>
-<li>All LLMs continue to hallucinate and require hand-holding. Beware free LLMs, they can be worse than useless.</li>
 <li>Conjecture: <br>(debugging difficulty) is exponential in (lines of code)</li>
 <li>We can code fast or slow. “Go slow to go fast”</li>
 <li>Pipe: y &lt;- f(g(x)) is the same as y &lt;- x |&gt; g |&gt; f

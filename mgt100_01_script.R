@@ -41,7 +41,7 @@ library(tidyverse)            # <-- do this every time you restart R and/or open
 ## Let's import our customer dataset-- simulated to sidestep privacy and IP concerns
     
     # First, download the customer and phone datasets from 
-    #       https://github.com/kennethcwilbur/mgt100/raw/main/mgt100-data.zip
+    #       https://github.com/kennethcwilbur/mgt100/raw/main/2026mgt100-data.zip
 
     # You should create a local directory with subfolders, e.g.
 

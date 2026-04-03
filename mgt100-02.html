@@ -141,11 +141,11 @@
       if (titleSlide) {
         var audio = document.createElement('audio');
         audio.controls = true;
-        audio.src = 'mgt100_theme_song.mp3';
+        audio.src = 'https://kennethcwilbur.github.io/mgt100/mgt100_theme_song.mp3';
         audio.style.marginTop = '0.5em';
         titleSlide.appendChild(audio);
         var link = document.createElement('a');
-        link.href = 'mgt100_theme_song.mp3';
+        link.href = 'https://kennethcwilbur.github.io/mgt100/mgt100_theme_song.mp3';
         link.download = 'mgt100_theme_song.mp3';
         link.textContent = '[download theme song]';
         link.style.fontSize = '0.3em';
@@ -190,7 +190,7 @@
     </div>
 </div>
 
-  <p class="date">This version: March 2026 | License: CC BY 4.0 | We use javascript to track readership.<br>We welcome reuse with attribution. Please share widely.</p>
+  <p class="date">This version: April 2026 | License: CC BY 4.0 | We use javascript to track readership.<br>We welcome reuse with attribution. Please share widely.</p>
 </section>
 <section>
 <section id="segmentation" class="title-slide slide level1 center">
@@ -236,7 +236,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Few people ask for room-temperature tea. Why did Coke introduce Coke Zero when it already had Diet Coke? Sometimes when you try to appeal to everyone, it works; at other times, you appeal to nobody. How can you predict how the market will react to your product?</p>
+<p>Few people ask for room-temperature tea. Why did Coke introduce Coke Zero when it already had Diet Coke? Sometimes when you try to appeal to everyone, you appeal to nobody. How can you predict how the market will react to your product?</p>
 </div>
 </div>
 </div>
@@ -256,7 +256,7 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="market-segmentation" class="slide level2 smaller">
+<section id="market-segmentation" class="slide level2">
 <h2>Market Segmentation</h2>
 <ul>
 <li><em>Segments</em>: distinct customer groups with similar attributes <em>within</em> a segment, different attributes <em>between</em> segments
@@ -268,13 +268,6 @@
 </ul></li>
 <li>Segmentation should drive most customer decisions</li>
 </ul>
-<div class="callout callout-note no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>Segments in this class, ranked by size: (1) BE majors partially interested in Customers/Marketing, (2) BE majors keenly interested in Customers/Marketing, (3) Non-BE majors, often minoring in Business, Marketing or Business Analytics.</p>
-</div>
-</div>
-</div>
 <aside class="notes">
 <ul>
 <li>Typical B2B value props: increased revenue, cost saving, time savings, risk reduction</li>
@@ -361,7 +354,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Literally, yes – segmenting by gender is sexist by definition. Does gender reflect genuine differences in product needs, or is it just lazy categorization? Who gets to decide?</p>
+<p>Segmenting markets by gender or other demographics may reflect real differences in customer needs, or may reflect a lazy categorization. Sexism or discrimination usually require some notion of unfairness. Who decides when it’s OK to tailor target products to particular demographics?</p>
 </div>
 </div>
 </div>
@@ -386,7 +379,7 @@
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/pinktax.png" class="quarto-figure quarto-figure-center" height="400"></p>
+<p><img data-src="images/pinktax.png" class="quarto-figure quarto-figure-center" height="340"></p>
 </figure>
 </div>
 <div class="callout callout-note no-icon callout-style-simple">
@@ -397,7 +390,7 @@
 </div>
 </div>
 <div class="source-url">
-<p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3882214" target="_blank">Gender-Based Pricing in Consumer Packaged Goods: A Pink Tax?</a></p>
+<p><a href="https://drive.google.com/file/d/1BKA1Q9Qnanffq2cy8KtMNAfQEwp7QJrD/view?usp=drive_link" target="_blank">Moshary et al.&nbsp;(2026)</a></p>
 </div>
 <aside class="notes">
 <ul>
@@ -558,6 +551,9 @@ Sensitivity</td>
 <p>Why did Mozilla publicize its segmentation scheme? To convince its volunteer developers that typical users are much less technical and interested in simpler features than what those engineers want to build. You must always remember that your customers, by and large, are very different from you, and that you need to rely on data to understand them: your own experience is not reliably predictive.</p>
 </div>
 </div>
+</div>
+<div class="source-url">
+<p><a href="https://drive.google.com/file/d/1f0H8A4K20wtpZR2LymJrsX-Hy-ojE-Bf/view?usp=drive_link" target="_blank">Hattula et al.&nbsp;(2025)</a></p>
 </div>
 <aside class="notes">
 <ul>
@@ -795,12 +791,31 @@ Sensitivity</td>
 and global minimum (in 1 dimension), to explain why step 5 on the previous slide exists, and to mention that properties of the data can lead us into local minima from unlucky
 starting points-->
 </section>
-<section id="section-6" class="slide level2">
-<h2></h2>
+<section id="ways-to-pick-k" class="slide level2 smaller">
+<h2>Ways to pick K</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ol type="1">
+<li>“Scree Plot” or “Elbow method”: showing how quickly <span class="math inline">\(W(C_k)\)</span> decreases with <span class="math inline">\(K\)</span>. Can balance accuracy with parsimony, but may be haphazard</li>
+<li>Internal Indices: e.g., run K-Means within distinct data partitions and then quantify how centroid stability changes with <span class="math inline">\(K\)</span></li>
+<li>External Indices: compare clustering algorithm results to an external dataset or some source of known truth</li>
+</ol>
+</div><div class="column" style="width:45%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/intermission.jpg" class="quarto-figure quarto-figure-center" height="400"></p>
+<p><img data-src="images/scree.png" class="quarto-figure quarto-figure-center" height="300"></p>
 </figure>
+</div>
+</div></div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>K-means is a simple clustering algorithm and may perform poorly when data exhibit particular properties. There are many, many more sophisticated approaches.</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://uc-r.github.io/kmeans_clustering" target="_blank">See Boehmke for more</a></p>
 </div>
 </section></section>
 <section>
@@ -1024,7 +1039,7 @@ starting points-->
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-7" class="slide level2">
+<section id="section-6" class="slide level2">
 <h2></h2>
 <ul>
 <li>Case study: Suppose you are the UCSD Chancellor, tasked with increasing in-state freshman enrollments</li>
@@ -1043,7 +1058,7 @@ starting points-->
 </div>
 </div>
 </section>
-<section id="section-8" class="slide level2">
+<section id="section-7" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1061,7 +1076,7 @@ starting points-->
 <p><a href="https://github.com/kennethcwilbur/mgt100/blob/a90ef6d6ec3788fd76333f8aa882a7067a008803/uc_example_20260325.R" target="_blank">source code &amp; data</a></p>
 </div>
 </section>
-<section id="section-9" class="slide level2">
+<section id="section-8" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1136,7 +1151,7 @@ starting points-->
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-10" class="slide level2">
+<section id="section-9" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1154,7 +1169,7 @@ starting points-->
 <p><a href="https://github.com/kennethcwilbur/mgt100/blob/a90ef6d6ec3788fd76333f8aa882a7067a008803/uc_example_20260325.R" target="_blank">source code</a></p>
 </div>
 </section>
-<section id="section-11" class="slide level2">
+<section id="section-10" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1186,7 +1201,7 @@ starting points-->
 </ul></li>
 <li>How do I choose the # of principal components?
 <ul>
-<li>Business criteria: Usually 1 or 2 if you mainly want to visualize the data. If more, consider actionability of compressed data</li>
+<li>Business criteria: Usually 1 or 2 if you mainly want to visualize the data. When doing something more sophisticated, consider how trading off compression vs.&nbsp;data loss affects your objective</li>
 <li>Statistical criteria: Cume variance explained, scree plot, eigenvalue &gt; 1</li>
 </ul></li>
 <li>What are some similar tools to PCA?
@@ -1332,7 +1347,7 @@ starting points-->
 <p><a href="https://pubsonline.informs.org/doi/pdf/10.1287/mksc.1120.0713" target="_blank">Source: “Mine Your Business” by Netzer et al.&nbsp;(2012)</a></p>
 </div>
 </section>
-<section id="section-12" class="slide level2">
+<section id="section-11" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1366,7 +1381,7 @@ starting points-->
           display:block!important;
       }</style></aside>
 </section>
-<section id="section-13" class="slide level2">
+<section id="section-12" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1469,23 +1484,13 @@ starting points-->
 <section id="embeddings" class="slide level2 smaller">
 <h2>Embeddings</h2>
 <ul>
-<li>Represent words as vectors in high-dim space
-<ul>
-<li>Really, “tokens,” but assume words==tokens for simplicity</li>
-</ul></li>
-<li>Assume <span class="math inline">\(W\)</span> words, <span class="math inline">\(A&lt;W\)</span> abstract concepts
-<ul>
-<li>Assume we have all text data from all history. Each sentence is a point in <span class="math inline">\(W\)</span>-dimensional space</li>
-</ul></li>
-<li>We could run PCA to reduce from <span class="math inline">\(W\)</span> to <span class="math inline">\(A\)</span> dimensions
-<ul>
-<li>Assume we have infinite computing resources</li>
-<li>We now have every sentence represented as a point in continuous A-space</li>
-</ul></li>
+<li>Represent words as vectors in high-dim space. Really, “tokens,” but assume words==tokens for simplicity</li>
+<li>Assume <span class="math inline">\(W\)</span> words, <span class="math inline">\(A&lt;W\)</span> abstract concepts. Assume we have all text data from all history. Each sentence is a point in <span class="math inline">\(W\)</span>-dimensional space, with each coordinate <span class="math inline">\(w=1,...,W\)</span> indicating a count of word <span class="math inline">\(w\)</span> within the sentence</li>
+<li>We could run PCA to reduce from <span class="math inline">\(W\)</span> to <span class="math inline">\(A\)</span> dimensions. We have now <em>encoded</em> every sentence as a point in continuous A-space using a ‘bag-of-words’ approach</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/embed2.png" class="quarto-figure quarto-figure-center" height="200"></p>
+<p><img data-src="images/semanticspace.png" class="quarto-figure quarto-figure-center" height="200"></p>
 </figure>
 </div>
 <div class="callout callout-note no-icon callout-style-simple">
@@ -1494,6 +1499,9 @@ starting points-->
 <p>Embeddings connect text analysis to the PCA and dimensionality reduction ideas we just covered. Words become points in a continuous space, enabling mathematical operations on language. How does this compare to what we did with product attributes?</p>
 </div>
 </div>
+</div>
+<div class="source-url">
+<p><a href="https://www.cs.cmu.edu/~dst/WordEmbeddingDemo/EAAI-2022-Word-Embedding.pdf" target="_blank">Bandyopadhyay et al.&nbsp;(2022)</a></p>
 </div>
 </section>
 <section id="cool-things-about-embeddings" class="slide level2">
@@ -1509,7 +1517,7 @@ starting points-->
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Other classics include Paris - France + Germany ≈ Berlin ; dollar - USA + UK ≈ pound ; Google - search + social ≈ Facebook. Triton - UCSD + UCLA ≈ ____ ?</p>
+<p>Other classics include dollar - USA + UK ≈ pound ; Google - search + social ≈ Facebook. Triton - UCSD + UCLA ≈ ____ ?</p>
 </div>
 </div>
 </div>
@@ -1517,7 +1525,7 @@ starting points-->
 <p><a href="https://arxiv.org/abs/1301.3781" target="_blank">Mikolov et al.&nbsp;(2013)</a> | <a href="https://nlp.stanford.edu/pubs/glove.pdf" target="_blank">Pennington et al.&nbsp;(2014)</a></p>
 </div>
 </section>
-<section id="section-14" class="slide level2">
+<section id="section-13" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -1535,7 +1543,7 @@ starting points-->
 <p><a href="https://drive.google.com/file/d/1h8fR8wjdF9ay-ulCHqXDjExL98nElSfP/view?usp=sharing" target="_blank">source code</a></p>
 </div>
 </section>
-<section id="section-15" class="slide level2">
+<section id="section-14" class="slide level2">
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>

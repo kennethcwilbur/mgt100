@@ -521,7 +521,7 @@ product_shares
 # heterogeneity to our model is the next step. We'll focus on that soon
 
 
-## Homework questions:
+## practice/reflection questions (not for submission)
 
 ## 1. What are the changes in each brand's market share from three years ago to last year?
 

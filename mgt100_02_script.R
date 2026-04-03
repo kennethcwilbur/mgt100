@@ -619,7 +619,7 @@ print(qq)
 
 
 
-### suggested homework questions (not for submission)
+### practice/reflection questions (not for submission)
 
 # 1. Run k-means to cluster smartphone customers in cust_dat based on the 
 # variables social minutes and gaming minutes.  Even though both variables are 

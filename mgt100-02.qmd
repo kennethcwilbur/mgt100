@@ -48,14 +48,14 @@ Product needs predict behavior far better than demographics. Why might marketers
 ![](images/segmentation_primers.png){fig-align="center" height="450px"}
 
 ::: {.callout-note appearance="minimal"}
-Few people ask for room-temperature tea. Why did Coke introduce Coke Zero when it already had Diet Coke? Sometimes when you try to appeal to everyone, it works; at other times, you appeal to nobody. How can you predict how the market will react to your product?
+Few people ask for room-temperature tea. Why did Coke introduce Coke Zero when it already had Diet Coke? Sometimes when you try to appeal to everyone, you appeal to nobody. How can you predict how the market will react to your product?
 :::
 
 ::: notes
 - Coke Zero: taste, gender, Pepsi Max, shelfspace; original advertising strategy
 :::
 
-## Market Segmentation {.smaller}
+## Market Segmentation
 
 - *Segments*: distinct customer groups with similar attributes *within* a segment, different attributes *between* segments
     - Fundamental since the 1960s
@@ -63,10 +63,6 @@ Few people ask for room-temperature tea. Why did Coke introduce Coke Zero when i
     - Customer Response Profiles embody segments
     - B2B segments: customer needs, size, profitability, internal structure
 - Segmentation should drive most customer decisions
-
-::: {.callout-note appearance="minimal"}
-Segments in this class, ranked by size: (1) BE majors partially interested in Customers/Marketing, (2) BE majors keenly interested in Customers/Marketing, (3) Non-BE majors, often minoring in Business, Marketing or Business Analytics.
-:::
 
 ::: notes
 - Typical B2B value props: increased revenue, cost saving, time savings, risk reduction
@@ -102,7 +98,7 @@ Small segments can sustain profitable niche-focused services, but if you go too 
 ![](images/gendered_products.png){fig-align="center" height="400px"}
 
 ::: {.callout-note appearance="minimal"}
-Literally, yes -- segmenting by gender is sexist by definition. Does gender reflect genuine differences in product needs, or is it just lazy categorization? Who gets to decide?
+Segmenting markets by gender or other demographics may reflect real differences in customer needs, or may reflect a lazy categorization. Sexism or discrimination usually require some notion of unfairness. Who decides when it's OK to tailor target products to particular demographics?
 :::
 
 ::: notes
@@ -112,14 +108,14 @@ Literally, yes -- segmenting by gender is sexist by definition. Does gender refl
 
 ##
 
-![](images/pinktax.png){fig-align="center" height="400px"}
+![](images/pinktax.png){fig-align="center" height="340px"}
 
 ::: {.callout-note appearance="minimal"}
 We have some high-quality evidence that some products targeted toward women do not cost more than identical products targeted toward men. Gender-based price differences are sometimes conflated with preferences or costs that correlate with gender. Should we ban price differences between products that target different genders?
 :::
 
 ::: {.source-url}
-[Gender-Based Pricing in Consumer Packaged Goods: A Pink Tax?](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3882214){target="_blank"}
+[Moshary et al. (2026)](https://drive.google.com/file/d/1BKA1Q9Qnanffq2cy8KtMNAfQEwp7QJrD/view?usp=drive_link){target="_blank"}
 :::
 
 ::: notes
@@ -213,6 +209,10 @@ This is a fairly common procedural approach to market research, which usually in
 
 ::: {.callout-note appearance="minimal"}
 Why did Mozilla publicize its segmentation scheme? To convince its volunteer developers that typical users are much less technical and interested in simpler features than what those engineers want to build. You must always remember that your customers, by and large, are very different from you, and that you need to rely on data to understand them:  your own experience is not reliably predictive.
+:::
+
+::: {.source-url}
+[Hattula et al. (2025)](https://drive.google.com/file/d/1f0H8A4K20wtpZR2LymJrsX-Hy-ojE-Bf/view?usp=drive_link){target="_blank"}
 :::
 
 ::: notes
@@ -356,9 +356,29 @@ and global minimum (in 1 dimension), to explain why step 5 on the previous slide
 starting points-->
 ```
 
-##
+## Ways to pick K {.smaller}
 
-![](images/intermission.jpg){fig-align="center" height="400px"}
+:::: {.columns}
+
+::: {.column width="55%"}
+1. "Scree Plot" or "Elbow method": showing how quickly $W(C_k)$ decreases with $K$. Can balance accuracy with parsimony, but may be haphazard
+2. Internal Indices: e.g., run K-Means within distinct data partitions and then quantify how centroid stability changes with $K$
+3. External Indices: compare clustering algorithm results to an external dataset or some source of known truth
+:::
+
+::: {.column width="45%"}
+![](images/scree.png){fig-align="center" height="300px"}
+:::
+
+::::
+
+::: {.callout-note appearance="minimal"}
+K-means is a simple clustering algorithm and may perform poorly when data exhibit particular properties. There are many, many more sophisticated approaches.
+:::
+
+::: {.source-url}
+[See Boehmke for more](https://uc-r.github.io/kmeans_clustering){target="_blank"}
+:::
 
 # Market Mapping
 
@@ -588,7 +608,7 @@ Now, just graph the 1-dim line with the original points projected onto it. Do th
     - Variables are continuous and linearly related
     - Principal components that explain the most variation matter most
 3. How do I choose the # of principal components?
-    - Business criteria: Usually 1 or 2 if you mainly want to visualize the data. If more, consider actionability of compressed data
+    - Business criteria: Usually 1 or 2 if you mainly want to visualize the data. When doing something more sophisticated, consider how trading off compression vs. data loss affects your objective
     - Statistical criteria: Cume variance explained, scree plot, eigenvalue > 1
 4. What are some similar tools to PCA?
     - Factor analysis, linear discriminant analysis, correspondence analysis...
@@ -751,18 +771,18 @@ Grammar narrows down the set of unique sentences a person can generate, making p
 
 ## Embeddings {.smaller}
 
-- Represent words as vectors in high-dim space
-    - Really, "tokens," but assume words==tokens for simplicity
-- Assume $W$ words, $A<W$ abstract concepts
-    - Assume we have all text data from all history. Each sentence is a point in $W$-dimensional space
-- We could run PCA to reduce from $W$ to $A$ dimensions
-    - Assume we have infinite computing resources
-    - We now have every sentence represented as a point in continuous A-space
+- Represent words as vectors in high-dim space. Really, "tokens," but assume words==tokens for simplicity
+- Assume $W$ words, $A<W$ abstract concepts. Assume we have all text data from all history. Each sentence is a point in $W$-dimensional space, with each coordinate $w=1,...,W$ indicating a count of word $w$ within the sentence
+- We could run PCA to reduce from $W$ to $A$ dimensions. We have now *encoded* every sentence as a point in continuous A-space using a 'bag-of-words' approach
 
-![](images/embed2.png){fig-align="center" height="200px"}
+![](images/semanticspace.png){fig-align="center" height="200px"}
 
 ::: {.callout-note appearance="minimal"}
 Embeddings connect text analysis to the PCA and dimensionality reduction ideas we just covered. Words become points in a continuous space, enabling mathematical operations on language. How does this compare to what we did with product attributes?
+:::
+
+::: {.source-url}
+[Bandyopadhyay et al. (2022)](https://www.cs.cmu.edu/~dst/WordEmbeddingDemo/EAAI-2022-Word-Embedding.pdf){target="_blank"}
 :::
 
 ## Cool things about embeddings
@@ -772,7 +792,7 @@ Embeddings connect text analysis to the PCA and dimensionality reduction ideas w
 ![](images/embeddings.png){fig-align="center" height="200px"}
 
 ::: {.callout-note appearance="minimal"}
-Other classics include Paris - France + Germany ≈ Berlin ; dollar - USA + UK ≈ pound ; Google - search + social ≈ Facebook. Triton - UCSD + UCLA ≈ ____ ?
+Other classics include dollar - USA + UK ≈ pound ; Google - search + social ≈ Facebook. Triton - UCSD + UCLA ≈ ____ ?
 :::
 
 ::: {.source-url}

@@ -666,7 +666,7 @@ ggplot(cust_dat) +
 
 
 
-### suggested homework questions (not for submission)
+### practice/reflection questions (not for submission)
 
 ### 1. For customers with a large Samsung phone that was purchased last year 
 ###   (ie, where years_ago == 1), what is the average number of minutes spent on gaming?    

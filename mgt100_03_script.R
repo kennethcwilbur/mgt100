@@ -3,10 +3,9 @@
 # Today we fit a "workhorse" model in marketing and economics, the multinomial
 # logit (MNL) model. We begin with the case of a homogeneous MNL model.
 
-setwd("G:/My Drive/aaaCURRENT/mgt100/scripts")
+setwd("/mnt/chromeos/GoogleDrive/MyDrive/aaaCURRENT/mgt100_shell/mgt100_gh")
 rm(list=ls()) #clean up your workspace if you like
 
-install.packages("mlogit", "dfidx")
 library(tidyverse)
 library(mlogit)
 library(dfidx)
@@ -227,9 +226,9 @@ sub3 <- mnl_dat |> filter(customer_id %in% which(cust_dat$years_ago == 3))
 # many columns (shape="wide"), and the id variable that groups the set of
 # phones from one choice-occasion together (our "customer_id" variable).
 
-mdat1 <- dfidx::dfidx(sub1, choice = "choice", shape = "long", chid.var = "customer_id")
-mdat2 <- dfidx::dfidx(sub2, choice = "choice", shape = "long", chid.var = "customer_id")
-mdat3 <- dfidx::dfidx(sub3, choice = "choice", shape = "long", chid.var = "customer_id")
+mdat1 <- dfidx::dfidx(as.data.frame(sub1), choice = "choice", shape = "long", chid.var = "customer_id")
+mdat2 <- dfidx::dfidx(as.data.frame(sub2), choice = "choice", shape = "long", chid.var = "customer_id")
+mdat3 <- dfidx::dfidx(as.data.frame(sub3), choice = "choice", shape = "long", chid.var = "customer_id")
 
 # Let's save these datasets to our hard disks so we don't need to re-run the big
 # for-loop above in order to work with these data in the future

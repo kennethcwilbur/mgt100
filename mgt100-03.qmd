@@ -26,7 +26,7 @@ format:
 ![](images/corr_vs_caus_hires.png){fig-align="center" height="450px"}
 
 ::: {.callout-note appearance="minimal" style="font-size: 0.75em;"}
-Correlation is the empirical tendency for two variables to move together. We hypothesize about a causal relationship using logic and judgment. If X "causes" Y, then if we intervene to change prob(X=x), prob(Y=y) will change as a result. We can empirically quantify causal relationships by running experiments (creating data) or by analyzing archival data using quasi-experimental identification strategies to rule out unobserved confounders.
+Correlation is the empirical tendency for two variables to move together. We hypothesize about a causal relationship using logic and judgment. If X "causes" Y, then if we intervene to change prob(X=x), prob(Y=y|X=x) will change as a result.
 :::
 
 ::: {.source-url}
@@ -107,7 +107,7 @@ Demand curves enable counterfactual predictions — "what would happen to sales 
     - [preferences, information, advertising, quality, match value, complements, substitutes, interoperability, competitor prices, switching costs, entry, taxes and other policies, retail distribution, nature of equilibrium, stockpiling, consumer income, brand image, consumer trust, certainty, ...]{style="font-size: 0.7em;"}
 
 - What do we need to estimate Demand?
-    - Observable, exogenous variation in costs or price
+    - Observable, exogenous price variation
     - Otherwise, "price endogeneity" will bias demand estimates, leading to a correlational relationship rather than a causal relationship
 
 ::: {.callout-note appearance="minimal" style="font-size: 1.15em;"}
@@ -189,7 +189,7 @@ To be fair, all sophisticated predictive & prescriptive analytic techniques requ
 # Do Demand Models Work? {.smaller}
 
 - Evidence is supportive, but not thick
-    - Informally, I know several people who maintain demand models in large orgs
+    - Informally, I know several people who maintain demand models in large orgs. They say yes
     - Scientific evidence requires researchers and firm to collaboratively (a) estimate demand, (b) act on demand estimates, (c) observe how actions affect outcomes, & (d) report the results publicly. Hard to do & incentives conflict
     - Demand modeling can also go badly, e.g. due to price endogeneity
     - [Misra & Nair (2011)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1474462){target="_blank"} : B2B sales & salesforce compensation
@@ -260,7 +260,7 @@ This table shows how his predictions mapped onto the post-BART choices: he prett
 - Let $i$ index consumers, $j=1,...,J$ products, and $t$ index choice occasions
 - Assume each $i$ gets indirect utility $u_{ijt}$ from product $j$ in market $t$:
 
-$$u_{ijt}=x_{jt}\beta-\alpha p_{jt}+\epsilon_{ijt}$$
+$$u_{ijt}=V_{jt}+\epsilon_{ijt}=x_{jt}\beta-\alpha p_{jt}+\epsilon_{ijt}$$
 
 - Then, assuming each $i$ picks the $j$ that maximizes $u_{ijt}$, has unit demand, and that $\epsilon_{ijt}\sim$*i.i.d.*$EV_1(0,1)$, market share is
 
@@ -280,40 +280,22 @@ The integral simplifies because of the distributional assumption on $\epsilon_{i
 - s_jt is bounded by 0 and 1
 :::
 
-## MNL: Common factors {.scrollable .smaller}
+## MNL: Theoretical properties {.smaller}
 
 - Suppose $\gamma_{t}$ indicates how popular the category is in market $t$, so utility is $u_{ijt}=\gamma_{t}+x_{jt}\beta-\alpha p_{jt}+\epsilon_{ijt}$. Then market share becomes
 
-$$s_{jt}=\frac{e^{\gamma_{t}+x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^J e^{\gamma_{t}+x_{kt}\beta-\alpha p_{kt}}}$$
+  $$s_{jt}=\frac{e^{\gamma_{t}+x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^J e^{\gamma_{t}+x_{kt}\beta-\alpha p_{kt}}}=\frac{e^{x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}$$
 
-$$s_{jt}=\frac{e^{\gamma_{t}}   e^{x_{jt}\beta-\alpha p_{jt}}}{e^{\gamma_{t}}\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}$$
+    - Similar exercise applies to individual-specific intercepts $\gamma_i$, or individual-time interactions $\gamma_{it}$. Only differences across products affect predicted market shares
+- We usually normalize $V_{1t}=0$ for one product, and other products utilities are identified in reference to product 1
 
-$$s_{jt}=\frac{e^{x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}$$
+  $$s_{1t}=\frac{1}{\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}$$
 
-- Similar exercise applies to individual-specific intercepts $\gamma_i$, or individual-time interactions $\gamma_{it}$. Only differences across products affect predicted market shares
-
-::: notes
-- Hence any factor that doesn't vary across products will drop out of the model
-:::
-
-## MNL: Share differences {.smaller}
-
-- We set product $j=1$ utility to $u_{i1t}=\epsilon_{i1t}$ to normalize utility, i.e.
-
-$$s_{1t}=\frac{1}{\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}$$
-
-- Hence for every $j\ne 1$, divide $s_{jt}$ by $s_{1t}$; the denominators cancel:
-
-$$\frac{s_{jt}}{s_{1t}}=\frac{e^{x_{jt}\beta-\alpha p_{jt}} / \sum_k e^{x_{kt}\beta-\alpha p_{kt}}}{1 / \sum_k e^{x_{kt}\beta-\alpha p_{kt}}}=e^{x_{jt}\beta-\alpha p_{jt}}$$
-
-- Taking logs of both sides and adding an error term gives a linear regression form of the model:
-
-$$ln(s_{jt})-ln(s_{1t})=x_{jt}\beta-\alpha p_{jt}+\xi_{jt}$$
-
-- We use the $(J-1)T$ *differences* in market shares to estimate demand parameters
-- Often, we normalize the non-purchase option — the "outside option" — which has no observed attributes
+    - We use the $(J-1)T$ *differences* in market shares to estimate demand parameters
+    - Often, we normalize the non-purchase option (the "outside option") which has no observed attributes
 
 ::: notes
+- Any factor that doesn't vary across products will drop out of the model
 - Often, we normalize the non-purchase option which has no attributes, and call it the "outside option"
 :::
 
@@ -328,31 +310,33 @@ $$\max_{\alpha,\beta}\sum_{\forall i,j,t} y_{ijt}\ln s_{jt}(\alpha,\beta)$$
 
 2. Linearize the model, choose parameters to minimize the sum of square errors to estimate using market-level data
 
+$$ln(s_{jt})-ln(s_{1t})=x_{jt}\beta-\alpha p_{jt}+\xi_{jt}$$
+
 ## MNL Estimation Intuition {.smaller}
 
 *Estimating* the model means finding $\alpha$ and $\beta$ to maximize the predicted probabilities of **chosen** products ($y=1$), and minimize the probabilities of **not-chosen** products ($y=0$)
 
 | Person | Product | $y$ | $p$ | $x$ |
 |--------|---------|-----|-----|-----|
-| 1 | A | 0 | 4 | 5 |
-| 1 | B | **1** | 2 | 4 |
-| 1 | C | 0 | — | — |
-| 2 | A | **1** | 2 | 5 |
-| 2 | B | 0 | 2 | 4 |
-| 2 | C | 0 | — | — |
+| A | 1 | 0 | — | — |
+| A | 2 | 0 | 4 | 5 |
+| A | 3 | **1** | 2 | 4 |
+| B | 1 | 0 | — | — |
+| B | 2 | **1** | 2 | 5 |
+| B | 3 | 0 | 2 | 4 |
 
-If $\alpha=-1$ and $\beta=1$: $\quad V_A=5-p_A$; $\quad V_B=4-2=2$; $\quad V_C=0$ (normalization)
+If $\alpha=1$ and $\beta=1$: $\quad V_1=0$ (normalization); $\quad V_2=5-p_2$; $\quad V_3=4-2=2$ $\quad s_{jt}=\frac{e^{x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}$
 
-- $P_{1A}=e^{1}/(e^{1}+e^{2}+e^{0})=0.24$; $\quad P_{1B}=e^{2}/(e^{1}+e^{2}+e^{0})=0.67$
-- $P_{2A}=e^{3}/(e^{3}+e^{2}+e^{0})=0.71$; $\quad P_{2B}=e^{2}/(e^{3}+e^{2}+e^{0})=0.26$
+- $P_{A2}=e^{1}/(e^{0}+e^{1}+e^{2})=0.24$; $\quad P_{A3}=e^{2}/(e^{0}+e^{1}+e^{2})=0.67$
+- $P_{B2}=e^{3}/(e^{0}+e^{3}+e^{2})=0.71$; $\quad P_{B3}=e^{2}/(e^{0}+e^{3}+e^{2})=0.26$
 
 ::: {.callout-note appearance="minimal"}
-Person 1 chose B and Person 2 chose A. Product C is the "outside option" — not purchasing. What happens to the choice probabilities if you change $\alpha$ to $-1.1$? What if you change $\alpha$ to $-0.9$?
+Person A chose product 3 and Person B chose product 2. Product 1 is the "outside option" — not purchasing. What happens to the choice probabilities if you change $\alpha$ to $1.1$? What if you change $\alpha$ to $0.9$?
 :::
 
 ## MNL Goodness-of-fit Statistics {.smaller}
 
-- Discrete choice models predict *choice probabilities* rather than *choices*, because utility is always unobserved; hence nonstandard fit statistics
+- MNL predicts *choice probabilities* rather than *choices*, because utility is always unobserved; hence nonstandard fit statistics
 
 1. Likelihood Ratio Test: (not R-sq)
 
@@ -370,36 +354,22 @@ $$\rho=1-\frac{ln L(\hat\beta)}{ln L(0)}$$
 - #3 is appealing idea but based on fewer data points than estimation
 :::
 
-## MNL Pros {.smaller}
+## MNL Pros & Cons {.smaller}
 
-1. Microfounded, i.e. behavioral predictions are consistent with a clearly specified theory of consumer choice
-    - Theory is income-constrained utility maximization
+- **Pro:** Microfounded, i.e. behavioral predictions are consistent with a clearly specified theory of consumer choice: utility maximization
     - Economists widely believe that microfounded models are more generalizable than purely statistical models*
-2. Extensible to accommodate preference heterogeneity
-    - We'll cover 3 types of extensions in heterogeneous demand modeling
-3. Likelihood function is globally concave in $\alpha$ and $\beta$, ensuring fast and reliable estimation
-    - Remember our local vs. global optimum discussion?
-
-::: {.callout-note appearance="minimal"}
-These attributes help to explain the MNL's widespread popularity in practice. Why do you think economists believe that microfoundations help to improve the model's predictive performance?
-:::
+- **Pro:** Extensible to accommodate preference heterogeneity
+- **Pro:** Likelihood function is globally concave in $\alpha$ and $\beta$, ensuring fast and reliable estimation
+- **Con:** Assuming $\epsilon_{ijt}\sim$*i.i.d.*$EV_1(0,1)$ is algebraically convenient but unrealistic
+    - More likely, more similar products would experience more similar demand shocks
+    - Alternatives exist but can be computationally expensive; market share functions require more computation
+- **Con:** Analyst selects the choice set $j=1,...,J$, market size $N_t$, attributes $x_{jt}$, and price structure $p_{jt}$.
+    - What's a j? What's a t? What's in x? How do we measure p? Who's in N?
+- **Con:** Market share derivatives depend on market shares alone (IIA; see Train Sec. 3.6)
 
 ::: {.source-url}
 *[Andrews, Fudenberg, Lei, Liang, and Wu (2023)](https://economics.mit.edu/sites/default/files/2023-11/Theory_Transfer.pdf){target="_blank"} supports this belief
 :::
-
-## MNL Cons {.smaller}
-
-1. Assuming $\epsilon_{ijt}\sim$*i.i.d.*$EV_1(0,1)$ is algebraically convenient but unrealistic
-    - More likely, more similar products would experience more similar demand shocks
-    - Alternatives exist but can be computationally expensive; market share functions require more computation
-2. Analyst selects the choice set $j=1,...,J$, market size $N_t$, attributes $x_{jt}$, and price structure $p_{jt}$.
-    - What's a j? What's a t? What's in x? How do we measure p? Who's in N?
-    - "Tuning factors" or "Analyst degrees of freedom"
-3. Market share derivatives depend on market shares alone (IIA; see Train Sec. 3.6)
-    - We'd expect more-differentiated products to face less-elastic demand, holding shares constant, but IIA does not allow this
-4. Price Endogeneity
-    - Affects all demand models, not just MNL
 
 ::: notes
 - Unobservables would likely be correlated across people, products and markets
@@ -407,29 +377,17 @@ These attributes help to explain the MNL's widespread popularity in practice. Wh
 - Derivatives statement presented without proof, refer interested students to the chapter. Some people think this property is appealingly simple, but it would be more realistic if the derivatives depended on the attribute levels or prices directly
 :::
 
-## IIA: Deeper dive
+## IIA: Deeper dive {.smaller}
 
-- Famous example from McFadden (1974)
-- Suppose you estimate demand for transportation with three options: {Blue Bus, Red Bus, Car}, each with 33% market share, and you include product intercepts in utility
-- Now suppose you evaluate a counterfactual in which you paint all of the red buses blue, and then you predict market shares in the new choice set {Blue Bus, Car}
-- MNL will predict Blue Bus and Car shares of 50%, not 67% and 33%
+- Famous example from McFadden (1974): Suppose you estimate demand for transportation with three options: {Blue Bus, Red Bus, Car}, each with 33% market share, and you include product intercepts in utility
+    - Now suppose you evaluate a counterfactual in which you paint all of the red buses blue, and then you predict market shares in the new choice set {Blue Bus, Car}
+    - MNL will predict Blue Bus and Car shares of 50%, not 67% and 33%
+    - Why? MNL infers $V_{jt}$ based on market shares, so equal market shares imply equal $V_{jt}$
 
-::: {.callout-note appearance="minimal"}
-Why would this happen? MNL infers equal utility estimates for each of the 3 options due to equal market shares. So, when one option disappears, MNL continues to predict equal market shares for the remaining options.
-:::
-
-## IIA: Remedies
-
-IIA is testable & usually rejected by data
-
-Common remedies:
-
-1. Extend the model to impose structure on choice set, <br>e.g. Nested Logit or Ordered Logit
-2. Change $\epsilon_{ijt}\sim$*i.i.d.*$EV_1(0,1)$, e.g. Multivariate Probit with correlated errors
-3. Change model structure so IIA property does not obtain, e.g. heterogeneous logit
+![](images/busses.jpg){.absolute bottom="20" right="20" height="150px"}
 
 ::: {.callout-note appearance="minimal"}
-We will use option 3 when we study heterogeneous demand modeling.
+IIA is testable and usually rejected by data. Common remedies: (1) impose structure on the choice set (e.g., Nested Logit, Ordered Logit); (2) relax the i.i.d. $EV_1$ error assumption (e.g., Multivariate Probit with correlated errors); or (3) change model structure so IIA does not obtain (e.g., heterogeneous logit).
 :::
 
 ## MNL in Practice: Alibaba {.smaller}
@@ -440,7 +398,7 @@ We will use option 3 when we study heterogeneous demand modeling.
 - Alibaba recommends 6 personalized products, chosen from thousands, on homepage to maximize sales revenue
 - Previously: ML algorithm predicted each product's purchase probability independently, then displayed the 6 with highest expected revenue
 - Feldman et al. (2022) proposed using MNL instead, because MNL captures substitution across products — if two displayed products are similar, they cannibalize each other's demand rather than generating new sales
-- Field experiment with 5M+ customers on Tmall/Taobao: ML predicted purchase probabilities *more accurately*, but MNL generated 28% more revenue per visit
+- Field experiment with 5M+ customers on Tmall/Taobao: ML predicted purchase probabilities more accurately, but MNL generated 28% more revenue per visit
 - Why? ML ignores substitution and may waste display slots on similar products. MNL's $s_{jt}$ formula links all products through the denominator, so it selects more diverse assortments
 :::
 
@@ -453,7 +411,7 @@ We will use option 3 when we study heterogeneous demand modeling.
 ::::
 
 ::: {.callout-note appearance="minimal"}
-Better prediction does not always lead to better decisions. What matters is not just *how likely* a customer is to buy each product, but *how products compete with each other* for the customer's attention.
+Better prediction does not always lead to better decisions. What matters is not just how likely a customer is to buy each product, but how products compete with each other for the customer's attention.
 :::
 
 ::: {.source-url}
@@ -787,13 +745,13 @@ Each color indicates a decile of Price2 realizations, such as the lowest 1-10%, 
 - Experiments
     - Randomizing price eliminates confounding with unobservables
     - Gold standard, but has drawbacks mentioned earlier
-- Quasi-experiments using archival data
+- Quasi-experiments using archival data (beyond class scope)
     1. Instrumental variables
     2. Regression discontinuities
     3. Natural experiments
     4. Difference-in-differences
     5. Synthetic controls
-    6. Double/debiased machine learning — these approaches are beyond the scope of this class
+    6. Double/debiased machine learning
 - Model the price-setting process
     - But without exogenous price variation, this can be difficult to evaluate
 

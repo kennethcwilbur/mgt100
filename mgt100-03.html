@@ -203,7 +203,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Correlation is the empirical tendency for two variables to move together. We hypothesize about a causal relationship using logic and judgment. If X “causes” Y, then if we intervene to change prob(X=x), prob(Y=y) will change as a result. We can empirically quantify causal relationships by running experiments (creating data) or by analyzing archival data using quasi-experimental identification strategies to rule out unobserved confounders.</p>
+<p>Correlation is the empirical tendency for two variables to move together. We hypothesize about a causal relationship using logic and judgment. If X “causes” Y, then if we intervene to change prob(X=x), prob(Y=y|X=x) will change as a result.</p>
 </div>
 </div>
 </div>
@@ -338,7 +338,7 @@
 </ul></li>
 <li>What do we need to estimate Demand?
 <ul>
-<li>Observable, exogenous variation in costs or price</li>
+<li>Observable, exogenous price variation</li>
 <li>Otherwise, “price endogeneity” will bias demand estimates, leading to a correlational relationship rather than a causal relationship</li>
 </ul></li>
 </ul>
@@ -498,7 +498,7 @@
 <ul>
 <li>Evidence is supportive, but not thick
 <ul>
-<li>Informally, I know several people who maintain demand models in large orgs</li>
+<li>Informally, I know several people who maintain demand models in large orgs. They say yes</li>
 <li>Scientific evidence requires researchers and firm to collaboratively (a) estimate demand, (b) act on demand estimates, (c) observe how actions affect outcomes, &amp; (d) report the results publicly. Hard to do &amp; incentives conflict</li>
 <li>Demand modeling can also go badly, e.g.&nbsp;due to price endogeneity</li>
 <li><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1474462" target="_blank">Misra &amp; Nair (2011)</a> : B2B sales &amp; salesforce compensation</li>
@@ -608,7 +608,7 @@
 <li>Let <span class="math inline">\(i\)</span> index consumers, <span class="math inline">\(j=1,...,J\)</span> products, and <span class="math inline">\(t\)</span> index choice occasions</li>
 <li>Assume each <span class="math inline">\(i\)</span> gets indirect utility <span class="math inline">\(u_{ijt}\)</span> from product <span class="math inline">\(j\)</span> in market <span class="math inline">\(t\)</span>:</li>
 </ul>
-<p><span class="math display">\[u_{ijt}=x_{jt}\beta-\alpha p_{jt}+\epsilon_{ijt}\]</span></p>
+<p><span class="math display">\[u_{ijt}=V_{jt}+\epsilon_{ijt}=x_{jt}\beta-\alpha p_{jt}+\epsilon_{ijt}\]</span></p>
 <ul>
 <li>Then, assuming each <span class="math inline">\(i\)</span> picks the <span class="math inline">\(j\)</span> that maximizes <span class="math inline">\(u_{ijt}\)</span>, has unit demand, and that <span class="math inline">\(\epsilon_{ijt}\sim\)</span><em>i.i.d.</em><span class="math inline">\(EV_1(0,1)\)</span>, market share is</li>
 </ul>
@@ -641,53 +641,24 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="mnl-common-factors" class="slide level2 scrollable smaller">
-<h2>MNL: Common factors</h2>
+<section id="mnl-theoretical-properties" class="slide level2 smaller">
+<h2>MNL: Theoretical properties</h2>
 <ul>
-<li>Suppose <span class="math inline">\(\gamma_{t}\)</span> indicates how popular the category is in market <span class="math inline">\(t\)</span>, so utility is <span class="math inline">\(u_{ijt}=\gamma_{t}+x_{jt}\beta-\alpha p_{jt}+\epsilon_{ijt}\)</span>. Then market share becomes</li>
-</ul>
-<p><span class="math display">\[s_{jt}=\frac{e^{\gamma_{t}+x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^J e^{\gamma_{t}+x_{kt}\beta-\alpha p_{kt}}}\]</span></p>
-<p><span class="math display">\[s_{jt}=\frac{e^{\gamma_{t}}   e^{x_{jt}\beta-\alpha p_{jt}}}{e^{\gamma_{t}}\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}\]</span></p>
-<p><span class="math display">\[s_{jt}=\frac{e^{x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}\]</span></p>
+<li><p>Suppose <span class="math inline">\(\gamma_{t}\)</span> indicates how popular the category is in market <span class="math inline">\(t\)</span>, so utility is <span class="math inline">\(u_{ijt}=\gamma_{t}+x_{jt}\beta-\alpha p_{jt}+\epsilon_{ijt}\)</span>. Then market share becomes</p>
+<p><span class="math display">\[s_{jt}=\frac{e^{\gamma_{t}+x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^J e^{\gamma_{t}+x_{kt}\beta-\alpha p_{kt}}}=\frac{e^{x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}\]</span></p>
 <ul>
 <li>Similar exercise applies to individual-specific intercepts <span class="math inline">\(\gamma_i\)</span>, or individual-time interactions <span class="math inline">\(\gamma_{it}\)</span>. Only differences across products affect predicted market shares</li>
-</ul>
-<aside class="notes">
-<ul>
-<li>Hence any factor that doesn’t vary across products will drop out of the model</li>
-</ul>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="mnl-share-differences" class="slide level2 smaller">
-<h2>MNL: Share differences</h2>
-<ul>
-<li>We set product <span class="math inline">\(j=1\)</span> utility to <span class="math inline">\(u_{i1t}=\epsilon_{i1t}\)</span> to normalize utility, i.e.</li>
-</ul>
+</ul></li>
+<li><p>We usually normalize <span class="math inline">\(V_{1t}=0\)</span> for one product, and other products utilities are identified in reference to product 1</p>
 <p><span class="math display">\[s_{1t}=\frac{1}{\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}\]</span></p>
 <ul>
-<li>Hence for every <span class="math inline">\(j\ne 1\)</span>, divide <span class="math inline">\(s_{jt}\)</span> by <span class="math inline">\(s_{1t}\)</span>; the denominators cancel:</li>
-</ul>
-<p><span class="math display">\[\frac{s_{jt}}{s_{1t}}=\frac{e^{x_{jt}\beta-\alpha p_{jt}} / \sum_k e^{x_{kt}\beta-\alpha p_{kt}}}{1 / \sum_k e^{x_{kt}\beta-\alpha p_{kt}}}=e^{x_{jt}\beta-\alpha p_{jt}}\]</span></p>
-<ul>
-<li>Taking logs of both sides and adding an error term gives a linear regression form of the model:</li>
-</ul>
-<p><span class="math display">\[ln(s_{jt})-ln(s_{1t})=x_{jt}\beta-\alpha p_{jt}+\xi_{jt}\]</span></p>
-<ul>
 <li>We use the <span class="math inline">\((J-1)T\)</span> <em>differences</em> in market shares to estimate demand parameters</li>
-<li>Often, we normalize the non-purchase option — the “outside option” — which has no observed attributes</li>
+<li>Often, we normalize the non-purchase option (the “outside option”) which has no observed attributes</li>
+</ul></li>
 </ul>
 <aside class="notes">
 <ul>
+<li>Any factor that doesn’t vary across products will drop out of the model</li>
 <li>Often, we normalize the non-purchase option which has no attributes, and call it the “outside option”</li>
 </ul>
 <style type="text/css">
@@ -712,6 +683,7 @@
 <ol start="2" type="1">
 <li>Linearize the model, choose parameters to minimize the sum of square errors to estimate using market-level data</li>
 </ol>
+<p><span class="math display">\[ln(s_{jt})-ln(s_{1t})=x_{jt}\beta-\alpha p_{jt}+\xi_{jt}\]</span></p>
 </section>
 <section id="mnl-estimation-intuition" class="slide level2 smaller">
 <h2>MNL Estimation Intuition</h2>
@@ -728,58 +700,58 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td>1</td>
 <td>A</td>
+<td>1</td>
+<td>0</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>A</td>
+<td>2</td>
 <td>0</td>
 <td>4</td>
 <td>5</td>
 </tr>
-<tr class="even">
-<td>1</td>
-<td>B</td>
+<tr class="odd">
+<td>A</td>
+<td>3</td>
 <td><strong>1</strong></td>
 <td>2</td>
 <td>4</td>
 </tr>
-<tr class="odd">
+<tr class="even">
+<td>B</td>
 <td>1</td>
-<td>C</td>
 <td>0</td>
 <td>—</td>
 <td>—</td>
 </tr>
-<tr class="even">
+<tr class="odd">
+<td>B</td>
 <td>2</td>
-<td>A</td>
 <td><strong>1</strong></td>
 <td>2</td>
 <td>5</td>
 </tr>
-<tr class="odd">
-<td>2</td>
+<tr class="even">
 <td>B</td>
+<td>3</td>
 <td>0</td>
 <td>2</td>
 <td>4</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td>C</td>
-<td>0</td>
-<td>—</td>
-<td>—</td>
 </tr>
 </tbody>
 </table>
-<p>If <span class="math inline">\(\alpha=-1\)</span> and <span class="math inline">\(\beta=1\)</span>: <span class="math inline">\(\quad V_A=5-p_A\)</span>; <span class="math inline">\(\quad V_B=4-2=2\)</span>; <span class="math inline">\(\quad V_C=0\)</span> (normalization)</p>
+<p>If <span class="math inline">\(\alpha=1\)</span> and <span class="math inline">\(\beta=1\)</span>: <span class="math inline">\(\quad V_1=0\)</span> (normalization); <span class="math inline">\(\quad V_2=5-p_2\)</span>; <span class="math inline">\(\quad V_3=4-2=2\)</span> <span class="math inline">\(\quad s_{jt}=\frac{e^{x_{jt}\beta-\alpha p_{jt}}}{\sum_{k=1}^J e^{x_{kt}\beta-\alpha p_{kt}}}\)</span></p>
 <ul>
-<li><span class="math inline">\(P_{1A}=e^{1}/(e^{1}+e^{2}+e^{0})=0.24\)</span>; <span class="math inline">\(\quad P_{1B}=e^{2}/(e^{1}+e^{2}+e^{0})=0.67\)</span></li>
-<li><span class="math inline">\(P_{2A}=e^{3}/(e^{3}+e^{2}+e^{0})=0.71\)</span>; <span class="math inline">\(\quad P_{2B}=e^{2}/(e^{3}+e^{2}+e^{0})=0.26\)</span></li>
+<li><span class="math inline">\(P_{A2}=e^{1}/(e^{0}+e^{1}+e^{2})=0.24\)</span>; <span class="math inline">\(\quad P_{A3}=e^{2}/(e^{0}+e^{1}+e^{2})=0.67\)</span></li>
+<li><span class="math inline">\(P_{B2}=e^{3}/(e^{0}+e^{3}+e^{2})=0.71\)</span>; <span class="math inline">\(\quad P_{B3}=e^{2}/(e^{0}+e^{3}+e^{2})=0.26\)</span></li>
 </ul>
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Person 1 chose B and Person 2 chose A. Product C is the “outside option” — not purchasing. What happens to the choice probabilities if you change <span class="math inline">\(\alpha\)</span> to <span class="math inline">\(-1.1\)</span>? What if you change <span class="math inline">\(\alpha\)</span> to <span class="math inline">\(-0.9\)</span>?</p>
+<p>Person A chose product 3 and Person B chose product 2. Product 1 is the “outside option” — not purchasing. What happens to the choice probabilities if you change <span class="math inline">\(\alpha\)</span> to <span class="math inline">\(1.1\)</span>? What if you change <span class="math inline">\(\alpha\)</span> to <span class="math inline">\(0.9\)</span>?</p>
 </div>
 </div>
 </div>
@@ -787,7 +759,7 @@
 <section id="mnl-goodness-of-fit-statistics" class="slide level2 smaller">
 <h2>MNL Goodness-of-fit Statistics</h2>
 <ul>
-<li>Discrete choice models predict <em>choice probabilities</em> rather than <em>choices</em>, because utility is always unobserved; hence nonstandard fit statistics</li>
+<li>MNL predicts <em>choice probabilities</em> rather than <em>choices</em>, because utility is always unobserved; hence nonstandard fit statistics</li>
 </ul>
 <ol type="1">
 <li>Likelihood Ratio Test: (not R-sq)</li>
@@ -820,56 +792,29 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="mnl-pros" class="slide level2 smaller">
-<h2>MNL Pros</h2>
-<ol type="1">
-<li>Microfounded, i.e.&nbsp;behavioral predictions are consistent with a clearly specified theory of consumer choice
+<section id="mnl-pros-cons" class="slide level2 smaller">
+<h2>MNL Pros &amp; Cons</h2>
 <ul>
-<li>Theory is income-constrained utility maximization</li>
+<li><strong>Pro:</strong> Microfounded, i.e.&nbsp;behavioral predictions are consistent with a clearly specified theory of consumer choice: utility maximization
+<ul>
 <li>Economists widely believe that microfounded models are more generalizable than purely statistical models*</li>
 </ul></li>
-<li>Extensible to accommodate preference heterogeneity
-<ul>
-<li>We’ll cover 3 types of extensions in heterogeneous demand modeling</li>
-</ul></li>
-<li>Likelihood function is globally concave in <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, ensuring fast and reliable estimation
-<ul>
-<li>Remember our local vs.&nbsp;global optimum discussion?</li>
-</ul></li>
-</ol>
-<div class="callout callout-note no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>These attributes help to explain the MNL’s widespread popularity in practice. Why do you think economists believe that microfoundations help to improve the model’s predictive performance?</p>
-</div>
-</div>
-</div>
-<div class="source-url">
-<p>*<a href="https://economics.mit.edu/sites/default/files/2023-11/Theory_Transfer.pdf" target="_blank">Andrews, Fudenberg, Lei, Liang, and Wu (2023)</a> supports this belief</p>
-</div>
-</section>
-<section id="mnl-cons" class="slide level2 smaller">
-<h2>MNL Cons</h2>
-<ol type="1">
-<li>Assuming <span class="math inline">\(\epsilon_{ijt}\sim\)</span><em>i.i.d.</em><span class="math inline">\(EV_1(0,1)\)</span> is algebraically convenient but unrealistic
+<li><strong>Pro:</strong> Extensible to accommodate preference heterogeneity</li>
+<li><strong>Pro:</strong> Likelihood function is globally concave in <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span>, ensuring fast and reliable estimation</li>
+<li><strong>Con:</strong> Assuming <span class="math inline">\(\epsilon_{ijt}\sim\)</span><em>i.i.d.</em><span class="math inline">\(EV_1(0,1)\)</span> is algebraically convenient but unrealistic
 <ul>
 <li>More likely, more similar products would experience more similar demand shocks</li>
 <li>Alternatives exist but can be computationally expensive; market share functions require more computation</li>
 </ul></li>
-<li>Analyst selects the choice set <span class="math inline">\(j=1,...,J\)</span>, market size <span class="math inline">\(N_t\)</span>, attributes <span class="math inline">\(x_{jt}\)</span>, and price structure <span class="math inline">\(p_{jt}\)</span>.
+<li><strong>Con:</strong> Analyst selects the choice set <span class="math inline">\(j=1,...,J\)</span>, market size <span class="math inline">\(N_t\)</span>, attributes <span class="math inline">\(x_{jt}\)</span>, and price structure <span class="math inline">\(p_{jt}\)</span>.
 <ul>
 <li>What’s a j? What’s a t? What’s in x? How do we measure p? Who’s in N?</li>
-<li>“Tuning factors” or “Analyst degrees of freedom”</li>
 </ul></li>
-<li>Market share derivatives depend on market shares alone (IIA; see Train Sec. 3.6)
-<ul>
-<li>We’d expect more-differentiated products to face less-elastic demand, holding shares constant, but IIA does not allow this</li>
-</ul></li>
-<li>Price Endogeneity
-<ul>
-<li>Affects all demand models, not just MNL</li>
-</ul></li>
-</ol>
+<li><strong>Con:</strong> Market share derivatives depend on market shares alone (IIA; see Train Sec. 3.6)</li>
+</ul>
+<div class="source-url">
+<p>*<a href="https://economics.mit.edu/sites/default/files/2023-11/Theory_Transfer.pdf" target="_blank">Andrews, Fudenberg, Lei, Liang, and Wu (2023)</a> supports this belief</p>
+</div>
 <aside class="notes">
 <ul>
 <li>Unobservables would likely be correlated across people, products and markets</li>
@@ -888,35 +833,21 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="iia-deeper-dive" class="slide level2">
+<section id="iia-deeper-dive" class="slide level2 smaller">
 <h2>IIA: Deeper dive</h2>
 <ul>
-<li>Famous example from McFadden (1974)</li>
-<li>Suppose you estimate demand for transportation with three options: {Blue Bus, Red Bus, Car}, each with 33% market share, and you include product intercepts in utility</li>
+<li>Famous example from McFadden (1974): Suppose you estimate demand for transportation with three options: {Blue Bus, Red Bus, Car}, each with 33% market share, and you include product intercepts in utility
+<ul>
 <li>Now suppose you evaluate a counterfactual in which you paint all of the red buses blue, and then you predict market shares in the new choice set {Blue Bus, Car}</li>
 <li>MNL will predict Blue Bus and Car shares of 50%, not 67% and 33%</li>
+<li>Why? MNL infers <span class="math inline">\(V_{jt}\)</span> based on market shares, so equal market shares imply equal <span class="math inline">\(V_{jt}\)</span></li>
+</ul></li>
 </ul>
+<p><img data-src="images/busses.jpg" class="absolute" style="bottom: 20px; right: 20px; height: 150px; "></p>
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Why would this happen? MNL infers equal utility estimates for each of the 3 options due to equal market shares. So, when one option disappears, MNL continues to predict equal market shares for the remaining options.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="iia-remedies" class="slide level2">
-<h2>IIA: Remedies</h2>
-<p>IIA is testable &amp; usually rejected by data</p>
-<p>Common remedies:</p>
-<ol type="1">
-<li>Extend the model to impose structure on choice set, <br>e.g.&nbsp;Nested Logit or Ordered Logit</li>
-<li>Change <span class="math inline">\(\epsilon_{ijt}\sim\)</span><em>i.i.d.</em><span class="math inline">\(EV_1(0,1)\)</span>, e.g.&nbsp;Multivariate Probit with correlated errors</li>
-<li>Change model structure so IIA property does not obtain, e.g.&nbsp;heterogeneous logit</li>
-</ol>
-<div class="callout callout-note no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>We will use option 3 when we study heterogeneous demand modeling.</p>
+<p>IIA is testable and usually rejected by data. Common remedies: (1) impose structure on the choice set (e.g., Nested Logit, Ordered Logit); (2) relax the i.i.d. <span class="math inline">\(EV_1\)</span> error assumption (e.g., Multivariate Probit with correlated errors); or (3) change model structure so IIA does not obtain (e.g., heterogeneous logit).</p>
 </div>
 </div>
 </div>
@@ -929,7 +860,7 @@
 <li>Alibaba recommends 6 personalized products, chosen from thousands, on homepage to maximize sales revenue</li>
 <li>Previously: ML algorithm predicted each product’s purchase probability independently, then displayed the 6 with highest expected revenue</li>
 <li>Feldman et al.&nbsp;(2022) proposed using MNL instead, because MNL captures substitution across products — if two displayed products are similar, they cannibalize each other’s demand rather than generating new sales</li>
-<li>Field experiment with 5M+ customers on Tmall/Taobao: ML predicted purchase probabilities <em>more accurately</em>, but MNL generated 28% more revenue per visit</li>
+<li>Field experiment with 5M+ customers on Tmall/Taobao: ML predicted purchase probabilities more accurately, but MNL generated 28% more revenue per visit</li>
 <li>Why? ML ignores substitution and may waste display slots on similar products. MNL’s <span class="math inline">\(s_{jt}\)</span> formula links all products through the denominator, so it selects more diverse assortments</li>
 </ul>
 </div><div class="column" style="width:35%;">
@@ -947,7 +878,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Better prediction does not always lead to better decisions. What matters is not just <em>how likely</em> a customer is to buy each product, but <em>how products compete with each other</em> for the customer’s attention.</p>
+<p>Better prediction does not always lead to better decisions. What matters is not just how likely a customer is to buy each product, but how products compete with each other for the customer’s attention.</p>
 </div>
 </div>
 </div>
@@ -1378,14 +1309,14 @@ F-statistic: 1.226e+09 on 2 and 97 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li>Randomizing price eliminates confounding with unobservables</li>
 <li>Gold standard, but has drawbacks mentioned earlier</li>
 </ul></li>
-<li>Quasi-experiments using archival data
+<li>Quasi-experiments using archival data (beyond class scope)
 <ol type="1">
 <li>Instrumental variables</li>
 <li>Regression discontinuities</li>
 <li>Natural experiments</li>
 <li>Difference-in-differences</li>
 <li>Synthetic controls</li>
-<li>Double/debiased machine learning — these approaches are beyond the scope of this class</li>
+<li>Double/debiased machine learning</li>
 </ol></li>
 <li>Model the price-setting process
 <ul>

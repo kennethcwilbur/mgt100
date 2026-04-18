@@ -193,7 +193,7 @@
   <p class="date">This version: April 2026 | License: CC BY 4.0 | We use javascript to track readership.<br>We welcome reuse with attribution. Please share widely.</p>
 </section>
 <section id="segmentation-case-study-quidel" class="slide level2">
-<h2>Segmentation Case Study: Quidel</h2>
+<h2>Segmentation case study: Quidel</h2>
 <ul>
 <li>Leading B2B manufacturer of home pregnancy tests</li>
 <li>Tests were quick and reliable</li>
@@ -405,38 +405,27 @@
 <p><img data-src="images/het_nested_circles.png" class="quarto-figure quarto-figure-center" height="490"></p>
 </figure>
 </div>
-<div style="font-size: 0.85em;">
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Analyst can impose heterogeneity assumptions or seek to learn heterogeneity structure from data (very demanding). Tradeoff depends on empirical reasonableness of modeling assumptions vs.&nbsp;data thickness/sparsity</p>
-</div>
+<p>Analyst can impose heterogeneity assumptions or seek to learn heterogeneity from data. Tradeoff depends on modeling accuracy vs.&nbsp;data thickness/sparsity</p>
 </div>
 </div>
 </div>
 </section>
 <section id="heterogeneity-by-customer-attributes" class="slide level2 smaller">
-<h2>Heterogeneity by Customer Attributes</h2>
+<h2>Heterogeneity by customer attributes</h2>
 <ul>
 <li>Let <span class="math inline">\(w_{it}\sim F(w_{it})\)</span> be observed customer attributes, needs or behaviors that drive demand</li>
 <li><span class="math inline">\(w_{it}\)</span> is often a vector of customer attributes including an intercept</li>
-<li>Assume <span class="math inline">\(\beta=\delta w_{it}\)</span> and <span class="math inline">\(\alpha=w_{it} \gamma\)</span> :: <span class="math inline">\(\delta\)</span> &amp; <span class="math inline">\(\gamma\)</span> conformable matrices
-<ul>
-<li>Suppose <span class="math inline">\(x_{jt}\)</span> is 1x5, and <span class="math inline">\(w_{it}\)</span> is 2x1, then <span class="math inline">\(\delta\)</span> would be 5x2</li>
-</ul></li>
+<li>Assume <span class="math inline">\(\beta=\delta w_{it}\)</span> and <span class="math inline">\(\alpha=w_{it} \gamma\)</span> :: <span class="math inline">\(\delta\)</span> &amp; <span class="math inline">\(\gamma\)</span> conformable matrices</li>
 <li>Then <span class="math inline">\(u_{ijt}=x_{jt}\delta w_{it}- w_{it} \gamma p_{jt} +\epsilon_{ijt}\)</span> and</li>
 </ul>
 <p><span class="math display">\[s_{jt}=\int \frac{e^{x_{jt}\delta w_{it}- w_{it}\gamma p_{jt} }}{\sum_{k=1}^{J}e^{x_{kt}\delta w_{it}- w_{it}\gamma p_{kt}  }} dF(w_{it}) \approx \frac{1}{N_t}\sum_i \frac{e^{x_{jt}\delta w_{it}- w_{it}\gamma p_{jt}}}{\sum_{k=1}^{J}e^{x_{kt}\delta w_{it}- w_{it}\gamma p_{kt}}}\]</span></p>
 <ul>
 <li>We usually approximate this integral with a Riemann sum</li>
+<li>What goes into <span class="math inline">\(w_{it}\)</span>? What if <span class="math inline">\(dim(x)\)</span> and/or <span class="math inline">\(dim(w)\)</span> is large?</li>
 </ul>
-<div class="callout callout-note no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>We often restrict elements in <span class="math inline">\(\delta\)</span> and <span class="math inline">\(\beta\)</span> to zero, if we think the interaction is unimportant, to avoid overparameterizing the model. What goes into <span class="math inline">\(w_{it}\)</span>? What if <span class="math inline">\(dim(x)\)</span> and/or <span class="math inline">\(dim(w)\)</span> is large?</p>
-</div>
-</div>
-</div>
 <aside class="notes">
 <ul>
 <li>We could use theory to restrict elements of <span class="math inline">\(\gamma\)</span> or <span class="math inline">\(\delta\)</span> to 0</li>
@@ -457,27 +446,26 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="heterogeneity-by-segment" class="slide level2">
-<h2>Heterogeneity by Segment</h2>
+<section id="heterogeneity-by-segment" class="slide level2 smaller">
+<h2>Heterogeneity by segment</h2>
 <ul>
-<li>Assume each customer <span class="math inline">\(i=1,...,N_t\)</span> is in exactly 1 of <span class="math inline">\(l=1,...,L\)</span> segments with sizes <span class="math inline">\(\sum_{l=1}^{L}N_{lt}=N_t\)</span>
+<li>Assume each customer <span class="math inline">\(i=1,...,N\)</span> is in exactly 1 of <span class="math inline">\(l=1,...,L\)</span> segments with sizes <span class="math inline">\(N_l\)</span> and <span class="math inline">\(N=\sum_{l=1}^{L}N_l\)</span>
 <ul>
 <li>We will use 3 kmeans segments based on 6 usage variables</li>
+<li>We take usage variables as best available proxies for customer needs</li>
 </ul></li>
 <li>Assume preferences are uniform within segments &amp; vary between segments
 <ul>
 <li>Consistent with the definition of segments</li>
 </ul></li>
 <li>Replace <span class="math inline">\(u_{ijt}=x_{jt}\beta-\alpha p_{jt}+\epsilon_{ijt}\)</span> with <span class="math inline">\(u_{ijt}=x_{jt}\beta_l-\alpha_l p_{jt}+\epsilon_{ijt}\)</span></li>
-<li>That implies <span class="math inline">\(s_{ljt}=\frac{e^{x_{jt}\beta_l-\alpha_l p_{jt}}}{\sum_{k=1}^{J}e^{x_{kt}\beta_l-\alpha_l p_{kt}}}\)</span> and <span class="math inline">\(s_{jt}=\sum_{l=1}^{L}N_{lt} s_{ljt}\)</span></li>
+<li>That implies <span class="math inline">\(s_{ljt}=\frac{e^{x_{jt}\beta_l-\alpha_l p_{jt}}}{\sum_{k=1}^{J}e^{x_{kt}\beta_l-\alpha_l p_{kt}}}\)</span> and <span class="math inline">\(s_{jt}=\sum_{l=1}^{L}N_l s_{ljt}\)</span></li>
+<li>Alternatively, it is also possible to estimate segment memberships
+<ul>
+<li>Pro: don’t have to define the segment memberships ex ante</li>
+<li>Cons: noisy, demanding of the data; may change w time; may neglect available theory; possible numerical problems. Need a lot of data to do this well</li>
+</ul></li>
 </ul>
-<div class="callout callout-note no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>Alternatively, it is possible to estimate segment memberships, rather than supplying them via kmeans. Pros: We don’t have to pre-specify segment memberships. Cons: Noisy, so we need a lot of data to do this well.</p>
-</div>
-</div>
-</div>
 <aside class="notes">
 <ul>
 <li><a href="https://www.jstor.org/stable/pdf/3172759.pdf" target="_blank">Kamakura &amp; Russell (1989)</a></li>
@@ -494,8 +482,8 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="individual-heterogeneity" class="slide level2">
-<h2>Individual Heterogeneity</h2>
+<section id="individual-demand-parameters" class="slide level2 smaller">
+<h2>3. Individual demand parameters</h2>
 <ul>
 <li>Assume <span class="math inline">\((\alpha_i,\beta_i)\sim F(\Theta)\)</span>
 <ul>
@@ -505,9 +493,7 @@
 <li>Typically, we assume <span class="math inline">\(F(\Theta)\)</span> is multivariate normal, for convenience, and estimate <span class="math inline">\(\Theta\)</span>
 <ul>
 <li>We usually have to approximate the integral, often use Bayesian techniques (MSBA/PhD)</li>
-</ul></li>
-<li>Or, we can estimate every <span class="math inline">\(\alpha_i\)</span> and <span class="math inline">\(\beta_i\)</span>, that is very very data intensive
-<ul>
+<li>Or, we can estimate <span class="math inline">\(F\)</span> but that is very very data intensive</li>
 <li>In theory, we can estimate all <span class="math inline">\((\alpha_i,\beta_i)\)</span> pairs without <span class="math inline">\(\sim F(\Theta)\)</span> assumption, but requires numerous observations &amp; sufficient variation for each <span class="math inline">\(i\)</span>. Most data intensive</li>
 </ul></li>
 </ul>
@@ -528,7 +514,7 @@
       }</style></aside>
 </section>
 <section id="how-to-choose" class="slide level2 smaller">
-<h2>How to Choose?</h2>
+<h2>How to choose?</h2>
 <ul>
 <li>“All models are wrong. Some models are useful” (Box)</li>
 <li>“Truth is too complicated to allow anything but approximations.” (von Neumann)</li>
@@ -538,13 +524,15 @@
 <li>Model selection: A Judgment Problem
 <ul>
 <li>How do you choose among plausible specifications?</li>
-<li>Involves both model selection — which f() in y=f(x) — and predictor selection</li>
+<li>Involves both model selection — which f() in y=f(x) — and covariate selection</li>
+<li>Use modeling purpose and constraints as model selection criterion</li>
+<li>What are our demand modeling objectives?</li>
 </ul></li>
 </ul>
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Use modeling purposes and constraints as model selection criteria. Purposes can include prediction, explanation and decision-making. Constraints can include privacy and ethics. What criteria would you prioritize?</p>
+<p>SUGGESTION: If no model is correct, how should we decide which one to use? The answer depends on the purpose: prediction, explanation, or decision-making may favor different models. What criteria would you prioritize?</p>
 </div>
 </div>
 </div>
@@ -559,7 +547,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Should you model weight=f(height) or height=f(weight)? Notice the many-to-one correspondence and the discrete nature of height measurements.</p>
+<p>SUGGESTION: Should you model weight=f(height) or height=f(weight)? Notice the many-to-one correspondence and the discrete nature of height measurements. Ultimately it depends on your purpose. What modeling choices would change if the goal were medical screening vs.&nbsp;clothing design?</p>
 </div>
 </div>
 </div>
@@ -585,7 +573,7 @@
       }</style></aside>
 </section>
 <section id="model-specification" class="slide level2 smaller">
-<h2>Model Specification</h2>
+<h2>Model specification</h2>
 <ul>
 <li>Bias-variance tradeoff
 <ul>
@@ -606,7 +594,35 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Imagine you prepared for a quiz by perfectly memorizing the textbook but without understanding the material. Could you accurately apply the concepts in unseen settings?</p>
+<p>SUGGESTION: There is a fundamental tension: more complex models fit training data better but may predict new data worse. How do you know when you’ve crossed the line from useful complexity to overfitting?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="regularization-lasso-ridge-elastic-net" class="slide level2 smaller">
+<h2>Regularization: Lasso, Ridge &amp; Elastic Net</h2>
+<p>Adding predictors improves in-sample fit but risks overfitting. Regularization methods penalize model complexity to improve predictions:</p>
+<ul>
+<li><strong>Ridge</strong> (L2 penalty): <span class="math inline">\(\min_\beta \sum(y_i - x_i\beta)^2 + \lambda\sum\beta_k^2\)</span>
+<ul>
+<li>Shrinks all coefficients toward zero, but never to exactly zero</li>
+<li>Useful when many predictors each contribute small effects</li>
+</ul></li>
+<li><strong>Lasso</strong> (L1 penalty): <span class="math inline">\(\min_\beta \sum(y_i - x_i\beta)^2 + \lambda\sum|\beta_k|\)</span>
+<ul>
+<li>Can shrink coefficients to exactly zero → automatic variable selection</li>
+<li>Useful when only a few predictors matter</li>
+</ul></li>
+<li><strong>Elastic Net</strong> (L1 + L2): <span class="math inline">\(\min_\beta \sum(y_i - x_i\beta)^2 + \lambda_1\sum|\beta_k| + \lambda_2\sum\beta_k^2\)</span>
+<ul>
+<li>Combines variable selection with coefficient stability</li>
+</ul></li>
+</ul>
+<p>The tuning parameter <span class="math inline">\(\lambda\)</span> controls penalty strength: higher <span class="math inline">\(\lambda\)</span> → more shrinkage, fewer effective parameters. Cross-validation is typically used to choose <span class="math inline">\(\lambda\)</span>.</p>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Why would we want to force some coefficients to exactly zero? If you have 100 product attributes but suspect only 10 matter, Lasso identifies which ones while Ridge keeps all 100 with smaller weights. How does the choice between Lasso and Ridge relate to your beliefs about the data-generating process?</p>
 </div>
 </div>
 </div>
@@ -615,13 +631,13 @@
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/overfitting_visualized.png" class="quarto-figure quarto-figure-center" height="500"></p>
+<p><img data-src="images/overfitting_visualized.png" class="quarto-figure quarto-figure-center" height="400"></p>
 </figure>
 </div>
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Choosing a model that maximize a single criterion, such as R-square, can lead to bad decisions.</p>
+<p>SUGGESTION: Imagine estimating demand at a B2B firm with few customers. With 2 data points, you fit a line (R-sq=1). With 3, a quadratic (R-sq=1). With 4, a cubic (R-sq=1). Is the true relationship actually changing with your sample size? What happens when you finally get lots of data?</p>
 </div>
 </div>
 </div>
@@ -650,57 +666,31 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="regularization-lasso-ridge-elastic-net" class="slide level2 smaller">
-<h2>Regularization: Lasso, Ridge &amp; Elastic Net</h2>
-<p>Adding predictors always improves in-sample fit but risks overfitting. Regularization methods penalize model complexity on the theory that simpler models predict better:</p>
-<ul>
-<li>Lasso (L1 penalty): <span class="math inline">\(\min_\beta \sum(y_i - x_i\beta)^2 + \lambda\sum|\beta_k|\)</span>
-<ul>
-<li>Can shrink coefficients to exactly zero → automatic variable selection</li>
-<li>Useful when only a few predictors matter</li>
-</ul></li>
-<li>Ridge (L2 penalty): <span class="math inline">\(\min_\beta \sum(y_i - x_i\beta)^2 + \lambda\sum\beta_k^2\)</span>
-<ul>
-<li>Shrinks all coefficients toward zero, but seldom to exactly zero</li>
-<li>Useful when many predictors each contribute small effects</li>
-</ul></li>
-<li>Elastic Net (L1 + L2): <span class="math inline">\(\min_\beta \sum(y_i - x_i\beta)^2 + \lambda_1\sum|\beta_k| + \lambda_2\sum\beta_k^2\)</span>
-<ul>
-<li>Combines Lasso and Ridge</li>
-</ul></li>
-</ul>
-<p>The tuning parameter <span class="math inline">\(\lambda\)</span> controls penalty strength: higher <span class="math inline">\(\lambda\)</span> → more shrinkage, fewer effective parameters. Cross-validation is typically used to choose <span class="math inline">\(\lambda\)</span>.</p>
-<div class="callout callout-note no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>If you have 100 product attributes but suspect only 10 matter, Lasso identifies which ones while Ridge keeps all 100 with smaller weights. Penalties are assumed as proxies for overfitting, but overfitting is not directly optimized.</p>
-</div>
-</div>
-</div>
-</section>
 <section id="how-to-evaluate-overfitting" class="slide level2">
-<h2>How to Evaluate Overfitting?</h2>
+<h2>How to evaluate overfitting?</h2>
 <ul>
 <li>Retrodiction = “RETROspective preDICTION”
 <ul>
-<li>Quantifies model’s ability to generalize to non-training data</li>
+<li>Knowing what happened enables you to evaluate prediction quality</li>
 <li>We can compare different models and different specifications on retrodictive accuracy</li>
 </ul></li>
 <li>We can even train a model to maximize retrodiction quality (“Cross-validation”)
 <ul>
 <li>Most helpful when the model’s purpose is prediction</li>
+<li>More approaches: Choose intentionally simple models</li>
+<li>Penalize the model for uninformative parameters: Lasso, Ridge, Elastic Net, etc.</li>
 </ul></li>
 </ul>
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Be careful not to confuse retrodiction with prediction. Why not?</p>
+<p>SUGGESTION: Retrodiction tests whether a model can predict outcomes it has already seen. But the real question is whether it can predict outcomes it has not seen. How does cross-validation bridge this gap?</p>
 </div>
 </div>
 </div>
 </section>
-<section id="cross-validation-algorithm" class="slide level2">
-<h2>Cross-Validation Algorithm</h2>
+<section id="cross-validation" class="slide level2 smaller">
+<h2>Cross-validation</h2>
 <ul>
 <li>General approach to evaluate retrodiction performance and overfitting risk among a set of competing models <span class="math inline">\(m=1,...,M\)</span>. Algorithm:</li>
 </ul>
@@ -711,6 +701,13 @@
 <li>Repeat 2&amp;3 for every model <span class="math inline">\(m\)</span></li>
 <li>Retain model <span class="math inline">\(m\)</span> with minimal prediction errors, usually MAPE or MSPE</li>
 </ol>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Cross-validation systematically tests each model’s ability to predict data it was not trained on. It is one important input into the model selection decision, but not the only one. When might cross-validation favor a different model than theory?</p>
+</div>
+</div>
+</div>
 <aside class="notes">
 <ul>
 <li>We often learn that most reasonable models perform similarly</li>
@@ -739,13 +736,52 @@
 <li>You estimate every model K times (K=4 in the graphic); each uses a different (K-1)/K proportion of the data</li>
 <li>We evaluate each model’s retrodiction quality K times, then average them</li>
 <li>When K=N, we call that “leave-one-out” cross-validation</li>
-<li>Cross-validation is just one criterion; final model selection also depends on theory, objectives, other criteria</li>
+<li>Cross-validation is just one tool; final model selection also depends on theory, objectives, other criteria</li>
 </ul>
+<div style="font-size: 0.75em;">
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Why use K=5 or K=10 folds instead of leave-one-out? Consider the tradeoff between computational cost and training data used per fold.</p>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="non-random-holdout-evaluations" class="slide level2 smaller">
-<h2>Non-Random Holdout Evaluations</h2>
+<section id="mspe-across-12-demand-models" class="slide level2">
+<h2>MSPE across 12 demand models</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/mspe_by_model.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Ten-fold cross-validated MSPE for 12 demand specifications estimated from the class R script. Adding price, segment, and usage interactions (models 1-11) gradually improves predictions. Model 12 deliberately adds customer_id interactions that carry no predictive signal; its MSPE jumps back up — the textbook overfitting warning. What would you conclude about the marginal value of added complexity?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="flexibility-vs.-parsimony" class="slide level2">
+<h2>Flexibility vs.&nbsp;Parsimony</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/flexibility_vs_parsimony.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: A simple model (top-left) has high bias but low variance — it consistently gets the wrong answer. A flexible model (bottom-left) has low bias but high variance — it fits training data well but predictions jump around. The right panel shows the optimal balance: minimizing total prediction error (MSE = Bias + Variance). How does this relate to the cross-validation procedure?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="ex-post-evaluations" class="slide level2 smaller">
+<h2>Ex-post evaluations</h2>
 <ul>
-<li>When are models most robust to major changes in the data-generating process?</li>
+<li>Can a model be robust to major changes in the data-generating process?</li>
 <li>Non-random holdouts are strong tests, but can only be retrospective</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
@@ -756,7 +792,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>This paper evaluated retrodictive performance of various models of auto production and pricing estimated using pre-2008 data after the 2008 gas price shock. It supported the generalizability of microfounded models. In what scenarios are tests like this most valuable?</p>
+<p>SUGGESTION: This paper tests whether a demand model estimated before a major market change can still predict well after the change. This is a much harder test than cross-validation, because the holdout data comes from a different regime. When would you want this kind of test?</p>
 </div>
 </div>
 </div>
@@ -765,7 +801,7 @@
 </div>
 </section>
 <section id="het-demand-misuse-risks" class="slide level2 smaller">
-<h2>Het Demand: Misuse Risks</h2>
+<h2>Het demand: Misuse Risks</h2>
 <ul>
 <li>Customer attributes should reflect differences in customer needs</li>
 <li>Customer data should be high quality (GIGO, Errors-in-variables biases)</li>
@@ -775,7 +811,15 @@
 <li>Using private data against customer interest can harm some consumers, break laws, incur liability. One lawsuit can kill a start-up</li>
 <li>Major US laws: COPPA, GLBA, HIPAA, patchwork of state laws</li>
 </ul></li>
+<li>Adding heterogeneity to a demand model does not resolve price endogeneity. Still need exogenous price variation</li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Overfitting is an empirical risk that harms prediction quality. Misuse is an analyst or management risk that harms prediction utility. Heterogeneity makes demand models more flexible, but it does nothing to address price endogeneity — if the base MNL had endogeneity bias, the heterogeneous version will too. Why?</p>
+</div>
+</div>
+</div>
 <aside class="notes">
 <ul>
 <li>Overfitting is an empirical risk that could harm prediction quality</li>
@@ -795,13 +839,13 @@
 </section></section>
 <section>
 <section id="some-evidence" class="title-slide slide level1 center">
-<h1>Some Evidence</h1>
+<h1>Some evidence</h1>
 <ul>
-<li>How does demand model performance depend on heterogeneity specification and training data?</li>
+<li>How does demand model performance depend on specification and training data?</li>
 </ul>
 </section>
 <section id="research-question" class="slide level2 smaller">
-<h2>Research Question</h2>
+<h2>Research question</h2>
 <ul>
 <li>Suppose we
 <ol type="1">
@@ -829,7 +873,7 @@
 </div>
 </section>
 <section id="lil-bit-of-theory" class="slide level2">
-<h2>Lil Bit of Theory</h2>
+<h2>Lil bit of theory</h2>
 <ul>
 <li>For any price discount &lt; contribution margin, giving a targeted discount to…
 <ul>
@@ -842,6 +886,13 @@
 <li>This research disregards the ‘post-promotion dip’ for simplicity</li>
 </ul></li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: The targeting problem reduces to classification: identify marginal customers who would switch brands with a discount, vs.&nbsp;loyal customers who would buy anyway. What data would help distinguish the two?</p>
+</div>
+</div>
+</div>
 <aside class="notes">
 <ul>
 <li>Assumes no cost of targeted discount. A coupon cost would be more complex</li>
@@ -859,7 +910,7 @@
       }</style></aside>
 </section>
 <section id="information-sets-x" class="slide level2">
-<h2>Information Sets <span class="math inline">\(X\)</span></h2>
+<h2>Information sets <span class="math inline">\(X\)</span></h2>
 <ol type="1">
 <li>Base Demographics: <br>Income, HHsize, Retired, Unemployed, SingleMom</li>
 <li>Extra Demographics: Age, HighSchool, College, WhiteCollar, #Kids, Married, #Dogs, #Cats, Renter, #TVs</li>
@@ -868,7 +919,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Which information set do you expect to be most predictive, and why?</p>
+<p>SUGGESTION: The base demographics were motivated by prior literature. Purchase history data include how often each individual responded to past discounts and how brand-loyal they were. Which information set do you expect to be most predictive, and why?</p>
 </div>
 </div>
 </div>
@@ -911,19 +962,12 @@
 <li>Including standard RF for bagging and XGBoost for boosting</li>
 </ul></li>
 </ol>
-<div class="callout callout-note no-icon callout-style-simple">
-<div class="callout-body">
-<div class="callout-content">
-<p>All models trained using 5-fold cross validation.</p>
-</div>
-</div>
-</div>
 <div class="source-url">
-<p><a href="https://drive.google.com/file/d/1ZruRntqyLfLyvYE7kCXCqUNJOfxhpwuq/view?usp=sharing" target="_blank">Optimal Price Targeting (MkSc 2022)</a> | <a href="https://drive.google.com/drive/folders/1Gmx8kxp2GSxLsA4edEhCrlRuMcf0LR37?usp=drive_link" target="_blank">estimation code</a></p>
+<p>All models trained using 5-fold cross validation. See <a href="https://drive.google.com/file/d/1ZruRntqyLfLyvYE7kCXCqUNJOfxhpwuq/view?usp=sharing" target="_blank">Optimal Price Targeting (MkSc 2022)</a> and <a href="https://drive.google.com/drive/folders/1Gmx8kxp2GSxLsA4edEhCrlRuMcf0LR37?usp=drive_link" target="_blank">estimation code</a> for further details</p>
 </div>
 </section>
 <section id="how-do-we-answer-the-question" class="slide level2 smaller">
-<h2>How Do We Answer the Question?</h2>
+<h2>How do we answer the question?</h2>
 <ol type="1">
 <li>Economic criteria: <br>What profit does each <span class="math inline">\(M\)</span>-<span class="math inline">\(X\)</span> combination imply?
 <ul>
@@ -945,7 +989,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Why might these criteria disagree? “Pessimists are often right. Optimists are often wealthy.”</p>
+<p>SUGGESTION: This study evaluates models by their economic value (profits from targeted coupons), not just statistical accuracy. Why might these criteria disagree? Which matters more for business decisions?</p>
 </div>
 </div>
 </div>
@@ -960,7 +1004,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Used the degenerate strategies as benchmarks. What do you see?</p>
+<p>SUGGESTION: Notice that giving everyone a coupon outperforms giving nobody a coupon, suggesting the firm may have been pricing too high. Among models, the Bayesian Hierarchical Logit performs well even with limited demographic data. ML models improve dramatically with purchase history. What does this tell us about the relative value of behavioral vs.&nbsp;demographic data?</p>
 </div>
 </div>
 </div>
@@ -996,7 +1040,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>How did statistical criteria compare to economic criteria?</p>
+<p>SUGGESTION: Ranking models by average prediction error differs greatly from ranking them by expected profits. Profit differences across models are not because of major gaps in average prediction performance — they come from picking the right customers to target. Why might a more statistically accurate model produce worse economic outcomes?</p>
 </div>
 </div>
 </div>
@@ -1022,13 +1066,13 @@
 <h2></h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/SSA22i.png" class="quarto-figure quarto-figure-center" height="550"></p>
+<p><img data-src="images/SSA22i.png" class="quarto-figure quarto-figure-center" height="400"></p>
 </figure>
 </div>
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Past purchases on discount are, by far, the strongest predictor of models’ targeting decisions.</p>
+<p>SUGGESTION: Past purchases on discount are, by far, the strongest predictor of models’ targeting decisions. Total spending is second. What does this confirm about the value of behavioral data for predicting future behavior?</p>
 </div>
 </div>
 </div>
@@ -1057,6 +1101,13 @@
 <li>ML model performance depends critically on data quality &amp; abundance. Counterfactual predictions do not always outperform economic models</li>
 <li>Statistical performance <span class="math inline">\(\ne\)</span> economic performance</li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: These findings suggest that the choice of model matters less than the choice of data, and that statistical fit is not the same as economic value. What implications does this have for how firms should invest in data collection?</p>
+</div>
+</div>
+</div>
 <aside class="notes">
 <ul>
 <li>This paper is useful overall but it has a couple of weaknesses</li>
@@ -1083,11 +1134,11 @@
 <section id="conjoint-analysis" class="title-slide slide level1 center">
 <h1>Conjoint Analysis</h1>
 <ul>
-<li>Generates stated-preference data to estimate heterogeneous demand model, to enable counterfactual predictions and optimal product designs and prices</li>
-<li>Probably the most popular quant marketing framework</li>
+<li>Generates stated-preference data to estimate heterogeneous demand model, to enable counterfactual predictions and optimal product designs</li>
+<li>Probably the most popular quant marketing framework: &gt;10k studies/year (Sawtooth 2008)</li>
 </ul>
 </section>
-<section id="choosing-product-attributes" class="slide level2">
+<section id="choosing-product-attributes" class="slide level2 smaller">
 <h2>Choosing Product Attributes</h2>
 <ul>
 <li>Until now, we studied existing product attributes
@@ -1104,10 +1155,12 @@
 </ul></li>
 <li>Combines well with cost data to select optimal attributes</li>
 </ul>
+<div style="font-size: 0.75em;">
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Conjoint extends demand modeling from “predict demand for existing products” to “predict demand for products that don’t exist yet.” When would a firm need this capability?</p>
+<p>SUGGESTION: Conjoint extends demand modeling from “predict demand for existing products” to “predict demand for products that don’t exist yet.” When would a firm need this capability?</p>
+</div>
 </div>
 </div>
 </div>
@@ -1127,47 +1180,119 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="sample-choice-task-energy-drinks" class="slide level2">
-<h2>Sample Choice Task: Energy Drinks</h2>
-
-<img data-src="images/conjoint_energy_drinks.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
-<section id="sample-choice-task-trucks" class="slide level2">
-<h2>Sample Choice Task: Trucks</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/conjoint-trucks.png" class="quarto-figure quarto-figure-center" height="600"></p>
-</figure>
-</div>
-</section>
-<section id="conjoint-analysis-algorithm" class="slide level2 smaller">
-<h2>Conjoint Analysis Algorithm</h2>
+<section id="conjoint-analysis-implementation" class="slide level2 smaller">
+<h2>Conjoint analysis implementation</h2>
 <ol type="1">
-<li>Identify product attributes and levels/values : These constitute points in your attribute space
+<li>Identify <span class="math inline">\(K\)</span> product attributes and levels/values <span class="math inline">\(x_k\)</span> : These constitute points in your attribute space
 <ul>
 <li>Screen size: 5.5”, 6”, 6.5”, 7”</li>
-<li>Memory: 16 GB, 32 GB, 64 GB, 128 GB, 256 GB</li>
+<li>Memory: 8 GB, 16 GB, 32 GB, 64 GB, 128 GB</li>
 <li>Price: $199, $399, $599, $799, $999</li>
 </ul></li>
 <li>Recruit consumer participants to make choices
 <ul>
-<li>Recruit a representative sample of your target market</li>
+<li>Choose a representative sample of your target market</li>
 <li>Offer 8-15 choices among 3-5 hypothetical attribute bundles</li>
 </ul></li>
 <li>Sample from product space, record consumer choices</li>
-<li>Specify model, e.g.&nbsp;<span class="math inline">\(u_{jl}=x_{j}\beta_l-\alpha_l p_j+\epsilon_j\)</span> and <span class="math inline">\(s_j=\frac{\sum_{l}x_{j}\beta_l-\alpha_l p_j}{\sum_l\sum_{k}x_{k}\beta_l-\alpha_l p_k}\)</span></li>
-<li>Estimate choice model</li>
-<li>Combine estimated model with projected cost data to choose product attributes and maximize profits</li>
+<li>Specify model, i.e.&nbsp;<span class="math inline">\(U_j=\sum_{k}x_{jk}\beta_k-\alpha_k p_j+\epsilon_j\)</span> <br>and <span class="math inline">\(P_j=\frac{\sum_{k}x_{jk}\beta_k-\alpha_k p_j}{\sum_l\sum_{k}x_{lk}\beta_k-\alpha_k p_l}\)</span>
+<ul>
+<li>Beware: p is price, P is choice probability or market share</li>
+</ul></li>
+<li>Calibrate choice model to estimate attribute utilities</li>
+<li>Combine estimated model with cost data to choose product locations and predict outcomes</li>
+</ol>
+</section>
+<section id="sample-choice-task" class="slide level2">
+<h2>Sample choice task</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/conjoint-trucks.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: This is a choice-based conjoint task: respondents see a set of hypothetical products described by attributes and choose which they would buy. Each choice reveals information about the relative importance of different attributes. How is this different from simply asking consumers to rate each attribute’s importance?</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p>Stated-preference vs revealed-preference | <a href="https://sawtoothsoftware.com/conjoint-analysis" target="_blank">Sawtooth Software</a></p>
+</div>
+</section>
+<section id="conjoint-energy-drinks" class="slide level2">
+<h2>Conjoint: Energy Drinks</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/conjoint_energy_drinks.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: This conjoint survey mimics a real retail shelf, presenting energy drinks with realistic packaging, shelf position, brands, sizes, prices, and discount tags. The realism helps bridge the gap between stated and revealed preferences. What attributes does the shelf design vary, and what can the researcher learn from consumers’ shelf choices?</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://sawtoothsoftware.com" target="_blank">SKIM Group at 2023 Sawtooth Conference</a></p>
+</div>
+</section>
+<section id="conjoint-smartphones" class="slide level2">
+<h2>Conjoint: Smartphones</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/conjoint_smartphones.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: This smartphone conjoint shows how attributes (brand, screen size, colour, price) are combined into hypothetical products for respondents to choose among. Notice the product in the lower panel labels “Attributes” and “Alternatives” explicitly. How would you use these estimated preferences to design a new phone for a specific market segment?</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://conjointly.com/guides/what-is-conjoint-analysis/" target="_blank">Conjointly</a></p>
+</div>
+</section>
+<section id="conjoint-politics" class="slide level2 smaller">
+<h2>Conjoint: Politics</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/conjoint_politics.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Thomadsen, Zeithammer &amp; Yao (2023) used conjoint analysis to measure how the importance of abortion in political preferences changed after the Dobbs decision. The decision decreased the importance weight for Republicans but increased it for independents and nonvoters. Conjoint analysis extends far beyond marketing — it can measure preferences in any domain where people make choices among options with multiple attributes.</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://doi.org/10.1287/mnsc.2023.4802" target="_blank">Thomadsen, Zeithammer &amp; Yao (2023)</a></p>
+</div>
+</section>
+<section id="major-benefits-of-conjoint" class="slide level2">
+<h2>Major Benefits of Conjoint</h2>
+<ol type="1">
+<li>It’s experimental (we combine attribute levels in an experimental design), so we can interpret the <strong>causal effect</strong> of, say, adding 500MB of RAM</li>
+<li>We can predict what would happen in <strong>any market scenario</strong>, allowing us to design our product to maximize market share, or to maximize profit (usually these are not achieved with the same product at the same price)</li>
+<li>We can predict the performance of a <strong>new product</strong>, so long as that product is some hypothetical combination of the attributes and levels in our conjoint</li>
+<li>At times, is <strong>faster and cheaper</strong> than demand analysis on archival data</li>
 </ol>
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>Let’s fill out a class conjoint about <a href="https://websitedemos.sawtoothsoftware.com/cbc-baseball/cgi-bin/ciwweb.pl" target="_blank">food at the ballpark</a>; use code 920-89</p>
+<p>SUGGESTION: These four benefits explain why conjoint is probably the most popular quantitative marketing framework. Which of these benefits is most valuable for a startup vs.&nbsp;an established firm? Are there situations where archival demand modeling would be preferable?</p>
 </div>
 </div>
 </div>
 </section>
 <section id="case-study-uberpool" class="slide level2">
-<h2>Case Study: UberPOOL</h2>
+<h2>Case study: UberPOOL</h2>
 <ul>
 <li>In 2013, Uber hypothesized
 <ul>
@@ -1202,7 +1327,7 @@
       }</style></aside>
 </section>
 <section id="business-case-was-clear-but" class="slide level2 smaller">
-<h2>Business Case Was Clear! But …</h2>
+<h2>Business case was clear! But …</h2>
 <ul>
 <li>Shared rides were new for Uber
 <ul>
@@ -1222,6 +1347,13 @@
 </ul></li>
 <li>Uber used market research to design UberPOOL</li>
 </ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Uber faced a classic product design challenge: they had a clear business case but many unknowns about customer preferences. What kinds of market research could address each of these unknowns?</p>
+</div>
+</div>
+</div>
 </section>
 <section id="approach" class="slide level2 smaller">
 <h2>Approach</h2>
@@ -1238,16 +1370,32 @@
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/uberpool_maxdiff_example.png" class="quarto-figure quarto-figure-center" height="280"></p>
+<p><img data-src="images/uberpool_maxdiff_example.png" class="quarto-figure quarto-figure-center" height="170"></p>
 </figure>
 </div>
+<div style="font-size: 0.75em;">
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Uber started with qualitative interviews to discover which attributes matter, then used a Maxdiff survey to rank their importance. Why is this two-stage approach better than jumping directly to a conjoint?</p>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="maxdiff-results" class="slide level2">
-<h2>Maxdiff Results</h2>
+<section id="maxdiff-results" class="slide level2 smaller">
+<h2>Maxdiff results</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/uberpool_maxdiff_results.png" class="quarto-figure quarto-figure-center" height="520"></p>
+<p><img data-src="images/uberpool_maxdiff_results.png" class="quarto-figure quarto-figure-center" height="350"></p>
 </figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Maxdiff asks respondents to pick the most and least important attributes, which is less susceptible to scale effects than rating scales. Fixed route and number of stops were relatively unimportant and were excluded from the conjoint. How does this pre-screening step improve the efficiency of the conjoint design?</p>
+</div>
+</div>
 </div>
 <aside class="notes">
 <p>Max diff is also called best-worst scaling Avoids logical ‘ranking’ exercises that may predict choices poorly Identifies most and least important attributes in a set</p>
@@ -1267,8 +1415,15 @@
 <h2>Conjoint Attribute Space</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/uberpool_conjoint_design.png" class="quarto-figure quarto-figure-center" height="520"></p>
+<p><img data-src="images/uberpool_conjoint_design.png" class="quarto-figure quarto-figure-center" height="400"></p>
 </figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Based on Maxdiff, Uber tested ETA, walking distance, trip length, trip variance, and discount. Notice different numbers of levels per attribute. These are the X variables in the demand model. Why might Uber have chosen these particular levels?</p>
+</div>
+</div>
 </div>
 <aside class="notes">
 <ul>
@@ -1289,12 +1444,19 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="conjoint-choice-task" class="slide level2">
-<h2>Conjoint Choice Task</h2>
+<section id="conjoint-sample-question" class="slide level2">
+<h2>Conjoint Sample Question</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/uberpool_conjoint_samplequestion.png" class="quarto-figure quarto-figure-center" height="520"></p>
+<p><img data-src="images/uberpool_conjoint_samplequestion.png" class="quarto-figure quarto-figure-center" height="400"></p>
 </figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: This shows what participants actually saw: 18,000 riders contacted via email, 1,934 completed surveys (10.7% response rate, 5.5 min/survey). Five respondents received $500 Amazon gift cards. How might the low response rate affect the representativeness of the results?</p>
+</div>
+</div>
 </div>
 <aside class="notes">
 <ul>
@@ -1315,12 +1477,19 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="heterogeneous-demand-model" class="slide level2">
-<h2>Heterogeneous Demand Model</h2>
+<section id="conjoint-model" class="slide level2">
+<h2>Conjoint Model</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/uberpool_conjoint_model.png" class="quarto-figure quarto-figure-center" height="520"></p>
+<p><img data-src="images/uberpool_conjoint_model.png" class="quarto-figure quarto-figure-center" height="350"></p>
 </figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: This is a heterogeneous choice model estimated with a Hierarchical Bayesian framework — similar to MNL, but assumes errors are jointly normal (not iid) and uses a different share function. This is approach 3 from our heterogeneity taxonomy: individual-level demand parameters.</p>
+</div>
+</div>
 </div>
 <aside class="notes">
 <ul>
@@ -1339,12 +1508,19 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="attribute-utility-estimates" class="slide level2">
-<h2>Attribute Utility Estimates</h2>
+<section id="conjoint-findings" class="slide level2">
+<h2>Conjoint Findings</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/uberpool_conjoint_findings.png" class="quarto-figure quarto-figure-center" height="520"></p>
+<p><img data-src="images/uberpool_conjoint_findings.png" class="quarto-figure quarto-figure-center" height="400"></p>
 </figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Unfortunately, Uber omitted the Y axis labels (common when firms worry about competitive secrecy). We can see that ETA and walking distance matter about equally, trip length matters somewhat, ETD variance matters less, and price matters a LOT. Uber also found heterogeneity: newer riders are more price-sensitive, and shorter commuters are more sensitive to walking distance.</p>
+</div>
+</div>
 </div>
 <aside class="notes">
 <ul>
@@ -1374,8 +1550,15 @@
 <h2>Product Redesign</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/uberpool_product_redesign.png" class="quarto-figure quarto-figure-center" height="520"></p>
+<p><img data-src="images/uberpool_product_redesign.png" class="quarto-figure quarto-figure-center" height="400"></p>
 </figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Uber redesigned the app to prominently display the attributes that conjoint identified as most important: walking distance, time to destination, ETD variance, and price. POOL intentionally delayed matching by ~40 seconds while searching for co-riders. The walking distance display had to be redesigned when the first version led consumers to overestimate total walking. The new product launched with “Walk a little, save a lot.”</p>
+</div>
+</div>
 </div>
 <aside class="notes">
 <ul>
@@ -1401,8 +1584,15 @@
 <h2>Business Results</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/uberpool_business_results.png" class="quarto-figure quarto-figure-center" height="520"></p>
+<p><img data-src="images/uberpool_business_results.png" class="quarto-figure quarto-figure-center" height="400"></p>
 </figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Uber shared limited revenue data, but San Francisco (where POOL had been live the longest) shows a clear decrease in cancellations after the redesign. What other metrics would you want to see to evaluate the conjoint-informed redesign?</p>
+</div>
+</div>
 </div>
 <aside class="notes">
 <ul>
@@ -1421,16 +1611,54 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="conjoint-pros-and-cons" class="slide level2">
-<h2>Conjoint Pros and Cons</h2>
+<section id="more-products" class="slide level2">
+<h2>More Products</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/uber_options.png" class="quarto-figure quarto-figure-center" height="350"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Uber now offers many product tiers, from UberX Share to Uber Black SUV, each targeting different preference segments. This menu of options is a form of second-degree price discrimination. How does understanding heterogeneous preferences enable this product line strategy?</p>
+</div>
+</div>
+</div>
+<aside class="notes">
 <ul>
-<li>Pro: It’s experimental, so we get causal effects by design. No endogeneity</li>
-<li>Pro: It’s purely hypothetical so we can test any scenario we can think of</li>
-<li>Pro: It’s fast and confidential, and relatively cheap</li>
-<li>Pro: Mature, competitive market of conjoint specialists</li>
-<li>Con: Requires representative sampling from target market</li>
-<li>Con: Relies on stated preferences: Participants need to imagine unfamiliar behaviors and report accurately; controlled environment will differ from real choice environment</li>
+<li>Apparently this approach is working out for Uber…</li>
+<li>They are offering lots more options, including Uber Pet</li>
 </ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="conjoint-market-simulator" class="slide level2">
+<h2>Conjoint Market Simulator</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/conjoint_market_simulator.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: Market simulators use fitted conjoint models to predict market shares (<span class="math inline">\(s_i = \frac{1}{N}\sum_n P_{ni}\)</span> where <span class="math inline">\(P_{ni} = \frac{e^{V_i}}{\sum_k e^{V_k}}\)</span>) and revenues (<span class="math inline">\(rev_i = price_i \times s_i\)</span>) for any hypothetical set of competing products. This enables “what if” analysis: what happens to our share if a competitor enters? If we change our price? The simulator makes conjoint actionable.</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://conjointly.com/solutions/conjoint-analysis/" target="_blank">Conjointly</a></p>
+</div>
 </section>
 <section id="conjoint-limitations-workarounds" class="slide level2 smaller">
 <h2>Conjoint: Limitations, Workarounds</h2>
@@ -1481,45 +1709,58 @@
       }</style></aside>
 </section>
 <section id="class-script" class="slide level2">
-<h2>Class Script</h2>
+<h2>Class script</h2>
 <ul>
 <li>Add heterogeneity to MNL model</li>
+<li>Individual-level heterogeneity via price-minutes interaction</li>
+<li>Segment-level heterogeneity via segment-attribute interactions</li>
+<li>Both</li>
 <li>Cross-validation to compare models</li>
 </ul>
 <p><img data-src="images/scroll.jpg" class="absolute" style="bottom: 20px; right: 20px; height: 100px; "></p>
 </section></section>
 <section>
 <section id="wrapping-up" class="title-slide slide level1 center">
-<h1>Wrapping Up</h1>
+<h1>Wrapping up</h1>
 
 </section>
 <section id="competition" class="slide level2 smaller">
 <h2>Competition</h2>
+<p>Using the week 5 class script as a starting point, estimate heterogeneous MNL demand models using <code>mdat2</code> or <code>mdat3</code> (a different cohort from the one used in class).</p>
 <ul>
-<li>Use the class dataset. Find a new combination of customer attributes and product attributes that finds the demand model (<code>out_num</code>) that maximizes the <code>ll_ratio(mdat1, out_num)</code>.</li>
-<li>Evaluate your new demand model’s cross-validation performance using <code>cv_mspe(out_num, mdat1)</code>.</li>
-<li>Use the <code>print()</code> command to output <code>ll_ratio(mdat1, out_num)</code> and <code>cv_mspe(out_num, mdat1)</code> within your script.</li>
+<li>Estimate at least 3 model specifications with different heterogeneity structures (e.g., <code>brand:segment</code>, <code>price:segment</code>, <code>price:total_minutes</code> interactions)</li>
+<li>Use 10-fold cross-validation (the <code>cv_mspe()</code> function from the script) to evaluate each model’s retrodictive performance</li>
+<li>Select the model with the best cross-validated MSPE and create a visualization showing how that model’s predicted purchase probabilities differ across customers for a phone of your choice</li>
+<li>Submit: (1) the visualization, and (2) a brief description of why you chose this specification</li>
 </ul>
+<div style="font-size: 0.75em;">
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>SUGGESTION: The class script shows how to add <code>:segment</code> and <code>:total_minutes</code> interactions using colons in the <code>mlogit()</code> formula, and includes the <code>cv_mspe()</code> function for 10-fold cross-validation. Use cross-validation to guide model selection, then use <code>myplot()</code> or your own code to visualize the winning model’s predictions.</p>
+</div>
+</div>
+</div>
+</div>
 <p><img data-src="images/competition.png" class="absolute" style="bottom: 20px; right: 20px; height: 120px; "></p>
 </section>
 <section id="recap" class="slide level2">
 <h2>Recap</h2>
 <ul>
-<li>Understanding heterogeneous customer needs enables deep marketing insights (Quidel example)</li>
+<li>Heterogeneous demand models enable personalized and segment-specific policy experiments</li>
 <li>Demand models can incorporate discrete, continuous and/or individual-level heterogeneity structures</li>
-<li>Heterogeneity helps demand model fit better, but may predict worse past some point</li>
+<li>Heterogeneous demand models fit better, but beware overfitting and misuse</li>
 <li>Conjoint analysis uses stated-preference data to map markets and predict profits of product locations in attribute space</li>
 </ul>
 <p><img data-src="images/recap.png" class="absolute" style="bottom: 20px; right: 20px; height: 100px; "></p>
 </section>
 <section id="going-further" class="slide level2">
-<h2>Going Further</h2>
+<h2>Going further</h2>
 <ul>
 <li><a href="https://eml.berkeley.edu/books/choice2.html" target="_blank">Train (2009), Chapters 7-12</a></li>
-<li><a href="https://arxiv.org/abs/1812.11118" target="_blank">Reconciling modern machine learning practice &amp; the bias-variance trade-off</a></li>
+<li><a href="https://arxiv.org/abs/1812.11118" target="_blank">Reconciling modern machine learning practice and the bias-variance trade-off</a></li>
 <li>MGT 108R to design &amp; run conjoint analyses</li>
 <li>Conjoint literature is huge. Good entry points: <a href="https://drive.google.com/file/d/1hVKKbfyJgGLusiySXCFFAeBtIAFkTmH5/view?usp=sharing" target="_blank">Chapman 2015</a>, <a href="https://drive.google.com/file/d/1hJzBl9UHabKxQPmP1xI51VX7VlLuMAwH/view?usp=drive_link" target="_blank">Ben-Akiva et al 2019</a>, <a href="https://drive.google.com/file/d/1hWkhH1nNUnp03ScTb8q3HaGKodev06VG/view?usp=drive_link" target="_blank">Green 2022</a>, <a href="https://drive.google.com/file/d/1hKkvptyW8noB1Iudra77yjdpPy9Nj7Tw/view?usp=drive_link" target="_blank">Allenby et al.&nbsp;2019</a></li>
-<li><a href="https://arxiv.org/abs/2503.20711" target="_blank">Demand Estimation with Text and Image Data</a></li>
 <li><a href="https://www.its.caltech.edu/~mshum/gradio/ioclass.html" target="_blank">Advanced: Cal Tech Grad class on empirical IO</a></li>
 </ul>
 <p><img data-src="images/takingoff.png" class="absolute" style="bottom: 20px; right: 20px; height: 100px; "></p>

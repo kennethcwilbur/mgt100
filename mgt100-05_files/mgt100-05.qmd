@@ -21,7 +21,7 @@ format:
     include-in-header: gtag.html
 ---
 
-## Segmentation Case Study: Quidel
+## Segmentation case study: Quidel
 
 - Leading B2B manufacturer of home pregnancy tests
 - Tests were quick and reliable
@@ -130,25 +130,21 @@ Modeling heterogeneity can alleviate the first 3 and enable better predictions, 
 
 ![](images/het_nested_circles.png){fig-align="center" height="490px"}
 
-::: {.callout-note appearance="minimal" style="font-size: 0.85em;"}
-Analyst can impose heterogeneity assumptions or seek to learn heterogeneity structure from data (very demanding). Tradeoff depends on empirical reasonableness of modeling assumptions vs. data thickness/sparsity
+::: {.callout-note appearance="minimal"}
+Analyst can impose heterogeneity assumptions or seek to learn heterogeneity from data. Tradeoff depends on modeling accuracy vs. data thickness/sparsity
 :::
 
-## Heterogeneity by Customer Attributes {.smaller}
+## Heterogeneity by customer attributes {.smaller}
 
 - Let $w_{it}\sim F(w_{it})$ be observed customer attributes, needs or behaviors that drive demand
 - $w_{it}$ is often a vector of customer attributes including an intercept
 - Assume $\beta=\delta w_{it}$ and $\alpha=w_{it} \gamma$ :: $\delta$ & $\gamma$ conformable matrices
-    - Suppose $x_{jt}$ is 1x5, and $w_{it}$ is 2x1, then $\delta$ would be 5x2
 - Then $u_{ijt}=x_{jt}\delta w_{it}- w_{it} \gamma p_{jt} +\epsilon_{ijt}$ and
 
 $$s_{jt}=\int \frac{e^{x_{jt}\delta w_{it}- w_{it}\gamma p_{jt} }}{\sum_{k=1}^{J}e^{x_{kt}\delta w_{it}- w_{it}\gamma p_{kt}  }} dF(w_{it}) \approx \frac{1}{N_t}\sum_i \frac{e^{x_{jt}\delta w_{it}- w_{it}\gamma p_{jt}}}{\sum_{k=1}^{J}e^{x_{kt}\delta w_{it}- w_{it}\gamma p_{kt}}}$$
 
 - We usually approximate this integral with a Riemann sum
-
-::: {.callout-note appearance="minimal"}
-We often restrict elements in $\delta$ and $\beta$ to zero, if we think the interaction is unimportant, to avoid overparameterizing the model. What goes into $w_{it}$? What if $dim(x)$ and/or $dim(w)$ is large?
-:::
+- What goes into $w_{it}$? What if $dim(x)$ and/or $dim(w)$ is large?
 
 ::: notes
 -   We could use theory to restrict elements of $\gamma$ or $\delta$ to 0
@@ -158,38 +154,38 @@ We often restrict elements in $\delta$ and $\beta$ to zero, if we think the inte
 -   [Goettler & Shachar (2001)](https://www.jstor.org/stable/2696385){target="_blank"}
 :::
 
-## Heterogeneity by Segment
+## Heterogeneity by segment {.smaller}
 
-- Assume each customer $i=1,...,N_t$ is in exactly 1 of $l=1,...,L$ segments with sizes $\sum_{l=1}^{L}N_{lt}=N_t$
+- Assume each customer $i=1,...,N$ is in exactly 1 of $l=1,...,L$ segments with sizes $N_l$ and $N=\sum_{l=1}^{L}N_l$
     - We will use 3 kmeans segments based on 6 usage variables
+    - We take usage variables as best available proxies for customer needs
 - Assume preferences are uniform within segments & vary between segments
     - Consistent with the definition of segments
 - Replace $u_{ijt}=x_{jt}\beta-\alpha p_{jt}+\epsilon_{ijt}$ with $u_{ijt}=x_{jt}\beta_l-\alpha_l p_{jt}+\epsilon_{ijt}$
-- That implies $s_{ljt}=\frac{e^{x_{jt}\beta_l-\alpha_l p_{jt}}}{\sum_{k=1}^{J}e^{x_{kt}\beta_l-\alpha_l p_{kt}}}$ and $s_{jt}=\sum_{l=1}^{L}N_{lt} s_{ljt}$
-
-::: {.callout-note appearance="minimal"}
-Alternatively, it is possible to estimate segment memberships, rather than supplying them via kmeans. Pros: We don't have to pre-specify segment memberships. Cons: Noisy, so we need a lot of data to do this well.
-:::
+- That implies $s_{ljt}=\frac{e^{x_{jt}\beta_l-\alpha_l p_{jt}}}{\sum_{k=1}^{J}e^{x_{kt}\beta_l-\alpha_l p_{kt}}}$ and $s_{jt}=\sum_{l=1}^{L}N_l s_{ljt}$
+- Alternatively, it is also possible to estimate segment memberships
+    - Pro: don't have to define the segment memberships ex ante
+    - Cons: noisy, demanding of the data; may change w time; may neglect available theory; possible numerical problems. Need a lot of data to do this well
 
 ::: notes
 -   [Kamakura & Russell (1989)](https://www.jstor.org/stable/pdf/3172759.pdf){target="_blank"}
 :::
 
-## Individual Heterogeneity
+## 3. Individual demand parameters {.smaller}
 
 - Assume $(\alpha_i,\beta_i)\sim F(\Theta)$
     - Includes the Hierarchical Bayesian Logit
 - Then $s_{jt}=\int\frac{e^{x_{jt}\alpha_i-\beta_i p_{jt}}}{\sum_{k=1}^{J}e^{x_{jt}\alpha_i-\beta_i p_{jt}}}dF(\Theta)$
 - Typically, we assume $F(\Theta)$ is multivariate normal, for convenience, and estimate $\Theta$
     - We usually have to approximate the integral, often use Bayesian techniques (MSBA/PhD)
-- Or, we can estimate every $\alpha_i$ and $\beta_i$, that is very very data intensive
+    - Or, we can estimate $F$ but that is very very data intensive
     - In theory, we can estimate all $(\alpha_i,\beta_i)$ pairs without $\sim F(\Theta)$ assumption, but requires numerous observations & sufficient variation for each $i$. Most data intensive
 
 ::: notes
 -   The Bayesian estimation techniques are compute intensive and usually require MCMC sampling; see MSBA
 :::
 
-## How to Choose? {.smaller}
+## How to choose? {.smaller}
 
 - "All models are wrong. Some models are useful" (Box)
 - "Truth is too complicated to allow anything but approximations." (von Neumann)
@@ -198,10 +194,12 @@ Alternatively, it is possible to estimate segment memberships, rather than suppl
 - No model is ever "correct," No assumption is ever "true" (why not?)
 - Model selection: A Judgment Problem
     - How do you choose among plausible specifications?
-    - Involves both model selection — which f() in y=f(x) — and predictor selection
+    - Involves both model selection — which f() in y=f(x) — and covariate selection
+    - Use modeling purpose and constraints as model selection criterion
+    - What are our demand modeling objectives?
 
 ::: {.callout-note appearance="minimal"}
-Use modeling purposes and constraints as model selection criteria. Purposes can include prediction, explanation and decision-making. Constraints can include privacy and ethics. What criteria would you prioritize?
+SUGGESTION: If no model is correct, how should we decide which one to use? The answer depends on the purpose: prediction, explanation, or decision-making may favor different models. What criteria would you prioritize?
 :::
 
 ##
@@ -209,7 +207,7 @@ Use modeling purposes and constraints as model selection criteria. Purposes can 
 ![](images/hwscatter.png){fig-align="center" height="400px"}
 
 ::: {.callout-note appearance="minimal"}
-Should you model weight=f(height) or height=f(weight)? Notice the many-to-one correspondence and the discrete nature of height measurements.
+SUGGESTION: Should you model weight=f(height) or height=f(weight)? Notice the many-to-one correspondence and the discrete nature of height measurements. Ultimately it depends on your purpose. What modeling choices would change if the goal were medical screening vs. clothing design?
 :::
 
 ::: notes
@@ -221,7 +219,7 @@ Should you model weight=f(height) or height=f(weight)? Notice the many-to-one co
 -  Considerations: Theory; Modeling objective; Precision; Causal ordering
 :::
 
-## Model Specification {.smaller}
+## Model specification {.smaller}
 
 - Bias-variance tradeoff
     - Adding predictors always increases model fit
@@ -236,15 +234,34 @@ Should you model weight=f(height) or height=f(weight)? Notice the many-to-one co
     - Computational properties
 
 ::: {.callout-note appearance="minimal"}
-Imagine you prepared for a quiz by perfectly memorizing the textbook but without understanding the material. Could you accurately apply the concepts in unseen settings?
+SUGGESTION: There is a fundamental tension: more complex models fit training data better but may predict new data worse. How do you know when you've crossed the line from useful complexity to overfitting?
+:::
+
+## Regularization: Lasso, Ridge & Elastic Net {.smaller}
+
+Adding predictors improves in-sample fit but risks overfitting. Regularization methods penalize model complexity to improve predictions:
+
+- **Ridge** (L2 penalty): $\min_\beta \sum(y_i - x_i\beta)^2 + \lambda\sum\beta_k^2$
+    - Shrinks all coefficients toward zero, but never to exactly zero
+    - Useful when many predictors each contribute small effects
+- **Lasso** (L1 penalty): $\min_\beta \sum(y_i - x_i\beta)^2 + \lambda\sum|\beta_k|$
+    - Can shrink coefficients to exactly zero → automatic variable selection
+    - Useful when only a few predictors matter
+- **Elastic Net** (L1 + L2): $\min_\beta \sum(y_i - x_i\beta)^2 + \lambda_1\sum|\beta_k| + \lambda_2\sum\beta_k^2$
+    - Combines variable selection with coefficient stability
+
+The tuning parameter $\lambda$ controls penalty strength: higher $\lambda$ → more shrinkage, fewer effective parameters. Cross-validation is typically used to choose $\lambda$.
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Why would we want to force some coefficients to exactly zero? If you have 100 product attributes but suspect only 10 matter, Lasso identifies which ones while Ridge keeps all 100 with smaller weights. How does the choice between Lasso and Ridge relate to your beliefs about the data-generating process?
 :::
 
 ##
 
-![](images/overfitting_visualized.png){fig-align="center" height="500px"}
+![](images/overfitting_visualized.png){fig-align="center" height="400px"}
 
 ::: {.callout-note appearance="minimal"}
-Choosing a model that maximize a single criterion, such as R-square, can lead to bad decisions.
+SUGGESTION: Imagine estimating demand at a B2B firm with few customers. With 2 data points, you fit a line (R-sq=1). With 3, a quadratic (R-sq=1). With 4, a cubic (R-sq=1). Is the true relationship actually changing with your sample size? What happens when you finally get lots of data?
 :::
 
 ::: notes
@@ -260,38 +277,21 @@ Choosing a model that maximize a single criterion, such as R-square, can lead to
 - Another example: Suppose you studied for an exam by memorizing every word of the textbook. Then the professor asked you questions that asked you to apply your understanding of the text. If the only thing you did was return the text contents, you would get the questions wrong. That would be overfitting.
 :::
 
-## Regularization: Lasso, Ridge & Elastic Net {.smaller}
-
-Adding predictors always improves in-sample fit but risks overfitting. Regularization methods penalize model complexity on the theory that simpler models predict better:
-
-- Lasso (L1 penalty): $\min_\beta \sum(y_i - x_i\beta)^2 + \lambda\sum|\beta_k|$
-    - Can shrink coefficients to exactly zero → automatic variable selection
-    - Useful when only a few predictors matter
-- Ridge (L2 penalty): $\min_\beta \sum(y_i - x_i\beta)^2 + \lambda\sum\beta_k^2$
-    - Shrinks all coefficients toward zero, but seldom to exactly zero
-    - Useful when many predictors each contribute small effects
-- Elastic Net (L1 + L2): $\min_\beta \sum(y_i - x_i\beta)^2 + \lambda_1\sum|\beta_k| + \lambda_2\sum\beta_k^2$
-    - Combines Lasso and Ridge
-
-The tuning parameter $\lambda$ controls penalty strength: higher $\lambda$ → more shrinkage, fewer effective parameters. Cross-validation is typically used to choose $\lambda$.
-
-::: {.callout-note appearance="minimal"}
-If you have 100 product attributes but suspect only 10 matter, Lasso identifies which ones while Ridge keeps all 100 with smaller weights. Penalties are assumed as proxies for overfitting, but overfitting is not directly optimized.
-:::
-
-## How to Evaluate Overfitting?
+## How to evaluate overfitting?
 
 - Retrodiction = "RETROspective preDICTION"
-    - Quantifies model's ability to generalize to non-training data
+    - Knowing what happened enables you to evaluate prediction quality
     - We can compare different models and different specifications on retrodictive accuracy
 - We can even train a model to maximize retrodiction quality ("Cross-validation")
     - Most helpful when the model's purpose is prediction
+    - More approaches: Choose intentionally simple models
+    - Penalize the model for uninformative parameters: Lasso, Ridge, Elastic Net, etc.
 
 ::: {.callout-note appearance="minimal"}
-Be careful not to confuse retrodiction with prediction. Why not?
+SUGGESTION: Retrodiction tests whether a model can predict outcomes it has already seen. But the real question is whether it can predict outcomes it has not seen. How does cross-validation bridge this gap?
 :::
 
-## Cross-Validation Algorithm
+## Cross-validation {.smaller}
 
 - General approach to evaluate retrodiction performance and overfitting risk among a set of competing models $m=1,...,M$. Algorithm:
 
@@ -300,6 +300,10 @@ Be careful not to confuse retrodiction with prediction. Why not?
 3. Repeat 2 for each $k$
 4. Repeat 2&3 for every model $m$
 5. Retain model $m$ with minimal prediction errors, usually MAPE or MSPE
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Cross-validation systematically tests each model's ability to predict data it was not trained on. It is one important input into the model selection decision, but not the only one. When might cross-validation favor a different model than theory?
+:::
 
 ::: notes
 -   We often learn that most reasonable models perform similarly
@@ -313,24 +317,44 @@ Be careful not to confuse retrodiction with prediction. Why not?
 - You estimate every model K times (K=4 in the graphic); each uses a different (K-1)/K proportion of the data
 - We evaluate each model's retrodiction quality K times, then average them
 - When K=N, we call that "leave-one-out" cross-validation
-- Cross-validation is just one criterion; final model selection also depends on theory, objectives, other criteria
+- Cross-validation is just one tool; final model selection also depends on theory, objectives, other criteria
 
-## Non-Random Holdout Evaluations {.smaller}
+::: {.callout-note appearance="minimal" style="font-size: 0.75em;"}
+SUGGESTION: Why use K=5 or K=10 folds instead of leave-one-out? Consider the tradeoff between computational cost and training data used per fold.
+:::
 
-- When are models most robust to major changes in the data-generating process?
+## MSPE across 12 demand models
+
+![](images/mspe_by_model.png){fig-align="center" height="400px"}
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Ten-fold cross-validated MSPE for 12 demand specifications estimated from the class R script. Adding price, segment, and usage interactions (models 1-11) gradually improves predictions. Model 12 deliberately adds customer_id interactions that carry no predictive signal; its MSPE jumps back up — the textbook overfitting warning. What would you conclude about the marginal value of added complexity?
+:::
+
+## Flexibility vs. Parsimony
+
+![](images/flexibility_vs_parsimony.png){fig-align="center" height="400px"}
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: A simple model (top-left) has high bias but low variance — it consistently gets the wrong answer. A flexible model (bottom-left) has low bias but high variance — it fits training data well but predictions jump around. The right panel shows the optimal balance: minimizing total prediction error (MSE = Bias + Variance). How does this relate to the cross-validation procedure?
+:::
+
+## Ex-post evaluations {.smaller}
+
+- Can a model be robust to major changes in the data-generating process?
 - Non-random holdouts are strong tests, but can only be retrospective
 
 ![](images/xws2017.png){fig-align="center" height="350px"}
 
 ::: {.callout-note appearance="minimal"}
-This paper evaluated retrodictive performance of various models of auto production and pricing estimated using pre-2008 data after the 2008 gas price shock. It supported the generalizability of microfounded models. In what scenarios are tests like this most valuable?
+SUGGESTION: This paper tests whether a demand model estimated before a major market change can still predict well after the change. This is a much harder test than cross-validation, because the holdout data comes from a different regime. When would you want this kind of test?
 :::
 
 ::: {.source-url}
 [Source](https://drive.google.com/file/d/14zNalkNR6HKNjaKfewpCh9-fWReu06Mp/view){target="_blank"}
 :::
 
-## Het Demand: Misuse Risks {.smaller}
+## Het demand: Misuse Risks {.smaller}
 
 - Customer attributes should reflect differences in customer needs
 - Customer data should be high quality (GIGO, Errors-in-variables biases)
@@ -338,6 +362,11 @@ This paper evaluated retrodictive performance of various models of auto producti
     - Guiding principle (not a rule): <br>Using data to legally, genuinely serve customers' interests is usually OK
     - Using private data against customer interest can harm some consumers, break laws, incur liability. One lawsuit can kill a start-up
     - Major US laws: COPPA, GLBA, HIPAA, patchwork of state laws
+- Adding heterogeneity to a demand model does not resolve price endogeneity. Still need exogenous price variation
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Overfitting is an empirical risk that harms prediction quality. Misuse is an analyst or management risk that harms prediction utility. Heterogeneity makes demand models more flexible, but it does nothing to address price endogeneity — if the base MNL had endogeneity bias, the heterogeneous version will too. Why?
+:::
 
 ::: notes
 - Overfitting is an empirical risk that could harm prediction quality
@@ -345,11 +374,11 @@ This paper evaluated retrodictive performance of various models of auto producti
 :::
 
 
-# Some Evidence
+# Some evidence
 
-- How does demand model performance depend on heterogeneity specification and training data?
+- How does demand model performance depend on specification and training data?
 
-## Research Question {.smaller}
+## Research question {.smaller}
 
 - Suppose we
     1. Train demand model $M$ to predict mayonnaise sales ...
@@ -368,7 +397,7 @@ This paper evaluated retrodictive performance of various models of auto producti
 [Optimal Price Targeting (MkSc 2022)](https://drive.google.com/file/d/1ZruRntqyLfLyvYE7kCXCqUNJOfxhpwuq/view?usp=sharing){target="_blank"}
 :::
 
-## Lil Bit of Theory
+## Lil bit of theory
 
 - For any price discount < contribution margin, giving a targeted discount to...
     - ... our own brand-loyal customer directly reduces profit
@@ -377,19 +406,23 @@ This paper evaluated retrodictive performance of various models of auto producti
 - So the demand model's challenge is to distinguish marginal customers from loyal customers
     - This research disregards the 'post-promotion dip' for simplicity
 
+::: {.callout-note appearance="minimal"}
+SUGGESTION: The targeting problem reduces to classification: identify marginal customers who would switch brands with a discount, vs. loyal customers who would buy anyway. What data would help distinguish the two?
+:::
+
 ::: notes
 - Assumes no cost of targeted discount. A coupon cost would be more complex
 :::
 
 
-## Information Sets $X$
+## Information sets $X$
 
 1. Base Demographics: <br>Income, HHsize, Retired, Unemployed, SingleMom
 2. Extra Demographics: Age, HighSchool, College, WhiteCollar, #Kids, Married, #Dogs, #Cats, Renter, #TVs
 3. Purchase History: BrandPurchaseShares, BrandPurchaseCounts, DiscountShare, FeatureShare, DisplayShare, #BrandsPurchased, TotalSpending
 
 ::: {.callout-note appearance="minimal"}
-Which information set do you expect to be most predictive, and why?
+SUGGESTION: The base demographics were motivated by prior literature. Purchase history data include how often each individual responded to past discounts and how brand-loyal they were. Which information set do you expect to be most predictive, and why?
 :::
 
 ::: notes
@@ -410,15 +443,11 @@ Which information set do you expect to be most predictive, and why?
 5. Random Forests (2)
     - Including standard RF for bagging and XGBoost for boosting
 
-::: {.callout-note appearance="minimal"}
-All models trained using 5-fold cross validation.
-:::
-
 ::: {.source-url}
-[Optimal Price Targeting (MkSc 2022)](https://drive.google.com/file/d/1ZruRntqyLfLyvYE7kCXCqUNJOfxhpwuq/view?usp=sharing){target="_blank"} | [estimation code](https://drive.google.com/drive/folders/1Gmx8kxp2GSxLsA4edEhCrlRuMcf0LR37?usp=drive_link){target="_blank"}
+All models trained using 5-fold cross validation. See [Optimal Price Targeting (MkSc 2022)](https://drive.google.com/file/d/1ZruRntqyLfLyvYE7kCXCqUNJOfxhpwuq/view?usp=sharing){target="_blank"} and [estimation code](https://drive.google.com/drive/folders/1Gmx8kxp2GSxLsA4edEhCrlRuMcf0LR37?usp=drive_link){target="_blank"} for further details
 :::
 
-## How Do We Answer the Question? {.smaller}
+## How do we answer the question? {.smaller}
 
 1. Economic criteria: <br>What profit does each $M$-$X$ combination imply?
     - Depends on counterfactual predictions: What if we had selected different customers to receive coupons?
@@ -430,7 +459,7 @@ All models trained using 5-fold cross validation.
     - Which one do we care more about in customer analytics?
 
 ::: {.callout-note appearance="minimal"}
-Why might these criteria disagree? "Pessimists are often right. Optimists are often wealthy."
+SUGGESTION: This study evaluates models by their economic value (profits from targeted coupons), not just statistical accuracy. Why might these criteria disagree? Which matters more for business decisions?
 :::
 
 ##
@@ -438,7 +467,7 @@ Why might these criteria disagree? "Pessimists are often right. Optimists are of
 ![](images/SSA22g.png){fig-align="center" height="400px"}
 
 ::: {.callout-note appearance="minimal"}
-Used the degenerate strategies as benchmarks. What do you see?
+SUGGESTION: Notice that giving everyone a coupon outperforms giving nobody a coupon, suggesting the firm may have been pricing too high. Among models, the Bayesian Hierarchical Logit performs well even with limited demographic data. ML models improve dramatically with purchase history. What does this tell us about the relative value of behavioral vs. demographic data?
 :::
 
 ::: notes
@@ -456,7 +485,7 @@ Used the degenerate strategies as benchmarks. What do you see?
 ![](images/SSA22h.png){fig-align="center" height="400px"}
 
 ::: {.callout-note appearance="minimal"}
-How did statistical criteria compare to economic criteria?
+SUGGESTION: Ranking models by average prediction error differs greatly from ranking them by expected profits. Profit differences across models are not because of major gaps in average prediction performance — they come from picking the right customers to target. Why might a more statistically accurate model produce worse economic outcomes?
 :::
 
 ::: notes
@@ -467,10 +496,10 @@ How did statistical criteria compare to economic criteria?
 
 ##
 
-![](images/SSA22i.png){fig-align="center" height="550px"}
+![](images/SSA22i.png){fig-align="center" height="400px"}
 
 ::: {.callout-note appearance="minimal"}
-Past purchases on discount are, by far, the strongest predictor of models' targeting decisions.
+SUGGESTION: Past purchases on discount are, by far, the strongest predictor of models' targeting decisions. Total spending is second. What does this confirm about the value of behavioral data for predicting future behavior?
 :::
 
 ::: notes
@@ -485,6 +514,10 @@ Past purchases on discount are, by far, the strongest predictor of models' targe
 - ML model performance depends critically on data quality & abundance. Counterfactual predictions do not always outperform economic models
 - Statistical performance $\ne$ economic performance
 
+::: {.callout-note appearance="minimal"}
+SUGGESTION: These findings suggest that the choice of model matters less than the choice of data, and that statistical fit is not the same as economic value. What implications does this have for how firms should invest in data collection?
+:::
+
 ::: notes
 -   This paper is useful overall but it has a couple of weaknesses
 -
@@ -495,10 +528,10 @@ Past purchases on discount are, by far, the strongest predictor of models' targe
 
 # Conjoint Analysis
 
-- Generates stated-preference data to estimate heterogeneous demand model, to enable counterfactual predictions and optimal product designs and prices
-- Probably the most popular quant marketing framework
+- Generates stated-preference data to estimate heterogeneous demand model, to enable counterfactual predictions and optimal product designs
+- Probably the most popular quant marketing framework: >10k studies/year (Sawtooth 2008)
 
-## Choosing Product Attributes
+## Choosing Product Attributes {.smaller}
 
 - Until now, we studied existing product attributes
     - What about choosing new product attribute levels?
@@ -510,41 +543,89 @@ Past purchases on discount are, by far, the strongest predictor of models' targe
     - Consumer package goods
 - Combines well with cost data to select optimal attributes
 
-::: {.callout-note appearance="minimal"}
-Conjoint extends demand modeling from "predict demand for existing products" to "predict demand for products that don't exist yet." When would a firm need this capability?
+::: {.callout-note appearance="minimal" style="font-size: 0.75em;"}
+SUGGESTION: Conjoint extends demand modeling from "predict demand for existing products" to "predict demand for products that don't exist yet." When would a firm need this capability?
 :::
 
 ::: notes
 - Developed in the 1960s
 :::
 
-## Sample Choice Task: Energy Drinks
+## Conjoint analysis implementation {.smaller}
 
-![](images/conjoint_energy_drinks.png){fig-align="center" width="100%"}
-
-## Sample Choice Task: Trucks
-
-![](images/conjoint-trucks.png){fig-align="center" height="600px"}
-
-## Conjoint Analysis Algorithm {.smaller}
-
-1. Identify product attributes and levels/values : These constitute points in your attribute space
+1. Identify $K$ product attributes and levels/values $x_k$ : These constitute points in your attribute space
     - Screen size: 5.5", 6", 6.5", 7"
-    - Memory: 16 GB, 32 GB, 64 GB, 128 GB, 256 GB
+    - Memory: 8 GB, 16 GB, 32 GB, 64 GB, 128 GB
     - Price: \$199, \$399, \$599, \$799, \$999
 2. Recruit consumer participants to make choices
-    - Recruit a representative sample of your target market
+    - Choose a representative sample of your target market
     - Offer 8-15 choices among 3-5 hypothetical attribute bundles
 3. Sample from product space, record consumer choices
-4. Specify model, e.g. $u_{jl}=x_{j}\beta_l-\alpha_l p_j+\epsilon_j$ and $s_j=\frac{\sum_{l}x_{j}\beta_l-\alpha_l p_j}{\sum_l\sum_{k}x_{k}\beta_l-\alpha_l p_k}$
-5. Estimate choice model
-6. Combine estimated model with projected cost data to choose product attributes and maximize profits
+4. Specify model, i.e. $U_j=\sum_{k}x_{jk}\beta_k-\alpha_k p_j+\epsilon_j$ <br>and $P_j=\frac{\sum_{k}x_{jk}\beta_k-\alpha_k p_j}{\sum_l\sum_{k}x_{lk}\beta_k-\alpha_k p_l}$
+    - Beware: p is price, P is choice probability or market share
+5. Calibrate choice model to estimate attribute utilities
+6. Combine estimated model with cost data to choose product locations and predict outcomes
+
+## Sample choice task
+
+![](images/conjoint-trucks.png){fig-align="center" height="350px"}
 
 ::: {.callout-note appearance="minimal"}
-Let's fill out a class conjoint about [food at the ballpark](https://websitedemos.sawtoothsoftware.com/cbc-baseball/cgi-bin/ciwweb.pl){target="_blank"}; use code 920-89
+SUGGESTION: This is a choice-based conjoint task: respondents see a set of hypothetical products described by attributes and choose which they would buy. Each choice reveals information about the relative importance of different attributes. How is this different from simply asking consumers to rate each attribute's importance?
 :::
 
-## Case Study: UberPOOL
+::: {.source-url}
+Stated-preference vs revealed-preference | [Sawtooth Software](https://sawtoothsoftware.com/conjoint-analysis){target="_blank"}
+:::
+
+## Conjoint: Energy Drinks
+
+![](images/conjoint_energy_drinks.png){fig-align="center" height="350px"}
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: This conjoint survey mimics a real retail shelf, presenting energy drinks with realistic packaging, shelf position, brands, sizes, prices, and discount tags. The realism helps bridge the gap between stated and revealed preferences. What attributes does the shelf design vary, and what can the researcher learn from consumers' shelf choices?
+:::
+
+::: {.source-url}
+[SKIM Group at 2023 Sawtooth Conference](https://sawtoothsoftware.com){target="_blank"}
+:::
+
+## Conjoint: Smartphones
+
+![](images/conjoint_smartphones.png){fig-align="center" height="350px"}
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: This smartphone conjoint shows how attributes (brand, screen size, colour, price) are combined into hypothetical products for respondents to choose among. Notice the product in the lower panel labels "Attributes" and "Alternatives" explicitly. How would you use these estimated preferences to design a new phone for a specific market segment?
+:::
+
+::: {.source-url}
+[Conjointly](https://conjointly.com/guides/what-is-conjoint-analysis/){target="_blank"}
+:::
+
+## Conjoint: Politics {.smaller}
+
+![](images/conjoint_politics.png){fig-align="center" height="350px"}
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Thomadsen, Zeithammer & Yao (2023) used conjoint analysis to measure how the importance of abortion in political preferences changed after the Dobbs decision. The decision decreased the importance weight for Republicans but increased it for independents and nonvoters. Conjoint analysis extends far beyond marketing — it can measure preferences in any domain where people make choices among options with multiple attributes.
+:::
+
+::: {.source-url}
+[Thomadsen, Zeithammer & Yao (2023)](https://doi.org/10.1287/mnsc.2023.4802){target="_blank"}
+:::
+
+## Major Benefits of Conjoint
+
+1. It's experimental (we combine attribute levels in an experimental design), so we can interpret the **causal effect** of, say, adding 500MB of RAM
+2. We can predict what would happen in **any market scenario**, allowing us to design our product to maximize market share, or to maximize profit (usually these are not achieved with the same product at the same price)
+3. We can predict the performance of a **new product**, so long as that product is some hypothetical combination of the attributes and levels in our conjoint
+4. At times, is **faster and cheaper** than demand analysis on archival data
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: These four benefits explain why conjoint is probably the most popular quantitative marketing framework. Which of these benefits is most valuable for a startup vs. an established firm? Are there situations where archival demand modeling would be preferable?
+:::
+
+## Case study: UberPOOL
 
 - In 2013, Uber hypothesized
     - some riders would wait and walk for lower price
@@ -562,7 +643,7 @@ Let's fill out a class conjoint about [food at the ballpark](https://websitedemo
 - Important note: Figure 2 is mistaken in the paper. It has the illustrations flipped on bottom 2 rows. I corrected it in the slides.
 :::
 
-## Business Case Was Clear! But ... {.smaller}
+## Business case was clear! But ... {.smaller}
 
 - Shared rides were new for Uber
     - Rider/driver matching algo could reflect various tradeoffs
@@ -576,6 +657,10 @@ Let's fill out a class conjoint about [food at the ballpark](https://websitedemo
     - How would communicating costs upfront affect rider behavior?
 - Uber used market research to design UberPOOL
 
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Uber faced a classic product design challenge: they had a clear business case but many unknowns about customer preferences. What kinds of market research could address each of these unknowns?
+:::
+
 ## Approach {.smaller}
 
 1. 23 in-home diverse interviews in Chicago and DC
@@ -584,11 +669,19 @@ Let's fill out a class conjoint about [food at the ballpark](https://websitedemo
 2. Online Maximum Differentiation Survey
     - Selected participants based on city, Uber experience & product; N=3k, 22min
 
-![](images/uberpool_maxdiff_example.png){fig-align="center" height="280px"}
+![](images/uberpool_maxdiff_example.png){fig-align="center" height="170px"}
 
-## Maxdiff Results
+::: {.callout-note appearance="minimal" style="font-size: 0.75em;"}
+SUGGESTION: Uber started with qualitative interviews to discover which attributes matter, then used a Maxdiff survey to rank their importance. Why is this two-stage approach better than jumping directly to a conjoint?
+:::
 
-![](images/uberpool_maxdiff_results.png){fig-align="center" height="520px"}
+## Maxdiff results {.smaller}
+
+![](images/uberpool_maxdiff_results.png){fig-align="center" height="350px"}
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Maxdiff asks respondents to pick the most and least important attributes, which is less susceptible to scale effects than rating scales. Fixed route and number of stops were relatively unimportant and were excluded from the conjoint. How does this pre-screening step improve the efficiency of the conjoint design?
+:::
 
 ::: notes
 Max diff is also called best-worst scaling
@@ -598,7 +691,11 @@ Identifies most and least important attributes in a set
 
 ## Conjoint Attribute Space
 
-![](images/uberpool_conjoint_design.png){fig-align="center" height="520px"}
+![](images/uberpool_conjoint_design.png){fig-align="center" height="400px"}
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Based on Maxdiff, Uber tested ETA, walking distance, trip length, trip variance, and discount. Notice different numbers of levels per attribute. These are the X variables in the demand model. Why might Uber have chosen these particular levels?
+:::
 
 ::: notes
 - Based on Maxdiff, Uber tested a conjoint analysis with ETA, walking, trip length, trip variance and discount
@@ -607,9 +704,13 @@ Identifies most and least important attributes in a set
 - X also may include some customer attributes
 :::
 
-## Conjoint Choice Task
+## Conjoint Sample Question
 
-![](images/uberpool_conjoint_samplequestion.png){fig-align="center" height="520px"}
+![](images/uberpool_conjoint_samplequestion.png){fig-align="center" height="400px"}
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: This shows what participants actually saw: 18,000 riders contacted via email, 1,934 completed surveys (10.7% response rate, 5.5 min/survey). Five respondents received \$500 Amazon gift cards. How might the low response rate affect the representativeness of the results?
+:::
 
 ::: notes
 - This is an example of how the choice task looked to participants
@@ -618,18 +719,26 @@ Identifies most and least important attributes in a set
 - 5 respondents selected for $500 amazon gift cards
 :::
 
-## Heterogeneous Demand Model
+## Conjoint Model
 
-![](images/uberpool_conjoint_model.png){fig-align="center" height="520px"}
+![](images/uberpool_conjoint_model.png){fig-align="center" height="350px"}
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: This is a heterogeneous choice model estimated with a Hierarchical Bayesian framework — similar to MNL, but assumes errors are jointly normal (not iid) and uses a different share function. This is approach 3 from our heterogeneity taxonomy: individual-level demand parameters.
+:::
 
 ::: notes
 - This is a heterogeneous choice model estimated with an Hierarchical Bayesian estimation framework
 - Similar to MNL, but assumes errors ~ joint normal (not iid), different s() function
 :::
 
-## Attribute Utility Estimates
+## Conjoint Findings
 
-![](images/uberpool_conjoint_findings.png){fig-align="center" height="520px"}
+![](images/uberpool_conjoint_findings.png){fig-align="center" height="400px"}
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Unfortunately, Uber omitted the Y axis labels (common when firms worry about competitive secrecy). We can see that ETA and walking distance matter about equally, trip length matters somewhat, ETD variance matters less, and price matters a LOT. Uber also found heterogeneity: newer riders are more price-sensitive, and shorter commuters are more sensitive to walking distance.
+:::
 
 ::: notes
 - Unfortunately, Uber did not give us the Y axis labels. That's common when firms worry about competitive secrecy
@@ -645,7 +754,11 @@ Identifies most and least important attributes in a set
 
 ## Product Redesign
 
-![](images/uberpool_product_redesign.png){fig-align="center" height="520px"}
+![](images/uberpool_product_redesign.png){fig-align="center" height="400px"}
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Uber redesigned the app to prominently display the attributes that conjoint identified as most important: walking distance, time to destination, ETD variance, and price. POOL intentionally delayed matching by ~40 seconds while searching for co-riders. The walking distance display had to be redesigned when the first version led consumers to overestimate total walking. The new product launched with "Walk a little, save a lot."
+:::
 
 ::: notes
 - This graphic shows how Uber redesigned the app to show product attributes
@@ -657,21 +770,41 @@ Identifies most and least important attributes in a set
 
 ## Business Results
 
-![](images/uberpool_business_results.png){fig-align="center" height="520px"}
+![](images/uberpool_business_results.png){fig-align="center" height="400px"}
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Uber shared limited revenue data, but San Francisco (where POOL had been live the longest) shows a clear decrease in cancellations after the redesign. What other metrics would you want to see to evaluate the conjoint-informed redesign?
+:::
 
 ::: notes
 - Uber shared limited revenue data, but this is one clear example of improving efficiencies
 - UberPOOL had been live in SF the longest; this looks like a meaningful decrease in cancellations
 :::
 
-## Conjoint Pros and Cons
+## More Products
 
-- Pro: It's experimental, so we get causal effects by design. No endogeneity
-- Pro: It's purely hypothetical so we can test any scenario we can think of
-- Pro: It's fast and confidential, and relatively cheap
-- Pro: Mature, competitive market of conjoint specialists
-- Con: Requires representative sampling from target market
-- Con: Relies on stated preferences: Participants need to imagine unfamiliar behaviors and report accurately; controlled environment will differ from real choice environment
+![](images/uber_options.png){fig-align="center" height="350px"}
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Uber now offers many product tiers, from UberX Share to Uber Black SUV, each targeting different preference segments. This menu of options is a form of second-degree price discrimination. How does understanding heterogeneous preferences enable this product line strategy?
+:::
+
+::: notes
+- Apparently this approach is working out for Uber...
+- They are offering lots more options, including Uber Pet
+:::
+
+## Conjoint Market Simulator
+
+![](images/conjoint_market_simulator.png){fig-align="center" height="400px"}
+
+::: {.callout-note appearance="minimal"}
+SUGGESTION: Market simulators use fitted conjoint models to predict market shares ($s_i = \frac{1}{N}\sum_n P_{ni}$ where $P_{ni} = \frac{e^{V_i}}{\sum_k e^{V_k}}$) and revenues ($rev_i = price_i \times s_i$) for any hypothetical set of competing products. This enables "what if" analysis: what happens to our share if a competitor enters? If we change our price? The simulator makes conjoint actionable.
+:::
+
+::: {.source-url}
+[Conjointly](https://conjointly.com/solutions/conjoint-analysis/){target="_blank"}
+:::
 
 ## Conjoint: Limitations, Workarounds {.smaller}
 
@@ -695,40 +828,49 @@ Identifies most and least important attributes in a set
 :::
 
 
-## Class Script
+## Class script
 
 - Add heterogeneity to MNL model
+- Individual-level heterogeneity via price-minutes interaction
+- Segment-level heterogeneity via segment-attribute interactions
+- Both
 - Cross-validation to compare models
 
 ![](images/scroll.jpg){.absolute bottom="20" right="20" height="100px"}
 
-# Wrapping Up
+# Wrapping up
 
 
 ## Competition {.smaller}
 
-- Use the class dataset. Find a new combination of customer attributes and product attributes that finds the demand model (`out_num`) that maximizes the `ll_ratio(mdat1, out_num)`.
-- Evaluate your new demand model's cross-validation performance using `cv_mspe(out_num, mdat1)`.
-- Use the `print()` command to output `ll_ratio(mdat1, out_num)` and `cv_mspe(out_num, mdat1)` within your script.
+Using the week 5 class script as a starting point, estimate heterogeneous MNL demand models using `mdat2` or `mdat3` (a different cohort from the one used in class).
+
+- Estimate at least 3 model specifications with different heterogeneity structures (e.g., `brand:segment`, `price:segment`, `price:total_minutes` interactions)
+- Use 10-fold cross-validation (the `cv_mspe()` function from the script) to evaluate each model's retrodictive performance
+- Select the model with the best cross-validated MSPE and create a visualization showing how that model's predicted purchase probabilities differ across customers for a phone of your choice
+- Submit: (1) the visualization, and (2) a brief description of why you chose this specification
+
+::: {.callout-note appearance="minimal" style="font-size: 0.75em;"}
+SUGGESTION: The class script shows how to add `:segment` and `:total_minutes` interactions using colons in the `mlogit()` formula, and includes the `cv_mspe()` function for 10-fold cross-validation. Use cross-validation to guide model selection, then use `myplot()` or your own code to visualize the winning model's predictions.
+:::
 
 ![](images/competition.png){.absolute bottom="20" right="20" height="120px"}
 
 ## Recap
 
-- Understanding heterogeneous customer needs enables deep marketing insights (Quidel example)
+- Heterogeneous demand models enable personalized and segment-specific policy experiments
 - Demand models can incorporate discrete, continuous and/or individual-level heterogeneity structures
-- Heterogeneity helps demand model fit better, but may predict worse past some point
+- Heterogeneous demand models fit better, but beware overfitting and misuse
 - Conjoint analysis uses stated-preference data to map markets and predict profits of product locations in attribute space
 
 ![](images/recap.png){.absolute bottom="20" right="20" height="100px"}
 
-## Going Further
+## Going further
 
 - [Train (2009), Chapters 7-12](https://eml.berkeley.edu/books/choice2.html){target="_blank"}
-- [Reconciling modern machine learning practice & the bias-variance trade-off](https://arxiv.org/abs/1812.11118){target="_blank"}
+- [Reconciling modern machine learning practice and the bias-variance trade-off](https://arxiv.org/abs/1812.11118){target="_blank"}
 - MGT 108R to design & run conjoint analyses
 - Conjoint literature is huge. Good entry points: [Chapman 2015](https://drive.google.com/file/d/1hVKKbfyJgGLusiySXCFFAeBtIAFkTmH5/view?usp=sharing){target="_blank"}, [Ben-Akiva et al 2019](https://drive.google.com/file/d/1hJzBl9UHabKxQPmP1xI51VX7VlLuMAwH/view?usp=drive_link){target="_blank"}, [Green 2022](https://drive.google.com/file/d/1hWkhH1nNUnp03ScTb8q3HaGKodev06VG/view?usp=drive_link){target="_blank"}, [Allenby et al. 2019](https://drive.google.com/file/d/1hKkvptyW8noB1Iudra77yjdpPy9Nj7Tw/view?usp=drive_link){target="_blank"}
-- [Demand Estimation with Text and Image Data](https://arxiv.org/abs/2503.20711){target="_blank"}
 - [Advanced: Cal Tech Grad class on empirical IO](https://www.its.caltech.edu/~mshum/gradio/ioclass.html){target="_blank"}
 
 ![](images/takingoff.png){.absolute bottom="20" right="20" height="100px"}

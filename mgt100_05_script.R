@@ -1,7 +1,7 @@
 ## Week 5
 
 rm(list=ls())
-setwd("~/mgt100_repo")
+setwd("/mnt/chromeos/GoogleDrive/MyDrive/aaaCURRENT/mgt100_shell/mgt100_gh")
 
 # Today we extend the MNL model from last week to include heterogeneity.
 
@@ -11,14 +11,14 @@ library(mlogit)
 # import datasets and functions
 
 # import customer data
-cust_dat <- read_csv("data/smartphone_customer_data.csv", show_col_types = F)
+cust_dat <- read_csv("../data/smartphone_customer_data.csv", show_col_types = F)
 n <- nrow(cust_dat)
 
 # import data prepared for MNL models
-load("data/mnl_datasets.RData")
+load("../data/mnl_datasets.RData")
 
 # import mnl performance functions
-load("data/mnl_performance_functions.RData")
+load("../data/mnl_performance_functions.RData")
 
 # Important! Make sure you are loading the data files and functions that you 
 #   created and saved last week.
@@ -442,7 +442,7 @@ which.min(mspe)
 #   worsen its performance.
 
 
-### practice/reflection questions (not for submission)
+### HOMEWORK QUESTIONS 
 
 # 1. Which model performed better in the cross-validation exercise, out5 or out6? Why?
 

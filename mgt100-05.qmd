@@ -45,7 +45,59 @@ Hint: Both segments were about the same size, and both had very similar distribu
 
 ##
 
-![](images/quidel2.png){fig-align="center" height="480px"}
+```{=html}
+<table style="width:80%; margin: 20px auto; border-collapse: collapse; font-size: 0.8em;">
+<thead>
+<tr>
+  <th style="border: 1px solid #888; padding: 8px; background: #f2f2f2;"></th>
+  <th style="border: 1px solid #888; padding: 8px; background: #f2f2f2; text-align: center;">Segment 1</th>
+  <th style="border: 1px solid #888; padding: 8px; background: #f2f2f2; text-align: center;">Segment 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <th style="border: 1px solid #888; padding: 8px; background: #f2f2f2; text-align: left; font-weight: normal;">Segment Name</th>
+  <td contenteditable="true" style="border: 1px solid #888; padding: 10px; height: 36px; background: #fff;"></td>
+  <td contenteditable="true" style="border: 1px solid #888; padding: 10px; height: 36px; background: #fff;"></td>
+</tr>
+<tr>
+  <th style="border: 1px solid #888; padding: 8px; background: #f2f2f2; text-align: left; font-weight: normal;">Product Name</th>
+  <td contenteditable="true" style="border: 1px solid #888; padding: 10px; height: 36px; background: #fff;"></td>
+  <td contenteditable="true" style="border: 1px solid #888; padding: 10px; height: 36px; background: #fff;"></td>
+</tr>
+<tr>
+  <th style="border: 1px solid #888; padding: 8px; background: #f2f2f2; text-align: left; font-weight: normal;">Positioning</th>
+  <td contenteditable="true" style="border: 1px solid #888; padding: 10px; height: 36px; background: #fff;"></td>
+  <td contenteditable="true" style="border: 1px solid #888; padding: 10px; height: 36px; background: #fff;"></td>
+</tr>
+<tr>
+  <th style="border: 1px solid #888; padding: 8px; background: #f2f2f2; text-align: left; font-weight: normal;">Image on Package</th>
+  <td contenteditable="true" style="border: 1px solid #888; padding: 10px; height: 36px; background: #fff;"></td>
+  <td contenteditable="true" style="border: 1px solid #888; padding: 10px; height: 36px; background: #fff;"></td>
+</tr>
+<tr>
+  <th style="border: 1px solid #888; padding: 8px; background: #f2f2f2; text-align: left; font-weight: normal;">Package Size</th>
+  <td contenteditable="true" style="border: 1px solid #888; padding: 10px; height: 36px; background: #fff;"></td>
+  <td contenteditable="true" style="border: 1px solid #888; padding: 10px; height: 36px; background: #fff;"></td>
+</tr>
+<tr>
+  <th style="border: 1px solid #888; padding: 8px; background: #f2f2f2; text-align: left; font-weight: normal;">Location in Store</th>
+  <td contenteditable="true" style="border: 1px solid #888; padding: 10px; height: 36px; background: #fff;"></td>
+  <td contenteditable="true" style="border: 1px solid #888; padding: 10px; height: 36px; background: #fff;"></td>
+</tr>
+<tr>
+  <th style="border: 1px solid #888; padding: 8px; background: #f2f2f2; text-align: left; font-weight: normal;">Product Line Extensions</th>
+  <td contenteditable="true" style="border: 1px solid #888; padding: 10px; height: 36px; background: #fff;"></td>
+  <td contenteditable="true" style="border: 1px solid #888; padding: 10px; height: 36px; background: #fff;"></td>
+</tr>
+<tr>
+  <th style="border: 1px solid #888; padding: 8px; background: #f2f2f2; text-align: left; font-weight: normal;">Price</th>
+  <td contenteditable="true" style="border: 1px solid #888; padding: 10px; height: 36px; background: #fff;"></td>
+  <td contenteditable="true" style="border: 1px solid #888; padding: 10px; height: 36px; background: #fff;"></td>
+</tr>
+</tbody>
+</table>
+```
 
 ::: {.callout-note appearance="minimal"}
 What does this heterogeneity distribution imply for relevant strategic choices?
@@ -518,13 +570,21 @@ Conjoint extends demand modeling from "predict demand for existing products" to 
 - Developed in the 1960s
 :::
 
-## Sample Choice Task: Energy Drinks
+##
 
-![](images/conjoint_energy_drinks.png){fig-align="center" width="100%"}
+![](images/conjoint_energy_drinks.png){fig-align="center" height="400px"}
+
+::: {.callout-note appearance="minimal"}
+In cluttered categories, conjoint survey designs sometimes seek to replicate the experience of choosing from a typical product shelf. Should Red Bull be in its own refrigerator within the choice task?
+:::
 
 ## Sample Choice Task: Trucks
 
-![](images/conjoint-trucks.png){fig-align="center" height="600px"}
+![](images/conjoint-trucks.png){fig-align="center" height="400px"}
+
+::: {.callout-note appearance="minimal"}
+Conjoint respondents often have trouble deciding when choice tasks become too complex, so we usually limit stated-preference surveys to just a few product attributes. Then we use the stated-choice data to estimate heterogeneous $\beta$ parameters for each level of each attribute.
+:::
 
 ## Conjoint Analysis Algorithm {.smaller}
 
@@ -574,7 +634,10 @@ Let's fill out a class conjoint about [food at the ballpark](https://websitedemo
     - "I will never take POOL when I need to be somewhere at a specific time"
     - Would riders wait at designated pickup points?
     - How would communicating costs upfront affect rider behavior?
-- Uber used market research to design UberPOOL
+
+::: {.callout-note appearance="minimal"}
+Uber used Conjoint Analysis to design UberPOOL, so that key product attribute decisions could be informed by customer data.
+:::
 
 ## Approach {.smaller}
 
@@ -584,11 +647,19 @@ Let's fill out a class conjoint about [food at the ballpark](https://websitedemo
 2. Online Maximum Differentiation Survey
     - Selected participants based on city, Uber experience & product; N=3k, 22min
 
-![](images/uberpool_maxdiff_example.png){fig-align="center" height="280px"}
+![](images/uberpool_maxdiff_example.png){fig-align="center" height="240px"}
+
+::: {.callout-note appearance="minimal"}
+Open-ended interviews revealed key service attributes, then a forced-choice maxdiff measured which ones mattered most. How does this make the Conjoint survey more efficient?
+:::
 
 ## Maxdiff Results
 
-![](images/uberpool_maxdiff_results.png){fig-align="center" height="520px"}
+![](images/uberpool_maxdiff_results.png){fig-align="center" height="405px"}
+
+::: {.callout-note appearance="minimal"}
+The Maxdiff results showed that walking and number of stops mattered less than arrival time, speed and duration. Do you think UberPOOL would be competing more with Uber or with public transit?
+:::
 
 ::: notes
 Max diff is also called best-worst scaling
@@ -598,7 +669,11 @@ Identifies most and least important attributes in a set
 
 ## Conjoint Attribute Space
 
-![](images/uberpool_conjoint_design.png){fig-align="center" height="520px"}
+![](images/uberpool_conjoint_design.png){fig-align="center" height="458px"}
+
+::: {.callout-note appearance="minimal"}
+4 ETAs × 3 walking levels × 5 trip lengths × 3 variances × 5 discounts = 900 hypothetical services.
+:::
 
 ::: notes
 - Based on Maxdiff, Uber tested a conjoint analysis with ETA, walking, trip length, trip variance and discount
@@ -609,7 +684,11 @@ Identifies most and least important attributes in a set
 
 ## Conjoint Choice Task
 
-![](images/uberpool_conjoint_samplequestion.png){fig-align="center" height="520px"}
+![](images/uberpool_conjoint_samplequestion.png){fig-align="center" height="458px"}
+
+::: {.callout-note appearance="minimal"}
+Each respondent saw 3 alternatives per choice task, and 7 choice tasks per respondent.
+:::
 
 ::: notes
 - This is an example of how the choice task looked to participants
@@ -620,7 +699,11 @@ Identifies most and least important attributes in a set
 
 ## Heterogeneous Demand Model
 
-![](images/uberpool_conjoint_model.png){fig-align="center" height="520px"}
+![](images/uberpool_conjoint_model.png){fig-align="center" height="458px"}
+
+::: {.callout-note appearance="minimal"}
+Uber invited 18k riders to complete 5-minute surveys, promising $500 Amazon gift cards to 5 respondents, leading to 1,934 survey completions at $1.29/survey. They used the data to estimate a heterogeneous MNL demand model.
+:::
 
 ::: notes
 - This is a heterogeneous choice model estimated with an Hierarchical Bayesian estimation framework
@@ -629,7 +712,11 @@ Identifies most and least important attributes in a set
 
 ## Attribute Utility Estimates
 
-![](images/uberpool_conjoint_findings.png){fig-align="center" height="520px"}
+![](images/uberpool_conjoint_findings.png){fig-align="center" height="458px"}
+
+::: {.callout-note appearance="minimal"}
+Y-axis labels held confidential, but slope = relative importance. Price matters most, by far. Trip variance doesn't seem to matter much; how does this compare to Maxdiff results?
+:::
 
 ::: notes
 - Unfortunately, Uber did not give us the Y axis labels. That's common when firms worry about competitive secrecy
@@ -643,21 +730,13 @@ Identifies most and least important attributes in a set
 - "Shorter commutes make you more likely to opt in but also more sensitive to walking than riders with a longer commute"
 :::
 
-## Product Redesign
-
-![](images/uberpool_product_redesign.png){fig-align="center" height="520px"}
-
-::: notes
-- This graphic shows how Uber redesigned the app to show product attributes
-- Including how far to walk; how long to destination; variance in ETD; and price
-- For example, POOL intentionally delayed matching by 40 seconds on average while searching for additional riders
-- The representation of walking distance was nontrivial. The first version (leftmost panel) had to be redesigned (rightmost panel) when it led consumers to overestimate total walking
-- The new product was launched with the tag line "Walk a little, save a lot'
-:::
-
 ## Business Results
 
-![](images/uberpool_business_results.png){fig-align="center" height="520px"}
+![](images/uberpool_business_results.png){fig-align="center" height="458px"}
+
+::: {.callout-note appearance="minimal"}
+Product launch success was indicated by an initial match rate increase of 3.6%, higher shared trips, and declining cancellation rates over time. Profit impact was not disclosed.
+:::
 
 ::: notes
 - Uber shared limited revenue data, but this is one clear example of improving efficiencies

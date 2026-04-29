@@ -350,21 +350,17 @@ ggplot(share_dat, aes(x = S1_price, y = share, color = phone)) +
 
 ### practice/reflection questions (not for submission)
 
-# 1. What optimal price was implied using Tucker's elasticity heuristic?
+# 1. What optimal price was implied using the constant-elasticity-demand heuristic?
 
-# 2. In the week 6 script, what market share does the demand model predict for S1 at a price of $599? Please write it out to the nearest tenth, i.e. x.x%.
+# 2. What was the price elasticity value when it was approximated using prices of $789 and $809? Please write it out to the nearest tenth, i.e. x.x, and make sure that you write the correct sign.
 
-# 3. In the week 6 script, what market share does the demand model predict for S1 at a price of $999? Please write it out to the nearest tenth, i.e. x.x%.
+# 3. What was the price elasticity value when it was approximated using prices of $599 and $999? Please write it out to the nearest tenth, i.e. x.x, and make sure that you write the correct sign.
 
-# 4. What was the price elasticity value when it was approximated using prices of $789 and $809? Please write it out to the nearest tenth, i.e. x.x, and make sure that you write the correct sign.
+# 4. What optimal price for S1 did we calculate to maximize profits based on our grid search, based on S1 profits alone?
 
-# 5. What was the price elasticity value when it was approximated using prices of $599 and $999? Please write it out to the nearest tenth, i.e. x.x, and make sure that you write the correct sign.
+# 5. Is constant elasticity a good assumption to represent this demand curve?
 
-# 6. What optimal price for S1 did we calculate to maximize profits based on our grid search, based on S1 profits alone?
-
-# 7. Is constant elasticity a good assumption to represent this demand curve?
-
-# 8. What practical consideration was raised as Samsung's downside of optimizing S1 price to maximize S1 profits in isolation?
+# 6. What practical consideration was raised as Samsung's downside of optimizing S1 price to maximize S1 profits in isolation?
 
 
 

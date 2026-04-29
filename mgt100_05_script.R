@@ -442,7 +442,7 @@ which.min(mspe)
 #   worsen its performance.
 
 
-### HOMEWORK QUESTIONS 
+### practice/reflection questions (not for submission)
 
 # 1. Which model performed better in the cross-validation exercise, out5 or out6? Why?
 

@@ -3,7 +3,8 @@
 # Today we fit a "workhorse" model in marketing and economics, the multinomial
 # logit (MNL) model. We begin with the case of a homogeneous MNL model.
 
-setwd("/mnt/chromeos/GoogleDrive/MyDrive/aaaCURRENT/mgt100_shell/mgt100_gh")
+#setwd("/mnt/chromeos/GoogleDrive/MyDrive/aaaCURRENT/mgt100_shell/mgt100_gh")
+setwd("~/mgt100_repo")
 rm(list=ls()) #clean up your workspace if you like
 
 library(tidyverse)
@@ -17,7 +18,7 @@ library(dfidx)
 # facilitate those comparisons for every choice occasion
 
 # import customer data
-cust_dat <- read_csv("../data/smartphone_customer_data.csv", show_col_types = F)
+cust_dat <- read_csv("data/smartphone_customer_data.csv", show_col_types = F)
 n <- nrow(cust_dat)
 
 # replace missing 'discount' values (currently NA) with empty string ("")
@@ -72,7 +73,7 @@ cust_dat$segment <- factor(outk$cluster) # record segment assignments for each c
 rm(subk, sclsubk, out, outk, res, i)  # let's clean our desk
 
 # import phone attributes
-phone_dat <- read_csv("../data/phone_dat.csv", show_col_types = F)
+phone_dat <- read_csv("data/phone_dat.csv", show_col_types = F)
 
 
 # create dataset for mnl
@@ -236,7 +237,7 @@ mdat3 <- dfidx::dfidx(as.data.frame(sub3), choice = "choice", shape = "long", ch
 # The save() commands lets us save multiple R objects into one file on disk.
 # We can then import these saved object in the future using the load() command.
 
-save(sub1, sub2, sub3, mdat1, mdat2, mdat3, file = "../data/mnl_datasets.RData")
+save(sub1, sub2, sub3, mdat1, mdat2, mdat3, file = "data/mnl_datasets.RData")
 
 # For the rest of this script, we'll focus on the customers that bought phones
 # last year (ie, where "years_ago" == 1, or mdat1).
@@ -354,7 +355,7 @@ ll_ratio <- function(data, model) {
 
 # Let's save these functions for future use
 
-save(brand_hit_rate, product_hit_rate, ll_ratio, file = "../data/mnl_performance_functions.RData")
+save(brand_hit_rate, product_hit_rate, ll_ratio, file = "data/mnl_performance_functions.RData")
 
 # Let's calculate the brand hit rate and the likelihood ratio index for
 # our mnl model. 

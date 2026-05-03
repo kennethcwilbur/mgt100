@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="mgt100-08_files/libs/clipboard/clipboard.min.js"></script>
+<script src="mgt100-08_files/libs/quarto-html/tabby.min.js"></script>
+<script src="mgt100-08_files/libs/quarto-html/popper.min.js"></script>
+<script src="mgt100-08_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="mgt100-08_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="mgt100-08_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="mgt100-08_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
+
+  <meta name="author" content="Kenneth C. Wilbur">
+  <meta name="author" content="Daniel Yavorsky">
+  <title>Predictive Customer Analytics</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="mgt100-08_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="mgt100-08_files/libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="mgt100-08_files/libs/revealjs/dist/theme/quarto-5ae9c59b2727fcd5357d4f034d95f9e0.css">
+  <link rel="stylesheet" href="custom.css">
+  <link href="mgt100-08_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="mgt100-08_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="mgt100-08_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="mgt100-08_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="mgt100-08_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="mgt100-08_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-MVJF5Z0C5J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-MVJF5Z0C5J');
+  </script>
+  <script>
+    // Inject audio player into title slide after page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      var titleSlide = document.getElementById('title-slide');
+      if (titleSlide) {
+        var audio = document.createElement('audio');
+        audio.controls = true;
+        audio.src = 'https://kennethcwilbur.github.io/mgt100/mgt100_theme_song.mp3';
+        audio.style.marginTop = '0.5em';
+        titleSlide.appendChild(audio);
+        var link = document.createElement('a');
+        link.href = 'https://kennethcwilbur.github.io/mgt100/mgt100_theme_song.mp3';
+        link.download = 'mgt100_theme_song.mp3';
+        link.textContent = '[download theme song]';
+        link.style.fontSize = '0.3em';
+        link.style.display = 'block';
+        link.style.marginTop = '0.2em';
+        titleSlide.appendChild(link);
+      }
+    });
+  </script>
+</head>
+<body class="quarto-light">
+<script src="mathjax-config.js"></script>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title"><strong>Predictive Customer Analytics</strong></h1>
+  <p class="subtitle">MGT 100 Week 8</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="https://kennethcwilbur.com" target="_blank">Kenneth C. Wilbur</a> 
+</div>
+        <p class="quarto-title-affiliation">
+            Professor of Marketing and Analytics
+          </p>
+        <p class="quarto-title-affiliation">
+            University of California, San Diego
+          </p>
+    </div>
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+<a href="https://www.linkedin.com/in/dyavorsky/" target="_blank">Daniel Yavorsky</a> 
+</div>
+        <p class="quarto-title-affiliation">
+            SVP-Analytics
+          </p>
+        <p class="quarto-title-affiliation">
+            GBK Collective
+          </p>
+    </div>
+</div>
+
+  <p class="date">This version: May 2026 | License: CC BY 4.0 | We use javascript to track readership.<br>We welcome reuse with attribution. Please share widely.</p>
+</section>
+<section>
+<section id="predictive-customer-analytics" class="title-slide slide level1 smaller center">
+<h1>Predictive Customer Analytics</h1>
+<ul>
+<li><p>Importance of Customer Acquisition</p></li>
+<li><p>Market size: How many customers experience the core need?</p></li>
+<li><p>Diffusion: How does the served market change over time?</p>
+<ul>
+<li>Model based on <a href="https://drive.google.com/file/d/1eitW-EncbPxkOFWiGSzeaLXpQkVEh4pa/view?usp=drive_link" target="_blank">Bass (1969)</a></li>
+</ul></li>
+<li><p>CLV: How profitable are customer relationships?</p></li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Until now, we have taken the perspective of a dispassionate economist or market analyst. But, most customer analytics work happens inside firms. Let’s consider how you look at the market when you’re inside a company.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<aside class="notes">
+<ul>
+<li>This paper was published several years before even I was born</li>
+<li>It has been cited 11,000 times. Probably the most cited paper in marketing</li>
+<li>One of the first predictive analytics papers published in any business discipline</li>
+<li>This is a differential equation model, in which the change in a function modeled as a function of the level of the function</li>
+<li>Model was borrowed from epidemiology</li>
+<li>Performs well, but not overall, only relative to all other failed attempts to predict the future</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="importance-of-customer-acquisition" class="slide level2">
+<h2>Importance of Customer Acquisition</h2>
+<ul>
+<li><a href="https://www.nber.org/system/files/working_papers/w29561/w29561.pdf" target="_blank">Einav et al.&nbsp;(2021)</a> analyzed all US Visa CC transaction data
+<ul>
+<li>&gt;$1T spent in 32B transactions by 428MM cards at 1MM stores from 2016-19</li>
+<li>Assume card~=customer</li>
+</ul></li>
+</ul>
+<p><span class="math inline">\(\text{BrandRev.} = \sum spend \equiv \sum \frac{stores}{1} \frac{cards}{stores} \frac{transactions}{cards} \frac{spend}{transactions}\)</span></p>
+<ul>
+<li>Research question: How well does each factor correlate with brand revenue?</li>
+<li>Regressed log revenue on log RHS with merchant and year fixed effects</li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Which of the four factors do you expect to explain most of the variation in revenue? Why?</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://www.nber.org/system/files/working_papers/w29561/w29561.pdf" target="_blank">Einav et al.&nbsp;(2021)</a></p>
+</div>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/einav,etal2021a.png" class="quarto-figure quarto-figure-center" height="500"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>The correlation holds remarkably well across different levels within the data. Which factor best predicts revenue? Was it what you expected?</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>Row B is the most representative and controls for merchant dummies and year dummies</li>
+<li>Compare column 2 to other columns: ( # unique customers / store ) explains 68-84% of variation in merchant revenue</li>
+<li>Far more than other variables</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/einav,etal2021b.png" class="quarto-figure quarto-figure-center" height="500"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>The correlation holds remarkably well across industries, illustrating its generality. What does this imply for prioritization among these four variables?</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>Similar finding across merchant types</li>
+<li>Remarkably consistent across sectors. These numbers are above 70pct bc it’s a subsample of offline retailers</li>
+<li>Explains why companies focus more on customer-level metrics than store, visit or transaction level metrics</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="predictive-analytics-help-to-inform-decisions" class="slide level2">
+<h2>Predictive Analytics Help to Inform Decisions</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Weather forecasts
+<ul>
+<li>What to do, what to wear</li>
+</ul></li>
+<li>Stock prices
+<ul>
+<li>Buy or sell, how much, when</li>
+</ul></li>
+<li>Safety
+<ul>
+<li>Where to live, how to commute</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Lifespan
+<ul>
+<li>Schooling, savings/spending, work/retire</li>
+</ul></li>
+<li>Product quality
+<ul>
+<li>Buy now/later, return, warranty, insurance</li>
+</ul></li>
+</ul>
+</div></div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Data always describes the past, but decisions affect the future. Predictive analytics help to convert past data <span class="math inline">\(X\)</span> into decisions <span class="math inline">\(A\)</span> to maximize expected utility of outcomes: <span class="math display">\[\arg\max E[U(A,Y) | X]\]</span> Examples include election forecasts, product recommendations, and fraud prevention</p>
+</div>
+</div>
+</div>
+<p><img data-src="images/crystalball.png" class="absolute" style="bottom: 20px; right: 20px; height: 120px; "></p>
+</section>
+<section id="understanding-predictive-analytics" class="slide level2">
+<h2>Understanding Predictive Analytics</h2>
+<ul>
+<li>Correlations alone can enable powerful predictions
+<ul>
+<li>Causal drivers may help, but aren’t necessary</li>
+</ul></li>
+<li>Predictive analytics are not designed to be prescriptive or diagnostic
+<ul>
+<li>Predictive analytics are oft misused &amp; overinterpreted</li>
+</ul></li>
+<li>Predictive Analytics typically have wide error bars
+<ul>
+<li>Often forgotten or ignored, even by those who know better</li>
+<li>CIs should account for data variability, parameter estimation error, and model uncertainty</li>
+</ul></li>
+<li>Numbers oft misinterpreted, e.g., 92% means 11 out of every 12</li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Predictive analytics is seductive, as astrology or “picks of the week” suggest. Where have you seen people misunderstand or overinterpret a prediction?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="remember-dray" class="slide level2">
+<h2>Remember Dray?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/dray4b.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Dray has a powerful predictive analytics engine between his ears. He knows what will happen next after someone puts on their shoes and picks up the leash. But he doesn’t always know why–he is less good at diagnostic analytics</p>
+</div>
+</div>
+</div>
+</section>
+<section id="market-size" class="slide level2">
+<h2>Market Size</h2>
+<ul>
+<li>Market size (<span class="math inline">\(N\)</span>): # of people who might pay to address the core need in a given time period
+<ul>
+<li>Alternatively measured in $, units or volume</li>
+<li>Noisy but helps inform potential returns to investments</li>
+<li>Typical investor’s first question: How big is the market? $100B market differs from a $100MM market</li>
+<li>How will you know if you got the right answer?</li>
+<li>What happens if you overestimate market size?</li>
+</ul></li>
+<li>“Marketing myopia:” Neglecting nontraditional competitors, e.g.&nbsp;Zoom v. Uber or Carnival v. Whistler</li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Market size counts both purchasers and non-purchasers who share the core need. Past purchasers can often be counted, but non-purchasers usually can’t</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>Market size counts both purchasers and non-purchasers</li>
+<li>The idea would be that for people who have a core need to work, they might alternately use Uber to work in an office, or Zoom to work from home; hence Uber and Zoom compete</li>
+<li>How will the investor react if your market size estimate sounds off? Some might proceed anyway; some might immediately pass, figuring they can’t trust you; some might want to dive into the details to see if you know something they don’t, or if you have solid math backing up your claims</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="market-size-1" class="slide level2">
+<h2>Market Size</h2>
+<ul>
+<li>3 ways to estimate:
+<ul>
+<li>“Top Down” Total Addressable Market (TAM): <br>How many people have the core need?</li>
+<li>“Bottom up” Served Available Market (SAM): <br>How many people currently pay to solve the core need?
+<ul>
+<li>TAM=SAM+Unserved</li>
+</ul></li>
+<li>Analyst estimates</li>
+</ul></li>
+<li>Best practice: Use all three, triangulate, gauge sensitivity</li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Each method has different blind spots — top-down requires estimating Unserved, bottom-up ignores Unserved, analysts have incentives.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="case-study-us-mattress-market" class="slide level2">
+<h2>Case study: US Mattress Market</h2>
+<ul>
+<li>USA population: ~340 million</li>
+<li>Assumption: <span class="math inline">\(TAM\approx SAM\)</span> (why? pros, cons?)</li>
+<li>Assumption: Avg mattress lasts 7 years (pros, cons?)</li>
+<li>Market size <span class="math inline">\(\approx\)</span> 47.1 million people annually</li>
+<li>Average mattress price: $283, across all bed sizes</li>
+<li>Market size <span class="math inline">\(\approx\)</span> $13.3B/year</li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Market size predictions usually require assumptions. “Sensitivity analysis” shows how much results differ when you vary the assumptions. What changes if mattresses last 5 years instead of 7? How much do those analyst estimates cost?</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://www.grandviewresearch.com/industry-analysis/mattress-market" target="_blank">Grand View Research</a> | <a href="https://sleepproducts.org/resources/statistics/industry-sales-data/" target="_blank">ISPA</a></p>
+</div>
+<aside class="notes">
+<ul>
+<li>Consider 2nd homes &amp; hotels vs.&nbsp;homeless population</li>
+<li>How much do those analyst reports cost?</li>
+<li>What are analyst incentives? How should they price? How often should they update their estimates?</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="diffusion-curves" class="slide level2">
+<h2>Diffusion curves</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/diffusion_curve.png" class="quarto-figure quarto-figure-center" height="368"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Diffusion curves show how SAM changes over time. Adoption is often an S-curve: slow start, accelerating takeoff, saturation, eventual decline. Blue is the density, Yellow is the CDF. Sometimes a “Dip” phase appears between early adopters and early majority; sometimes a “Decline” phase follows maturity. Also appears in epidemiology, with adoption recast as infection and influence recast as contagion</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://www.amazon.com/Dip-Little-Book-Teaches-Stick/dp/1591841666/" target="_blank">Godin (2007) talks about “the dip”</a></p>
+</div>
+<aside class="notes">
+<ul>
+<li>Distinguish between current and cume sales in the graph</li>
+<li>Discuss similarities between disease contagion &amp; product adoption</li>
+<li>Spend a few minutes talking about the phases; mention Moore (1991)’s “chasm” or “saddle” idea between initial growth and takeoff</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="diffusion-curves-1" class="slide level2">
+<h2>Diffusion curves</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/diffusion_evidence.png" class="quarto-figure quarto-figure-center" height="450"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>There are claims that diffusion is speeding up</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>There are claims that diffusion curves are speeding up in recent years. That may be consistent with social media and generally accelerating information diffusion</li>
+<li>Consider product complementarities, eg electricity + TV, or substitution between products, eg telephone + cellphone</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/timeto100musers.jpg" class="quarto-figure quarto-figure-center" height="450"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Digitization and social media are plausible mechanisms for accelerating diffusion curves, but these products are not randomly selected. Large majorities of products get lost in the multitude</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>Important: these products are not randomly selected, they are intentionally selected to make a point</li>
+<li>Of course there remain many technology products with slow adoption. Think about robot vacuums, time-lapse or other phone peripherals, etc etc etc</li>
+<li>But there does seem to be something to the idea that social media has the potential to dramatically accelerate diffusion for some “winning” products</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="new-cpg-products-by-year" class="slide level2">
+<h2>New CPG Products by Year</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/npbyyear.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>In food and drug channels, 35-40k new SKUs launch each year; 90-95% fail completely within six months (Wilbur &amp; Farris 2014). Why is product failure so common, and why do firms keep launching anyway?</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://ers.usda.gov/data-products/charts-of-note/chart-detail?chartId=83141" target="_blank">USDA (2017)</a> | <a href="https://drive.google.com/file/d/1pUmJI0ZRoAo1c0SxwXzJPMmVDU0putXl/view?usp=drive_link" target="_blank">Wilbur &amp; Farris (2014)</a></p>
+</div>
+<aside class="notes">
+<ul>
+<li>For completeness we should consider the full scope of products launched every year</li>
+<li>Even if we limit ourselves to food &amp; drug channels, it’s massive, on the order of 35-40k new SKUs launched in a typical year</li>
+<li>90-95% fail completely within 6 months, as in revenues go to zero and manufacturer withdraws the product (Wilbur &amp; Farris 2014)</li>
+<li>Unfortunately USDA stopped updating these data publicly, probably because Mintel increased price too much</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="which-new-products-will-catch-on" class="slide level2">
+<h2>Which new products will catch on?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/newproducts.png" class="quarto-figure quarto-figure-center" height="450"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>New products launch frequently, but most fail, and success is notoriously unpredictable. Addressing a real core need is necessary but far from sufficient. Which of these would you bet on?</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://www.kickstarter.com/" target="_blank">Kickstarter</a> | <a href="https://www.producthunt.com/" target="_blank">Product Hunt</a> | <a href="https://gizmodo.com/" target="_blank">Gizmodo</a></p>
+</div>
+<aside class="notes">
+<p>Fastest way to get rich: Invent a new product that sells a lot That requires addressing a real customer need that people will pay for And it requires going to market successfully Success in the market is notoriously hard to predict, most new products fail quickly Addressing a real core need is necessary but far from sufficient Which of these new products will succeed?</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="predicting-diffusion-bass-1969" class="slide level2">
+<h2>Predicting Diffusion: <a href="https://en.wikipedia.org/wiki/Bass_diffusion_model" target="_blank">Bass (1969)</a></h2>
+<ul>
+<li><span class="math inline">\(M\)</span>: Market size (we’ll estimate this)</li>
+<li><span class="math inline">\(t\)</span>: Time periods</li>
+<li><span class="math inline">\(A(t)\)</span>: Accumulated sales before time <span class="math inline">\(t\)</span>
+<ul>
+<li>AKA “installed base”</li>
+<li>A(0)=0 by assumption</li>
+</ul></li>
+<li><span class="math inline">\(\frac{dA(t)}{dt}\)</span>: number of new adopters in time <span class="math inline">\(t\)</span></li>
+<li><span class="math inline">\(R(t)\)</span>: Remaining customers who have yet to adopt, <span class="math inline">\(R(t)\equiv M-A(t)\)</span></li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>A “differential equation” model relates the level of a variable to its derivative. Fits sigmoid curves well</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>Can you see where we’re going? DiffEQ using A(t) to predict dA/dt</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<ul>
+<li>Bass (1969) proposed:</li>
+</ul>
+<p><span class="math display">\[\frac{dA(t)}{dt}=pR(t)+q\frac{A(t)}{M}R(t)\]</span></p>
+<ul>
+<li><span class="math inline">\(p\)</span>: “coefficient of innovation”</li>
+<li><span class="math inline">\(q\)</span>: “coefficient of imitation”
+<ul>
+<li>p and q assumed constant</li>
+</ul></li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>LHS is growth per unit of time. 1st term on RHS indicates those who would buy regardless of others’ choices (“innovators”), which is assumed to be a constant proportion of the unserved market. 2nd term is those whose purchases are influenced by others (“imitators”), increasing in proportion of market that is served</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>LHS is sales in time period t.</li>
+<li>R(t) is # of potential buyers who have not bought yet.</li>
+<li>p is the share of remaining market who would buy at any given moment irrespective of previous sales (“innovators”).</li>
+<li>q is the share of nonadopters who adopt at t because they observe past purchasers (“imitators”)</li>
+<li>so qR is the number of nonadopters who adopt at t because they observe past purchasers</li>
+<li>and A/M is the fraction of the market who has adopted, and therefore could possibly be observed</li>
+<li>so we scale qR by A/M because each nonadopter’s chance of observing an adopter increases with the number of adopters available to be observed</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="estimating-bass-model-via-nlls" class="slide level2" style="font-size: 0.85em;">
+<h2>Estimating Bass model via NLLS</h2>
+<p><span class="math display">\[\frac{dA(t)}{dt}=pR(t)+q\frac{A(t)}{M}R(t)\]</span></p>
+<ul>
+<li>This is a first-order diffEQ with analytic solution</li>
+</ul>
+<p><span class="math display">\[A(t)=M\frac{1-e^{-(p+q)t}}{1+\frac{q}{p}e^{-(p+q)t}}\]</span></p>
+<ul>
+<li>If you have sales data by time, you can use Nonlinear Least Squares to estimate <span class="math inline">\(p\)</span>, <span class="math inline">\(q\)</span> and <span class="math inline">\(M\)</span>, i.e.&nbsp;choosing parameters to minimize square errors <span class="math inline">\((LHS-RHS)^2\)</span></li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>You don’t have to know how to solve differential equations for this class. Just take my word that the 2nd equation is the solution to the 1st equation. <br><br>NLLS is a straightforward generalization of OLS in which the errors can be nonlinear in the parameters. Parameter estimates are still chosen to minimize the sum of square errors, but they don’t have closed-form solutions</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://en.wikipedia.org/wiki/Non-linear_least_squares" target="_blank">NLLS on Wikipedia</a></p>
+</div>
+<aside class="notes">
+<ul>
+<li>We state this without proof, because differential equations is not a prerequisite, and the solution technique is mechanical and uninteresting</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="estimating-bass-model-via-ols" class="slide level2" style="font-size: 0.85em;">
+<h2>Estimating Bass model via OLS</h2>
+<ul>
+<li>Or, notice that <span class="math inline">\(\frac{dA(t)}{dt}=pR(t)+q\frac{A(t)}{M}R(t)\)</span><br><span class="math inline">\(=p(M-A(t)) + q* \frac{A(t)}{M}(M-A(t))\)</span><br><span class="math inline">\(=pM + (q-p)A(t)+\frac{q}{M} A(t)^2\)</span><br><span class="math inline">\(\equiv \beta_0+\beta_1 A(t) + \beta_2 A(t)^2\)</span></li>
+<li>We can use OLS to regress <span class="math inline">\(\frac{dA(t)}{dt}\)</span> on a quadratic in installed base <span class="math inline">\(A(t)\)</span></li>
+<li>Bass model extensions: Multiple markets, hazard models, <br>multiple influence types</li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>If we want, we can solve the system of 3 equations in 3 unknowns to recover <span class="math inline">\(\hat{p}\)</span>, <span class="math inline">\(\hat{q}\)</span> &amp; <span class="math inline">\(\hat{M}\)</span> from <span class="math inline">\(\hat{\beta}_0\)</span>, <span class="math inline">\(\hat{\beta}_1\)</span>, &amp; <span class="math inline">\(\hat{\beta}_2\)</span></p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://drive.google.com/file/d/1eDUR4ADeh3bo24Ffwxyy1gMS8VyHzAvX/view?usp=drive_link" target="_blank">Bass (2004)</a></p>
+</div>
+</section>
+<section id="modelsestimators-arent-11" class="slide level2">
+<h2>Models:estimators aren’t 1:1?</h2>
+<ul>
+<li>Consider 3 OLS estimators:</li>
+</ul>
+<p><span class="math display">\[\hat{\beta}=(X'X)^{-1}X'Y\]</span></p>
+<p><span class="math display">\[min_\beta (Y-X\beta)'(Y-X\beta)\]</span></p>
+<p><span class="math display">\[min_\beta [X'(Y-X\beta)]^2\]</span></p>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>“In theory, there’s no difference between theory &amp; practice. In practice, there is.”<br>Some theoretical models offer multiple estimators. Some have no estimators<br>Estimators may yield different estimates due to assumptions, numerical properties<br>Subfields that invent estimators and study their properties: “econometrics,” “data science,” “machine learning,” “statistics”</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>Estimation performance may depend on numerical properties, availability of existing algorithms, etc.</li>
+<li>Estimators may differ in speed, complexity, efficiency and econometric properties</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/bass_1969_f5_f8.png" class="quarto-figure quarto-figure-center" height="450"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>These figures are from Bass’s original 1969 paper. Compared to having no predictive framework, these were like magic to investors and managers. But look closely– although retrodictions are often near-right on average, every individual retrodiction is wrong</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>These are two of the graphics from the OG paper. He even forecasted sales of black &amp; white TVs</li>
+<li>I kind of cherry picked these examples. others were not so clean, but I’m glad he showed the non-clean examples, it helps to show that he didn’t cherrypick what to include or not.</li>
+<li>Think about what an advance this looked like at the time. with just a few data points of sales, you could reasonably predict the future, which would help to inform investment decisions</li>
+<li>Important to note: As is typical in predictive analytics, every single prediction is wrong. Keep your expectations in check</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="rogers-diffusion-framework" class="slide level2">
+<h2>Rogers’ Diffusion Framework</h2>
+<ul>
+<li>Diffusion depends on Relative Advantage, Compatibility, Complexity, Trialability, Observability. All from customer’s perspective
+<ul>
+<li>Incredibly influential on managerial practice</li>
+<li>Provided diagnostics to interpret Bass (1969)’s predictive analytics</li>
+<li>Prototypes have often been modified to max these 6 dimensions</li>
+</ul></li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Everett Rogers was a professor at UNM who spent 50 years studying the “diffusion of innovations,” which now includes over 5k published studies. Rogers’ framework is the most widely used to explain and predict new product success/failure. Pick a product and score it on each dimension</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://drive.google.com/file/d/1SfuCT0Mh2tF2GSK-RXDzdPptgai-062s/view?usp=drive_link" target="_blank">Rogers (2010)</a></p>
+</div>
+</section>
+<section id="more-explanations-for-diffusion-curves" class="slide level2" style="font-size: 0.85em;">
+<h2>More explanations for diffusion curves</h2>
+<ul>
+<li>Conspicuous omission: Customer heterogeneity. <br>Preferences, needs, income, or risk attitudes could predict adoption timing</li>
+<li>Conspicuous omission: Marketing efforts like advertising and retail distribution</li>
+<li>Markets typically evolve after introduction
+<ul>
+<li>Production becomes more efficient &amp; reliable; costs fall; price and customer risk fall</li>
+<li>New features, technology generations, safety improves</li>
+<li>Competitors introduce variants targeting unserved customers</li>
+<li>Network effects, e.g.&nbsp;smartphone compatibility with chargers or accessories</li>
+<li>Complementors, e.g.&nbsp;Verizon stores, iFixIt, Genius Bar</li>
+<li>Consumer preferences, e.g.&nbsp;expected reliability rises over time</li>
+</ul></li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Bass + Rogers offer the most widely used framework, but neglect important alternate explanations</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://drive.google.com/file/d/1HIrUtd_v_IRzHklKWKi0dUkSpfvfIufs/view?usp=drive_link" target="_blank">Peres, Muller &amp; Mahajan (2010)</a> | <a href="https://drive.google.com/file/d/1QWIGoqtwTBlFFuPAJDNXp8o0TPnr5ckf/view?usp=drive_link" target="_blank">Van den Bulte &amp; Lilien (2001)</a> | <a href="https://drive.google.com/file/d/1x_e9ihWn3YVH9CnAUjzx_aAola87ERIB/view?usp=drive_link" target="_blank">Chandrasekaran &amp; Tellis (2008)</a></p>
+</div>
+<aside class="notes">
+<ul>
+<li>Features: Smartphone cameras improve, GPS improves, 4G beats 2G, etc</li>
+<li>Complementors: Apps improve, payment processors accept mobile payments, etc.</li>
+<li>Apple drops the headphone jack, Android keeps it</li>
+<li>Early in a category lifecycle, competitors may benefit each other, e.g.&nbsp;ads promote category consumption more than brand share. those interactions become zero-sum when the category matures</li>
+<li>Bass+Rogers is kind of an intellectual trap, where you have a logical story and data, and then get blinded to alternate explanations</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="causal-evidence-of-social-influence" class="slide level2" style="font-size: 0.85em;">
+<h2>Causal Evidence of Social Influence</h2>
+<ul>
+<li>“Viral marketing” seeks to identify &amp; seed influencers within social networks</li>
+<li>After Facebook movie app users rated movies, Aral &amp; Walker (2012) randomly notified 1.3MM friends about their movie ratings, then observed app adoption to estimate influence and susceptibility</li>
+<li>Key finding: Social influence causally drives adoption. Influencers are less susceptible, and susceptible users are less influential</li>
+<li>Influence and susceptibility are both heterogeneous:
+<ul>
+<li>Older users more influential; younger more susceptible</li>
+<li>Women influence men more than men influence women</li>
+<li>Influencers with influential friends had most influence in this context</li>
+<li>Married users tend to be influential; Relationship/Engaged/Complicated users tend to be susceptible; Single users tend to be both influential and susceptible</li>
+</ul></li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Classic conundrums in viral marketing: Should you seed the experts, the taste makers, the network-central hubs, or those with track records of relevant influence? When and whom should you gift vs.&nbsp;pay to promote?</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="http://www.dylantwalker.com/pdfs/Science-Identifying-Influential-and-Susceptible-Members-of-Social-Networks-Aral-and-Walker-2012.pdf" target="_blank">Aral &amp; Walker (Science 2012)</a></p>
+</div>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/discordceoquote.png" class="quarto-figure quarto-figure-center" height="450"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>I love Citron’s flat priors and bias for testing. It fascinates me that half the team thought the idea was bad, but they proceeded anyway. I wonder which half he was in?</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://web.archive.org/web/20240516070323/https://www.theverge.com/24134914/discord-ceo-gaming-chat-teens-safety-moderation-decoder-interview" target="_blank">The Verge — Discord CEO interview</a></p>
+</div>
+</section>
+<section id="market-size-career-choice" class="slide level2" style="font-size: 0.85em;">
+<h2>Market Size &amp; Career Choice</h2>
+<ul>
+<li>Your first job includes a bet on a market
+<ul>
+<li>Mature market: Big, reputable employers, established career tracks</li>
+<li>But markets typically decline at some point</li>
+<li>Growing market: Exciting, high risk, high reward, more opportunity</li>
+<li>But market may not take off as you expect</li>
+<li>Will your skillset enable a transition if needed?</li>
+</ul></li>
+<li>Today’s safe option might not be safe tomorrow!
+<ul>
+<li>Mature markets will decline</li>
+<li>New markets will grow</li>
+<li>Consider diffusion trends, not just current market size</li>
+</ul></li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>I missed a lucrative boat before I found my calling. Should I tell you the story?</p>
+</div>
+</div>
+</div>
+</section>
+<section id="core-needs-data-google-trends" class="slide level2">
+<h2>Core Needs Data: <a href="https://trends.google.com/" target="_blank">Google Trends</a></h2>
+<ul>
+<li>Best available indicator of unserved market</li>
+<li>Reports search volume indices by keyword, place, time, service
+<ul>
+<li>Also identifies topics, trending terms &amp; related queries</li>
+<li>Samples the query database, reports estimates not actual counts</li>
+<li>Requires a minimum query volume for reporting</li>
+<li>Free, so it could get sunsetted</li>
+</ul></li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Google started Trends back in the 00s because it worried about SEC regulation, given that its search data could predict stock price movements. Seems quaint</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://drive.google.com/file/d/18aecUVA9gxUTuaItl4i-ceB9sDxVAhb1/view?usp=drive_link" target="_blank">Choi &amp; Varian (2012) discuss data usage considerations</a></p>
+</div>
+</section>
+<section id="customer-lifetime-value" class="slide level2">
+<h2>Customer Lifetime Value</h2>
+<ul>
+<li>CLV is the most powerful predictive customer analytics metric
+<ul>
+<li>Expresses the firm’s value of an individual customer relationship as the net present value of expected future customer profits</li>
+<li>Pioneered by catalogue retailers in the 1960s</li>
+<li>Has spread widely, but not yet everywhere</li>
+<li>CLV metrics enable quantification &amp; serious discussion of new policies</li>
+<li>But, prediction uncertainty hinders CLV adoption and usage</li>
+</ul></li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>CLV can account for customer heterogeneity using same approaches we talked about in week 5</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>Catalogue retailers had huge customer databases, and mailed out expensive books multiple times per year. Had to test which customers were worth sending books, how often</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="clv-example-housing-first" class="slide level2" style="font-size: 0.9em;">
+<h2>CLV Example: Housing First</h2>
+<ul>
+<li>“In 2005, Utah set out to fix a problem that’s often thought of as unfixable: chronic homelessness. The state had almost 2,000 chronically homeless people. Most of them had mental-health or substance-abuse issues, or both. Utah started by just giving the homeless homes…</li>
+<li>The cost of shelters, emergency-room visits, ambulances, police, and so on quickly piles up. Lloyd Pendleton, the director of Utah’s Homeless Task Force … said that the average chronically homeless person used to cost Salt Lake City more than $20,000/year. Putting someone into permanent housing costs the state just $8,000 [including case managers]…</li>
+<li>Utah’s first pilot program placed 17 people in homes scattered around Salt Lake City, and after twenty-two months not one of them was back on the streets. In the years since, the number of Utah’s chronically homeless has fallen by 74%.”</li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Republican Utah might not be your first guess as to whom invented Housing First, but it CLV analysis made this dramatic policy shift look like a no-brainer</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://web.archive.org/web/20240330030348/https://www.newyorker.com/magazine/2014/09/22/home-free" target="_blank">Surowiecki (2014)</a></p>
+</div>
+<aside class="notes">
+<ul>
+<li>http://www.politico.com/magazine/story/2016/12/what-works-albuquerque-homeless-solution-housing-policy-214527</li>
+<li>I’m not sure your stereotype about utah, but many would not guess they invented housing first. It was CLV metrics that showed it to be a no-brainer. It’s the serious effort to quantify lifetime value that moved this from dream to reality. Humanitarian upsides have been tremendous.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="housing-first-looking-deeper" class="slide level2 smaller">
+<h2>Housing First: Looking deeper</h2>
+<ul>
+<li>Housing First has certainly not solved homelessness
+<ul>
+<li>“Chronic” means disabled and unhoused for 1+ yrs, or 4x in 3 yrs</li>
+<li>~28% of CA homelessness is chronic (2019)</li>
+<li>UT originally claimed 90% reduction, then revised their metric definitions</li>
+<li>Reliable efficacy metrics are rare</li>
+<li>Housing First has been implemented haphazardly</li>
+<li>UT built new apartments. CA cities mostly use shelters, SROs, vouchers</li>
+<li>Key Q: Require wraparound services? E.g. Addiction treatment, etc</li>
+<li>Key Q: Does Housing First somehow encourage homelessness?</li>
+</ul></li>
+<li>I claim: Quantification enables bold policy shifts
+<ul>
+<li>U.S. HUD adopted Housing First as preferred approach to homelessness in 2014</li>
+<li>CLV quantifies policy costs and benefits &amp; enables ex-post evaluations</li>
+<li>We then can use data to refine CLV estimates and policies</li>
+</ul></li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Basing policy choices on CLV requires us to quantify and clarify our assumptions, and shows how we expect policies to impact customers. Quantifying disagreements facilitates next steps toward resolutions. What are possible next steps toward evaluating how Housing First policy attributes affect homelessness?</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>UT annual homeless figures inflate a January count using a multiplier</li>
+<li>Officials changed the multiplier over time but did not revise past figures</li>
+<li>For more, https://www.sltrib.com/news/politics/2020/05/11/utah-was-once-lauded/</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="calculating-clv" class="slide level2">
+<h2>Calculating CLV</h2>
+<ul>
+<li><span class="math inline">\(T\)</span>: planning horizon</li>
+<li><span class="math inline">\(m_t\)</span>: contribution margin of serving customer <span class="math inline">\(i\)</span> in time <span class="math inline">\(t\)</span></li>
+<li><span class="math inline">\(r\)</span>: retention probability that customer buys in <span class="math inline">\(t+1\)</span></li>
+<li><span class="math inline">\(i\)</span> is the cost of capital</li>
+<li><span class="math inline">\(CLV=\sum_{t=0}^T\frac{m_t r^t}{(1+i)^t}\)</span>
+<ul>
+<li>Assumes start-of-year calculation, including yet-to-be-realized margins in year <span class="math inline">\(t=0\)</span>; alternate formula assumes end-of-year calculation starting from <span class="math inline">\(t=1\)</span></li>
+</ul></li>
+<li><span class="math inline">\(m_t\)</span> and <span class="math inline">\(r\)</span> observable in past data; future values are predictions</li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><span class="math inline">\(T\)</span> is often set at 3 years, but Bezos says Amazon’s 7-year horizon lets them justify investments competitors can’t match. The horizon, retention, and discount rate are all judgment calls. Prediction uncertainty increases with <span class="math inline">\(T\)</span></p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>Often set arbitrarily at T=3 years, but Bezos says Amazon’s 7-year horizon lets them amortize and justify investments that competitors can’t match</li>
+<li><span class="math inline">\(m_t\)</span> and should depend on future firm strategy and market conditions</li>
+<li>Extensible to model purchase frequency, basket size, profitability</li>
+<li>Heterogeneity: <span class="math inline">\(m\)</span> and <span class="math inline">\(r\)</span> often vary across cohorts and segments, but we’ll disregard that for simplicity</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="clv-example" class="slide level2">
+<h2>CLV Example</h2>
+<ul>
+<li>A tennis club charges an annual fee of $300</li>
+<li>The average club member spends $100 per year (concessions, etc.)</li>
+<li>The average contribution margin on add’l expenditures is 60%</li>
+<li>Historically, 80% of the members rejoin the club in any given year. The club’s cost of capital is 15%</li>
+<li>What is the club’s CLV per member for T=1, T=2, or T=3? <!-- # m=300+.6\*100=360, i=.15, r=.8 - CLV(1yr)=360 - CLV(2yr)=360+360\*.8/1.15=610.43 - CLV(3yr)=360(1+.8/1.15+.64/1.3225)=784.65 --></li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Notice how quickly avg. CLV starts to asymptote as T grows large</li>
+<li>is i=.15 realistic? yes– business payday loans industry like mulligan funding</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="using-clv-for-customer-acquisition" class="slide level2" style="font-size: 0.85em;">
+<h2>Using CLV for Customer Acquisition</h2>
+<ul>
+<li>Marketing campaigns should be profitable if Avg. Customer Acquisition Cost (CAC) <span class="math inline">\(&lt;\)</span> CLV
+<ul>
+<li>Caveat: So long as acquired customers have CLV&gt;=avg CLV of existing customers</li>
+<li>Often, managers impose a “fudge factor” as a speedbump</li>
+</ul></li>
+<li>Suppose the tennis club has a chance to pay $20k for a billboard. It will be seen by 100K people with an expected conversion rate of .1%. Should we do it?
+<ul>
+<li>To decide, lay out decision rule MR &gt;= ff * MC and calculate</li>
+</ul></li>
+</ul>
+<!-- # CAC=20K/(.001\*100k)=20k/100=200. Profitable even on a 1-yr horizon.
+    yes in a vacuum; but more realistically, how confident are we in
+    that .1% conversion prediction? can we get our money back if the ad
+    performs poorly? do we have better ways to spend the \$20k? -->
+<ul>
+<li>Similar “break-even” calculations possible for any fixed cost that impacts future profits, e.g.&nbsp;product launch, store openings, price promotions</li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Most common “fudge factor” values: 3 or 7. Why?</p>
+</div>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>Common fudge factors: 3, 7. Why?</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="clv-metrics-in-practice" class="slide level2 smaller">
+<h2>CLV Metrics in Practice</h2>
+<ul>
+<li>CLV popularity rose alongside CRM data systems
+<ul>
+<li>Firms used CLV to set customer experiences: high-CLV flyers got upgraded, high-CLV lodgers got better rooms, high-CLV shoppers got sterling return service and attention, high-CLV callers got shorter wait times and more consideration</li>
+</ul></li>
+<li>In the 00s, consulting firms published claims that 20-30% of customers were unprofitable. Firing the least-profitable customers sounded attractive
+<ul>
+<li>American Express offered some cardholders $300 to cancel their cards. Best Buy stopped notifying some shoppers about upcoming promotions. Banks used minimum balances and teller fees to drive away some accountholders. Amazon stops selling to frequent returners. Uber terminates driver and rider accounts if they violate policy</li>
+</ul></li>
+<li>Customers talk to each other; firing customers is a brand risk</li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Firing customers can be direct/confrontational or indirect/quiet. Better yet, redesign product menus and reprice so that unprofitable customers either become profitable or self-select out</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://sloanreview.mit.edu/article/firing-the-right-customers-is-good-business/" target="_blank">MIT Sloan — “Firing the Right Customers Is Good Business” (2024)</a></p>
+</div>
+<aside class="notes">
+<ul>
+<li>In other words, line up all the customers from most profitable to least profitable, and the bottom 20% or more would show negative CLV. If true, then you immediately increase your profit by dropping your bottom 20% of customers. Note, this is very simplistic thinking; maybe prices are too low or return policies are too generous?</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/gambling_ind_rev_by_gamblerrank.png" class="quarto-figure quarto-figure-center" height="400"></p>
+</figure>
+</div>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>This graphic shows total gambling industry net revenue as a function of gambler net spending percentiles. 5% of gamblers cost online gambling operators 20% of their revenue, whereas the most profitable 3% of customers generate half of net revenue. Operators block and limit frequent winners, so pros use “beards”</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://archive.ph/LERIB" target="_blank">Funt (2022)</a> | <a href="https://archive.ph/4dDzB" target="_blank">Rose-Berman (2025)</a> | <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4856684" target="_blank">McCarthy et al.&nbsp;(2026)</a></p>
+</div>
+<aside class="notes">
+<ul>
+<li>Graph shows cumulative online gambling operator revenue by gambler net loss rank, in a 5-year cohort of 717,000 gamblers</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="clv-cautions-risks" class="slide level2 smaller">
+<h2>CLV Cautions &amp; Risks</h2>
+<ul>
+<li>CRM data may be incomplete, disconnected, error prone
+<ul>
+<li>E.g., can you connect customer identity across different credit card #s?</li>
+<li>Think about how identity mismeasurement affects retention rate measurement</li>
+</ul></li>
+<li>CLV models are predictive analytics, not prescriptive or diagnostic
+<ul>
+<li>CLV usually contains no customer purchase model, because it’s purely predictive</li>
+<li>Heterogeneous CLV-based policies may be self-fulfilling: treat someone as unprofitable, they may act that way</li>
+</ul></li>
+<li>Guiding Principles
+<ul>
+<li>Firm &amp; customer both benefit by increasing customer value provided. CLV metrics for value creation benefit everyone</li>
+<li>Firm &amp; customer have opposing interests in price. CLV for margin extraction may generate perverse customer incentives</li>
+<li>Customer dissatisfaction may reveal CLV flaws; requires careful attention</li>
+<li>Hence many firms now measure point-of-sale satisfaction, rather than blaming customers for unprofitability</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Think about the retention measurement error this could cause, and the dramatic change in CLV</li>
+<li>POS satisfaction: e.g.&nbsp;NPS or those “smiley face” 1-button indicators. Try to detect issues faster before they affect customer relationships.</li>
+<li>This frontier is actively moving</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="example-clv-for-pricing" class="slide level2">
+<h2>Example: CLV for Pricing</h2>
+<ul>
+<li><p>Assume price is $100, margin $50, retention 50%, discount rate 10%, horizon T=1: CLV = 50 + .5 * 50 / 1.1 = $72.72</p></li>
+<li><p>Suppose you consider increasing price to $120, holding all else constant: Then, CLV = 70 + .5 * 70 / 1.1 = $101.82</p></li>
+<li><p>Should you raise the price?</p>
+<ul>
+<li>What is this analysis missing?</li>
+<li>How could we resolve that problem?</li>
+<li>Hint: CLV is predictive analytics, not diagnostic or prescriptive</li>
+</ul></li>
+</ul>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>When can CLV analysis optimize price?</p>
+</div>
+</div>
+</div>
+<div class="source-url">
+<p><a href="https://archive.ph/O6Wv0" target="_blank">Palumbo (2023)</a> | <a href="https://drive.google.com/file/d/15njIpqcSy99e4l04kAfhDvvDjgIirkRo/view?usp=drive_link" target="_blank">Pfeiffer and Farris (2004)</a></p>
+</div>
+<aside class="notes">
+<p>The law of demand says that increasing price causally reduces sales Hence increasing price must lower retention, as well as reducing acquisition A demand model could quantify the price/retention tradeoff to accurately revise the retention assumption given a price change</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="class-script" class="slide level2">
+<h2>Class script</h2>
+<ul>
+<li>Let’s estimate the Bass model using OLS and NLLS, compare their properties, and simulate SAM evolutions over different time horizons</li>
+</ul>
+<p><img data-src="images/scroll.jpg" class="absolute" style="bottom: 20px; right: 20px; height: 100px; "></p>
+</section></section>
+<section>
+<section id="wrapping-up" class="title-slide slide level1 center">
+<h1>Wrapping up</h1>
+
+</section>
+<section id="competition" class="slide level2 smaller">
+<h2>Competition</h2>
+<p>Suppose you consider a 28-period time horizon, with true <span class="math inline">\(p=.03\)</span>, true <span class="math inline">\(q=.1\)</span>, and <span class="math inline">\(M=435\)</span>. Simulate data from these parameters. Now suppose you only had data for periods 4-12, supposing that measurements for periods 1-3 are unavailable. Use OLS and NLLS to estimate the Bass model based only on data from periods 4-12. Then use both estimated models to make out-of-sample predictions for periods 13-28. Calculate mean square prediction errors in periods 13-28 for both models. Visualize the two MSPEs to illustrate which estimator generalized to the non-training data better.</p>
+<p><img data-src="images/competition.png" class="absolute" style="bottom: 20px; right: 20px; height: 120px; "></p>
+</section>
+<section id="recap" class="slide level2" style="font-size: 1.3em;">
+<h2>Recap</h2>
+<ul>
+<li>Customer acquisitions best predict revenues</li>
+<li>Market size estimates how many people share a core need</li>
+<li>Diffusion models predict how served market changes</li>
+<li>CLV metrics can quantify and enable novel policies</li>
+</ul>
+<p><img data-src="images/recap.png" class="absolute" style="bottom: 20px; right: 20px; height: 100px; "></p>
+</section>
+<section id="going-further" class="slide level2" style="font-size: 1.3em;">
+<h2>Going further</h2>
+<ul>
+<li><p><a href="https://drive.google.com/file/d/1HIrUtd_v_IRzHklKWKi0dUkSpfvfIufs/view?usp=drive_link" target="_blank">Innovation Diffusion and New Product Growth Models</a></p></li>
+<li><p><a href="https://drive.google.com/file/d/14zg5gPEOqlqp_JZ_bRmewCsqOmoOBKdH/view?usp=drive_link" target="_blank">Customer-Base Valuation in a Contractual Setting with Heterogeneity</a></p></li>
+<li><p><a href="https://drive.google.com/file/d/150sD29FpyzpQ9B0WL5kHwJdrwpp9bf_S/view?usp=drive_link" target="_blank">Exploring the Distribution of Customer Lifetime Value</a></p></li>
+<li><p><a href="https://drive.google.com/file/d/15Ix93FCBM8JPqLPcUcIlL_2sxHRedVqs/view?usp=drive_link" target="_blank">Firing your best customers</a></p></li>
+</ul>
+<p><img data-src="images/takingoff.png" class="absolute" style="bottom: 20px; right: 20px; height: 100px; "></p>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="mgt100-08_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="mgt100-08_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="mgt100-08_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="mgt100-08_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="mgt100-08_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="mgt100-08_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="mgt100-08_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="mgt100-08_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="mgt100-08_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="mgt100-08_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="mgt100-08_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":false},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

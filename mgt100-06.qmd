@@ -23,10 +23,12 @@ format:
 
 ##
 
-![](images/ftc_surveillance_pricing_2025.png){fig-align="center" height="440px"}
+![](images/ftc_surveillance_pricing_2025.png){fig-align="center" height="330px"}
 
-::: {.callout-note appearance="minimal"}
-As far as I know, most companies are not using sophisticated personalized pricing algorithms. It would be possible for them to do so. To me, this speaks to a widespread concern about the nontransparency of personalized pricing practices, and the possible use of personal data to work against customer interests.
+::: {.callout-note appearance="minimal" style="font-size: 0.85em;"}
+Politicians recently became concerned with "Surveillance pricing," the nontransparent practice of pricing to individuals or small segments, based on customer data. NY enacted a law mandating disclosure; Maryland banned some personalized food prices, but not coupons; many other states are considering bills; Congress is investigating.<br><br>
+So far as I know, most companies are not using sophisticated personalized pricing algorithms, despite a few prominent counterexamples. General non-use is not for lack of ability; most firms personalize search results based on individual data. Firms worry about backlash from personalized pricing.<br><br>
+To me, this speaks to two widespread concerns. One is price unfairness. The other is nontransparent use of personal data to work against customer interests.
 :::
 
 ::: {.source-url}
@@ -58,22 +60,21 @@ Possible explanations:
 ![](images/camel3stepladder.png){fig-align="center" height="495px"}
 
 ::: {.callout-note appearance="minimal"}
-Camelcamelcamel and other price trackers can help you decide whether to buy now or wait. How many shoppers use them?
+Graph shows "dynamic pricing." Camelcamelcamel and other price trackers can help you decide whether to buy now or wait. How many shoppers use them?
 :::
 
 ::: {.source-url}
 [camelcamelcamel](https://camelcamelcamel.com/product/B087279HM1?tp=all&cpf=amazon-new-used){target="_blank"} | See also PriceSpy, SmartScout; but not Honey or Keepa
 :::
 
-# How firms set prices
+# How Firms Set Prices
 - Importance and challenge
 - Common approaches
 - Economic Value to the Customer
 - Van Westendorp
 
-## Pricing importance {.smaller}
+## Pricing Importance
 
-::: {style="font-size: 0.85em;"}
 - #2 topic after two-sided value creation
 - Widely cited research by McKinsey
     - 1% price increase can lead to 11% profit increase
@@ -82,13 +83,12 @@ Camelcamelcamel and other price trackers can help you decide whether to buy now 
     - Correlations, but widely misinterpreted as causal
 - Consultants say most companies price too low; price is low-hanging fruit
 - Counterpoint: "Your margin is my opportunity"
-:::
 
 ::: {.callout-note appearance="minimal"}
 Competition usually leads to thin margins. 5-15% is common. Therefore, minor pricing improvements can lead to substantial profit improvements.
 :::
 
-## Price changes are risky & scary
+## Price Changes Are Risky & Scary
 
 ![](images/hbs pricing motivation.png){fig-align="center" height="405px"}
 
@@ -96,7 +96,7 @@ Competition usually leads to thin margins. 5-15% is common. Therefore, minor pri
 Internal costs are easiest to discover. Competitor actions are the second-easiest to track and know. Customer factors are usually the biggest gap. Why do you think that is?
 :::
 
-## How firms usually set prices {.smaller}
+## How Firms Usually Set Prices {.smaller}
 
 - Most common: Limited-data analyses
     - EVC / Value pricing, Competitor price benchmarking, Cost-based pricing
@@ -122,7 +122,7 @@ Internal costs are easiest to discover. Competitor actions are the second-easies
 - Those first three are goldilocks: too high, just right, too low
 :::
 
-## Pricing strategies are secret
+## Pricing Strategies Are Secret
 
 - Why not announce your pricing strategy?
 
@@ -180,7 +180,7 @@ This survey sample came from a platform promoting pricing algorithms; the bias i
 nfp == not-for-profit
 :::
 
-## Value Pricing: Price in (cost, wtp)
+## Value Pricing: Price in (Cost, WTP)
 
 - But... how do you learn wtp? Esp. if you have not sold before?
     - For large time/budget: Conjoint, simulated purchase environments, test markets, ...
@@ -201,7 +201,7 @@ Some of you will start companies, and you will use EVC to identify value-improve
 - ![Airmount EVC story](https://patents.google.com/patent/US5638249A/en?oq=US+Patent+5%2c638%2c249)
 :::
 
-## How to calculate EVC(x$\vert$y)
+## How to Calculate EVC(x$\vert$y)
 
 1. Select the best available alternative y and find its price
     - Interview target customers to learn how they solve the core need (y)
@@ -218,7 +218,7 @@ Some of you will start companies, and you will use EVC to identify value-improve
     - In practice, 99% of effort is getting the assumptions right
 
 
-## EVC tips
+## EVC Tips
 
 - y might not be a commercial product
 
@@ -229,7 +229,7 @@ Some of you will start companies, and you will use EVC to identify value-improve
 
 - If EVC(x$\vert$y)<0, reconsider target customer and/or value proposition
 
-## Example: What is EVC(Batteroo Boost$\vert$y)?
+## Example: What Is EVC(Batteroo Boost$\vert$y)?
 
 - The Batteroo Boost is a durable metal sleeve that increases disposable battery life by 800%. With a thickness of just 0.1 millimetres, the sleeve can be fitted over any size battery, in any size compartment
 
@@ -253,14 +253,14 @@ Batteroo Boost raised almost \$400k on [Indiegogo](https://www.indiegogo.com/en/
 - (Price was 2.50 in 2019)
 :::
 
-## Choosing p in (cost, EVC) {.smaller}
+## Choosing p in (Cost, EVC) {.smaller}
 
 :::: {.columns}
 
 ::: {.column width="70%"}
 - Pricing 'Thermometer:' How much inducement do you give your customer?
 
-- Some advise:  $Price = Cost + (EVC - Cost) \cdot z\%$
+- Some say:  $Price = Cost + (EVC - Cost) \cdot z\%$
     - I've heard z = 25%, 33%, 50%, and 70%
     - Do you want profits or growth?
 
@@ -272,7 +272,7 @@ Batteroo Boost raised almost \$400k on [Indiegogo](https://www.indiegogo.com/en/
     - Fairness, signaling
     - Customer risk of adoption, skepticism; brand credibility
 
-::: {.callout-note appearance="minimal"}
+::: {.callout-note appearance="minimal" style="font-size: 1.3em;"}
 Why do you think EVC exceeds Perceived Value?
 :::
 :::
@@ -287,7 +287,7 @@ Why do you think EVC exceeds Perceived Value?
 - These factors also pertain to other price setting approaches
 :::
 
-## Why not just ask customers for their WTP?
+## Why Not Just Ask Customers for Their WTP?
 
 - Hypothetical bias: Stated answers $\ne$ real behavior
 
@@ -330,7 +330,7 @@ R package [pricesensitivitymeter](https://cran.r-project.org/web/packages/prices
 
 ![](images/vw.jpg){fig-align="center" height="300px"}
 
-- "Too cheap" meets "Acceptably Expensive": "Point of Marginal Cheapness"
+- "Too Cheap" meets "Acceptably Expensive": "Point of Marginal Cheapness"
     - VW says: Price<PMC signals poor quality
 
 - "Acceptably Cheap" meets "Too Expensive": "Point of Marginal Expensiveness"
@@ -352,7 +352,7 @@ R package [pricesensitivitymeter](https://cran.r-project.org/web/packages/prices
 - Probably best to use this to evaluate other price-setting approaches' outputs, rather than on its own to set price
 :::
 
-# Pricing factors
+# Pricing Factors
 
 - Human Factors
 - Economic Factors
@@ -375,7 +375,7 @@ R package [pricesensitivitymeter](https://cran.r-project.org/web/packages/prices
     - Otherwise, you undercut your own message and leave money on the table
     - Findings replicate in numerous contexts
 
-::: {.callout-note appearance="minimal"}
+::: {.callout-note appearance="minimal" style="font-size: 1.3em;"}
 Suppose you offer the best product in the market at the lowest price; will you be able to corner the market?
 :::
 
@@ -384,7 +384,7 @@ Suppose you offer the best product in the market at the lowest price; will you b
 - Consumers typically rely on signals to form perceptions about unobserved quality
 :::
 
-## Human factors: Price as a signal
+## Human Factors: Price as a Signal
 
 ![](images/julienfarel.png){fig-align="center" height="400px"}
 
@@ -425,7 +425,7 @@ We'll go through a few more (inexhaustive)
 If you really like this stuff, take Ania's consumer behavior elective in winter quarter
 :::
 
-## Human factors: Cognitive Costs
+## Human Factors: Cognitive Costs
 
 - Total customer cost is<br>&ensp;&ensp;= Cognitive cost to decide the purchase<br>&ensp;&ensp;\+ Physical cost to acquire the product<br>&ensp;&ensp;\+ Financial payment
 
@@ -441,7 +441,7 @@ Have you ever abandoned a purchase because you had to jump through too many hoop
 [Bertini et al. (2023)](https://archive.ph/Jy3b6){target="_blank"}
 :::
 
-## Human factors: Perceived prices
+## Human Factors: Perceived Prices
 
 - Which is the better bargain?
     - Regular price $0.89, sale price $0.75
@@ -455,7 +455,7 @@ How do you evaluate these two pairs of price discounts? How do most consumers ev
 - Context was margarine sales; 80+pct chose 1st pair; most likely explanation:     (in)numeracy makes people think a drop in the 10s place of 2 is larger than a drop in the 10s place of 1
 :::
 
-## Left-digit bias: Demand Effects
+## Left-Digit Bias: Demand Effects
 
 ![](images/leftdigit1.jfif){fig-align="center" height="400px"}
 
@@ -472,7 +472,7 @@ Strulov-Shlain used ground coffee data to estimate price elasticity within each 
 - There are clear discontinuities in price elasticity when the left-most digit changes
 :::
 
-## Left-digit bias: Lyft rides
+## Left-Digit Bias: Lyft Rides
 
 ![](images/leftdigit-lyft.jfif){fig-align="center" height="400px"}
 
@@ -490,7 +490,7 @@ Lyft ran a huge pricing experiment with 21+ million riders. Offer acceptances ju
 - Source: John List at U-Chicago
 :::
 
-## Human factors: Price salience
+## Human Factors: Price Salience
 
 :::: {.columns}
 
@@ -513,7 +513,7 @@ Lyft ran a huge pricing experiment with 21+ million riders. Offer acceptances ju
 
 ::::
 
-## Human factors: Anchoring {.smaller}
+## Human Factors: Anchoring {.smaller}
 
 - "You are lying on the beach on a hot lazy afternoon.  For about an hour now, you have been thinking about an ice-cold bottle of your favorite beer.  One of your friends gets up to make a phone call and offers to get you your favorite beer from a *small run-down grocery store* on the way back.  Your friend says that the beer might be expensive and asks the maximum price that you are willing to pay.  If the price is higher, your friend won't buy the beer.  What is your maximum price?
 - ... *fancy resort hotel* ...
@@ -559,9 +559,10 @@ Classic study by [Thaler (1985)](https://drive.google.com/file/d/1LAvYXVvUAhT6r2
 
 ::::
 
-![](images/huberputo.png){fig-align="center" height="276px"}
+![](images/huberputo.png){fig-align="center" height="262px"}
 
 ::: {.callout-note appearance="minimal"}
+Original theory assumed purely vertical product attributes: Quality only, no fit<br>
 Proportionality: New items take share from existing items in proportion to their original shares (MNL: IIA property)<br>
 Substitutability: New item takes share disproportionately from more similar items (Heterogeneous Logit)<br>
 Attraction: New item may increase the relative desirability of similar items, especially within contextual evaluations (decoy)<br>
@@ -585,7 +586,7 @@ All three effects may operate simultaneously to explain customer purchase data
 Decoy pricing is common in some industries, especially Software-as-a-Service (SaaS). Sometimes price menus become cluttered
 :::
 
-## When do Attraction/Decoy Effects Obtain? {.smaller}
+## When Do Attraction/Decoy Effects Obtain? {.smaller}
 
 - "Ninety-one attempts to produce an attraction effect produced only 11 reliable effects." --Yang and Lynn (2014)
 
@@ -595,7 +596,7 @@ Decoy pricing is common in some industries, especially Software-as-a-Service (Sa
 
 - Large-scale field evidence: Wu & Cosguner (2020) found significant dominant/dominated effects in calibrated model-based simulations of online diamond sales; Devine et al. (2025) found a robust but small effect of 1% in retail wine sales; Rafai et al. (2021) found no evidence when experimentally adding dominated options to online flight search results
 
-::: {.callout-note appearance="minimal"}
+::: {.callout-note appearance="minimal" style="font-size: 1.3em;"}
 Decoy pricing can work, but it has been overextended beyond its original boundaries of clear dominant/dominated relationships. Be careful implementing decoy pricing outside of vertical product differentiation, and never ever implement without careful testing
 :::
 
@@ -603,7 +604,7 @@ Decoy pricing can work, but it has been overextended beyond its original boundar
 [Yang and Lynn (2014)](https://drive.google.com/file/d/1G25KZLRudBTPHkpND8ep1l2MgiInBHH4/view?usp=drive_link){target="_blank"} | [Frederick et al. (2014)](https://drive.google.com/file/d/1mpr9MOVTrHur09bSvtnsHCtnUTJp-VfP/view?usp=drive_link){target="_blank"} | [Bogard et al. (2024)](https://drive.google.com/file/d/1Xws8mAReVjmUPtMA_RorvCDdkC2Qb-so/view?usp=drive_link){target="_blank"} | [Wu & Cosguner (2020)](https://drive.google.com/file/d/1xQCTEwnx2KCTvR2q7raIBMu_Mb-HlAAs/view){target="_blank"} | [Devine et al. (2025)](https://drive.google.com/file/d/1HzljlzCUr34q7TEDqou1z2g6iCgo0J8u/view?usp=drive_link){target="_blank"} | [Rafai et al. (2021)](https://drive.google.com/file/d/1OS9uoex-nSkhCG_19bwdEiCkZ4nabeEh/view?usp=drive_link){target="_blank"}
 :::
 
-## Economic factors: Price discrimination
+## Economic Factors: Price Discrimination
 
 - Amazon v. B&N
 
@@ -634,7 +635,7 @@ Game consoles used to use price skimming to price discriminate between gamers, b
 A very big deal in this graph: Nintendo Switch price had no nominal decrease for 5-year span, longest ever, an apparent sign of fantastic demand persistence. Also may show diminishing category competition, or a strategic decision to maintain high margins.
 :::
 
-## Economic factors: Beware a price war! {.smaller}
+## Economic Factors: Beware a Price War! {.smaller}
 
 - If you explicitly mention a competitor's price
     - You make Customer aware of Competitor
@@ -650,7 +651,7 @@ A very big deal in this graph: Nintendo Switch price had no nominal decrease for
 
 ![](images/tipjar.jpg){.absolute bottom="20" right="20" height="100px"}
 
-::: {.callout-note appearance="minimal"}
+::: {.callout-note appearance="minimal" style="font-size: 1.3em;"}
 Why does cost secrecy usually help to avoid price wars?
 :::
 
@@ -667,7 +668,7 @@ Why does cost secrecy usually help to avoid price wars?
     - If we specify demand model, we can calculate $\frac{dq}{dp}$ based on the model
     - Elasticity calculations will be sensitive to interval widths and model assumptions
 
-::: {.callout-note appearance="minimal"}
+::: {.callout-note appearance="minimal" style="font-size: 1.3em;"}
 Revenue is maximized at $elas.=-1$. For $elas.<-1$, you can increase revenue by reducing price. For $elas.>-1$, you can increase revenue by increasing price. Profits are maximized at $MR=MC$
 :::
 
@@ -675,8 +676,8 @@ Revenue is maximized at $elas.=-1$. For $elas.<-1$, you can increase revenue by 
 
 - $elas.=\frac{d(\ln q)}{d(\ln p)}=\frac{p}{q}\frac{dq}{dp}$
 
-- A special class of demand functions have constant elasticity
-    - $q=e^\alpha p^\beta$ for $\alpha>0$ & $\beta<-1$, then $elast.=\beta$
+- A special class of demand functions has constant elasticity
+    - $q=e^\alpha p^\beta$ for $\alpha>0$ & $\beta<-1$, then $elas.=\beta$
     - Implies $\ln q=\alpha+\beta \ln p$, called "log-log"
     - Need exogenous price variation to estimate a causal effect $\beta$; otherwise, $\beta$ should be interpreted as a correlation
 
@@ -686,7 +687,7 @@ Revenue is maximized at $elas.=-1$. For $elas.<-1$, you can increase revenue by 
 C.E. demand is popular because it is easy. However, C.E. assumes that customers with different wtp all have the same price sensitivity. When might that make sense, or not make sense?
 :::
 
-## Price optimization: CED vs. het. MNL {.smaller}
+## Price Optimization: CED vs. Het. MNL {.smaller}
 
 :::: {.columns}
 
@@ -721,24 +722,24 @@ C.E. demand is popular because it is easy. However, C.E. assumes that customers 
 
 ::::
 
-::: {.callout-note appearance="minimal"}
+::: {.callout-note appearance="minimal" style="font-size: 1.3em;"}
 RHS is called a "grid search." It's less mathematically elegant but more robust, and generally works better. You can use a grid search to evaluate whether demand elasticity is constant (how?); but you cannot use CE Demand to predict the results of a grid search
 :::
 
 ![](images/toolkit.png){.absolute bottom="20" right="20" height="60px"}
 
-## Best-response pricing curve {.smaller}
+## Best-Response Pricing Curve {.smaller}
 
 :::: {.columns}
 
 ::: {.column width="60%"}
-- If a rival raises its price, some of its customers will choose to buy from us. If it cuts its price, some of our customers will choose to buy from the rival. Either change shifts our demand curve.
+- If Firm A raises its price, some of its customers will choose to buy from Firm B. If A cuts its price, some of Firm B's customers will choose to buy from Firm A. Either change shifts Firm B's demand curve.
 
-- When our demand curve shifts, our optimal profit-maximizing price shifts in the same direction. If demand shifts up, we should increase price; if demand shifts down, we should decrease price.
+- When Firm B's demand curve shifts, Firm B's optimal profit-maximizing price shifts in the same direction. If demand shifts up, Firm B should increase price; if demand shifts down, Firm B should decrease price.
 
-- The best-response pricing curve graphs that logic, based on our profit-maximization calculations. It shows how our optimal price p\* changes as a function of our competitor's price.
+- The best-response pricing curve graphs that logic, based on Firm B's profit-maximization calculations. It shows how Firm B's optimal price p\* changes as a function of Firm A's price.
 
-::: {.callout-note appearance="minimal"}
+::: {.callout-note appearance="minimal" style="font-size: 1.3em;"}
 Why does the best-response pricing curve slope up?
 :::
 :::
@@ -754,7 +755,53 @@ Why does the best-response pricing curve slope up?
 - Foreshadows Nash-equilibrium pricing in week 7 (and the celebrity-endorsement competition)
 :::
 
-## Class script
+## Bertrand-Nash Pricing Equilibrium {.smaller}
+
+:::: {.columns}
+
+::: {.column width="60%"}
+- Suppose two competing firms A and B both set price to maximize profit
+
+- Then we can graph both of their best-response pricing curves as a function of the other's observed price
+
+- The Nash equilibrium of the pricing game is given by the crossing point, where both firms are playing their best responses to the other
+
+- But what if one firm is using cost-based pricing, or competitor price benchmarking?
+
+::: {.callout-note appearance="minimal" style="font-size: 1.3em;"}
+Bertrand was a famous economist who assumed that differentiated-products producers competed by choosing prices. Two famous alternative models are named after their authors: Cournot, who assumed that oligopolists competed by simultaneously choosing output quantities, and Stackelberg, who assumed one firm moved first, anticipating its rival's response
+:::
+:::
+
+::: {.column width="40%"}
+![](images/bertrand_nash_curves.png){fig-align="center" height="500px"}
+:::
+
+::::
+
+## How to Reconcile Bertrand-Nash Eqm with Pricing Manager Surveys? {.smaller}
+
+- The economists who trained me in the 90s and 00s generally believed that firms maximize profits and that markets reach competitive equilibria
+
+- Today, many economists work at firms or interact with executives and understand that necessary conditions for profit maximization are not always met
+
+- We have limited direct, wide-scale evidence about profit maximization or competition
+
+- Ken's untested hypotheses: Profit maximization is a safe assumption under 3 conditions:
+
+    1&ensp;The firm gets clear feedback in response to its actions
+
+    2&ensp;The firm makes similar actions repeatedly, so it can learn from experience
+
+    3&ensp;The firm is internally organized and well incentivized to maximize profits
+
+::: {.callout-note appearance="minimal" style="font-size: 1.3em;"}
+Condition 1 likely applies to most pricing decisions, but not advertising<br>
+Condition 2 likely applies to most pricing decisions, but not positioning<br>
+Condition 3 depends on the firm's internal organization and incentive structure, and likely applies less often, especially when agents act on behalf of principals
+:::
+
+## Class Script
 
 - Use demand model to trace out a demand curve
 
@@ -768,9 +815,9 @@ Why does the best-response pricing curve slope up?
 
 ![](images/scroll.jpg){.absolute bottom="20" right="20" height="100px"}
 
-# Wrapping up
+# Wrapping Up
 
-## Competition {.smaller}
+## Competition
 
 - Calculate Apple's best-response A1 price as a function of Samsung's S1 price
     - Use the class dataset with `mdat1` and the week 6 model `out10`; assume Apple's A1 marginal cost is $450
@@ -788,7 +835,7 @@ Why does the best-response pricing curve slope up?
 
 ![](images/recap.png){.absolute bottom="20" right="20" height="100px"}
 
-## Going further
+## Going Further
 
 - [Willingness to Pay Measurement Approaches](https://drive.google.com/file/d/1aViODb4xVvhMNbr4vL46JsDPAtmt6GqV/view?usp=sharing){target="_blank"}
 

@@ -2,6 +2,282 @@
 
 ## Change Log
 
+### 2026-05-05
+
+Task: In `mgt100-06.qmd`, rewrite the callout on the FTC Surveillance Pricing slide (slide 2) and resize the graphic so the image, callout, and source-url all fit on the slide without overflow.
+
+Edits applied to `mgt100-06.qmd` (initial pass):
+- Callout body replaced with three-paragraph version (separated by `<br><br>`): (1) NY/Maryland/Congress surveillance-pricing developments, (2) general non-use of personalized pricing despite ability and counterexamples, (3) two widespread concerns (price unfairness, nontransparent use of personal data). Font and `::: {.callout-note appearance="minimal"}` wrapper preserved.
+- Image `images/ftc_surveillance_pricing_2025.png` height reduced from `440px` → `260px` after iterating 320 → 240 → 260 → 280 and screenshotting the rendered slide each time. 280px pushed the source-url off; 240 left visible whitespace; 260 sat the source-url and page indicator just inside the slide bottom.
+
+Follow-up edits (same session):
+- Inserted "They worry about backlash." immediately after "...most firms personalize search results based on individual data." in paragraph 2 of the callout.
+- Added `style="font-size: 0.85em;"` to the callout fence to shrink the body text one step.
+- With the smaller text, image height bumped 260 → 320 → 330. 340 clipped source-url; 330 cleared it with ~10-15px of bottom margin.
+
+Render and verification:
+- Re-rendered HTML via `quarto render mgt100-06.qmd` after each height change (6 renders total across both passes).
+- Local HTTP server (port 8765) + `chromium --headless --disable-gpu --no-sandbox --hide-scrollbars --window-size=1050,700 --run-all-compositor-stages-before-draw --virtual-time-budget=20000 --screenshot=...` against `http://localhost:8765/mgt100-06.html#/1` to capture slide 2 each iteration.
+- Final screenshot (image 330px, callout 0.85em) shows: FTC report image at top, full 3-paragraph callout with border closed and the new "They worry about backlash." sentence in the second paragraph, "FTC (2025)" source-url and slide-2 page indicator both visible above the slide's progress bar.
+
+Slide 4 (Camelcamelcamel) follow-up:
+- Inserted "Graph shows \"dynamic pricing.\"" at the start of the callout, before the existing "Camelcamelcamel and other price trackers..." text. Image height (`495px`) and source-url unchanged.
+- Re-rendered HTML; screenshotted slide 4 via the same Chromium-headless workflow. Image, full callout, source-url ("camelcamelcamel | See also PriceSpy, SmartScout; but not Honey or Keepa"), and slide-4 page indicator all visible above the slide bottom.
+
+Not performed (per scope): no PDF re-render, no other slide audited, no push to GitHub.
+
+Deck-wide font / `{.smaller}` audit (same session):
+
+Scope: User asked to better use white space and exhibit consistency on slides 6, 9, 10, 11, 16, 17 (callout only), 22 (callout only), 23, 26, 30 (callout only), 33 (callout only), 35 (callout only), 36 (callout only), 37 (callout only), 39 (callout only), 40 (callout only), 41, 43, 44, 45. Image heights were intentionally NOT touched on these slides per user direction.
+
+Approach: Anchor every callout to the small palette `{0.85em, default 1.0em, 1.3em}`. Use `1.3em` on `{.smaller}` slides where the user wants the callout readable (compensates the slide-level shrink and brings callout text back to roughly default reading size — matches the existing pattern on slide 30). Drop inline `font-size` overrides and `{.smaller}` from titles when removing them does not cause overflow.
+
+Edits applied to `mgt100-06.qmd`:
+- **Slide 2 text fix**: in the new callout, changed "nontransparency use" → "nontransparent use" (single-word grammar fix; rest of slide unchanged).
+- **Slide 6 (Pricing importance)**: dropped `{.smaller}` from title; removed the `::: {style="font-size: 0.85em;"}` wrapper around the bullets. Bullets now render at default size; the 6 main bullets + 4 sub-bullets + callout fit comfortably without any size override.
+- **Slide 17 (Choosing p in (cost, EVC))**: title `{.smaller}` retained (callout-only). Added `style="font-size: 1.3em;"` to the callout (`Why do you think EVC exceeds Perceived Value?`).
+- **Slide 22 (Signals and Perceived Quality)**: title `{.smaller}` retained (callout-only). Added `style="font-size: 1.3em;"` to the callout.
+- **Slide 33 (When do Attraction/Decoy Effects Obtain?)**: title `{.smaller}` retained (callout-only). Added `style="font-size: 1.3em;"` to the callout.
+- **Slide 36 (Beware a price war!)**: title `{.smaller}` retained (callout-only). Added `style="font-size: 1.3em;"` to the callout (`Why does cost secrecy usually help to avoid price wars?`).
+- **Slide 37 (Price Elasticity of Demand, smaller variant)**: title `{.smaller}` retained (callout-only). Added `style="font-size: 1.3em;"` to the callout.
+- **Slide 39 (Price optimization: CED vs. het. MNL)**: title `{.smaller}` retained (callout-only). Added `style="font-size: 1.3em;"` to the callout.
+- **Slide 40 (Best-response pricing curve)**: title `{.smaller}` retained (callout-only). Added `style="font-size: 1.3em;"` to the callout.
+- **Slide 43 (Competition)**: dropped `{.smaller}` from title; bullets render at default size and continue to fit alongside the corner `competition.png`.
+
+Slides verified but left unchanged:
+- **Slide 9 (Pricing strategies are secret)**, **10 (pricingsurvey)**, **11 (openview2023pricing)**, **16 (Batteroo)**, **23 (julienfarel)**, **26 (Perceived prices)**, **35 (console_prices)**, **41 (Class script)**, **44 (Recap)**, **45 (Going further)**: already at default font sizes with no `{.smaller}` on title and no inline overrides; nothing made small unnecessarily, so no edits.
+- **Slide 30 (Anchoring)**: callout-only and already had `style="font-size: 1.3em;"` (matched by an enclosing `::: {style="font-size: 1.3em;"}` wrapper around the "Your turn" bullets); left as-is for consistency.
+
+Verification:
+- Re-rendered HTML via `quarto render mgt100-06.qmd` after applying the batch.
+- Local HTTP server (port 8765) + `chromium --headless --disable-gpu --no-sandbox --hide-scrollbars --window-size=1050,700 --run-all-compositor-stages-before-draw --virtual-time-budget=15000 --screenshot=...` against `http://localhost:8765/mgt100-06.html#/<group>/<sub>` (deck nests `##` slides as vertical sub-slides under each `#` section, so URL fragments are 2D — confirmed by matching the page-indicator number on each screenshot).
+- Screenshotted all 21 named slides and reviewed each. Every callout, image, source-url, and bullet block is fully within the slide bounds; the page indicator is visible on every screenshot.
+- Observation (not addressed per user direction to leave images alone): slides 11 (openview2023pricing) and 23 (julienfarel) render with content concentrated in the upper half of the slide canvas, leaving roughly half of the vertical space empty. This appears to be a pre-existing reveal.js / `auto-stretch` interaction with wide-aspect images and is unchanged by this session's edits. All required elements remain visible; nothing is pushed off.
+
+Not performed (per scope): no PDF re-render, no image-height changes on the named slides, no push to GitHub.
+
+New slide inserted: Bertrand-Nash Pricing Equilibrium (now slide 41; pushes Class script → 42, Wrapping up → 43, Competition → 44, Recap → 45, Going further → 46):
+- New R script `scripts/make_bertrand_nash_curves.R` and new chart `images/bertrand_nash_curves.png` (1000×1200, dark-blue lines on white, no ticks). Two upward-sloping linear best-response curves (BR_A steeper than BR_B) crossing at an open red circle with a red "Nash eqm." overlay; axis labels "Firm A Profit-Maximizing Price" (x) and "Firm B Profit-Maximizing Price" (y); BR_A and BR_B curve labels.
+- Slide layout mirrors slide 40: two-column `:::: {.columns}` with 60% bullets+callout / 40% image, `{.smaller}` on title, callout `style="font-size: 1.3em;"`. Image at `height="500px"`.
+- Bullets: (1) Suppose two competing firms A and B both set price to maximize profit; (2) Then we can graph both of their best response pricing curves as a function of the other's observed price; (3) The Nash equilibrium of the pricing game is given by the crossing point, where both firms are playing their best responses to the other; (4) But what if one firm is using cost-based pricing, or competitor price benchmarking?
+- Callout: "Bertrand was a famous economist who assumed differentiated-products producers set prices. Two famous alternative models are named after their authors: Cournot and Stackelberg".
+- Re-rendered HTML and screenshotted at `#/5/20`. All four bullets, callout, and chart fit within the slide; page indicator "41" visible.
+
+Slide 41 follow-up adjustments:
+- Chart (regenerated via the updated `scripts/make_bertrand_nash_curves.R`):
+  - "Nash eqm." red text moved from above-right of the circle to directly east (same y as the circle, `hjust=0` left-align with x-offset of 1.6 chart units), no longer overlapping the steeper line.
+  - Steep curve label (BR_A) moved to the left from x=16.5 → x=13.7 (at y=23.8) so it sits clearly off the line.
+  - Both curve labels renamed to math expressions: BR_A → `expression(p[A]^"*" * "(" * p[B] * ")")` rendering as $p_A^*(p_B)$; BR_B → `expression(p[B]^"*" * "(" * p[A] * ")")` rendering as $p_B^*(p_A)$. BR_B position shifted slightly (x=23.6 → x=22.6) to keep the wider new label inside the panel.
+- Callout text expanded: "Bertrand was a famous economist who assumed differentiated-products producers set prices. Two famous alternative models are named after their authors: Cournot and Stackelberg" → "Bertrand was a famous economist who assumed that differentiated-products producers competed by choosing prices. Two famous alternative models are named after their authors: Cournot, who assumed that oligopolists competed by simultaneously choosing output quantities, and Stackelberg, who assumed one firm moved first, anticipating its rival's response".
+- Re-rendered HTML and re-screenshotted slide 41 at `#/5/20`. Title, bullets, expanded callout, and updated chart all fit on the slide; page indicator "41" visible.
+
+New slide inserted: "How can we reconcile the idea of Bertrand-Nash equilibrium with pricing manager survey results" (now slide 42; pushes Class script → 43, Wrapping up → 44, Competition → 45, Recap → 46, Going further → 47):
+- Text-only slide, `{.smaller}` on the long title, callout `style="font-size: 1.3em;"` (consistent with the rest of the deck's `{.smaller}`+1.3em-callout pattern).
+- Four main bullets: (1) economists trained in 90s/00s took profit-max + competitive equilibria as articles of faith; (2) economists at firms today see profit-max preconditions often unmet; (3) we have little evidence about the equilibration process; (4) Ken's hypotheses framing 3 conditions for safe profit-max + competition assumptions.
+- Numbered sub-bullets under bullet 4 (markdown `1.`/`2.`/`3.` syntax so the rendered numbers match the callout's "Conditions 1 and 2... Condition 3" reference): clear feedback / repeated similar actions / internal organization & incentives.
+- Callout: "Conditions 1 and 2 likely apply to most pricing decisions. Condition 3 likely applies less often".
+- Re-rendered HTML and screenshotted at `#/5/21`. Title, all 4 bullets, all 3 numbered sub-bullets, and callout fit within the slide; page indicator "42" visible.
+
+Slide 42 follow-up edits:
+- Title shortened: "How can we reconcile the idea of Bertrand-Nash equilibrium with pricing manager survey results" → "How to reconcile Bertrand-Nash eqmm with pricing manager surveys?" (kept the user's literal "eqmm" spelling; flagged for confirmation in case it was intended as "eqm.").
+- Bullet 1: "took it as an article of faith" → "generally believed"; "usually reach" → "reach".
+- Bullet 3: "the equilibration process" → "profit maximization".
+- Bullet 4: "Profit maximization and competition are safe assumptions" → "Profit maximization is a safe assumption".
+- Sub-bullets: "Firms" → "The firm" in all three (with subject-verb agreement updates: "get/make/are" → "gets/makes/is"; "their actions" → "its actions" in sub-bullet 1 to match the new singular subject).
+- Sub-bullet markers: switched from markdown ordered list `1.`/`2.`/`3.` (which renders as "1.", "2.", "3." with periods) to unordered sub-list with literal "1", "2", "3" prefixes inside each bullet text. Result: numbers 1, 2, 3 appear as part of each sub-bullet's text. The theme's arrow marker (→) remains in front because Quarto/revealjs auto-styles all sub-list items; eliminating it would require custom CSS, which was not added.
+- Re-rendered HTML and re-screenshotted at `#/5/21`. New 2-line title, four edited bullets, three numbered sub-bullets, and unchanged callout all fit; page indicator "42" visible.
+
+Slide 42 third pass:
+- Title: "eqmm" → "eqm" (typo fix per user confirmation).
+- Bullet 2: "often unmet" → "not always met".
+- Bullet 3: "We have little evidence about profit maximization" → "We have limited direct, wide-scale evidence about profit maximization or competition".
+- Bullet 4 stem: "Ken's hypotheses" → "Ken's untested hypotheses".
+- Sub-condition 2: "The firm makes similar actions repeatedly" → "The firm makes similar actions repeatedly, so can learn from experience".
+- **Sub-bullet markers** changed from arrow+digit (`→ 1`, `→ 2`, `→ 3`) to bare digits with no theme arrow. Mechanism: replaced the nested unordered list with three indented paragraphs (4-space indent under the parent bullet) that each begin with a literal `1`, `2`, or `3` followed by `&ensp;` and the condition text. Markdown treats indented paragraphs under a bullet as continuation content rather than a sub-list, so no `<ul>`/`<ol>` markers are emitted. Result: clean "1  The firm…" / "2  The firm…" / "3  The firm…" lines with no arrow or period.
+- Callout fully rewritten to three condition-specific sentences joined by `<br>`: (1) Condition 1 applies to most pricing decisions, but not advertising; (2) Condition 2 applies to most pricing decisions, but not positioning; (3) Condition 3 depends on the firm's internal organization and incentive structure, and likely applies less often, especially when agents act on behalf of principals.
+- Re-rendered HTML and re-screenshotted slide 42 at `#/5/21`. Title (2 lines), four updated bullets, three bare-numbered sub-conditions, and three-line callout all fit on the slide; page indicator "42" visible.
+
+Deck-wide proofread pass:
+- Grammar/usage fixes:
+  - Slide 38 bullet 2: "A special class of demand functions **have** constant elasticity" → "**has**".
+  - Slide 38 sub-bullet: "$elast.=\\beta$" → "$elas.=\\beta$" (consistent abbreviation).
+  - Slide 20 bullet: "**'Too cheap'** meets 'Acceptably Expensive'" → "**'Too Cheap'**" (capital C, consistent with other category labels on the slide).
+  - Slide 42 sub-bullet 2: "so can learn from experience" → "**so it can learn** from experience".
+  - Slide 41 bullet 2: "best response pricing curves" → "**best-response** pricing curves" (consistent hyphenation).
+  - Slide 17 bullet 2: "**Some advise:**" → "**Some say:**".
+  - Slide 40 bullet 1: "Either change shifts **our** demand curve" → "Either change shifts **Firm B's** demand curve" (consistency with the rest of the Firm A / Firm B rewrite).
+  - Slide 2 callout: "**They worry about backlash.**" → "**Firms worry about backlash from personalized pricing.**".
+- Title-case conversion applied to every slide title and section header (sentence case → title case). Articles, coordinating conjunctions, and short prepositions (a, an, the, and, but, or, for, nor, of, at, by, in, on, to, vs.) kept lowercase; everything else capitalized. Examples: "Pricing importance" → "Pricing Importance"; "How firms set prices" → "How Firms Set Prices"; "Left-digit bias: Lyft rides" → "Left-Digit Bias: Lyft Rides"; "Why not just ask customers for their WTP?" → "Why Not Just Ask Customers for Their WTP?"; "How to reconcile Bertrand-Nash eqm with pricing manager surveys?" → "How to Reconcile Bertrand-Nash Eqm with Pricing Manager Surveys?".
+- Verification:
+  - Re-rendered HTML and confirmed every `<h1>`/`<h2>` in `mgt100-06.html` matches the new title-case form.
+  - Grepped HTML for each content-edit string ("Firms worry about backlash from personalized pricing", "Some say", "Too Cheap", "has constant elasticity", "elas.=\\beta", "best-response pricing curves", "so it can learn", "shifts Firm B's") — all present.
+  - Spot-screenshotted slides 7, 17, 27, 38, 40, 42, 47 at 1050×700: titles render in title case, all callouts/bullets/images/source-urls visible, no overflow introduced by the longer (capitalized) titles.
+
+Items the user explicitly declined to change in this pass: Van Westendorp "I.e., that you would..." sentence-fragment construction (slide 19); "millimetres" British spelling on slide 16; Nadal not named on slide 23; "Amazon v. B&N" without on-slide context on slide 34; Cournot/Stackelberg sentence on slide 41; callout repetition pattern on slide 42; "wtp" first usage timing on slide 8.
+
+PDF re-render:
+- Command: local HTTP server on port 8765 + `chromium --headless --disable-gpu --no-sandbox --run-all-compositor-stages-before-draw --virtual-time-budget=180000 --print-to-pdf-no-header --print-to-pdf="mgt100-06.pdf" "http://localhost:8765/mgt100-06.html?print-pdf"` (per `feedback_pdf_rendering_method.md` and `reference_pdf_rendering_config.md`).
+- Output: `mgt100-06.pdf`, 11.25 MB, **47 pages** — matches the 47-slide deck count exactly (no overflow / multi-page slides).
+- Verification: `pdfinfo` confirmed 47 pages. Spot-rendered pages 2 (FTC + new "Firms worry about backlash from personalized pricing"), 6 (title-case "Pricing Importance", default-size bullets after `{.smaller}` removal), 31 (Decoy Effects with new top callout line and 262px image), 40 (title-case "Best-Response Pricing Curve" + Firm A/Firm B rewrite + new $p_B^*(p_A)$ chart), 41 (Bertrand-Nash slide with crossing curves + Nash eqm. + Cournot/Stackelberg callout), 42 (title-case "How to Reconcile Bertrand-Nash Eqm with Pricing Manager Surveys?" + bare-number sub-conditions + 3-line callout), 47 (title-case "Going Further") via `pdftoppm`. All page contents render within bounds; on-slide page numbers visible on every spot-checked page.
+
+Not performed: full 47-page PDF screenshot sweep (only 7 representative pages spot-checked); no GitHub push.
+
+Slide 40 second adjustment (after the user reviewed slide 41):
+- `images/best_response_curve.png` regenerated again. The single line was changed to be the EXACT same line as slide 41's `p[B]^"*"(p[A])` curve (geom_segment from (0,5) to (25,17.5) on x,y in [0,25]). Curve label "$p_B^*(p_A)$" added at (22.6, 18.4) — identical position and style to the corresponding label on slide 41. Chart title "Best-response pricing curve", x-axis "Firm A Price", y-axis "Firm B Profit-Maximizing Price" preserved.
+- Re-rendered HTML and re-screenshotted slide 40 at `#/5/19`. Title, three bullets, callout, and updated chart with the new label all fit; page indicator "40" visible.
+
+Slide 40 (Best-response pricing curve) updates:
+- Regenerated `images/best_response_curve.png` via new `scripts/make_best_response_curve.R` (matching the prior single-line dark-blue style and 1000×1200 dimensions). Axis labels changed: x-axis from "Competitor's price" → "Firm A Price"; y-axis from "Our profit-maximizing price" → "Firm B Profit-Maximizing Price". Chart title "Best-response pricing curve" preserved.
+- Bullet text updates per user direction (12 replacements):
+  - "a rival" → "Firm A"
+  - "from us" → "from Firm B"
+  - "If it cuts" → "If A cuts"
+  - "our customers" → "Firm B's customers"
+  - "the rival" → "Firm A"
+  - "When our demand" → "When Firm B's demand"
+  - "our optimal" → "Firm B's optimal"
+  - "up, we should" → "up, Firm B should"
+  - "down, we should" → "down, Firm B should"
+  - "based on our" → "based on Firm B's"
+  - "how our" → "how Firm B" (subsumed by the explicit replacement below)
+  - Sentence-level: "It shows how our optimal price p* changes as a function of our competitor's price." → "It shows how Firm B's optimal price p* changes as a function of Firm A's price."
+- One residual instance of "our" was NOT changed because the user did not list it: bullet 1 still ends with "Either change shifts our demand curve." Flagged to user for confirmation; left untouched per "do not alter the request without permission."
+- Re-rendered HTML and screenshotted slide 40 at `#/5/19`. Title, three updated bullets, callout, and updated chart all visible above the slide bottom.
+
+Slide 31 (Decoy Effects) follow-up:
+- Image `images/huberputo.png` height reduced 5%: `276px` → `262px`.
+- Callout: prepended new first line "Original theory assumed purely vertical product attributes: Quality only, no fit" with `<br>` separator before the existing four lines (Proportionality / Substitutability / Attraction / All three effects).
+- Re-rendered HTML and screenshotted slide 31 (URL `#/5/10`). Title, two-column bullet groups, image, 5-line callout, source-url ("Huber & Puto (1983)"), and slide-31 page indicator all visible above the slide bottom.
+
+### 2026-04-30, late morning PT
+
+Task: Audit Q1 question bank against student score statistics, then retire two questions that performed poorly and lacked clear deck/script support.
+
+Inputs reviewed:
+- `assessments/MGT_100_MGT100A_Q1_question_stats.csv` (PrairieLearn per-question stats, 90 questions)
+- `assessments/mgt100_answer_key_w1-3_2026.yml` and `assessments/mgt100_question_bank_w1-3_2026.md`
+- W1-3 source materials: `mgt100-01.qmd`, `mgt100-02.qmd`, `mgt100-03.qmd`, `mgt100_01_script.R`, `mgt100_02_script.R`, `mgt100_03_script.R`, syllabus PDF, Train (2009) Ch. 3 sections 3.1/3.3/3.9, Qualtrics segmentation article. (StatQuest PCA YouTube transcript was not retrievable; W2 audit noted the limitation but every W2 question was supported elsewhere.)
+
+Audit (3 parallel subagents, one per week):
+- 39 questions had a mean score below 70%. Each was checked for clear answer support in deck/script/reading.
+- Result: 29 SUPPORTED, 8 WEAKLY_SUPPORTED, 2 ANSWER_POSSIBLY_WRONG.
+- Output: `assessments/mgt100_w1-3_low_score_review.csv` (39 rows × 16 columns; preserved as the audit record for these retirements).
+
+Retirements (by user direction, Option B = drop from assessment max with full removal):
+- **W1-Q009** (TF, mean 16%) — listed answer "False" depended on a "course truism: 'insight without action is worthless'" that does not appear verbatim in the deck, script, or syllabus.
+- **W2-Q024** (MS, mean 60%) — listed correct set {a,b,c} (Distinct/Measurable/Substantial) conflicts with the assigned Qualtrics article, which presents the canonical 4-Cs as Measurable/Accessible/Substantial/Actionable (no "Distinct"). Students who relied on the reading rather than the deck were penalized.
+
+Files modified (all on Google Drive):
+- `assessments/prairielearn/staging/infoAssessment.json` — removed both QID entries from their zones (Easy: 33→31; Medium: 42→41; total: 90→88; numberChoose values unchanged at 5/10/5).
+- `assessments/mgt100_answer_key_w1-3_2026.yml` — hard-deleted both records; meta block updated (total 90→88, W1 36→35, W2 29→28, TF 45→44, MS 4→3, E 32→31, M 42→41).
+- `assessments/mgt100_question_bank_w1-3_2026.md` — hard-deleted both sections; grand-totals table updated to match new counts; draw-feasibility ratios recomputed (Easy 6.4×→6.2×, Medium 4.2×→4.1×).
+- `assessments/prairielearn/staging/questions/mgt100_mt1_w1_q009/` — folder deleted (per user direction).
+- `assessments/prairielearn/staging/questions/mgt100_mt1_w2_q024/` — folder deleted.
+
+Verification:
+- `python3 -c "import json; ..."` confirms JSON parses cleanly, 3 zones, 88 questions, by-zone counts (31, 41, 16) match new meta block.
+- `Rscript ... yaml.load_file(...)` confirms YAML parses cleanly, 88 records, no W1-Q009 or W2-Q024 in `ids`, by-week (35/28/25) and by-type (TF44/MC25/MS3/SA16) match new meta block.
+- `grep "W1-Q009\|W2-Q024"` against bank MD and YAML returns no matches.
+
+Not yet performed (awaiting user):
+- Manual upload of the modified `infoAssessment.json` (and PL question-folder deletions) into the live PL course at `github.com/PrairieLearn/pl-ucsd-mgt100` via PL's browser editor.
+- PL regrade trigger (path to be looked up at the time of action).
+- Reconciliation of regraded scores with PrairieTest → Canvas gradebook.
+- Optional Piazza/email note to students explaining the retirements.
+
+### 2026-04-29, ~12:00-12:50 PM PT
+
+Task: Reformat and revise Week 8 deck (Predictive Customer Analytics) — produced clean-revealjs rewrite at `mgt100-08-v2.qmd` with new Competition slide, four recent-CLV-application source links, and Bass-model script extension. Original `mgt100-08.qmd` preserved untouched per user direction.
+
+Inputs reviewed:
+- `mgt100-08.qmd` (legacy-format source, 38 `##` content slides + 2 `#` section headers, subtitle previously read "Week 09")
+- `mgt100_08_script.R` (Bass model: simulate-known-truth, OLS quadratic, NLS, retrodiction, bias-variance discussion, 6 reflection questions)
+- Yavorsky `Class 9 - CLTV.pdf` (50 pages, scanned by subagent — 14 candidate additions identified, all DEFERRED per user; user wants to review in detail before importing any)
+- Recent CLV applications surfaced via web search: 8 candidates; user selected L1, L2, L6, L8 (HBR Long-Term Value 2024, MIT Sloan Firing-Right-Customers 2024, WARC Peloton 2022, Retail TouchPoints DTC 2023)
+
+Scope alignment (multi-turn -plan / -scope conversation):
+- User confirmed: Week 8 (subtitle correction); add Competition slide (script-modifying, Design 2: hidden-truth M-prediction + sensitivity); edit in `-v2.qmd` for now; nothing dropped from existing deck
+
+Template reformat applied (CLAUDE.md Steps 2-11):
+- YAML rewritten: bolded title, dual-author block with HTML anchors, `date: today`, dynamic date-format, chalkboard, `custom.css`, `gtag.html`. Subtitle corrected from "MGT 100 Week 09" to "MGT 100 Week 8". Dropped obsolete keys (`auto-stretch`, `theme: default`, `pdf-max-pages-per-slide`, `pdf-separate-fragments`, `output: html_document`, `editor_options`, top-level `slide-number`)
+- 8 `::: aside` blocks converted: source citations to `::: {.source-url}`, commentary to `::: {.callout-note}` (Dray, Inspired by epidemiology, gambling chart split into both)
+- 14 `width="Xin"` images standardized to `height="Npx"` (default 400px, 450px for chart-heavy slides; corner closing-slide images at 100-120px `.absolute bottom right`)
+- 2 `.scrollable .smaller` instances cleaned (Housing First New Yorker excerpt + tennis-club CLV example) — kept `.smaller`, dropped `.scrollable` per CLAUDE.md
+- ~25 over-indented sub-bullets (8-space → 4-space) and 6/10-space inconsistent indents normalized to proper 4-space nested markdown lists
+- HTML-comment answer keys (tennis-club CLV solutions) preserved in place
+- `target="_blank"` audited; all external links comply
+- Canonical slide ordering enforced (title → image → callout → source-url → notes)
+- Pipe separators reserved for `::: {.source-url}`; callouts use flowing prose
+- `{.smaller}` added to 7 slides flagged by overflow detection (Importance of Customer Acquisition, NLLS, Housing First Looking deeper, CLV Metrics in Practice, CLV Cautions & Risks, CLV for Pricing, Competition)
+
+Callout-note additions (Step 4):
+- Every `##` content slide now has a `::: {.callout-note appearance="minimal"}` block (~32 slides receiving callouts; 2 image-only slides + intermission and 4 wrap-up slides excluded per CLAUDE.md rule)
+- Callouts drew from existing `::: notes` content where substantive (Bass model intuition, Housing First framing, CLV cautions, retention measurement); ~24 are SUGGESTION-prefixed Claude-authored callouts
+- 4 promoted-from-aside callouts not SUGGESTION-prefixed (Dray, Diffusion curve PDF/CDF, gambling 5%-of-gamblers commentary)
+
+Recent-CLV source-url additions (4 user-approved articles):
+- L1 [Furr & Chakraborty (HBR 2024)](https://hbr.org/2024/06/when-it-comes-to-long-term-value-incumbents-should-think-like-digital-disruptors) → "Importance of Customer Acquisition"
+- L2 [MIT Sloan — Firing the Right Customers (2024)](https://sloanreview.mit.edu/article/firing-the-right-customers-is-good-business/) → "CLV Metrics in Practice"
+- L6 [WARC — Peloton shifts focus to LTV (2022)](https://www.warc.com/content/feed/peloton-shifts-marketing-focus-to-lifetime-value/en-GB/6721) → "Customer Lifetime Value" intro
+- L8 [Retail TouchPoints — Allbirds vs Warby Parker (2023)](https://www.retailtouchpoints.com/topics/omnichannel-alignment/a-financial-tale-of-two-former-dtc-darlings-allbirds-and-warby-parker) → "CLV Cautions & Risks"
+
+Competition slide (Design 2 + sensitivity, per user direction):
+- Slide content: "Predict $M$ from limited data. Given $N_t$ for periods $t = 1, ..., K$ where true $(M, p, q)$ are hidden. Submit (1) point estimate $\hat{M}$, (2) sensitivity table or plot showing how $\hat{M}$ changes as $K$ varies (try $K \in \{4, 6, 8, 10, 12\}$), (3) brief reasoning. Scoring: closest $\hat{M}$ wins; tiebreaker = smallest $|\hat{M}_K - \hat{M}_{K-2}|$"
+- An initial scaffold (simulate_bass / estimate_M / sensitivity sweep with ggplot) was appended to `mgt100_08_script.R` and verified end-to-end (demo M=250 → most-stable K=12 → $\hat{M}$=236.16, ~5% error). Per user direction afterward, the scaffold was REMOVED — the competition is for students to solve on their own. `mgt100_08_script.R` is back to its original state.
+
+Article slides (added per user request after initial draft):
+- 4 dedicated content slides — one per recent CLV citation — placed adjacent to the topic slide that already cited each article. Each slide encapsulates the article's essential points so students do not need to read the source. All callouts are SUGGESTION-prefixed.
+    - "Long-Term Value vs. Quarterly Earnings (Furr & Chakraborty 2024)" — placed after the second Einav table slide
+    - "Peloton's CLV Whiplash (WARC 2022)" — placed after "Using CLV for Customer Acquisition"; slide notes the WARC piece is paywalled and numbers come from secondary citations
+    - "Firing the Right Customers (Pedersen & Ritter 2024)" — placed after the gambling-revenue chart, before "CLV Cautions & Risks"
+    - "A Tale of Two DTCs: Allbirds vs Warby Parker (2023)" — placed after "CLV Cautions & Risks", before "Example: CLV for Pricing"
+
+Slide-8 (Meet Dray) callout extended per user direction: appended "He knows what to do when someone puts on their shoes or picks up the leash. His diagnostic analytics engine is not tuned quite as well."
+
+Render and verification:
+- `quarto render mgt100-08-v2.qmd` → HTML clean (84 KB)
+- Local HTTP server (port 8765) + `chromium --headless --disable-gpu --run-all-compositor-stages-before-draw --virtual-time-budget=180000 --print-to-pdf-no-header` → PDF 9.0 MB, named `mgt100-08.pdf` per filename convention
+- First pass: 51 PDF pages for 42 slides (9 overflows; subagent screenshot sweep at r=60 dpi identified 7 visible overflows)
+- Fixes applied: `{.smaller}` added to 7 overflow slides; longer SUGGESTION callouts shortened on 4 of those
+- Re-rendered → 44 PDF pages, subagent screenshot sweep confirmed every PDF page has a unique on-slide counter, no slide-overflow cases
+- After the 4 article slides were inserted: 48 PDF pages = 44 prior + 4 new (no new overflows)
+- Output files: `mgt100-08-v2.qmd`, `mgt100-08-v2.html`, `mgt100-08.pdf`. Original `mgt100-08.qmd` untouched per user direction. `mgt100_08_script.R` reverted to original state per user direction (competition is for students to solve on their own)
+- Not yet pushed to GitHub — awaiting user go-ahead
+
+Items deferred for user review:
+- 14 candidate Yavorsky-CLTV additions identified but not imported. User said "I'll reconsider after I go through everything in detail." Highest-value candidates: revenue decomposition (p.7), DraftKings/FanDuel chart citing user's own paper (p.38), Crossing-the-Chasm framework (p.29), SVOD churn case (pp.41-43), churn-cost stats (p.40), telco churn experiment (p.44)
+- WARC Peloton (L6) and Modern Retail DTC (L4) numbers come from secondary citations only — verify before classroom use
+- The on-slide tutoring problem remains on Intermission slide (no callout added; bullets serve that role)
+
+### 2026-04-29
+
+Task: Build a structured answer key for the W1-3 midterm question bank, intended for use by another Claude instance during student-quiz grading.
+
+Inputs reviewed (read-only, none modified):
+- `assessments/mgt100_question_bank_w1-3_2026.md` (90 questions; 74 with `Answer:`+`Justification:`, 16 SA with `Model answer:`+`Acceptable variations:`+`Common wrong directions:`)
+- `assessments/mgt100_practice_quiz_w1-3.md` (12-question practice quiz with answer key — cross-checked, no drift from bank)
+
+Plan agreed before execution (multi-turn -plan / -scope conversation):
+- YAML format, self-contained question stems
+- Uniform SA rubric: 4 = correct & complete or mostly-complete; 3 = some correct, no wrong content, not mostly complete; 1 = mix of right and wrong; 0 = fully wrong/irrelevant; blank = 2; word-limit overage = -1, floor at 0
+- MS scoring: exact set match, all-or-nothing
+- `keywords` field on SA records as advisory concept checklist (NOT literal-string match) — grader assesses conceptual understanding in context
+- Sample responses (5 per SA: score_4_full, score_4_mostly, score_3_partial, score_1_mixed, score_0_wrong) authored by Claude with `# SUGGESTION:` markers for instructor review
+- Companion grader-instructions file
+- Per user instruction: no verification battery (skipped parse-check, count assertions, spot-read, drift report)
+
+Files created:
+- `assessments/mgt100_answer_key_w1-3_2026.yml` — 90 question records (W1: 36, W2: 29, W3: 25; TF: 45, MC: 25, MS: 4, SA: 16)
+- `assessments/grader_instructions_w1-3.md` — workflow for downstream grading Claude (rule-by-type, escalation criteria, output CSV format)
+
+Items flagged for instructor review:
+- All 16 SA records contain `# SUGGESTION:`-flagged `keywords` and `sample_responses` fields authored by Claude
+- W1-Q030 / W1-Q031 are bank-marked "rewritten per instructor direction" — no pre-2026 cross-check anchor, model answers carried forward verbatim from bank
+- W3-Q018 (Red Bus / Blue Bus): option (b) is parenthetically labeled "(the correct realistic answer)" in the question stem itself. The bank's correct answer is (a) because the question asks what MNL *predicts*, not what is realistic. A `grader_note` field has been added to flag this potential student-confusion source.
+- W2-Q027 carries the bank's note "instructor caught answer inversion on review" — confirms answer is "Larger when unscaled"; both bank and key now consistent.
+
+
+
 ### 2026-04-22, ~1:40-2:15 PM PT
 
 Task: Phase 2 of mgt100-07 (Branding) revision — produced a full clean-revealjs rewrite at `mgt100-07-v2.qmd` with all Yavorsky additions (G1-G7), a section-structured Brand Advertising block, an intermission at 75%, and a Nash-equilibrium Competition slide. Original `mgt100-07.qmd` preserved untouched pending user review.

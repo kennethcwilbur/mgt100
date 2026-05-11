@@ -2,6 +2,37 @@
 
 ## Change Log
 
+### 2026-05-10, ~5:58 PM PT
+
+Task: From this Linux box, pull latest changes from `kennethcwilbur/mgt100` GitHub into the local clone at `/home/kennethcwilbur/mgt100_repo`. Per user direction, this clone is the working tree for editing and pushing going forward.
+
+Pre-pull state:
+- Branch `main`, working tree clean.
+- Remote `origin` = `https://github.com/kennethcwilbur/mgt100.git` (no token in URL).
+- Local HEAD: `1e32cd9 Update deck 8 (Predictive Customer Analytics); add crystalball.png`.
+- Token at `/home/kennethcwilbur/.mgt100_github_token` confirmed present (chmod 600, 41 bytes).
+
+Commands executed:
+- `git -C /home/kennethcwilbur/mgt100_repo pull "https://$(cat /home/kennethcwilbur/.mgt100_github_token)@github.com/kennethcwilbur/mgt100.git" main` — token used inline so it is NOT persisted in `.git/config`.
+- `git -C /home/kennethcwilbur/mgt100_repo update-ref refs/remotes/origin/main HEAD` — manual fix because pulling via explicit URL (rather than the `origin` remote name) left `refs/remotes/origin/main` stale, causing `git status` to report "ahead by 6 commits". Updated the ref to match HEAD.
+
+Result: Fast-forwarded `1e32cd9` → `4a6516a`. 6 commits pulled:
+- `c7bd9b8` Update deck 6 (Pricing): add Bertrand-Nash equilibrium and reconciliation slides
+- `5b928c5` Update index.html
+- `17f2681` Delete `mgt100-10_files/libs` directory
+- `c8c5c0b` Delete `mgt100-conjoint_files/libs` directory
+- `b0da7d5` Delete `PXL_20251227_033802628.MP.jpg`
+- `4a6516a` Delete `pdf_rendering_diagnostic.md`
+
+Verification:
+- Post-pull `git status`: "On branch main / Your branch is up to date with 'origin/main' / nothing to commit, working tree clean".
+- `git log --oneline 1e32cd9..HEAD` confirms the 6 expected commits in expected order.
+- `git remote -v` confirms remote URL still does NOT contain the token (token used inline only).
+
+Notes / follow-ups (not performed in this session):
+- Local `user.email` is stored as `"kennethcwilbur@gmail.com"` with curly quotes (likely a copy-paste artifact). Would produce odd commit author metadata. Recommend resetting to plain ASCII quotes before the first commit from this clone.
+- Persistent auth not configured. Each future pull/push from this clone will re-need the inline token URL unless a credential helper, token-embedded remote URL, or `gh auth` is set up.
+
 ### 2026-05-05
 
 Task: In `mgt100-06.qmd`, rewrite the callout on the FTC Surveillance Pricing slide (slide 2) and resize the graphic so the image, callout, and source-url all fit on the slide without overflow.

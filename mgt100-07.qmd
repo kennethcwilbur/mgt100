@@ -21,11 +21,7 @@ format:
     include-in-header: gtag.html
 ---
 
-# Branding
-
-- Perception and brands
-- Logos, Netflix & Kraft case studies
-- What is a brand?
+# What is a brand?
 
 ##
 
@@ -49,7 +45,7 @@ When I say brand, most people think about logos. What are the hidden meanings in
 ![](images/Gap.png){fig-align="center" height="440px"}
 
 ::: {.callout-note appearance="minimal"}
-Gap launched a multimillion-dollar redesign in October 2010 and scrapped it six days later after a backlash. Why?
+The Gap adopted its iconic logo in 1969. It launched a multimillion-dollar redesign in October 2010, then scrapped it six days later after a backlash. Why scrap it?
 :::
 
 ::: notes
@@ -61,7 +57,11 @@ Gap launched a multimillion-dollar redesign in October 2010 and scrapped it six 
 ![](images/UClogo.png){fig-align="center" height="440px"}
 
 ::: {.callout-note appearance="minimal"}
-UC paid a relatively paltry $386k for this new logo, but we only kept it for five days. Why?
+UC adopted its seal in 1884. We paid a relatively paltry $386k for this new logo, but we only kept it for five days. Why? The current wordmark was rolled out more quietly in 2013
+:::
+
+::: {.source-url}
+[NBC Bay Area (2012)](https://web.archive.org/web/20201112013533/https://www.nbcbayarea.com/news/local/university-of-california-adopts-new-logo-144-years-later/2069724/){target="_blank"} | [99% Invisible (2012)](https://99percentinvisible.org/episode/episode-69-the-brief-and-tumultuous-life-of-the-new-uc/){target="_blank"} | [UCOP Wordmark](https://ucop.edu/){target="_blank"}
 :::
 
 ::: notes
@@ -70,10 +70,14 @@ UC paid a relatively paltry $386k for this new logo, but we only kept it for fiv
 
 ##
 
-![](images/westinghouse.png){fig-align="center" height="440px"}
+![](images/westinghouse.png){fig-align="center" height="396px"}
 
 ::: {.callout-note appearance="minimal"}
-Westinghouse stopped making things decades ago, but the brand earns licensing revenue--100% margin. How can a brand outlive its company?
+In 1998, CBS bought the Westinghouse Corporation and immediately sold off all physical assets. From 1998-2021, it licensed the Westinghouse brand to electronic components manufacturers in several industries. Likely made $100-500mm over 23 years at 100% margin. S&P 500 firms' aggregate (market capitalization - tangible assets)/(market capitalization) grew from 17% in 1976 to 92% in 2026
+:::
+
+::: {.source-url}
+[Ocean Tomo (2026)](https://oceantomo.com/insights/ocean-tomo-releases-2025-intangible-asset-market-value-study-results/){target="_blank"}
 :::
 
 ::: notes
@@ -247,13 +251,13 @@ Firms often seek to influence their brand associations. Here, the *Economist* se
 
 ## Brand Safety {.smaller}
 
-- Brands try to avoid unsavory associations -- misinformation, hate, violence, obscenity, etc -- as they may upset consumers, generate embarrassing publicity, and create unfavorable brand associations
-- Brands have long demanded advertising-supported platforms maintain "brand safety" via content moderation
+- Brands try to avoid unsavory placements -- misinformation, hate, violence, obscenity, etc -- as they may upset consumers, generate embarrassing publicity, and damage brand associations
+- Brands demand advertising-supported platforms maintain "brand safety" via content moderation
 
 ![](images/x_adrevenuechanges.png){fig-align="center" height="340px"}
 
-::: {.callout-note appearance="minimal"}
-Have you ever heard of "brand safety?" When Twitter/X's new owner announced the shift to a "free speech platform" without content moderation, advertisers asked him to reconsider due to brand safety risks. Brands believe that proximity to unsavory content will damage brand associations
+::: {.callout-note appearance="minimal" style="font-size: 1.3em;"}
+Have you ever heard of "brand safety?" When Twitter/X's new owner announced the shift to a "free speech platform" without content moderation, advertisers asked him to reconsider due to brand safety risks. Earlier ad boycotts included [Facebook](https://en.wikipedia.org/wiki/2020_Facebook_ad_boycotts){target="_blank"} and YouTube
 :::
 
 ::: notes
@@ -444,29 +448,31 @@ Does anyone here have a brand tattoo? What do these tattoos say about their wear
 - We're getting back to the original definition of the term branding
 :::
 
-## Brands can {.smaller}
+## Brands can
 
-::: {style="font-size: 0.85em;"}
 - Express shared identities: UC San Diego, San Diego Padres
 - Personify seller attributes, eg Jordan Brand, Kylie Cosmetics
 - Adopt a common brand "personality"
-    - Classic/sincere, eg Hallmark, In-n-Out
-    - Competent, eg IBM, Amazon
-    - Exciting/fun, eg Snapchat, Scion
-    - Sophisticated, eg Tiffany
-    - Calm/peaceful (more common in East Asia)
-:::
+    - Sincerity (honest, wholesome): Hallmark, Trader Joe's, In-n-Out
+    - Excitement (daring, youthful): Red Bull, Duolingo
+    - Competence (reliable, efficient): Amazon, Google, Toyota, Visa
+    - Sophisticated (glamorous, refined): Apple, Rolex, Tiffany
+    - Rugged (tough, outdoorsy): Carhartt, Jeep, North Face, Yeti
 
 ::: {.callout-note appearance="minimal"}
-Best practice: match brand personality to value proposition and target customer's preferences or aspirations
+Best practice: match brand personality to value proposition & target customer's preferences/aspirations
+:::
+
+::: {.source-url}
+[Davies et al. (2018)](https://drive.google.com/file/d/1kATGvFLXFkFGRidTc8Mbmhuu5DjNao_e/view?usp=drive_link){target="_blank"}
 :::
 
 ## 4. Gestalt
 
 ![](images/kids_mcd.png){fig-align="center" height="300px"}
 
-::: {.callout-note appearance="minimal" style="font-size: 0.8em;"}
-We have much evidence that branding can complement product consumption. In this study, 3-5 year olds were given identical food in McDonald's branded containers or plain containers, and asked which version tasted better, indicating the McDonald's-branded versions for 4 out of 5 foods. Brand preference increased with TV exposure and brand experience. Neuroscientists gave Coke or Pepsi to subjects in fMRI machines, reporting that "In the brand-cued experiment, brand knowledge for one of the drinks had a dramatic influence on expressed behavioral preferences and on the measured brain responses."
+::: {.callout-note appearance="minimal"}
+We have evidence that branding can complement product consumption. In this study, 3-5 year olds were given identical food in McDonald's branded containers or plain containers, and asked which version tasted better, indicating the McDonald's-branded versions for 4 out of 5 foods. Brand preference increased with TV exposure and brand experience. Neuroscientists gave Coke or Pepsi to subjects in fMRI machines, reporting that "In the brand-cued experiment, brand knowledge for one of the drinks had a dramatic influence on expressed behavioral preferences and on the measured brain responses."
 :::
 
 ::: {.source-url}
@@ -519,8 +525,8 @@ The vodka category proves that branding can create differentiation that relieves
     - People thought LD sold alcohol, so LD advertised "Drink on the job"
 5. Turn your fans into content
 
-::: {.callout-note appearance="minimal"}
-Liquid Death founder was a graphic designer at an ad agency who said his inspiration was watching festivalgoers reuse an energy drink can to drink water. What's their margin on that water?
+::: {.callout-note appearance="minimal" style="font-size: 1.3em;"}
+Liquid Death founder was a graphic designer at an ad agency inspired by watching festivalgoers reuse an energy drink can to drink water. What's the margin on that water?
 :::
 ::::
 
@@ -550,12 +556,12 @@ Meet the Patagonian Toothfish. This adorable little monster is a 6' bottom feede
 - Another example of how names can affect demand for a new product: evocative adjectives and proper nouns support initial sales of new coffee SKUs
 :::
 
-# Brand Advertising
+# Advertising
 
 - Brand vs. Performance advertising
 - Programmatic advertising
 - Does advertising build brands?
-- Measuring ad impact
+- Advertising measurement
 
 ## Brand Ads vs. Performance Ads?
 
@@ -594,7 +600,7 @@ We've been hearing takes like this for generations. Every new channel promises t
 ![](images/prog_pros.png){fig-align="center" height="420px"}
 
 ::: {.callout-note appearance="minimal"}
-Programmatic advertising revenue basically doubled from 2019 to 2024. Similarity to Waymo driving ("the world's most experienced driver"), Netflix recommendations, or Gmail spam filters: The more ads placed, the more successes and failures observed, the better the placement algorithms can get
+Advertising conversion rates are about 0.1% on average. Programmatic methods promise to leverage data across campaigns, like Waymo ("the world's most experienced driver"), Netflix recommendations, or Gmail spam filters. More ads placed -> more conversions/non-conversions observed -> more effective placement algorithms
 :::
 
 ::: {.source-url}
@@ -613,17 +619,33 @@ Zuckerberg poses provocative questions. Do platforms still need advertisers to s
 [The Verge: Zuckerberg on AI and Facebook ads](https://www.theverge.com/meta/659506/mark-zuckerberg-ai-facebook-ads){target="_blank"}
 :::
 
+## Should AI make ads?
+
+![](images/quip.jpg){fig-align="center" height="400px"}
+
+::: {.callout-note appearance="minimal"}
+Quip was accused of using AI to make its ad, so it blogged the production process. How will consumers respond to AI-generated ads?
+:::
+
+::: {.source-url}
+[Modern Retail (2026)](https://web.archive.org/web/20260429101836/https://www.modernretail.co/marketing/quips-latest-ad-wasnt-ai-generated-people-were-convinced-it-was/){target="_blank"} | [Quip (2026)](https://web.archive.org/web/20260512085244/https://www.getquip.com/blogs/mouthoff-blog/behind-the-scenes-of-ultra-lite){target="_blank"} | [Quip ad](https://drive.google.com/file/d/1snnIYALlcN0LQiL5xsRfznFhF1W-uExy/view?usp=drive_link){target="_blank"}
+:::
+
 ## Programmatic downsides
 
-- Infrastructure maximizes correlational returns
-- Attribution/credit "stealing"
-- Many relevant outcomes: Difficult to measure what matters most
-- Goliath sellers, illegal monopolies, enshittification
+- Infrastructure maximizes conversions, not incremental conversions
+    - Attribution/credit "stealing"
+- Goliath sellers, unlawful monopolization, enshittification
 - Fraud, Algorithmic opacity, Privacy regulations
+- Ad blockers: ~25-45% usage, charge ~30% toll
 - "Ad Tech Tax": 20-50% of ad spend
 
 ::: {.callout-note appearance="minimal"}
 You might ideally want programmatic infrastructure to maximize causal sales lift, but it is not designed that way. Why do you think that is?
+:::
+
+::: {.source-url}
+[Gordon et al. (2021, p. 33-37) overview ad fraud](https://arxiv.org/pdf/1912.09012){target="_blank"}
 :::
 
 ##
@@ -770,7 +792,7 @@ Large marketers usually use multiple methods in parallel. Each approach has know
     - Search markets: Consumer usually searches, eg car insurance
     - Selection markets: Consumer usually chooses from a set, eg grocery store
 
-::: {.callout-note appearance="minimal"}
+::: {.callout-note appearance="minimal" style="font-size: 1.3em;"}
 Brand and performance ads are substitutes in the short run and complements in the long run
 :::
 
@@ -828,6 +850,7 @@ Do not re-optimize prices of S2 or A2 at any point. This is our most challenging
 
 ## Going further
 
+- [Advertising Measurement by Wilbur (2026)](https://kennethcwilbur.github.io/admeas/admeas.html#/title-slide){target="_blank"}
 - [Gordon et al (2026): Predicted Incrementality for Experimentation](https://drive.google.com/file/d/1UHRg-34HBjBSV-J3u51wWqmD_y0MCMxf/view?usp=drive_link){target="_blank"}
 - [Advertising and brand attitudes: Evidence from 575 brands over five years (QME 2019)](https://drive.google.com/file/d/1V9TYcKEw3RSxytTkk8W7RIM7p2uL-WD9/view?usp=sharing){target="_blank"}
 - [Swaminathan et al. (2020): Branding in a hyperconnected world (JMR)](https://www.sciencedirect.com/science/article/abs/pii/S0022243720300064){target="_blank"}

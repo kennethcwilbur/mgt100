@@ -190,7 +190,7 @@
     </div>
 </div>
 
-  <p class="date">This version: April 2026 | License: CC BY 4.0 | We use javascript to track readership.<br>We welcome reuse with attribution. Please share widely.</p>
+  <p class="date">This version: May 2026 | License: CC BY 4.0 | We use javascript to track readership.<br>We welcome reuse with attribution. Please share widely.</p>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
@@ -199,7 +199,7 @@
 <p><img data-src="images/corr_vs_caus_hires.png" class="quarto-figure quarto-figure-center" height="450"></p>
 </figure>
 </div>
-<div style="font-size: 0.75em;">
+<div style="font-size: 0.85em;">
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
@@ -259,7 +259,7 @@
 <p><img data-src="images/mrmc.jpg" class="quarto-figure quarto-figure-center" height="400"></p>
 </figure>
 </div>
-<div style="font-size: 0.75em;">
+<div style="font-size: 0.85em;">
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
@@ -342,7 +342,7 @@
 <li>Otherwise, “price endogeneity” will bias demand estimates, leading to a correlational relationship rather than a causal relationship</li>
 </ul></li>
 </ul>
-<div style="font-size: 1.15em;">
+<div style="font-size: 1.3em;">
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
@@ -426,7 +426,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>What might competitors, distribution partners, or suppliers react to price variation?<br><br>Why might combining experiments with demand modeling be better than either alone?</p>
+<p>How might competitors, distribution partners, or suppliers react to price variation?<br><br>Why might combining experiments with demand modeling be better than either alone?</p>
 </div>
 </div>
 </div>
@@ -468,7 +468,7 @@
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
-<p>To be fair, all sophisticated predictive &amp; prescriptive analytic techniques require these 3. Which of these challenges do you think is the biggest? Which are shared by other demand estimation techniques?</p>
+<p>To be fair, all sophisticated predictive &amp; prescriptive analytic techniques exhibit these limitations. Which of these challenges do you think is the biggest? Which are shared by other demand estimation techniques?</p>
 </div>
 </div>
 </div>
@@ -554,7 +554,7 @@
 <li>Estimated MNL on pre-BART survey data, then predicted post-BART transit choices</li>
 </ul>
 </div></div>
-<div style="font-size: 1.15em;">
+<div style="font-size: 1.3em;">
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
@@ -571,7 +571,7 @@
 <p><img data-src="images/mcfadden2000t1.png" class="quarto-figure quarto-figure-center" height="300"></p>
 </figure>
 </div>
-<div style="font-size: 1.15em;">
+<div style="font-size: 1.3em;">
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
@@ -584,7 +584,7 @@
 <ul>
 <li>McFadden was an economist working to empiricize theoretical models of individual choice</li>
 <li>In early 1970s, he was funded by NSF to predict how BART would change transit in SF</li>
-<li>He organized a team that collected pre-BART transportations choices by commuters in neighborhoods that were to receive BART stations. Product attributes included things like walking distance, waiting time, financial cost, and automotive preference dummy</li>
+<li>He organized a team that collected pre-BART transportation choices by commuters in neighborhoods that were to receive BART stations. Product attributes included things like walking distance, waiting time, financial cost, and automotive preference dummy</li>
 <li>He estimated a MNL using pre-BART individual level survey data, then simulated how transit choices would change after BART began operation</li>
 <li>This table shows how his predictions mapped onto the post-BART choices: he pretty much nailed his BART ridership predictions</li>
 <li>This stood in contrast to survey-based results, which predicted much larger BART ridership</li>
@@ -602,7 +602,7 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="multinomial-logit-mnl-1" class="slide level2 scrollable smaller">
+<section id="multinomial-logit-mnl-1" class="slide level2 smaller">
 <h2>Multinomial Logit (MNL)</h2>
 <ul>
 <li>Let <span class="math inline">\(i\)</span> index consumers, <span class="math inline">\(j=1,...,J\)</span> products, and <span class="math inline">\(t\)</span> index choice occasions</li>
@@ -675,7 +675,7 @@
 </section>
 <section id="mnl-estimation" class="slide level2 smaller">
 <h2>MNL Estimation</h2>
-<p>Define <span class="math inline">\(y_{ijt} \equiv 1\{i \text{ chose } j \text{ in } t\}\)</span>. I.e., <span class="math inline">\(y_{ijt}=1\)</span> iff <span class="math inline">\(i\)</span> choose <span class="math inline">\(j\)</span> at <span class="math inline">\(t\)</span>; otherwise <span class="math inline">\(y_{ijt}=0\)</span>.</p>
+<p>Define <span class="math inline">\(y_{ijt} \equiv 1\{i \text{ chose } j \text{ in } t\}\)</span>. I.e., <span class="math inline">\(y_{ijt}=1\)</span> iff <span class="math inline">\(i\)</span> chooses <span class="math inline">\(j\)</span> at <span class="math inline">\(t\)</span>; otherwise <span class="math inline">\(y_{ijt}=0\)</span>.</p>
 <ol type="1">
 <li>Maximum likelihood: Assume the probability of observation <span class="math inline">\(\{i,j,t\}\)</span> is <span class="math inline">\(s_{jt}(\alpha,\beta)^{y_{ijt}}\)</span>; <br>then likelihood function is <span class="math inline">\(L(\alpha,\beta)=\max\limits_{\alpha,\beta}\prod\limits_{\forall i,j,t} s_{jt}(\alpha,\beta)^{y_{ijt}}\)</span>; &amp; choose parameters to maximize log lik:</li>
 </ol>
@@ -901,7 +901,7 @@
 <p><img data-src="images/wright1928b.png" class="quarto-figure quarto-figure-center" height="380"></p>
 </figure>
 </div>
-<div style="font-size: 0.75em;">
+<div style="font-size: 0.85em;">
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
@@ -930,7 +930,7 @@
 <section id="fundamental-issue" class="slide level2 smaller">
 <h2>2. Fundamental issue</h2>
 <ul>
-<li>By definition, demand model is a causal price-quantity relationship <br> Yet observed prices typically correlate with other demand and supply determinants<br> Exogenous price variation req’d to distinguish correlation from causation (“identification”)
+<li>By definition, a demand model is a causal price-quantity relationship <br> Yet observed prices typically correlate with other demand and supply determinants<br> Exogenous price variation req’d to distinguish correlation from causation (“identification”)
 <ul>
 <li>Price endogeneity is a “data problem” not a “model problem”</li>
 <li>Can be hard to verify empirically–needed data is missing–but widely believed important</li>
@@ -1126,7 +1126,7 @@
 <li><span class="math inline">\(\hat{\beta}\)</span> is <em>biased</em> to fit the OLS model’s assumption that <span class="math inline">\(\sum p_1\epsilon=0\)</span></li>
 <li>Wrong <span class="math inline">\(\hat{\beta}\)</span> means wrong demand curve slope<br> …implies wrong demand predictions in response to price<br> …recommended price will be wrong, may reduce profit</li>
 </ul>
-<div style="font-size: 1.15em;">
+<div style="font-size: 1.3em;">
 <div class="callout callout-note no-icon callout-style-simple">
 <div class="callout-body">
 <div class="callout-content">
@@ -1340,12 +1340,12 @@ F-statistic: 1.226e+09 on 2 and 97 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li>Endogeneity remedies: Future metrics classes or graduate study</li>
 <li>Treat the topic as a demand modeling risk to be understood</li>
 </ul></li>
-<li>In practice, standard advice is to induce nonobvious experimental price variation, such as variation across markets or targeted coupons</li>
+<li>In practice, standard advice is to induce non-obvious experimental price variation, such as variation across markets or targeted coupons</li>
 </ul>
 <aside class="notes">
 <ul>
 <li>When archival demand modeling disagrees with price experiments, endogeneity is a possible culprit, among other possibilities. It’s important, but we could easily spend the rest of the quarter on this topic, and we would rather spend the time on what we can do with models.</li>
-<li>Your standard advice to a firm would be to induce nonobvious experimental variation when possible in order to estimate price responsiveness, such as price variation across markets or targeted coupons</li>
+<li>Your standard advice to a firm would be to induce non-obvious experimental variation when possible in order to estimate price responsiveness, such as price variation across markets or targeted coupons</li>
 <li>Price response tends to be pretty strong so you don’t necessarily need a big intervention</li>
 </ul>
 <style type="text/css">

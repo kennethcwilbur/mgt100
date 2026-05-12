@@ -54,8 +54,7 @@ This ancient Mesopotamian clay tablet is estimated to be nearly 4,000 years old.
 ::: notes
 - Data tables are older than english; older than zero (est. 3 b.c.)
 - This is a drawing of an ancient Mesopotamian clay tablet
-- Estimated to be 3500 years old
-- Found near the Euphrates river in iraq
+- Found near the Euphrates river in Iraq
 - Data entry and data visualization are older than English
 - Next question raised: Are those blanks zeros or NAs? (what's an NA?)
 - Tables require study; pictures teach
@@ -162,7 +161,7 @@ Google searches for DraftKings, FanDuel during an NFL Game, 9-10 P.M. EST. Comme
 :::
 
 ::: notes
-- This graphic shows minute-by-minute search for DraftKings and Fanduel ads during the first thursday nfl game in 2015
+- This graphic shows minute-by-minute search for DraftKings and Fanduel ads during the first Thursday NFL game in 2015
 - You can see that brand search increases 15-25x in the minutes a brand TV ad airs
 - Notes: returns to baseline within 5 minutes; positive competitive spillovers; no evidence of accelerating search across time, so appears incremental; non-brand ads do not seem to increase search for DK & FD
 - I showed this to the Fanduel director of marketing research, she had no idea, they had no coordination across channels
@@ -228,7 +227,7 @@ A key principle in Business Analytics is GIGO: Garbage In, Garbage Out. Don't an
 
 ::::
 
-::: {.callout-note appearance="minimal" style="font-size: 0.8em; margin-top: 3px;"}
+::: {.callout-note appearance="minimal" style="font-size: 0.85em; margin-top: 3px;"}
 "Graphics journalists urge that each chart should make exactly one point – and it should be obvious how to read it. Often charts say (1) number goes up/down recently, (2) number goes up/down when some event occurred, (3) one set of lines diverges from another set of lines (or, one line is an outlier compared to the rest), (4) the distribution is bimodal." --Jeremy Merrill, WaPo. "Scientific charts are often the opposite of this -- they have four variables, six symbols and are explained two pages away."
 :::
 
@@ -295,7 +294,7 @@ You want to avoid mistaken interpretations of your work, and identify misleading
 
 ## Visualize data before you model anything
 
-- 4 Datasets, Same $\hat{\beta}^{OLS}$, i.e. same $\frac{x'x}{x'y}$
+- 4 Datasets, Same $\hat{\beta}^{OLS}$, i.e. same $(x'x)^{-1}x'y$
 
 ![](images/4datasets_samebeta.png){fig-align="center" height="350px"}
 
@@ -311,7 +310,7 @@ This is why we shouldn't just use regression to summarize data. What does each p
 - The most common use of visualizations is private, for an analyst to understand the properties of a dataset
 - The 4 datasets all generate the same OLS estimate for beta
 - The relationships are quite different and imply different things
-- If you only summarize with regression, you might miss smth important
+- If you only summarize with regression, you might miss something important
 - As a consultant and researcher, when I observe a junior colleague neglect to visualize a dataset prior to analysis, I form a certain expectation
 :::
 
@@ -514,7 +513,7 @@ This model is also known as the purchase journey. Very likely the most popular e
 
 ::: notes
 - Retail has always been an early adopter of customer analytics
-- Catalogue retailers were the OGs -E-commerce more recently - talk about how to measure each of these Talk about drop-offs from each level to the next -Talk about easy ways to turn drop-offs into actions -These are examples of descriptive & diagnostic analytics -(aside: there are 3, and only 3, ways to make money: Customer Acquisition, Customer Retention, Customer Development)
+- Catalogue retailers were the OGs -E-commerce more recently - talk about how to measure each of these Talk about drop-offs from each level to the next -Talk about easy ways to turn drop-offs into actions -These are examples of descriptive & diagnostic analytics
 :::
 
 ## E-commerce Analytics
@@ -711,7 +710,7 @@ Y axes indicate the human-expert task-completion time (in hours) that a frontier
 
 - Ken's LLM Usage Principles: 1. Embrace discomfort, maintain and deepen my differentiating skillset. 2. Use LLMs to speed up low-level tasks with great training data. 3. Use domain knowledge to challenge LLM output, go to primary sources to verify key points. 4. Training data contain all perspectives found on the internet, the prompt determines which perspective is reflected in the response. 5. All complicated prompts contain unstated assumptions, don't ask the LLM to fill in the blanks. 6. Never use a free LLM.
 
-::: {.callout-note appearance="minimal" style="font-size: 1.15em;"}
+::: {.callout-note appearance="minimal" style="font-size: 1.3em;"}
 My use/non-use cases reflect my role as an academic researcher and educator. Your optimal use/non-use cases are likely to differ. Where has LLM use helped in your education? Has it ever limited your education? How can it help in MGT 100?
 :::
 

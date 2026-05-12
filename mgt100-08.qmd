@@ -42,15 +42,6 @@ format:
 :::
 
 
-::: notes
-- This paper was published several years before even I was born
-- It has been cited 11,000 times. Probably the most cited paper in marketing
-- One of the first predictive analytics papers published in any business discipline
-- This is a differential equation model, in which the change in a function modeled as a function of the level of the function
-- Model was borrowed from epidemiology
-- Performs well, but not overall, only relative to all other failed attempts to predict the future
-:::
-
 ## Importance of Customer Acquisition
 
 - [Einav et al. (2021)](https://www.nber.org/system/files/working_papers/w29561/w29561.pdf){target="_blank"} analyzed all US Visa CC transaction data
@@ -259,7 +250,7 @@ There are claims that diffusion is speeding up
 ![](images/timeto100musers.jpg){fig-align="center" height="450px"}
 
 ::: {.callout-note appearance="minimal"}
-Digitization and social media are plausible mechanisms for accelerating diffusion curves, but these products are not randomly selected. Large majorities of products get lost in the multitude
+Digitization and social media are plausible mechanisms for accelerating diffusion curves, but these products are not randomly selected. Most products get lost in the multitude
 :::
 
 ::: notes
@@ -283,7 +274,7 @@ In food and drug channels, 35-40k new SKUs launch each year; 90-95% fail complet
 ::: notes
 - For completeness we should consider the full scope of products launched every year
 - Even if we limit ourselves to food & drug channels, it's massive, on the order of 35-40k new SKUs launched in a typical year
-- 90-95% fail completely within 6 months, as in revenues go to zero and manufacturer withdraws the product (Wilbur & Farris 2014)
+- 90-95% fail completely within 6 months, i.e. revenues go to zero and manufacturer withdraws the product (Wilbur & Farris 2014)
 - Unfortunately USDA stopped updating these data publicly, probably because Mintel increased price too much
 :::
 
@@ -382,7 +373,7 @@ You don't have to know how to solve differential equations for this class. Just 
 
 ## Estimating Bass model via OLS {style="font-size: 0.85em;"}
 
-- Or, notice that $\frac{dA(t)}{dt}=pR(t)+q\frac{A(t)}{M}R(t)$<br>$=p(M-A(t)) + q* \frac{A(t)}{M}(M-A(t))$<br>$=pM + (q-p)A(t)+\frac{q}{M} A(t)^2$<br>$\equiv \beta_0+\beta_1 A(t) + \beta_2 A(t)^2$
+- Or, notice that $\frac{dA(t)}{dt}=pR(t)+q\frac{A(t)}{M}R(t)$<br>$=p(M-A(t)) + q* \frac{A(t)}{M}(M-A(t))$<br>$=pM + (q-p)A(t)-\frac{q}{M} A(t)^2$<br>$\equiv \beta_0+\beta_1 A(t) + \beta_2 A(t)^2$
 - We can use OLS to regress $\frac{dA(t)}{dt}$ on a quadratic in installed base $A(t)$
 - Bass model extensions: Multiple markets, hazard models, <br>multiple influence types
 
@@ -569,14 +560,14 @@ CLV can account for customer heterogeneity using same approaches we talked about
     were worth sending books, how often
 :::
 
-## CLV Example: Housing First {style="font-size: 0.9em;"}
+## CLV Example: Housing First {style="font-size: 0.85em;"}
 
 - "In 2005, Utah set out to fix a problem that's often thought of as unfixable: chronic homelessness. The state had almost 2,000 chronically homeless people. Most of them had mental-health or substance-abuse issues, or both. Utah started by just giving the homeless homes...
 - The cost of shelters, emergency-room visits, ambulances, police, and so on quickly piles up. Lloyd Pendleton, the director of Utah's Homeless Task Force ... said that the average chronically homeless person used to cost Salt Lake City more than \$20,000/year. Putting someone into permanent housing costs the state just \$8,000 [including case managers]...
 - Utah's first pilot program placed 17 people in homes scattered around Salt Lake City, and after twenty-two months not one of them was back on the streets. In the years since, the number of Utah's chronically homeless has fallen by 74%."
 
 ::: {.callout-note appearance="minimal"}
-Republican Utah might not be your first guess as to whom invented Housing First, but it CLV analysis made this dramatic policy shift look like a no-brainer
+Republican Utah might not be your first guess as to who invented Housing First, but CLV analysis made this dramatic policy shift look like a no-brainer
 :::
 
 ::: {.source-url}
@@ -597,14 +588,14 @@ Republican Utah might not be your first guess as to whom invented Housing First,
 - Housing First has certainly not solved homelessness
     - "Chronic" means disabled and unhoused for 1+ yrs, or 4x in 3 yrs
     - ~28% of CA homelessness is chronic (2019)
-    - UT originally claimed 90% reduction, then revised their metric definitions
+    - UT originally claimed 90% reduction, then revised its metric definitions
     - Reliable efficacy metrics are rare
     - Housing First has been implemented haphazardly
     - UT built new apartments. CA cities mostly use shelters, SROs, vouchers
     - Key Q: Require wraparound services? E.g. Addiction treatment, etc
     - Key Q: Does Housing First somehow encourage homelessness?
 - I claim: Quantification enables bold policy shifts
-    - U.S. HUD adopted Housing First as preferred approach to homelessness in 2014
+    - U.S. HUD adopted Housing First as the preferred approach to homelessness in 2014
     - CLV quantifies policy costs and benefits & enables ex-post evaluations
     - We then can use data to refine CLV estimates and policies
 

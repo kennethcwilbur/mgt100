@@ -25,7 +25,7 @@ format:
 
 ![](images/corr_vs_caus_hires.png){fig-align="center" height="450px"}
 
-::: {.callout-note appearance="minimal" style="font-size: 0.75em;"}
+::: {.callout-note appearance="minimal" style="font-size: 0.85em;"}
 Correlation is the empirical tendency for two variables to move together. We hypothesize about a causal relationship using logic and judgment. If X "causes" Y, then if we intervene to change prob(X=x), prob(Y=y|X=x) will change as a result.
 :::
 
@@ -64,7 +64,7 @@ Here, Wright explains S&D ideas usually credited to Alfred Marshall (1890)
 
 ![](images/mrmc.jpg){fig-align="center" height="400px"}
 
-::: {.callout-note appearance="minimal" style="font-size: 0.75em;"}
+::: {.callout-note appearance="minimal" style="font-size: 0.85em;"}
 The demand curve is the relationship between price and quantity demanded. Why do we call it "inverse"? Marginal revenue shows how total revenue is changing at each price. Marginal cost represents the cost of each additional unit of quantity supplied. Where does the firm maximize profit? Where does the firm maximize revenue? <br><br>Have you ever heard any coworker or relative talk about a business's demand curve? Why or why not?
 :::
 
@@ -110,7 +110,7 @@ Demand curves enable counterfactual predictions — "what would happen to sales 
     - Observable, exogenous price variation
     - Otherwise, "price endogeneity" will bias demand estimates, leading to a correlational relationship rather than a causal relationship
 
-::: {.callout-note appearance="minimal" style="font-size: 1.15em;"}
+::: {.callout-note appearance="minimal" style="font-size: 1.3em;"}
 Have you heard of price endogeneity before? What is it?<br>The key insight: you need exogenous variation in price to isolate the causal effect from correlates of both price and sales. What does "exogenous" mean here?
 :::
 
@@ -148,7 +148,7 @@ Firms use many approaches to learn demand, but best practice is triangulation �
     - Price experiments w/o demand modeling leaves money on table
 
 ::: {.callout-note appearance="minimal"}
-What might competitors, distribution partners, or suppliers react to price variation?<br><br>Why might combining experiments with demand modeling be better than either alone?
+How might competitors, distribution partners, or suppliers react to price variation?<br><br>Why might combining experiments with demand modeling be better than either alone?
 :::
 
 ## Demand Modeling: Pros
@@ -174,7 +174,7 @@ Demand modeling uses real consumer choices (revealed preferences) rather than su
     - Hence most often used in mature, stable markets
 
 ::: {.callout-note appearance="minimal"}
-To be fair, all sophisticated predictive & prescriptive analytic techniques require these 3. Which of these challenges do you think is the biggest? Which are shared by other demand estimation techniques?
+To be fair, all sophisticated predictive & prescriptive analytic techniques exhibit these limitations. Which of these challenges do you think is the biggest? Which are shared by other demand estimation techniques?
 :::
 
 ::: notes
@@ -233,7 +233,7 @@ To be fair, all sophisticated predictive & prescriptive analytic techniques requ
 
 ::::
 
-::: {.callout-note appearance="minimal" style="font-size: 1.15em;"}
+::: {.callout-note appearance="minimal" style="font-size: 1.3em;"}
 McFadden (1974, 1978, 1981) introduced the Multinomial Logit (MNL) model into Econ by showing it was consistent with theories of rational choice. MNL was based on earlier work in stats & psych ("logistic regression"), and became probably the most popular demand model. Ken Train, who wrote the pre-class reading, assisted McFadden's research at Berkeley, and later became a Berkeley professor.
 :::
 
@@ -241,21 +241,21 @@ McFadden (1974, 1978, 1981) introduced the Multinomial Logit (MNL) model into Ec
 
 ![](images/mcfadden2000t1.png){fig-align="center" height="300px"}
 
-::: {.callout-note appearance="minimal" style="font-size: 1.15em;"}
+::: {.callout-note appearance="minimal" style="font-size: 1.3em;"}
 This table shows how his predictions mapped onto the post-BART choices: he pretty much nailed his BART ridership predictions. This stood in contrast to survey-based results, which predicted much larger BART ridership. High-profile early "win" for MNL, combined with theoretical interpretation, led to model adoption. What was the confidence interval on the MNL predicted share for BART ridership? Why did survey-based predictions overestimate BART ridership compared to the model-based approach?
 :::
 
 ::: notes
 - McFadden was an economist working to empiricize theoretical models of individual choice
 - In early 1970s, he was funded by NSF to predict how BART would change transit in SF
-- He organized a team that collected pre-BART transportations choices by commuters in neighborhoods that were to receive BART stations. Product attributes included things like walking distance, waiting time, financial cost, and automotive preference dummy
+- He organized a team that collected pre-BART transportation choices by commuters in neighborhoods that were to receive BART stations. Product attributes included things like walking distance, waiting time, financial cost, and automotive preference dummy
 - He estimated a MNL using pre-BART individual level survey data, then simulated how transit choices would change after BART began operation
 - This table shows how his predictions mapped onto the post-BART choices: he pretty much nailed his BART ridership predictions
 - This stood in contrast to survey-based results, which predicted much larger BART ridership
 - High-profile early "win" for MNL, combined with theoretical interpretation, led to model adoption
 :::
 
-## Multinomial Logit (MNL) {.scrollable .smaller}
+## Multinomial Logit (MNL) {.smaller}
 
 - Let $i$ index consumers, $j=1,...,J$ products, and $t$ index choice occasions
 - Assume each $i$ gets indirect utility $u_{ijt}$ from product $j$ in market $t$:
@@ -301,7 +301,7 @@ The integral simplifies because of the distributional assumption on $\epsilon_{i
 
 ## MNL Estimation {.smaller}
 
-Define $y_{ijt} \equiv 1\{i \text{ chose } j \text{ in } t\}$. I.e., $y_{ijt}=1$ iff $i$ choose $j$ at $t$; otherwise $y_{ijt}=0$.
+Define $y_{ijt} \equiv 1\{i \text{ chose } j \text{ in } t\}$. I.e., $y_{ijt}=1$ iff $i$ chooses $j$ at $t$; otherwise $y_{ijt}=0$.
 
 1. Maximum likelihood: Assume the probability of observation $\{i,j,t\}$ is $s_{jt}(\alpha,\beta)^{y_{ijt}}$; <br>then likelihood function is $L(\alpha,\beta)=\max\limits_{\alpha,\beta}\prod\limits_{\forall i,j,t} s_{jt}(\alpha,\beta)^{y_{ijt}}$; & choose parameters to maximize log lik:
 
@@ -428,7 +428,7 @@ Better prediction does not always lead to better decisions. What matters is not 
 
 ![](images/wright1928b.png){fig-align="center" height="380px"}
 
-::: {.callout-note appearance="minimal" style="font-size: 0.75em;"}
+::: {.callout-note appearance="minimal" style="font-size: 0.85em;"}
 Same guy that we opened with — on the very next page after introducing supply & demand, Wright describes the price endogeneity problem, plus how to resolve it. We need supply shifters to trace out the demand curve. We need demand shifters to trace out the supply curve. If we only have endogenous P&Q, we cannot estimate either curve's shifts, since both move frequently. We've known about price endogeneity for about 100 years now.
 :::
 
@@ -446,7 +446,7 @@ If we only have endogenous P&Q, we cannot estimate either curve's shifts, since 
 
 ## 2. Fundamental issue {.smaller}
 
-- By definition, demand model is a causal price-quantity relationship <br>
+- By definition, a demand model is a causal price-quantity relationship <br>
 Yet observed prices typically correlate with other demand and supply determinants<br>
 Exogenous price variation req'd to distinguish correlation from causation ("identification")
     - Price endogeneity is a "data problem" not a "model problem"
@@ -594,7 +594,7 @@ This is a great place to ask questions.
 ...implies wrong demand predictions in response to price<br>
 ...recommended price will be wrong, may reduce profit
 
-::: {.callout-note appearance="minimal" style="font-size: 1.15em;"}
+::: {.callout-note appearance="minimal" style="font-size: 1.3em;"}
 This type of mistake could arise from a company failing to identify a relevant competitor, and therefore neglecting to include it in the choice set. Is that a plausible scenario?
 :::
 
@@ -766,11 +766,11 @@ thus we have exogenous price variation to identify $\alpha$
     - This class focuses on how we can use demand models
     - Endogeneity remedies: Future metrics classes or graduate study
     - Treat the topic as a demand modeling risk to be understood
-- In practice, standard advice is to induce nonobvious experimental price variation, such as variation across markets or targeted coupons
+- In practice, standard advice is to induce non-obvious experimental price variation, such as variation across markets or targeted coupons
 
 ::: notes
 - When archival demand modeling disagrees with price experiments, endogeneity is a possible culprit, among other possibilities. It's important, but we could easily spend the rest of the quarter on this topic, and we would rather spend the time on what we can do with models.
-- Your standard advice to a firm would be to induce nonobvious experimental variation when possible in order to estimate price responsiveness, such as price variation across markets or targeted coupons
+- Your standard advice to a firm would be to induce non-obvious experimental variation when possible in order to estimate price responsiveness, such as price variation across markets or targeted coupons
 - Price response tends to be pretty strong so you don't necessarily need a big intervention
 :::
 

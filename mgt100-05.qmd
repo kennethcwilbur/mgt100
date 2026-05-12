@@ -38,7 +38,7 @@ Hint: Both segments were about the same size, and both had very similar distribu
 -   Baby; No Image, nondescript packaging
 -   Baby aisle; Next to contraception
 -   Ovulation testing; STD tests (strep, chlamydia)
--   QuickVue came in packs of 2; Conceive sold 40 to a box at 15% premium per strip
+-   QuickVue came in packs of 2; Conceive sold 40 per box at 15% premium per strip
 -   So you see how understanding your customer can help optimize tangible and intangible features
 - How did price sensitivity differ between the two segments?
 :::
@@ -135,7 +135,7 @@ A phone shopper first snaps a photo and examines the result. How might the photo
 - Why? Defaults are good enough; changing is hard, uncertain; users assume designer knows best; popularity implies utility; possible fear of norm deviation
 
 ::: {.callout-note appearance="minimal"}
-Figures indicate the importance of understanding digital user needs, not assuming that usage indicates satisfaction, and using experiments to indicate optimal default choices
+Figures show the importance of understanding digital user needs, rather than assuming that usage indicates satisfaction
 :::
 
 ::: notes
@@ -231,7 +231,7 @@ Alternatively, it is possible to estimate segment memberships, rather than suppl
 
 - Assume $(\alpha_i,\beta_i)\sim F(\Theta)$
     - Includes the Hierarchical Bayesian Logit
-- Then $s_{jt}=\int\frac{e^{x_{jt}\alpha_i-\beta_i p_{jt}}}{\sum_{k=1}^{J}e^{x_{jt}\alpha_i-\beta_i p_{jt}}}dF(\Theta)$
+- Then $s_{jt}=\int\frac{e^{x_{jt}\beta_i-\alpha_i p_{jt}}}{\sum_{k=1}^{J}e^{x_{kt}\beta_i-\alpha_i p_{kt}}}dF(\Theta)$
 - Typically, we assume $F(\Theta)$ is multivariate normal, for convenience, and estimate $\Theta$
     - We usually have to approximate the integral, often use Bayesian techniques (MSBA/PhD)
 - Or, we can estimate every $\alpha_i$ and $\beta_i$, that is very very data intensive
@@ -296,7 +296,7 @@ Imagine you prepared for a quiz by perfectly memorizing the textbook but without
 ![](images/overfitting_visualized.png){fig-align="center" height="500px"}
 
 ::: {.callout-note appearance="minimal"}
-Choosing a model that maximize a single criterion, such as R-square, can lead to bad decisions.
+Choosing a model that maximizes a single criterion, such as R-square, can lead to bad decisions.
 :::
 
 ::: notes

@@ -20,7 +20,7 @@ library(tidyverse)
 M<-100    # Maximum market size
 p<-.02     # coefficient of innovation
 q<-.2      # coefficient of imitation
-Nstart <- p  # Number of sales in period 1
+Nstart <- p*M  # Number of sales in period 1, implied when A=0
 T<-40      # Number of periods to simulate
 
 # Note: We'll denote adoptions as N because that's easier to write than dA/dt
@@ -38,11 +38,13 @@ R[[1]] <- M-N[[1]]
 t[[1]] <- 1.0
 
 #simulate data for subsequent periods
+sigma <- 0.2    # governs noise in simulated N(t)
+set.seed(4321)
 for (i in 2:T){
   
   t[i] <- i*1.0
-  # Bass model formula:
-  N[i] <- ( p + q * A[[i-1]] / M ) * R[[i-1]]
+  # Bass model formula, with a random lognormal multiplier:
+  N[i] <- ( p + q * A[[i-1]] / M ) * R[[i-1]] * exp(rnorm(1, mean = 0, sd = sigma))
   # Update accumulated sales
   A[i] <- A[[i-1]] + N[[i]]
   # Update Remaining market size
@@ -64,19 +66,37 @@ ggplot(sim) +
 
 # This illustrates a general principle in model training, estimation and usage
 # If we can simulate data from a model and known parameters,
-#     and then use the simulated data and estimation code to recover known parameters,
+#     and then use the simulated data and estimation code to estimate known values,
 #     then we can (a) check our understanding
-#         (b) check our estimation code
+#         (b) check our estimation code works
 #         (c) run a variety of simulation experiments to understand the 
 #             model and estimator properties
 #         (d) change the parameter values to gauge their effect on the model
 
+# Note, this procedure proves the model recovers known parameters from a known 
+#     data generating process
+# However, it cannot prove that a model can always recover true parameters
+#     when the data generating process is unknown. For example, in the case of 
+#     price endogeneity, a simulation approach like this could not capture the 
+#     unknown effects of price endogeneity on demand; it could only capture the 
+#     effects as we assume them to be
+# Sometimes people overinterpret the value of this procedure. It is valuable to
+#     test models and estimators in an environment that is fully controlled. However,  
+#     the experiments do not imply that the models and estimators
+#     will have the same properties when applied in uncontrolled environments.
 
-# Now let's estimate the Bass model using OLS (the quadratic in A(t))
+
+# Now let's estimate the Bass model using OLS (the quadratic in A(t-1))
 #    (good deeper dive if you want it: https://rpubs.com/BM07BAM/bass_model )
 
-# run the linear regression: N_t = a + b*A_t + c*A_t^2
-out_lm <- lm(N ~ A + I(A^2), data = sim)
+# Lagged cumulative adoptions: total adopters BEFORE period t, with A_lag[1]=0.
+# This is the correct Bass regressor; using A[t] would be circular because
+# A[t] = A[t-1] + N[t] already contains the outcome N[t] we are predicting.
+A_lag <- dplyr::lag(A, default = 0)
+sim$A_lag <- A_lag
+
+# run the linear regression: N_t = a + b*A_{t-1} + c*A_{t-1}^2
+out_lm <- lm(N ~ A_lag + I(A_lag^2), data = sim)
 summary(out_lm)
 
 # What did we find? How well did the model fit the training data?
@@ -92,9 +112,9 @@ ggplot(sim) +
 
 
 # Now let's estimate the Bass model a second way, using a different approach
-# This time we'll use Nonlinear Least Squares and the exact solution
+# This time we'll use Non-Linear Least Squares and the exact solution
 
-# First let's define our NLS objective function that we want to minimize, 
+# First let's define our NLLS objective function that we want to minimize, 
 # as a function of p and q. This function calculates the sum of square errors
 bass_sse <- function(pq, N_t, A_t, M) {
   p <- pq[1]
@@ -114,7 +134,7 @@ init <- c(0.1, 0.1)   # this is where we start our search (p=.1, q=.1)
 # type ?optim to learn more about the optim(ization) function
 # optim offers several search routines; defaults to Nelder-Mead https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method
 # init is the starting point, fn is the function to minimize
-out2 <- optim(par = init, fn = bass_sse, N_t = sim$N, A = sim$A, M = M)
+out2 <- optim(par = init, fn = bass_sse, N_t = sim$N, A_t = sim$A_lag, M = M)
 
 # what did optim give us? 
 summary(out2)
@@ -123,7 +143,7 @@ summary(out2)
 out2$par
 # How accurate are those?
 
-# Let's use our NLS model to predict sales in the training sample
+# Let's use our NLLS model to predict sales in the training sample
 PredictBassInSampleN <- function(parms, T_horizon){
 
 # allocate memory  
@@ -131,37 +151,37 @@ ISPredN <- vector(mode="numeric",length=T_horizon)
 
 # Use the estimated model to predict sales in the training sample
 for (i in 1:T_horizon) {
-  ISPredN[i] <- M * parms[[1]] + (parms[[2]] - parms[[1]]) * A[i] - (parms[[2]] / M) * A[i]^2
+  ISPredN[i] <- M * parms[[1]] + (parms[[2]] - parms[[1]]) * A_lag[i] - (parms[[2]] / M) * A_lag[i]^2
   ISPredN[i] 
 }
 
 return(ISPredN)
 }
 
-sim$NLSInsamplePred<-PredictBassInSampleN(out2$par, 40)
+sim$NLLSInsamplePred<-PredictBassInSampleN(out2$par, 40)
 
 
 # Let's see how in-sample sales predictions compare to actual sales
 ggplot(sim) +
   geom_point(aes(t,N), color="black") +
   geom_point(aes(t,lmpred), color="green") +
-  geom_point(aes(t,NLSInsamplePred), color="purple")
+  geom_point(aes(t,NLLSInsamplePred), color="purple")
 
 ## Which model fits better? In what periods does each estimator fit better or worse?
-nls_insample_r2<-1 - sum((sim$N-sim$NLSInsamplePred)^2)/sum((sim$N-mean(sim$N))^2)
+nls_insample_r2<-1 - sum((sim$N-sim$NLLSInsamplePred)^2)/sum((sim$N-mean(sim$N))^2)
 nls_insample_r2  # how does that compare to the OLS R-sq?
 
 
 ## Until now, we have used the entire T-periods dataset to fit both models
-## That means we can't evaluate retrodictive accuracy--we used the entire dataset in estimation
+## That means we can't evaluate predictive accuracy--we used the entire dataset in estimation
 
-##   (What's the problme with using training data to evaluate retrodictive accuracy?)
+##   (What's the problem with using training data to evaluate predictive accuracy?)
 
 ## Now, suppose we only had the first (short_T) periods of data
-## We'll estimate with the first short_T periods then retrodict periods 13-40
+## We'll estimate with the first short_T periods then predict periods 13-40
 short_T <- 12
 
-## Which estimation method do you think will offer more accurate retrodictions? 
+## Which estimation method do you think will offer more accurate predictions? 
 ## Why?
 
 # First let's create the restricted training sample 
@@ -171,8 +191,8 @@ shortsim <- sim[1:short_T,]
 # restricted data
 
 # run the linear regression using the short training sample: 
-#      N_t = a + b*A_t + c*A_t^2
-out_lm2 <- lm(N ~ A + I(A^2), data = shortsim)
+#      N_t = a + b*A_{t-1} + c*A_{t-1}^2
+out_lm2 <- lm(N ~ A_lag + I(A_lag^2), data = shortsim)
 summary(out_lm2)
 
 # Let's use our linear estimator to predict sales in the short training sample
@@ -184,30 +204,30 @@ ggplot(shortsim) +
   geom_point(aes(t,lmpred), color="green") 
 
 
-# Now let's estimate the Bass model using NLS 
+# Now let's estimate the Bass model using NLLS 
 
-# Re-estimate NLS using the short training sample 
-nls2short <- optim(par = init, fn = bass_sse, N_t = shortsim$N, A = shortsim$A, M = M)
+# Re-estimate NLLS using the short training sample 
+nls2short <- optim(par = init, fn = bass_sse, N_t = shortsim$N, A_t = shortsim$A_lag, M = M)
 
 # What did we find?
 nls2short$par
-# Are these parameter estimates better or worse than the first NLS estimates? Why?
+# Are these parameter estimates better or worse than the first NLLS estimates? Why?
 
-# Let's use our NLS model to predict sales in the short sample
-shortsim$NLSInsamplePred<-PredictBassInSampleN(nls2short$par, short_T)
+# Let's use our NLLS model to predict sales in the short sample
+shortsim$NLLSInsamplePred<-PredictBassInSampleN(nls2short$par, short_T)
 
 # Let's see how predicted sales compares to actual sales in the restricted sample
 ggplot(shortsim) +
   geom_point(aes(t,N), color="black") +
   geom_point(aes(t,lmpred), color="green") +
-  geom_point(aes(t,NLSInsamplePred), color="purple") 
+  geom_point(aes(t,NLLSInsamplePred), color="purple") 
 
 # How do the R-square statistics compare in the short training sample?
-nls_insample_r2<-1 - sum((shortsim$N-shortsim$NLSInsamplePred)^2)/sum((shortsim$N-mean(shortsim$N))^2)
+nls_insample_r2<-1 - sum((shortsim$N-shortsim$NLLSInsamplePred)^2)/sum((shortsim$N-mean(shortsim$N))^2)
 nls_insample_r2
 
 
-# Now let's use the 2 models to retrodict sales after the training data period
+# Now let's use the 2 models to predict sales after the training data period
 
 # For the quadratic linear model, we need to define a new function, which will 
 #   make a series of iterated sales predictions, each building on the previous
@@ -235,21 +255,20 @@ lmPredOOS <- function(model,short_T){
   return(longpredN)
 }
 
-# Use our new function to retrodict using the OLS estimator
+# Use our new function to predict using the OLS estimator
 LMlong <- lmPredOOS(out_lm2,short_T)
 
-# How do the OLS retrodictions compare to simulated data?
-retrodictions <- cbind(t,N,LMlong) |>
+# How do the OLS predictions compare to simulated data?
+predictions <- cbind(t,N,LMlong) |>
   as.data.frame() 
 
-ggplot(retrodictions) +
+ggplot(predictions) +
   geom_point(aes(t,N), color="black") +
   geom_point(aes(t,LMlong), color="green") 
 
 
-# Now we need a function that uses the short-T NLS estimator to predict out-of-sample
-# This function is similar to lmPredOOS but only retrodicts after short_T
-NLSpredOOS <- function(M, p, q, short_T) {
+# Now we need a function that uses the short-T NLLS estimator to predict out-of-sample
+NLLSpredOOS <- function(M, p, q, short_T) {
   
   # first allocate the return vector in memory
   longpredN <- vector(mode="numeric",length=T)
@@ -269,28 +288,28 @@ NLSpredOOS <- function(M, p, q, short_T) {
   return(longpredN)
 }
 
-# Let's predict sales for all T periods given NLS estimates of p and q
-retrodictions$NLSlong <- NLSpredOOS(M, nls2short$par[[1]], nls2short$par[[2]], short_T)
+# Let's predict sales for all T periods given NLLS estimates of p and q
+predictions$NLLSlong <- NLLSpredOOS(M, nls2short$par[[1]], nls2short$par[[2]], short_T)
 
-# Let's see how predicted sales compares to actual sales in the restricted sample
-ggplot(retrodictions) +
+# Let's see how predicted sales compares to simulated sales in the restricted sample
+ggplot(predictions) +
   geom_point(aes(t,N), color="black") +
   geom_point(aes(t,LMlong), color="green") +
-  geom_point(aes(t,NLSlong), color="purple") 
+  geom_point(aes(t,NLLSlong), color="purple") 
 
-# Which estimation method looks like it retrodicted better in periods 13-T? 
+# Which estimation method looks like it predicted better in periods 13-T? 
 
 # Let's sum the square prediction errors for out-of-sample periods
-sspeLM <- sum((retrodictions$LMlong[(short_T+1):T]-retrodictions$N[(short_T+1):T])^2)
-sspeNLS <- sum((retrodictions$NLSlong[(short_T+1):T]-retrodictions$N[(short_T+1):T])^2)
-print(c(sspeLM, sspeNLS))
+sspeLM <- sum((predictions$LMlong[(short_T+1):T]-predictions$N[(short_T+1):T])^2)
+sspeNLLS <- sum((predictions$NLLSlong[(short_T+1):T]-predictions$N[(short_T+1):T])^2)
+print(c(sspeLM, sspeNLLS))
 
 
 # Remember the bias-variance tradeoff: Increasing model fit past a certain point 
 #    can reduce the model's ability to generalize to unseen data 
 # https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff
 
-# The reason that NLS performs reasonably well, even with just a few data points, is that 
+# The reason that NLLS performs reasonably well, even with just a few data points, is that 
 # its structure nests the true data generating process. 
 
 # This is a common tradeoff in analytics: Purpose-built models using relevant theory
@@ -329,6 +348,6 @@ print(c(sspeLM, sspeNLS))
 # 5. Change short_T from 12 to 6; change nothing else from the original values. 
 # Did that change which estimator produced a higher sum of squared prediction errors?
 
-# 6. Change short_T from 12 to 18; change nothing else from the original values. 
+# 6. Change short_T from 12 to 18; change nothing else from the original values.
 # Did that change which estimator produced a higher sum of squared prediction errors?
 

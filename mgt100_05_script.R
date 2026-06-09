@@ -395,7 +395,7 @@ cv_mspe <- function(model, data, k=10, seed=4321) {
     out  <- mlogit(formula(model), data=data[row_ids_train,])
     
     # predict choice probabilities for prediction data
-    yhat <- predict(model, newdata = data[row_ids_test,])
+    yhat <- predict(out, newdata = data[row_ids_test,])
     
     # store yhat values for prediction data
     preds[row_ids_test] <- as.vector(t(yhat))
